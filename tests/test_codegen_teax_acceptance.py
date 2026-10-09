@@ -8,11 +8,12 @@ import sys
 from pathlib import Path
 
 import pytest
-from tests.ife_execution import complete_ife_package
 from sysml_codegen.cli import GenerationConfig, run_codegen  # type: ignore[import-untyped]
 from sysml_codegen.snapshot.capture import (  # type: ignore[import-untyped]
     capture_instance_graph_snapshot,
 )
+
+from tests.ife_execution import complete_ife_package
 
 REPOSITORY = Path(__file__).resolve().parents[1]
 #: The IFE family's two model trees. ``models/`` holds two design families since the
@@ -30,23 +31,58 @@ def _resolve_models(tree_name: str, root: Path) -> Path:
     if MODEL_TREES[tree_name] == "canonical-ife-subset":
         return materialize_canonical_subset(IFE, root / "canonical-ife-subset")
     return MODEL_TREES[tree_name]
+
+
 PACKAGE_NAME = "fusion_tea_final"
 P = "hif_plant_pkg__hif_plant__"
-EXPECTED_CHANNELS = {"constraint_report"} | {P + suffix for suffix in (
-    "driver__meier_cost__cost_billions", "driver__meier_cost__gamma",
-    "driver__meier_cost__bank_energy_joules", "meier_capital_calc__total_capital_billions",
-    "meier_reactor_cost_calc__reactor_cost_billions", "recirc_calc__f_recirc",
-    "meier_coe_calc__annualized_cost", "meier_coe_calc__energy_denominator",
-    "hawker_price__price", "hawker_price__generating", "meier_price__price", "meier_price__generating",
-    "net_positive__1d299cceab19c61c__evaluation", "viability__81ddf10fb1d1749b__evaluation",
-)} | {P + "lcoe_calc__" + field for field in (
-    "energy_on_target", "fusion_energy_per_shot", "fusion_power", "thermal_power",
-    "thermal_power_gw", "gross_electric_power", "driver_electric_power", "other_parasitic_power",
-    "net_electric_power", "net_electric_power_gw", "driver_recirculating_fraction",
-    "total_recirculating_fraction", "discounted_cost", "discounted_energy", "shots_per_year",
-    "driver_lifetime_years", "driver_capital_cost", "annual_driver_replacement_cost",
-)}
-
+EXPECTED_CHANNELS = (
+    {"constraint_report"}
+    | {
+        P + suffix
+        for suffix in (
+            "driver__meier_cost__cost_billions",
+            "driver__meier_cost__gamma",
+            "driver__meier_cost__bank_energy_joules",
+            "meier_capital_calc__total_capital_billions",
+            "meier_reactor_cost_calc__reactor_cost_billions",
+            "recirc_calc__f_recirc",
+            "meier_coe_calc__annualized_cost",
+            "meier_coe_calc__energy_denominator",
+            "hawker_price__price",
+            "hawker_price__generating",
+            "meier_price__price",
+            "meier_price__generating",
+            "net_positive__1d299cceab19c61c__evaluation",
+            "viability__81ddf10fb1d1749b__evaluation",
+            # WI-049: independent present-value factors are explicit native outputs.
+            "pv_factors__construction_factor",
+            "pv_factors__operation_factor",
+        )
+    }
+    | {
+        P + "lcoe_calc__" + field
+        for field in (
+            "energy_on_target",
+            "fusion_energy_per_shot",
+            "fusion_power",
+            "thermal_power",
+            "thermal_power_gw",
+            "gross_electric_power",
+            "driver_electric_power",
+            "other_parasitic_power",
+            "net_electric_power",
+            "net_electric_power_gw",
+            "driver_recirculating_fraction",
+            "total_recirculating_fraction",
+            "discounted_cost",
+            "discounted_energy",
+            "shots_per_year",
+            "driver_lifetime_years",
+            "driver_capital_cost",
+            "annual_driver_replacement_cost",
+        )
+    }
+)
 
 
 def _tree(root: Path) -> dict[str, bytes]:
@@ -153,27 +189,42 @@ def test_complete_model_tree_and_constraint_verdict_execute(public_routes) -> No
     assert report.assessed_entry_count == 2
     assert len(report.results) == 2
     assert all(entry.status == "satisfied" for entry in report.results)
-    inputs = json.loads(
-        (public_routes["live"][0] / "inputs" / "hif_plant_params.json").read_text()
-    )
+    inputs = json.loads((public_routes["live"][0] / "inputs" / "hif_plant_params.json").read_text())
     assert inputs["hif_plant_pkg__hif_plant__gain"] == 87.0
 
 
-@pytest.mark.parametrize('smart', [False, True])
+@pytest.mark.parametrize("smart", [False, True])
 def test_typed_handwritten_quotient_survives_supported_regeneration(public_routes, smart, tmp_path):
     from tests.ife_execution import HANDWRITTEN
 
-    package = public_routes['live'][0]
-    implementation = (package / HANDWRITTEN).read_bytes()
-    assert b'inputs: Generating_Electricity_PriceInput) -> tuple[float, float]' in implementation
-    assert b'NotImplementedError' not in implementation
+    package = public_routes["live"][0]
+    signatures = {
+        Path(
+            "handwritten/ife_lcoe/generating_electricity_price_impl.py"
+        ): b"inputs: Generating_Electricity_PriceInput) -> tuple[float, float]",
+        Path(
+            "handwritten/ife_lcoe/ife_present_value_factors_impl.py"
+        ): b"inputs: IFE_Present_Value_FactorsInput) -> tuple[float, float]",
+    }
+    assert set(HANDWRITTEN) == set(signatures)
+    implementations = {relative: (package / relative).read_bytes() for relative in HANDWRITTEN}
+    for relative, implementation in implementations.items():
+        assert signatures[relative] in implementation
+        assert b"NotImplementedError" not in implementation
     before = _tree(package)
-    assert run_codegen(GenerationConfig(
-        models_path=public_routes['models'], output_path=package, package_name=PACKAGE_NAME,
-        overwrite=True, preserve_handwritten=True, smart_regen=smart,
-    ))
-    assert (package / HANDWRITTEN).read_bytes() == implementation
+    assert run_codegen(
+        GenerationConfig(
+            models_path=public_routes["models"],
+            output_path=package,
+            package_name=PACKAGE_NAME,
+            overwrite=True,
+            preserve_handwritten=True,
+            smart_regen=smart,
+        )
+    )
+    for relative, implementation in implementations.items():
+        assert (package / relative).read_bytes() == implementation
     assert _tree(package) == before
     fingerprint, result = _execute(package, tmp_path)
-    assert fingerprint == public_routes['live'][1]
-    assert result.outputs == public_routes['live'][2].outputs
+    assert fingerprint == public_routes["live"][1]
+    assert result.outputs == public_routes["live"][2].outputs

@@ -1,0 +1,9 @@
+# Machine-local study outputs (Round 1 practice): native stores and the full per-case exports stay on the machine
+# that ran the study; their sha256 digests are recorded in snapshot.json. results/_work/ is covered by
+# exploration/stellarator_materials/studies/.gitignore (**/_work/).
+results/native/
+results/oracle_scan.json
+results/cases.json
+results/cases_*.json
+results/oracle_verification.json
+__pycache__/

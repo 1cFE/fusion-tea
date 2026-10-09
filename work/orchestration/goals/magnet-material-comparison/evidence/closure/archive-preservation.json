@@ -1,0 +1,89 @@
+{
+  "date": "2026-10-06",
+  "tracked_files_before": 38554,
+  "archived_files_found": 38554,
+  "unchanged_tracked_files": 38542,
+  "files_by_item": {
+    "WI-096_matched-conversion-subsystems": 433,
+    "WI-097_exchanger-thermal-requirements": 37922,
+    "WI-098_whole-plant-conversion-comparison": 133,
+    "WI-099_magnet-conductor-alternatives": 16,
+    "WI-100_stellarator-material-variants": 50
+  },
+  "metadata_changes": [
+    {
+      "old_path": "work/active/WI-096_matched-conversion-subsystems/design.md",
+      "archive_path": "work/completed/20261006_WI-096_matched-conversion-subsystems/design.md",
+      "before_sha256": "ec7d08e01ec0702e33ac6589dfaaa1a4eec5edad565c5be7bf9dc22c92c03f91",
+      "after_sha256": "3c9c8935abdbed58986a3f79ae44b7be2c1eeb0e8f6109381b6bee51204cb0b6"
+    },
+    {
+      "old_path": "work/active/WI-096_matched-conversion-subsystems/plan.md",
+      "archive_path": "work/completed/20261006_WI-096_matched-conversion-subsystems/plan.md",
+      "before_sha256": "8ea3611985ea12405e134d9c5dcc03ead25f3f6bb51a605579a8d8c8e43c69a9",
+      "after_sha256": "7fa2eeefb4e41b73fd92a8fd6414eb881336fa1e000c6492838696bf4e502f50"
+    },
+    {
+      "old_path": "work/active/WI-096_matched-conversion-subsystems/spec.md",
+      "archive_path": "work/completed/20261006_WI-096_matched-conversion-subsystems/spec.md",
+      "before_sha256": "31986644c1cad09c92ff7752af8a0664882dd4f855cd153c18e80982989718fb",
+      "after_sha256": "e9ea35f0e0d084de0ada7df906ed584c8bb3803abe4ca51a014f1b6f84311d02"
+    },
+    {
+      "old_path": "work/active/WI-097_exchanger-thermal-requirements/design.md",
+      "archive_path": "work/completed/20261006_WI-097_exchanger-thermal-requirements/design.md",
+      "before_sha256": "c4821913ba0480fe56fe8b8a09a1bfcfe66524a84ac489675e46c1d95258a89e",
+      "after_sha256": "a19c20ca04e1cf99c542635c391f9c8571b14b80a74728d2661637c2783c46b8"
+    },
+    {
+      "old_path": "work/active/WI-097_exchanger-thermal-requirements/spec.md",
+      "archive_path": "work/completed/20261006_WI-097_exchanger-thermal-requirements/spec.md",
+      "before_sha256": "348b3226696209400b0aad5477a046e58e8eda1a13dab3c4ce6d97eab7e36836",
+      "after_sha256": "bb9c5467385ec64294748cf9582f712862f93ffa355605795c1c920b9b945cb9"
+    },
+    {
+      "old_path": "work/active/WI-098_whole-plant-conversion-comparison/design.md",
+      "archive_path": "work/completed/20261006_WI-098_whole-plant-conversion-comparison/design.md",
+      "before_sha256": "4c95d2267812247df273ac9da984f7671a00ba35292beac64173aebc05f83c72",
+      "after_sha256": "56b153b1d6bb6ea9ffa62ce2e97d938a77ff5c8f558dbedc2f983d51da963c35"
+    },
+    {
+      "old_path": "work/active/WI-098_whole-plant-conversion-comparison/plan.md",
+      "archive_path": "work/completed/20261006_WI-098_whole-plant-conversion-comparison/plan.md",
+      "before_sha256": "a6532662c46b47775bece6fa593331fcb929cfd66ae58751a8df4322de2a3ef5",
+      "after_sha256": "df56872143aa9c4edaa43dbb1072c66e8576409e4e10df708cda7dc608d8d975"
+    },
+    {
+      "old_path": "work/active/WI-098_whole-plant-conversion-comparison/spec.md",
+      "archive_path": "work/completed/20261006_WI-098_whole-plant-conversion-comparison/spec.md",
+      "before_sha256": "dbb6ef5293a83f8af8884f1aab5fa281607617c928d57135daf4a5555ce7e934",
+      "after_sha256": "936a55fd3e320055b7d11155a5d2b385746ccf2a78b7f6733a5704c1e1100c3e"
+    },
+    {
+      "old_path": "work/active/WI-099_magnet-conductor-alternatives/design.md",
+      "archive_path": "work/completed/20261006_WI-099_magnet-conductor-alternatives/design.md",
+      "before_sha256": "227579eaa11320231a58c8af32221a47ebe860add25eae167e84c6ec49f45171",
+      "after_sha256": "826d800b392bbd3eef6d26c3d7fbf1b5439b011251bd518527c1c5840404d92e"
+    },
+    {
+      "old_path": "work/active/WI-099_magnet-conductor-alternatives/spec.md",
+      "archive_path": "work/completed/20261006_WI-099_magnet-conductor-alternatives/spec.md",
+      "before_sha256": "95e4eb3765444bfef51beb21555091b90f4d8accd78b6cd559da102fd45540e5",
+      "after_sha256": "ac23de7e74918740f820de6f9506e927787ef3a530957be493ca48f1a5bad689"
+    },
+    {
+      "old_path": "work/active/WI-100_stellarator-material-variants/design.md",
+      "archive_path": "work/completed/20261006_WI-100_stellarator-material-variants/design.md",
+      "before_sha256": "ed7fe002b6d7f9d28e2cda3be9d334bb0d5c0304c693c3ccf1e89616f9eb3d25",
+      "after_sha256": "83a1636e315f147e6ed889f79cc55ab73fd4b8ea5b128eaef40adf1e7fba3fe6"
+    },
+    {
+      "old_path": "work/active/WI-100_stellarator-material-variants/spec.md",
+      "archive_path": "work/completed/20261006_WI-100_stellarator-material-variants/spec.md",
+      "before_sha256": "12cf9a5fec54611f866a8c15e2dca89bcc6f45a5ea12c601e3cd3ca537df14da",
+      "after_sha256": "4670824c0f1c6d079e96995714c90e7a811fde6e3a45e052ed3b1999ef8d764c"
+    }
+  ],
+  "missing": [],
+  "scope": "All previously tracked item files; only PM closure metadata/frontmatter changed. Ignored working stores moved locally but are not newly tracked."
+}

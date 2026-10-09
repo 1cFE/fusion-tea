@@ -1,0 +1,7 @@
+{
+  "snapshot_sha256": "d494d0e92768ff6ed2498c32f9d24fc1cee9e8562cf863e269f92a01eed46de7",
+  "hashed_files_checked": 122,
+  "case_rows": 2921,
+  "findings": 14,
+  "outcome": "PASS"
+}

@@ -22,10 +22,12 @@ that depend on multiple axes being wired are guarded so they pass with
 the current single-axis state but flip to enforcing when those axes
 land in P3-P5.
 """
+
 from __future__ import annotations
 
 import csv
 import json
+import statistics
 from pathlib import Path
 
 import pytest
@@ -48,8 +50,13 @@ EXPECTED_AXES = (
 
 # All 7 axes are now wired (P5 lands data_availability).
 WIRED_AXES_NOW = {
-    "modularity", "supply_chain", "customization", "upper_cf",
-    "plant_complexity", "technical_feasibility", "data_availability",
+    "modularity",
+    "supply_chain",
+    "customization",
+    "upper_cf",
+    "plant_complexity",
+    "technical_feasibility",
+    "data_availability",
 }
 
 # Per-concept tolerance for predicted-score matching. The non-modularity
@@ -77,6 +84,7 @@ class TestAxisRegistryConformance:
 
     def test_score_py_axes_constant(self):
         from exploration.scoring_v2 import score
+
         assert tuple(score.AXES) == EXPECTED_AXES
 
     def test_weights_default_declares_all_axes(self):
@@ -105,17 +113,18 @@ class TestEmbeddingRegistryConformance:
 
     def test_weights_only_reference_registered_embeddings(self):
         from exploration.scoring_v2.embeddings import rulebook
+
         weights = yaml.safe_load(WEIGHTS_DEFAULT.read_text())
         registry = rulebook.REGISTRY
         for axis in EXPECTED_AXES:
-            for emb_name in (weights[axis].get("embedding_weights") or {}):
+            for emb_name in weights[axis].get("embedding_weights") or {}:
                 assert emb_name in registry, (
-                    f"{axis}.embedding_weights references "
-                    f"unregistered embedding {emb_name!r}"
+                    f"{axis}.embedding_weights references unregistered embedding {emb_name!r}"
                 )
 
     def test_modularity_v5_embeddings_registered(self):
         from exploration.scoring_v2.embeddings import rulebook
+
         for emb_name in (
             "min_viable_device_scale",
             "unit_multiplicity",
@@ -124,17 +133,21 @@ class TestEmbeddingRegistryConformance:
             "blanket_modularity_rating",
             "percent_mod",
         ):
-            assert emb_name in rulebook.REGISTRY, (
-                f"v5 embedding {emb_name!r} not registered"
-            )
+            assert emb_name in rulebook.REGISTRY, f"v5 embedding {emb_name!r} not registered"
 
     def test_pre_v5_modularity_embeddings_retired(self):
         """The 12 old modularity embeddings should be gone."""
         from exploration.scoring_v2.embeddings import rulebook
+
         for retired in (
-            "hardware_topology_complexity", "subsystem_stack_burden",
-            "vessel_rating", "coils_rating", "bop_rating",
-            "fuel_cycle_rating", "aux_rating", "civil_rating",
+            "hardware_topology_complexity",
+            "subsystem_stack_burden",
+            "vessel_rating",
+            "coils_rating",
+            "bop_rating",
+            "fuel_cycle_rating",
+            "aux_rating",
+            "civil_rating",
             "component_modularity_aggregate",
         ):
             assert retired not in rulebook.REGISTRY, (
@@ -150,13 +163,25 @@ class TestSchemaConformance:
 
     def test_v3_ontology_features_present(self):
         from exploration.scoring_v2.lib.schema import load_schema
+
         schema = load_schema()
         for feat in (
-            "confinement_family", "mfe_topology", "ife_driver", "mif_method",
-            "non_standard_mechanism", "tokamak_shape", "stellarator_type",
-            "laser_approach", "fuel", "operation_mode", "repetition_rate",
-            "primary_heating", "magnet_type", "blanket_config",
-            "energy_capture", "driver_technology",
+            "confinement_family",
+            "mfe_topology",
+            "ife_driver",
+            "mif_method",
+            "non_standard_mechanism",
+            "tokamak_shape",
+            "stellarator_type",
+            "laser_approach",
+            "fuel",
+            "operation_mode",
+            "repetition_rate",
+            "primary_heating",
+            "magnet_type",
+            "blanket_config",
+            "energy_capture",
+            "driver_technology",
             # derived
             "confinement_concept",
             # manual
@@ -169,12 +194,14 @@ class TestSchemaConformance:
 
     def test_pre_v3_orphans_retired(self):
         from exploration.scoring_v2.lib.schema import load_schema
+
         schema = load_schema()
         for retired in ("tritium_breeding", "neutron_management"):
             assert retired not in schema
 
     def test_p2_capex_share_retirements(self):
         from exploration.scoring_v2.lib.schema import load_schema
+
         schema = load_schema()
         for retired in ("w_bop", "w_fuel_cycle", "w_aux", "w_civil"):
             assert retired not in schema
@@ -195,9 +222,7 @@ class TestDiagnosticBlockConformance:
         for f in files:
             doc = yaml.safe_load(f.read_text())
             block = doc.get("modularity_diagnostics")
-            assert isinstance(block, dict), (
-                f"{f.name}: modularity_diagnostics missing"
-            )
+            assert isinstance(block, dict), f"{f.name}: modularity_diagnostics missing"
 
 
 # ─── TestCsvOutputConformance ────────────────────────────────────────────
@@ -213,12 +238,19 @@ class TestCsvOutputConformance:
         for axis in EXPECTED_AXES:
             assert axis in cols
             assert f"{axis}_evidence" in cols
-        for col in ("composite", "composite_evidence",
-                    "composite_axes_included", "concept_id", "name"):
+        for col in (
+            "composite",
+            "composite_evidence",
+            "composite_axes_included",
+            "concept_id",
+            "name",
+        ):
             assert col in cols
 
     def test_row_count_matches_concept_count(
-        self, run_cli, tmp_scores_dir: Path,
+        self,
+        run_cli,
+        tmp_scores_dir: Path,
     ):
         run_cli("score.py")
         rows = _read_score_csv(tmp_scores_dir / "table.csv")
@@ -253,12 +285,12 @@ class TestNullHandlingConformance:
             for axis in EXPECTED_AXES:
                 if axis in WIRED_AXES_NOW:
                     continue
-                assert r[axis] == "", (
-                    f"{r['concept_id']}: unwired {axis} not null"
-                )
+                assert r[axis] == "", f"{r['concept_id']}: unwired {axis} not null"
 
     def test_composite_axes_included_matches_score_presence(
-        self, run_cli, tmp_scores_dir: Path,
+        self,
+        run_cli,
+        tmp_scores_dir: Path,
     ):
         """composite_axes_included lists exactly the axes with non-empty
         scores for that concept — which equals WIRED_AXES_NOW for every
@@ -308,7 +340,9 @@ class TestCrossAxisSanity:
     """
 
     def test_modularity_non_degenerate_distribution(
-        self, run_cli, tmp_scores_dir: Path,
+        self,
+        run_cli,
+        tmp_scores_dir: Path,
     ):
         run_cli("score.py")
         rows = _read_score_csv(tmp_scores_dir / "table.csv")
@@ -318,7 +352,9 @@ class TestCrossAxisSanity:
         )
 
     def test_no_concept_floors_or_ceilings_every_axis_yet(
-        self, run_cli, tmp_scores_dir: Path,
+        self,
+        run_cli,
+        tmp_scores_dir: Path,
     ):
         """Once all 7 axes are wired this becomes a strong check; today
         we just confirm the framework lets us read it."""
@@ -342,6 +378,9 @@ class TestCrossAxisSanity:
 def _expand_predicted_scores() -> list[tuple[str, str, float]]:
     """Flatten predicted_scores.yaml into (axis, concept_id, expected).
 
+    Modularity is checked through current component arithmetic and corpus
+    normalization in dedicated tests.
+
     data_availability is intentionally excluded: it's a deterministic
     bracket lookup on gap-report blocking counts with no spec-vs-rules
     calibration gap, so it's exhaustively verified by synthetic unit
@@ -352,7 +391,7 @@ def _expand_predicted_scores() -> list[tuple[str, str, float]]:
     predicted = _read_predicted()
     out: list[tuple[str, str, float]] = []
     for axis in WIRED_AXES_NOW:
-        if axis == "data_availability":
+        if axis in {"modularity", "data_availability"}:
             continue
         for cid, val in (predicted.get(axis) or {}).items():
             if val is None:
@@ -363,22 +402,29 @@ def _expand_predicted_scores() -> list[tuple[str, str, float]]:
 
 class TestSpecPredictedScoresLand:
     """Parameterized over predicted_scores.yaml; each (axis, concept)
-    must reproduce within the axis-specific tolerance.
+    must reproduce within the axis-specific tolerance. Upper CF compares
+    raw formulas. Historical modularity predictions are intentionally excluded.
 
     Per-axis KNOWN_DRIFTS carve-outs let P3 land despite per-concept
     calibration drift slated for P7 review. Each per-axis test file
-    (test_modularity / test_supply_chain / ...) has its own
+    (test_supply_chain / test_upper_cf / ...) has its own
     KNOWN_DRIFTS dict; we aggregate them here.
     """
 
     @pytest.fixture
-    def actual_scores(self, run_cli, tmp_scores_dir: Path) -> dict:
-        from tests.scoring_v2.test_modularity import KNOWN_DRIFTS as MOD_DRIFTS  # noqa: PLC0415
-        from tests.scoring_v2.test_supply_chain import KNOWN_DRIFTS as SC_DRIFTS  # noqa: PLC0415
+    def actual_scores(
+        self, run_cli, tmp_scores_dir: Path, tmp_features_dir: Path, tmp_weights_file: Path
+    ) -> dict:
         from tests.scoring_v2.test_customization import KNOWN_DRIFTS as CU_DRIFTS  # noqa: PLC0415
+        from tests.scoring_v2.test_plant_complexity import (
+            KNOWN_DRIFTS as PC_DRIFTS,  # noqa: PLC0415
+        )
+        from tests.scoring_v2.test_supply_chain import KNOWN_DRIFTS as SC_DRIFTS  # noqa: PLC0415
+        from tests.scoring_v2.test_technical_feasibility import (
+            KNOWN_DRIFTS as TF_DRIFTS,  # noqa: PLC0415
+        )
         from tests.scoring_v2.test_upper_cf import KNOWN_DRIFTS as UCF_DRIFTS  # noqa: PLC0415
-        from tests.scoring_v2.test_plant_complexity import KNOWN_DRIFTS as PC_DRIFTS  # noqa: PLC0415
-        from tests.scoring_v2.test_technical_feasibility import KNOWN_DRIFTS as TF_DRIFTS  # noqa: PLC0415
+
         # data_availability has no drifts — deterministic axis, no fixture.
         run_cli("score.py")
         rows = _read_score_csv(tmp_scores_dir / "table.csv")
@@ -388,12 +434,25 @@ class TestSpecPredictedScoresLand:
             for r in rows:
                 v = r[axis]
                 out[axis][r["concept_id"]] = float(v) if v else None
+        # 298b7cc: upper-CF predictions calibrate raw formulas; CSV contains normalized scores.
+        from exploration.scoring_v2 import score
+        from exploration.scoring_v2.lib.schema import load_schema
+
+        weights = yaml.safe_load(tmp_weights_file.read_text())
+        schema = load_schema()
+        out["_normalized_upper_cf"] = out["upper_cf"]
+        raw_upper_cf = {}
+        for path in sorted(tmp_features_dir.glob("*.yaml")):
+            document = yaml.safe_load(path.read_text())
+            values, evidence = score._evaluate_concept(document, weights, schema)
+            raw, _ = score._score_axis(weights["upper_cf"], values, evidence)
+            raw_upper_cf[document["_meta"]["concept_id"]] = raw
+        out["upper_cf"] = raw_upper_cf
         out["_drifts_by_axis"] = {
-            "modularity":            set(MOD_DRIFTS),
-            "supply_chain":          set(SC_DRIFTS),
-            "customization":         set(CU_DRIFTS),
-            "upper_cf":              set(UCF_DRIFTS),
-            "plant_complexity":      set(PC_DRIFTS),
+            "supply_chain": set(SC_DRIFTS),
+            "customization": set(CU_DRIFTS),
+            "upper_cf": set(UCF_DRIFTS),
+            "plant_complexity": set(PC_DRIFTS),
             "technical_feasibility": set(TF_DRIFTS),
             # data_availability omitted — axis is skipped in _expand_predicted_scores.
         }
@@ -401,17 +460,40 @@ class TestSpecPredictedScoresLand:
 
     @pytest.mark.parametrize("axis,concept_id,expected", _expand_predicted_scores())
     def test_predicted_score_matches(
-        self, axis: str, concept_id: str, expected: float, actual_scores: dict,
+        self,
+        axis: str,
+        concept_id: str,
+        expected: float,
+        actual_scores: dict,
     ):
         drifts = actual_scores["_drifts_by_axis"].get(axis, set())
         if concept_id in drifts:
             pytest.skip(f"KNOWN_DRIFTS carve-out: {axis}.{concept_id}")
         actual = actual_scores[axis].get(concept_id)
-        assert actual is not None, (
-            f"{axis}.{concept_id}: actual is null (predicted {expected:.2f})"
-        )
+        assert actual is not None, f"{axis}.{concept_id}: actual is null (predicted {expected:.2f})"
         diff = abs(actual - expected)
         assert diff <= PER_CONCEPT_TOLERANCE, (
             f"{axis}.{concept_id}: actual={actual:.3f} vs "
             f"expected={expected:.2f} (|diff|={diff:.3f})"
         )
+
+    def test_upper_cf_normalized_stage_contract(self, actual_scores, tmp_weights_file: Path):
+        """Raw calibration and normalized output both retain their separate contracts."""
+        raw = actual_scores["upper_cf"]
+        normalized = actual_scores["_normalized_upper_cf"]
+        assert set(normalized) == set(raw)
+        weights = yaml.safe_load(tmp_weights_file.read_text())
+        block = weights["upper_cf"]["normalization"]
+        floor = float(block["floor"])
+        tolerance = float(block["tolerance"])
+        assert all(value is not None for value in normalized.values())
+        values = list(normalized.values())
+        assert all(floor <= value <= 5.0 for value in values)
+        assert abs(statistics.mean(values) - float(block["target_mean"])) <= tolerance
+        assert abs(statistics.variance(values) - float(block["target_variance"])) <= tolerance
+        assert raw != normalized
+        ordered = sorted(raw, key=lambda cid: (raw[cid], cid))
+        for left, right in zip(ordered, ordered[1:]):
+            assert normalized[left] <= normalized[right]
+            if raw[left] == raw[right]:
+                assert normalized[left] == normalized[right]

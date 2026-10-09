@@ -15,7 +15,11 @@ import jsonschema
 import pytest
 
 from scripts.study import verify
-from tests.models.current_mfe_regressions import CURRENT_PREDICATES
+from tests.models.current_mfe_regressions import (
+    CURRENT_PREDICATES,
+    MR7_PREDICATES,
+    assert_current_predicates,
+)
 
 REPO_ROOT = Path(__file__).resolve().parents[2]
 VERIFY = REPO_ROOT / "scripts" / "study" / "verify.py"
@@ -47,16 +51,23 @@ def promoted_run(stock_route_run):
 
 def run_verify(promoted_run, out, *extra, expect=None):
     argv = [
-        "--package", str(PACKAGE),
-        "--manifest", str(MANIFEST),
-        "--identity", str(promoted_run["identity"]),
-        "--store", str(promoted_run["store"]),
-        "--out", str(out),
+        "--package",
+        str(PACKAGE),
+        "--manifest",
+        str(MANIFEST),
+        "--identity",
+        str(promoted_run["identity"]),
+        "--store",
+        str(promoted_run["store"]),
+        "--out",
+        str(out),
         *extra,
     ]
     done = subprocess.run(
         [sys.executable, str(VERIFY), *argv],
-        capture_output=True, text=True, cwd=str(REPO_ROOT),
+        capture_output=True,
+        text=True,
+        cwd=str(REPO_ROOT),
         env={**__import__("os").environ, "PYTHONPATH": str(promoted_run["simkit"])},
     )
     if expect is not None:
@@ -96,35 +107,83 @@ def test_parity_holds_at_the_committed_order_of_magnitude(summary):
 
 
 def test_every_catalog_constraint_is_rederived_with_its_operand_count(summary):
-    rederived = {c["source_local_identity"]: c["operands_resolved"]
-                 for c in summary["constraints_rederived"]}
-    assert set(rederived) == {
-        "beta_ok", "net_positive", "peak_field_ok", "recirc_ok", "tbr_ok", "wall_load_ok",
-        "wp_stress_ok", "wp_fit_ok", "reference_conductor_current_ok",  # additive magnet screens
+    rederived = {
+        c["source_local_identity"]: c["operands_resolved"] for c in summary["constraints_rederived"]
+    }
+    historical_names = {
+        "beta_ok",
+        "net_positive",
+        "peak_field_ok",
+        "recirc_ok",
+        "tbr_ok",
+        "wall_load_ok",
+        "wp_stress_ok",
+        "wp_fit_ok",
+        "reference_conductor_current_ok",  # additive magnet screens
         "sustainment_ok",  # WI-037
         "cond_strain_ok",  # WI-036: the conductor's own check, separate from the structure's
         "burn_hold_ok",  # WI-043: the lower half of the sustainment condition, p_aux_required >= 0
         # WI-045 (goal plant-closure, 2026-09-08): the loop's pressure-domain and capacity
         # fences and the cycle's fit-domain fence, all on computed operands
-        "loop_pressure_ok", "loop_capacity_ok", "cycle_domain_ok",
+        "loop_pressure_ok",
+        "loop_capacity_ok",
+        "cycle_domain_ok",
         # WI-047 (goal plant-closure, 2026-09-08): the divertor target peak (computed) against
         # the adopted threshold -- violated at the baseline by design
         "divertor_heat_ok",
-        "heating_source_positive_ok", "heating_source_upper_ok",
-        "heating_couple_positive_ok", "heating_couple_upper_ok",
-        "facility_capacity_ok", "facility_outage_ok", "facility_routes_ok",
-        "facility_replacement_ready", "facility_initial_ready",
-        "matched_main_heat_direction", "matched_reheat_heat_direction", "cooling_water_heat_direction",
+        "heating_source_positive_ok",
+        "heating_source_upper_ok",
+        "heating_couple_positive_ok",
+        "heating_couple_upper_ok",
+        "facility_capacity_ok",
+        "facility_outage_ok",
+        "facility_routes_ok",
+        "facility_replacement_ready",
+        "facility_initial_ready",
+        "matched_main_heat_direction",
+        "matched_reheat_heat_direction",
+        "cooling_water_heat_direction",
     }
+    assert set(rederived) == {
+        cid.removeprefix("stellarator_09__stellaris__").rsplit("__", 1)[0]
+        for cid in CURRENT_PREDICATES
+    }
+    assert historical_names <= set(rederived)
     assert rederived["wp_fit_ok"] == 1
     assert rederived["net_positive"] == 1  # the other operand is the literal 0.0
     assert rederived["burn_hold_ok"] == 1  # likewise: one computed operand against the literal 0.0
     assert all(count >= 1 for count in rederived.values())
-    for name in ('facility_capacity_ok','facility_outage_ok','facility_routes_ok','facility_replacement_ready','facility_initial_ready'):
+    for name in (
+        "facility_capacity_ok",
+        "facility_outage_ok",
+        "facility_routes_ok",
+        "facility_replacement_ready",
+        "facility_initial_ready",
+    ):
         assert rederived[name] == 1
-    for name in ("matched_main_heat_direction", "matched_reheat_heat_direction", "cooling_water_heat_direction"):
+    for name in (
+        "matched_main_heat_direction",
+        "matched_reheat_heat_direction",
+        "cooling_water_heat_direction",
+    ):
         assert rederived[name] == 2
-    assert sum(rederived.values()) == 41  # Original 35 plus three active-mode/gap pairs.
+    # Reviewed WI-075/080 predicates use a defined flag and signed margin,
+    # except four facility geometry margins and the three-operand coolant-fill check.
+    one_operand = {
+        "facility_geometry_ok",
+        "facility_material_capacity_ok",
+        "facility_occupancy_ok",
+        "facility_parcel_ok",
+    }
+    for cid in MR7_PREDICATES:
+        name = cid.removeprefix("stellarator_09__stellaris__").rsplit("__", 1)[0]
+        expected_count = (
+            1 if name in one_operand else 3 if name == "represented_coolant_fill_ok" else 2
+        )
+        assert rederived[name] == expected_count, name
+    assert (
+        sum(rederived[name] for name in historical_names) == 41
+    )  # Original 35 plus three active-mode/gap pairs.
 
 
 def test_stratification_covers_every_observed_verdict_combination(summary):
@@ -173,8 +232,11 @@ def test_cas27_is_compared_and_nothing_is_undisclosed(summary):
 
 def test_the_command_carries_no_absolute_paths(summary):
     assert summary["command"][0] == "scripts/study/verify.py"
-    for path_field in (summary["package"]["path"], summary["manifest"]["path"],
-                       summary["stores"][0]["path"]):
+    for path_field in (
+        summary["package"]["path"],
+        summary["manifest"]["path"],
+        summary["stores"][0]["path"],
+    ):
         assert not Path(path_field).is_absolute(), path_field
 
 
@@ -202,8 +264,9 @@ def test_a_planted_channel_deviation_fails_naming_case_and_channel(promoted_run,
 
     monkeypatch.setattr(oracle_entry, "evaluate", skewed)
     with pytest.raises(verify.VerifyError) as exc:
-        verify.build_summary(PACKAGE, MANIFEST, promoted_run["identity"],
-                             [promoted_run["store"]], 12, None, [])
+        verify.build_summary(
+            PACKAGE, MANIFEST, promoted_run["identity"], [promoted_run["store"]], 12, None, []
+        )
     assert channel in str(exc.value) and "relative deviation" in str(exc.value)
 
 
@@ -227,8 +290,9 @@ def test_a_planted_verdict_mismatch_fails_naming_the_constraint(promoted_run, mo
 
     monkeypatch.setattr(verify, "package_input_values", flipped)
     with pytest.raises(verify.VerifyError) as exc:
-        verify.build_summary(PACKAGE, MANIFEST, promoted_run["identity"],
-                             [promoted_run["store"]], 12, None, [])
+        verify.build_summary(
+            PACKAGE, MANIFEST, promoted_run["identity"], [promoted_run["store"]], 12, None, []
+        )
     assert "wall_load_ok" in str(exc.value) and "verdict mismatch" in str(exc.value)
 
 
@@ -238,14 +302,13 @@ def test_a_missing_operand_bindings_attribute_fails_closed(promoted_run, monkeyp
 
     monkeypatch.delattr(oracle_entry, "operand_bindings")
     with pytest.raises(verify.VerifyError) as exc:
-        verify.build_summary(PACKAGE, MANIFEST, promoted_run["identity"],
-                             [promoted_run["store"]], 12, None, [])
+        verify.build_summary(
+            PACKAGE, MANIFEST, promoted_run["identity"], [promoted_run["store"]], 12, None, []
+        )
     assert "operand_bindings" in str(exc.value) and "does not guess" in str(exc.value)
 
 
-def test_an_unresolvable_binding_fails_naming_the_constraint_and_operand(
-    promoted_run, monkeypatch
-):
+def test_an_unresolvable_binding_fails_naming_the_constraint_and_operand(promoted_run, monkeypatch):
     import oracle_entry
 
     cid = "stellarator_09__stellaris__beta_ok__82b78aad420730d5"
@@ -258,8 +321,9 @@ def test_an_unresolvable_binding_fails_naming_the_constraint_and_operand(
 
     monkeypatch.setattr(oracle_entry, "operand_bindings", broken)
     with pytest.raises(verify.VerifyError) as exc:
-        verify.build_summary(PACKAGE, MANIFEST, promoted_run["identity"],
-                             [promoted_run["store"]], 12, None, [])
+        verify.build_summary(
+            PACKAGE, MANIFEST, promoted_run["identity"], [promoted_run["store"]], 12, None, []
+        )
     assert cid in str(exc.value) and "beta_limit_in" in str(exc.value)
     assert "no_such__key" in str(exc.value)
 
@@ -311,8 +375,11 @@ def operating_controls(tmp_path_factory, stock_simkit_session_path):
     out = tmp_path_factory.mktemp("operating-controls")
     baseline = json.loads(MANIFEST.read_text())["baseline"]["point"]
     P = study_route.P
-    proposals = [baseline, {**baseline, f"{P}heating__p_wallplug_heat": 120.0},
-                 {**baseline, f"{P}plasma__f_alpha_fast": 0.96}]
+    proposals = [
+        baseline,
+        {**baseline, f"{P}heating__p_wallplug_heat": 120.0},
+        {**baseline, f"{P}plasma__f_alpha_fast": 0.96},
+    ]
     cases, db = study_route.run_points("operating-controls", proposals, out / "_work")
     assert len(cases) == 3 and all(case.state == "completed" for case in cases)
     ident = study_route.write_identity_document(study_route.PACKAGE_DIR, out / "identity.json")
@@ -328,11 +395,13 @@ def test_stored_operating_controls_preserve_procurement_and_signed_capacity(oper
     cases, summary = operating_controls
     P = study_route.P
     baseline = next(
-        c for c in cases
-        if f"{P}heating__p_wallplug_heat" not in c.inputs and f"{P}plasma__f_alpha_fast" not in c.inputs
+        c
+        for c in cases
+        if f"{P}heating__p_wallplug_heat" not in c.inputs
+        and f"{P}plasma__f_alpha_fast" not in c.inputs
     )
     reserve = next(c for c in cases if c.inputs.get(f"{P}heating__p_wallplug_heat") == 120)
-    demand = next(c for c in cases if c.inputs.get(f"{P}plasma__f_alpha_fast") == .96)
+    demand = next(c for c in cases if c.inputs.get(f"{P}plasma__f_alpha_fast") == 0.96)
     for name in ("coupled", "delivered", "wallplug"):
         channel = study_route.CHANNELS[f"operating_heat_{name}"]
         assert baseline.outputs[channel] == reserve.outputs[channel]
@@ -341,17 +410,49 @@ def test_stored_operating_controls_preserve_procurement_and_signed_capacity(oper
     assert baseline.outputs[f"{P}heating__heating_cost__cost"] == 264145000
     assert reserve.outputs[f"{P}heating__heating_cost__cost"] == 316974000
     assert demand.outputs[f"{P}heating__heating_cost__cost"] == 264145000
-    assert baseline.outputs[f"{P}divertor__divheat__p_heat_operating_minus_installed"] == pytest.approx(
-        -.920399212073221
-    )
-    assert reserve.outputs[f"{P}divertor__divheat__p_heat_operating_minus_installed"] == pytest.approx(
-        -10.920399212073221
-    )
+    assert baseline.outputs[
+        f"{P}divertor__divheat__p_heat_operating_minus_installed"
+    ] == pytest.approx(-0.920399212073221)
+    assert reserve.outputs[
+        f"{P}divertor__divheat__p_heat_operating_minus_installed"
+    ] == pytest.approx(-10.920399212073221)
+    # WI-079 fixed offers stay independent of operating demand and installed heating reserve.
+    package_inputs = {
+        k: v
+        for path in (PACKAGE / "inputs").glob("*.json")
+        for k, v in json.loads(path.read_text()).items()
+    }
+    for equipment, channel_suffix in (
+        ("turbine", "turbine__turbine_cost__cost"),
+        ("heat_rejection", "heat_rejection__heat_rejection_cost__cost"),
+        ("power_supplies", "power_supplies__power_supplies_cost__cost"),
+        ("divertor", "divertor__divertor_cost__cost"),
+    ):
+        offer = package_inputs[P + equipment + "__purchase_cost_per_module"]
+        for case in cases:
+            assert case.outputs[P + channel_suffix] == offer
     verdicts = study_route.short_verdicts(baseline)
     assert set(baseline.verdicts) == CURRENT_PREDICATES
-    assert {name for name, status in verdicts.items() if status != "satisfied"} == {
-        "divertor_heat_ok", "wp_fit_ok", "reference_conductor_current_ok", "tbr_ok"
+    assert {
+        name
+        for name, status in verdicts.items()
+        if status != "satisfied"
+        and name not in {cid.removeprefix(P).rsplit("__", 1)[0] for cid in MR7_PREDICATES}
+    } == {
+        "divertor_heat_ok",
+        "wp_fit_ok",
+        "reference_conductor_current_ok",
+        "tbr_ok",
     }  # WI-066: the baseline now fails calculated breeding adequacy.
+    from types import SimpleNamespace
+
+    for case in cases:
+        assert_current_predicates(
+            SimpleNamespace(
+                outputs=case.outputs, responses=dict(case.verdicts, headline=case.headline)
+            ),
+            case.inputs,
+        )
     rows = study_route.csv_rows(cases, [])
     assert len(rows) == 3
     assert all(all(name in row for name in study_route.CHANNELS) for row in rows)
@@ -381,7 +482,9 @@ def test_zero_efficiency_is_a_recorded_native_execution_failure(stock_simkit_pat
     sys.path.insert(0, str(MANIFEST.parent))
     import study_route
 
-    point = {f"{study_route.P}heating__eta_{stage}_heat": 0.0}  # WI-057 (2026-09-13): the heating efficiencies live on the heating part
+    point = {
+        f"{study_route.P}heating__eta_{stage}_heat": 0.0
+    }  # WI-057 (2026-09-13): the heating efficiencies live on the heating part
     cases, _ = study_route.run_points(f"zero-{stage}-efficiency", [point], tmp_path)
     assert len(cases) == 1
     assert cases[0].state == "execution_failed"
@@ -389,32 +492,61 @@ def test_zero_efficiency_is_a_recorded_native_execution_failure(stock_simkit_pat
         study_route.csv_rows(cases, [])
 
 
-@pytest.mark.parametrize("enabled,gap,expected", [(0.,-1.,True),(1.,1.,True),(1.,0.,False),(1.,-1.,False)])
-@pytest.mark.parametrize("negated", [False,True])
-def test_exact_active_heat_direction_disjunction(enabled,gap,expected,negated):
-    literal=lambda value:{"kind":"literal","literal":{"value":value}}
-    feature=lambda name:{"kind":"feature_ref","reference":{"source_name":name}}
-    ir={"kind":"operator","operator":"or","operands":[
-        {"kind":"operator","operator":"<=","operands":[feature("enabled"),literal(0.)]},
-        {"kind":"operator","operator":">","operands":[feature("gap"),literal(0.)]}]}
-    entry={"predicate_ir":json.dumps(ir),"is_negated":negated}
-    bindings={"heat":{"enabled":{"kind":"input","key":"mode"},"gap":{"kind":"channel","key":"raw_gap"}}}
-    result,count=verify.derive_verdict("heat",entry,bindings,{"mode":enabled},{},{"raw_gap":gap})
+@pytest.mark.parametrize(
+    "enabled,gap,expected",
+    [(0.0, -1.0, True), (1.0, 1.0, True), (1.0, 0.0, False), (1.0, -1.0, False)],
+)
+@pytest.mark.parametrize("negated", [False, True])
+def test_exact_active_heat_direction_disjunction(enabled, gap, expected, negated):
+    literal = lambda value: {"kind": "literal", "literal": {"value": value}}
+    feature = lambda name: {"kind": "feature_ref", "reference": {"source_name": name}}
+    ir = {
+        "kind": "operator",
+        "operator": "or",
+        "operands": [
+            {"kind": "operator", "operator": "<=", "operands": [feature("enabled"), literal(0.0)]},
+            {"kind": "operator", "operator": ">", "operands": [feature("gap"), literal(0.0)]},
+        ],
+    }
+    entry = {"predicate_ir": json.dumps(ir), "is_negated": negated}
+    bindings = {
+        "heat": {
+            "enabled": {"kind": "input", "key": "mode"},
+            "gap": {"kind": "channel", "key": "raw_gap"},
+        }
+    }
+    result, count = verify.derive_verdict(
+        "heat", entry, bindings, {"mode": enabled}, {}, {"raw_gap": gap}
+    )
     assert result is (not expected if negated else expected)
-    assert count==2
+    assert count == 2
 
 
-@pytest.mark.parametrize("failure", ["missing","nonfinite","unsupported","wrong_arity"])
+@pytest.mark.parametrize("failure", ["missing", "nonfinite", "unsupported", "wrong_arity"])
 def test_true_disjunction_cannot_hide_missing_or_invalid_evidence(failure):
-    literal=lambda value:{"kind":"literal","literal":{"value":value}}
-    left={"kind":"operator","operator":"<=","operands":[literal(0.),literal(0.)]}
-    right={"kind":"operator","operator":">","operands":[{"kind":"feature_ref","reference":{"source_name":"gap"}},literal(0.)]}
-    ir={"kind":"operator","operator":"or","operands":[left,right]}
-    channels={"raw_gap":1.}
-    if failure=="missing":channels={}
-    elif failure=="nonfinite":channels={"raw_gap":float("nan")}
-    elif failure=="unsupported":right["operator"]="xor"
-    else:ir["operands"].append(left)
+    literal = lambda value: {"kind": "literal", "literal": {"value": value}}
+    left = {"kind": "operator", "operator": "<=", "operands": [literal(0.0), literal(0.0)]}
+    right = {
+        "kind": "operator",
+        "operator": ">",
+        "operands": [{"kind": "feature_ref", "reference": {"source_name": "gap"}}, literal(0.0)],
+    }
+    ir = {"kind": "operator", "operator": "or", "operands": [left, right]}
+    channels = {"raw_gap": 1.0}
+    if failure == "missing":
+        channels = {}
+    elif failure == "nonfinite":
+        channels = {"raw_gap": float("nan")}
+    elif failure == "unsupported":
+        right["operator"] = "xor"
+    else:
+        ir["operands"].append(left)
     with pytest.raises(verify.VerifyError):
-        verify.derive_verdict("heat",{"predicate_ir":json.dumps(ir)},
-            {"heat":{"gap":{"kind":"channel","key":"raw_gap"}}},{},{},channels)
+        verify.derive_verdict(
+            "heat",
+            {"predicate_ir": json.dumps(ir)},
+            {"heat": {"gap": {"kind": "channel", "key": "raw_gap"}}},
+            {},
+            {},
+            channels,
+        )

@@ -1,0 +1,96 @@
+{
+  "schema_version": "study-preflight-results/v1",
+  "tool": {
+    "path": "scripts/study/preflight.py",
+    "source_digest": {
+      "recipe": "tool-source-digest/v1",
+      "digest": "52c3a709175a3aaded006bb96576aa2407689f598fa13528b8c2f8db493900be",
+      "files": [
+        {
+          "path": "scripts/study/common.py",
+          "sha256": "ae5fbca7be87d2fa1783affe4773332c9a898a265f70215aec9ad1489c8df521"
+        },
+        {
+          "path": "scripts/study/identity.py",
+          "sha256": "a6871eaaba1078a524b27c998744c6778ac6b5304d39d6eb083b9be4533dc01e"
+        },
+        {
+          "path": "scripts/study/manifest.py",
+          "sha256": "3c1bd8043b1f4ab0424ea9a77cc243e03bc10b3766e7ac634b9e93c25eb749ee"
+        },
+        {
+          "path": "scripts/study/preflight.py",
+          "sha256": "86acedcd1b5c35a658c692b5a6631f2f2e0e96ccd05d1e11c65143fa55688472"
+        },
+        {
+          "path": "scripts/study/schemas/baseline_result.v1.schema.json",
+          "sha256": "103cf640a5c9d4a2d7b7fbe13efa887fd8471ffe79a11cc0a7fc4f71ff86e53b"
+        },
+        {
+          "path": "scripts/study/schemas/package_identity.v1.schema.json",
+          "sha256": "d312ac300f1f639bccad3300e5c617658fe307594eaf9deadea66d6162008ad9"
+        },
+        {
+          "path": "scripts/study/schemas/preflight_results.v1.schema.json",
+          "sha256": "c6d25e857e533a4f92666533b31f3cd86641521c159e6cc300fb85e62dda27be"
+        }
+      ]
+    }
+  },
+  "subcommand": "gates",
+  "inputs": {
+    "package": "exploration/stellarator_materials/units/reference/stellarator_materials_reference_tea",
+    "manifest": "exploration/stellarator_materials/studies/20260930-magnet-material-plant-map/manifest_reference.json",
+    "axis_declaration": "exploration/stellarator_materials/studies/20260930-magnet-material-plant-map/axes_reference.json",
+    "identity_document": "work/orchestration/goals/magnet-material-comparison/evidence/integration-r3-reference/package_identity.json",
+    "baseline_result": "work/orchestration/goals/magnet-material-comparison/evidence/integration-r3-reference/baseline_result.json"
+  },
+  "input_digests": {
+    "axis_declaration": "364cbda4b0e013cc8e1948e9072ff401264f76335a7098d73b72c2eaf8fd5b1d",
+    "baseline_result": "24f0e3d81c7deeb7cf13c2436b7baeacdf97d6b1d9204d98175fd4b7860f4086",
+    "identity_document": "d28ba136116a10b28b9dc6b2a9c4cdffac4559cd9cc044f104266034b0e90ec8",
+    "manifest": "fca63b44aab9a7409ea2b5fddeba34e0494a41623840ddeed231e6207614be1f"
+  },
+  "gates": [
+    {
+      "gate": "declared_keys",
+      "status": "pass",
+      "checked": "declared axis keys against the package's inputs",
+      "detail": "200 declared keys across 6 groups, all package inputs"
+    },
+    {
+      "gate": "sibling_scan",
+      "status": "pass",
+      "checked": "undeclared suffix siblings (advisory)",
+      "detail": "warnings: 1",
+      "warnings": [
+        "plant-offer: undeclared suffix-sibling stellarator_09__stellaris__cryoplant__purchase_cost_per_module"
+      ]
+    },
+    {
+      "gate": "identity",
+      "status": "pass",
+      "checked": "the executable identity, recomputed",
+      "detail": "kind sealed, digest 86648d368246011bc881accdee635c14fca656d5042031dfce7fb498052a1c2a recomputed from 0 allowed-modified file(s) and 0 declared source(s); every other sealed artifact matches"
+    },
+    {
+      "gate": "manifest_currency",
+      "status": "pass",
+      "checked": "the manifest's recorded package facts",
+      "detail": "both recorded package fingerprints match the package on disk"
+    },
+    {
+      "gate": "baseline_headline",
+      "status": "pass",
+      "checked": "the pinned headline and verdicts",
+      "detail": "stellarator_09__stellaris__lcoe_calc__lcoe reproduces at relative deviation 0.000e+00; 67/67 pinned verdicts match"
+    },
+    {
+      "gate": "package_clean",
+      "status": "pass",
+      "checked": "the committed package tree",
+      "detail": "package tree is byte-untouched (git clean)"
+    }
+  ],
+  "outcome": "pass"
+}

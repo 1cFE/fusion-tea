@@ -1,0 +1,23 @@
+# T-013 design review brief — WI-100 plant-level conductor material variants
+
+You are a fresh reviewer for work item WI-100 in `/home/reid/1cfe/fusion-tea` (branch `goal/magnet-material-comparison`). You did none of the work. The design under review is `work/active/WI-100_stellarator-material-variants/design.md`. Its governing contract is `work/orchestration/goals/magnet-material-comparison/evidence/plant-contract.md` (r4, released) and its spec is `work/active/WI-100_stellarator-material-variants/spec.md` (R1–R7). The seam it realizes was proposed in `evidence/plant-chain-audit.md` § 6 (read § 2 and § 4 too). Round 1's library it reuses: `models/library/analyses/magnet_conductor_alternatives.sysml` and `work/active/WI-099_magnet-conductor-alternatives/design.md`.
+
+## Check
+
+A. **Contract fidelity.** Does the design give the study every entry key the contract § 5 policy needs (turns, turn current, pack side, allocation, casing interior, element count, structure mass, installed heating, cryo ratings, every screened package rating and `purchase_cost_per_module`, the `*_class_MW` attributes, selected building and parcel dimensions, prices) and every § 3 assumption axis (`f_ren`, `beta_limit`, `peak_ratio`, the arm slot inputs, `B_max` per material, `k_link`)? Does it expose every § 7 verdict and flag and every § 8 account the decomposition needs? Name each missing key or channel.
+
+B. **Preservation (R5).** Are the shared-file edits genuinely value-neutral (WI-080 `enabled`/`evaluation_defined` gating; `=` → `default` promotions per WI-057 D5; the arm slot exactly 1.0 at default)? Is the bit-for-bit regression of the reference instance against the current `stellarator_e2e` pin specified with the exact comparison (which fingerprint, which outputs, which verdicts) and is the WI-098 magnet-probe comparison reused correctly? Are `exploration/stellarator_e2e/**` and the Stellaris design file untouched?
+
+C. **Bindings.** Open each cited plant-side file:line and confirm the binding exists as the design says (the `'Magnet System'` exposes it promotes; `winding_cost`, `conductor_margin_fraction`; the cryoplant seams and where `p_cryo` enters `mfe_power_balance`; how `wp_side`, `reference_turns`, `turn_current`, `coil_t`, `B_peak`, `T_cold_cryo` reach the WI-099 calcs; how the supplied count reaches inventory and acceptance). Flag any binding that would create a cycle, bind an output back as an input, or size a supplied quantity from demand (MR-7).
+
+D. **Semantics.** For each new definition (`'Nb3Sn Magnet System'`, `'Round1 REBCO Magnet System'`, `'Staged Cryoplant'`, gated `'REBCO Conductor Current'`, the arm slot, `pack_area_ok`, `ampere_floor_ok`, any adapter calc): are inputs, units, defaults, equations, domain behaviour (status outputs, no exceptions where the contract says unsupported) and citations complete and consistent with the contract § 4 and Round 1's definitions? Does the REBCO variant carry the `extrapolated` 20–24 T and `beyond_law_extents` 24–25 T bands as the contract states? Does the Nb₃Sn variant keep the strain screen separate from the law's intrinsic strain?
+
+E. **Toolchain feasibility.** Judge each step against what sysml-codegen and the build pattern can do (WI-099 found: negative design literals are not entry points; bodies are installed per calc; a `part` instance is not specializable so the design file copies the instance). Is retyping `magnet` and `cryoplant` in a copied instance expressible? Are asserted exposes promotable to `default`? Does the route need a new manifest and constraint count, and does the design say how?
+
+F. **Verification plan.** Is the test list complete for R4–R7 (reference bit-for-bit; gating identity; insufficient/sufficient supplied designs for acceptance, pack area, fit, capacity, floor; unsupported per conductor; anchor reproductions; staged-cryo identity; oracle partition with explicit channel lists; policy acceptance tests)?
+
+G. **Clarifications.** Rule on each `[AGENT]` clarification the design raises: accept, correct, or send to the coordinator.
+
+## Return
+
+Write `work/orchestration/goals/magnet-material-comparison/evidence/design-review-wi100.md`: verdict (PASS / PASS WITH CORRECTIONS / FAIL), numbered findings D1… with severity (blocking / correction / note), quoted design text, the file:line or contract clause it conflicts with, and the fix. Modify nothing else; do not commit; run Python only as `.codex-test/run python ...` if you inspect contracts or the pipeline. Clean room: never open `knowledge/holdout/**` beyond PROTOCOL.md or the barred paths in `evidence/briefs/t009-plant-chain-audit.md`. Return at most 300 words: the verdict and the blocking and correction findings.

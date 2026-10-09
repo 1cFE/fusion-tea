@@ -1,0 +1,1759 @@
+{
+  "schema_version": "study-verification-summary/v1",
+  "tool": {
+    "path": "scripts/study/verify.py",
+    "source_digest": {
+      "recipe": "tool-source-digest/v1",
+      "digest": "f733a8c2c236082aea48853c2da7e060c727bd1bb11d2515c8fce25657329831",
+      "files": [
+        {
+          "path": "scripts/study/common.py",
+          "sha256": "ae5fbca7be87d2fa1783affe4773332c9a898a265f70215aec9ad1489c8df521"
+        },
+        {
+          "path": "scripts/study/identity.py",
+          "sha256": "a6871eaaba1078a524b27c998744c6778ac6b5304d39d6eb083b9be4533dc01e"
+        },
+        {
+          "path": "scripts/study/manifest.py",
+          "sha256": "3c1bd8043b1f4ab0424ea9a77cc243e03bc10b3766e7ac634b9e93c25eb749ee"
+        },
+        {
+          "path": "scripts/study/schemas/package_identity.v1.schema.json",
+          "sha256": "d312ac300f1f639bccad3300e5c617658fe307594eaf9deadea66d6162008ad9"
+        },
+        {
+          "path": "scripts/study/schemas/verification_summary.v1.schema.json",
+          "sha256": "7afe14d745ac7241116096f0a93af35f675d3570c96e5b0e080fac427a17fc87"
+        },
+        {
+          "path": "scripts/study/verify.py",
+          "sha256": "34ee38ed9ae38f448199f0e968a13cd2448ec97098bef601995031d1c3fbc8ba"
+        }
+      ]
+    }
+  },
+  "command": [
+    "scripts/study/verify.py",
+    "--package",
+    "exploration/stellarator_materials/units/nb3sn/stellarator_materials_nb3sn_tea",
+    "--manifest",
+    "exploration/stellarator_materials/studies/20260930-magnet-material-plant-map/manifest_nb3sn.json",
+    "--identity",
+    "exploration/stellarator_materials/studies/20260930-magnet-material-plant-map/results/package_identity_nb3sn.json",
+    "--store",
+    "exploration/stellarator_materials/studies/20260930-magnet-material-plant-map/results/native/nb3sn/20260930-magnet-material-plant-map-nb3sn.db",
+    "--sample-size",
+    "806",
+    "--out",
+    "exploration/stellarator_materials/studies/20260930-magnet-material-plant-map/results/verify_stock_nb3sn.json"
+  ],
+  "teax": {
+    "module_path": "../teax/packages/teax-simkit/simkit",
+    "revision": "unrecorded"
+  },
+  "package": {
+    "path": "exploration/stellarator_materials/units/nb3sn/stellarator_materials_nb3sn_tea",
+    "package_name": "stellarator_materials_nb3sn_tea",
+    "git_clean": true
+  },
+  "identity": {
+    "kind": "sealed",
+    "digest": "6ccbab50fa407d545fe40529f29d35680e0c153090880599a28142c06eeba482",
+    "matches_preflight": true
+  },
+  "manifest": {
+    "path": "exploration/stellarator_materials/studies/20260930-magnet-material-plant-map/manifest_nb3sn.json",
+    "schema_version": "study-package-manifest/v1",
+    "digest": "e641a9a0c62608aef2f26791a3753be962fcf9d2e00b157fa5153455671237af"
+  },
+  "oracle": {
+    "kind": "python_callable",
+    "sys_path": ".",
+    "module": "exploration.stellarator_materials.studies.20260930-magnet-material-plant-map.oracle_nb3sn",
+    "callable": "evaluate",
+    "operand_bindings_digest": "b4fdb0dec8ac59ccedd6d703d6aec6a872088297192766301c52e8320b449554"
+  },
+  "stores": [
+    {
+      "path": "exploration/stellarator_materials/studies/20260930-magnet-material-plant-map/results/native/nb3sn/20260930-magnet-material-plant-map-nb3sn.db",
+      "study_id": "20260930-magnet-material-plant-map-nb3sn",
+      "compatibility": {
+        "digest": "df3c7b6bb5ac68ca351f4b06e9298d77b53846f17176acb99f0dbea43cc62369",
+        "evidence_schema_version": "v3",
+        "executable_fingerprint": "6ccbab50fa407d545fe40529f29d35680e0c153090880599a28142c06eeba482",
+        "input_schema_version": "input-v1",
+        "model_contract_fingerprint": "8b2212e2a2baa972b52d6eee7d392c8e711b367221724a56530f75a6bd5972b7",
+        "strategy_config": "e2ff90b6f97f81ddbd8e25b3a720886cccfd5474f082e50a547e6bb1c1a907a6",
+        "strategy_identity": "prepared-list/v1",
+        "study_definition_fingerprint": "32b3bc464446789a6212e5dc607ac32144457037e6d274b762ccdc6bb9c04239",
+        "study_id": "20260930-magnet-material-plant-map-nb3sn"
+      },
+      "cases_total": 806,
+      "cases_completed": 806,
+      "sampling": {
+        "scheme": "stratified-by-verdict-combination/v1",
+        "seed": "e756ed28d8123588",
+        "seed_source": "derived",
+        "sample_size_requested": 806,
+        "strata_observed": 30,
+        "sampled_rows": 806,
+        "sampled_case_ids": [
+          "20260930-magnet-material-plant-map-nb3sn:c0084",
+          "20260930-magnet-material-plant-map-nb3sn:c0072",
+          "20260930-magnet-material-plant-map-nb3sn:c0073",
+          "20260930-magnet-material-plant-map-nb3sn:c0417",
+          "20260930-magnet-material-plant-map-nb3sn:c0086",
+          "20260930-magnet-material-plant-map-nb3sn:c0087",
+          "20260930-magnet-material-plant-map-nb3sn:c0117",
+          "20260930-magnet-material-plant-map-nb3sn:c0106",
+          "20260930-magnet-material-plant-map-nb3sn:c0107",
+          "20260930-magnet-material-plant-map-nb3sn:c0123",
+          "20260930-magnet-material-plant-map-nb3sn:c0124",
+          "20260930-magnet-material-plant-map-nb3sn:c0616",
+          "20260930-magnet-material-plant-map-nb3sn:c0149",
+          "20260930-magnet-material-plant-map-nb3sn:c0322",
+          "20260930-magnet-material-plant-map-nb3sn:c0327",
+          "20260930-magnet-material-plant-map-nb3sn:c0533",
+          "20260930-magnet-material-plant-map-nb3sn:c0232",
+          "20260930-magnet-material-plant-map-nb3sn:c0693",
+          "20260930-magnet-material-plant-map-nb3sn:c0630",
+          "20260930-magnet-material-plant-map-nb3sn:c0803",
+          "20260930-magnet-material-plant-map-nb3sn:c0625",
+          "20260930-magnet-material-plant-map-nb3sn:c0406",
+          "20260930-magnet-material-plant-map-nb3sn:c0423",
+          "20260930-magnet-material-plant-map-nb3sn:c0462",
+          "20260930-magnet-material-plant-map-nb3sn:c0477",
+          "20260930-magnet-material-plant-map-nb3sn:c0478",
+          "20260930-magnet-material-plant-map-nb3sn:c0481",
+          "20260930-magnet-material-plant-map-nb3sn:c0757",
+          "20260930-magnet-material-plant-map-nb3sn:c0627",
+          "20260930-magnet-material-plant-map-nb3sn:c0633",
+          "20260930-magnet-material-plant-map-nb3sn:c0628",
+          "20260930-magnet-material-plant-map-nb3sn:c0731",
+          "20260930-magnet-material-plant-map-nb3sn:c0601",
+          "20260930-magnet-material-plant-map-nb3sn:c0612",
+          "20260930-magnet-material-plant-map-nb3sn:c0507",
+          "20260930-magnet-material-plant-map-nb3sn:c0678",
+          "20260930-magnet-material-plant-map-nb3sn:c0754",
+          "20260930-magnet-material-plant-map-nb3sn:c0747",
+          "20260930-magnet-material-plant-map-nb3sn:c0174",
+          "20260930-magnet-material-plant-map-nb3sn:c0261",
+          "20260930-magnet-material-plant-map-nb3sn:c0273",
+          "20260930-magnet-material-plant-map-nb3sn:c0539",
+          "20260930-magnet-material-plant-map-nb3sn:c0598",
+          "20260930-magnet-material-plant-map-nb3sn:c0716",
+          "20260930-magnet-material-plant-map-nb3sn:c0220",
+          "20260930-magnet-material-plant-map-nb3sn:c0758",
+          "20260930-magnet-material-plant-map-nb3sn:c0100",
+          "20260930-magnet-material-plant-map-nb3sn:c0240",
+          "20260930-magnet-material-plant-map-nb3sn:c0270",
+          "20260930-magnet-material-plant-map-nb3sn:c0643",
+          "20260930-magnet-material-plant-map-nb3sn:c0712",
+          "20260930-magnet-material-plant-map-nb3sn:c0265",
+          "20260930-magnet-material-plant-map-nb3sn:c0657",
+          "20260930-magnet-material-plant-map-nb3sn:c0134",
+          "20260930-magnet-material-plant-map-nb3sn:c0288",
+          "20260930-magnet-material-plant-map-nb3sn:c0561",
+          "20260930-magnet-material-plant-map-nb3sn:c0792",
+          "20260930-magnet-material-plant-map-nb3sn:c0671",
+          "20260930-magnet-material-plant-map-nb3sn:c0775",
+          "20260930-magnet-material-plant-map-nb3sn:c0131",
+          "20260930-magnet-material-plant-map-nb3sn:c0384",
+          "20260930-magnet-material-plant-map-nb3sn:c0512",
+          "20260930-magnet-material-plant-map-nb3sn:c0441",
+          "20260930-magnet-material-plant-map-nb3sn:c0467",
+          "20260930-magnet-material-plant-map-nb3sn:c0791",
+          "20260930-magnet-material-plant-map-nb3sn:c0028",
+          "20260930-magnet-material-plant-map-nb3sn:c0313",
+          "20260930-magnet-material-plant-map-nb3sn:c0606",
+          "20260930-magnet-material-plant-map-nb3sn:c0403",
+          "20260930-magnet-material-plant-map-nb3sn:c0114",
+          "20260930-magnet-material-plant-map-nb3sn:c0718",
+          "20260930-magnet-material-plant-map-nb3sn:c0736",
+          "20260930-magnet-material-plant-map-nb3sn:c0511",
+          "20260930-magnet-material-plant-map-nb3sn:c0703",
+          "20260930-magnet-material-plant-map-nb3sn:c0066",
+          "20260930-magnet-material-plant-map-nb3sn:c0342",
+          "20260930-magnet-material-plant-map-nb3sn:c0040",
+          "20260930-magnet-material-plant-map-nb3sn:c0692",
+          "20260930-magnet-material-plant-map-nb3sn:c0156",
+          "20260930-magnet-material-plant-map-nb3sn:c0723",
+          "20260930-magnet-material-plant-map-nb3sn:c0600",
+          "20260930-magnet-material-plant-map-nb3sn:c0652",
+          "20260930-magnet-material-plant-map-nb3sn:c0755",
+          "20260930-magnet-material-plant-map-nb3sn:c0412",
+          "20260930-magnet-material-plant-map-nb3sn:c0167",
+          "20260930-magnet-material-plant-map-nb3sn:c0609",
+          "20260930-magnet-material-plant-map-nb3sn:c0303",
+          "20260930-magnet-material-plant-map-nb3sn:c0670",
+          "20260930-magnet-material-plant-map-nb3sn:c0680",
+          "20260930-magnet-material-plant-map-nb3sn:c0136",
+          "20260930-magnet-material-plant-map-nb3sn:c0204",
+          "20260930-magnet-material-plant-map-nb3sn:c0676",
+          "20260930-magnet-material-plant-map-nb3sn:c0344",
+          "20260930-magnet-material-plant-map-nb3sn:c0459",
+          "20260930-magnet-material-plant-map-nb3sn:c0068",
+          "20260930-magnet-material-plant-map-nb3sn:c0520",
+          "20260930-magnet-material-plant-map-nb3sn:c0163",
+          "20260930-magnet-material-plant-map-nb3sn:c0720",
+          "20260930-magnet-material-plant-map-nb3sn:c0348",
+          "20260930-magnet-material-plant-map-nb3sn:c0162",
+          "20260930-magnet-material-plant-map-nb3sn:c0259",
+          "20260930-magnet-material-plant-map-nb3sn:c0588",
+          "20260930-magnet-material-plant-map-nb3sn:c0323",
+          "20260930-magnet-material-plant-map-nb3sn:c0371",
+          "20260930-magnet-material-plant-map-nb3sn:c0659",
+          "20260930-magnet-material-plant-map-nb3sn:c0105",
+          "20260930-magnet-material-plant-map-nb3sn:c0006",
+          "20260930-magnet-material-plant-map-nb3sn:c0635",
+          "20260930-magnet-material-plant-map-nb3sn:c0092",
+          "20260930-magnet-material-plant-map-nb3sn:c0730",
+          "20260930-magnet-material-plant-map-nb3sn:c0246",
+          "20260930-magnet-material-plant-map-nb3sn:c0341",
+          "20260930-magnet-material-plant-map-nb3sn:c0494",
+          "20260930-magnet-material-plant-map-nb3sn:c0518",
+          "20260930-magnet-material-plant-map-nb3sn:c0090",
+          "20260930-magnet-material-plant-map-nb3sn:c0525",
+          "20260930-magnet-material-plant-map-nb3sn:c0574",
+          "20260930-magnet-material-plant-map-nb3sn:c0555",
+          "20260930-magnet-material-plant-map-nb3sn:c0502",
+          "20260930-magnet-material-plant-map-nb3sn:c0195",
+          "20260930-magnet-material-plant-map-nb3sn:c0608",
+          "20260930-magnet-material-plant-map-nb3sn:c0483",
+          "20260930-magnet-material-plant-map-nb3sn:c0277",
+          "20260930-magnet-material-plant-map-nb3sn:c0325",
+          "20260930-magnet-material-plant-map-nb3sn:c0111",
+          "20260930-magnet-material-plant-map-nb3sn:c0413",
+          "20260930-magnet-material-plant-map-nb3sn:c0763",
+          "20260930-magnet-material-plant-map-nb3sn:c0721",
+          "20260930-magnet-material-plant-map-nb3sn:c0102",
+          "20260930-magnet-material-plant-map-nb3sn:c0078",
+          "20260930-magnet-material-plant-map-nb3sn:c0545",
+          "20260930-magnet-material-plant-map-nb3sn:c0490",
+          "20260930-magnet-material-plant-map-nb3sn:c0016",
+          "20260930-magnet-material-plant-map-nb3sn:c0560",
+          "20260930-magnet-material-plant-map-nb3sn:c0746",
+          "20260930-magnet-material-plant-map-nb3sn:c0567",
+          "20260930-magnet-material-plant-map-nb3sn:c0629",
+          "20260930-magnet-material-plant-map-nb3sn:c0542",
+          "20260930-magnet-material-plant-map-nb3sn:c0650",
+          "20260930-magnet-material-plant-map-nb3sn:c0546",
+          "20260930-magnet-material-plant-map-nb3sn:c0750",
+          "20260930-magnet-material-plant-map-nb3sn:c0375",
+          "20260930-magnet-material-plant-map-nb3sn:c0463",
+          "20260930-magnet-material-plant-map-nb3sn:c0014",
+          "20260930-magnet-material-plant-map-nb3sn:c0649",
+          "20260930-magnet-material-plant-map-nb3sn:c0241",
+          "20260930-magnet-material-plant-map-nb3sn:c0631",
+          "20260930-magnet-material-plant-map-nb3sn:c0461",
+          "20260930-magnet-material-plant-map-nb3sn:c0257",
+          "20260930-magnet-material-plant-map-nb3sn:c0540",
+          "20260930-magnet-material-plant-map-nb3sn:c0119",
+          "20260930-magnet-material-plant-map-nb3sn:c0661",
+          "20260930-magnet-material-plant-map-nb3sn:c0082",
+          "20260930-magnet-material-plant-map-nb3sn:c0216",
+          "20260930-magnet-material-plant-map-nb3sn:c0373",
+          "20260930-magnet-material-plant-map-nb3sn:c0695",
+          "20260930-magnet-material-plant-map-nb3sn:c0471",
+          "20260930-magnet-material-plant-map-nb3sn:c0454",
+          "20260930-magnet-material-plant-map-nb3sn:c0762",
+          "20260930-magnet-material-plant-map-nb3sn:c0610",
+          "20260930-magnet-material-plant-map-nb3sn:c0623",
+          "20260930-magnet-material-plant-map-nb3sn:c0212",
+          "20260930-magnet-material-plant-map-nb3sn:c0003",
+          "20260930-magnet-material-plant-map-nb3sn:c0769",
+          "20260930-magnet-material-plant-map-nb3sn:c0691",
+          "20260930-magnet-material-plant-map-nb3sn:c0237",
+          "20260930-magnet-material-plant-map-nb3sn:c0733",
+          "20260930-magnet-material-plant-map-nb3sn:c0485",
+          "20260930-magnet-material-plant-map-nb3sn:c0665",
+          "20260930-magnet-material-plant-map-nb3sn:c0469",
+          "20260930-magnet-material-plant-map-nb3sn:c0495",
+          "20260930-magnet-material-plant-map-nb3sn:c0315",
+          "20260930-magnet-material-plant-map-nb3sn:c0565",
+          "20260930-magnet-material-plant-map-nb3sn:c0369",
+          "20260930-magnet-material-plant-map-nb3sn:c0734",
+          "20260930-magnet-material-plant-map-nb3sn:c0186",
+          "20260930-magnet-material-plant-map-nb3sn:c0211",
+          "20260930-magnet-material-plant-map-nb3sn:c0242",
+          "20260930-magnet-material-plant-map-nb3sn:c0699",
+          "20260930-magnet-material-plant-map-nb3sn:c0729",
+          "20260930-magnet-material-plant-map-nb3sn:c0558",
+          "20260930-magnet-material-plant-map-nb3sn:c0753",
+          "20260930-magnet-material-plant-map-nb3sn:c0738",
+          "20260930-magnet-material-plant-map-nb3sn:c0611",
+          "20260930-magnet-material-plant-map-nb3sn:c0224",
+          "20260930-magnet-material-plant-map-nb3sn:c0037",
+          "20260930-magnet-material-plant-map-nb3sn:c0422",
+          "20260930-magnet-material-plant-map-nb3sn:c0047",
+          "20260930-magnet-material-plant-map-nb3sn:c0562",
+          "20260930-magnet-material-plant-map-nb3sn:c0318",
+          "20260930-magnet-material-plant-map-nb3sn:c0146",
+          "20260930-magnet-material-plant-map-nb3sn:c0317",
+          "20260930-magnet-material-plant-map-nb3sn:c0489",
+          "20260930-magnet-material-plant-map-nb3sn:c0737",
+          "20260930-magnet-material-plant-map-nb3sn:c0401",
+          "20260930-magnet-material-plant-map-nb3sn:c0039",
+          "20260930-magnet-material-plant-map-nb3sn:c0049",
+          "20260930-magnet-material-plant-map-nb3sn:c0391",
+          "20260930-magnet-material-plant-map-nb3sn:c0393",
+          "20260930-magnet-material-plant-map-nb3sn:c0031",
+          "20260930-magnet-material-plant-map-nb3sn:c0596",
+          "20260930-magnet-material-plant-map-nb3sn:c0667",
+          "20260930-magnet-material-plant-map-nb3sn:c0138",
+          "20260930-magnet-material-plant-map-nb3sn:c0416",
+          "20260930-magnet-material-plant-map-nb3sn:c0732",
+          "20260930-magnet-material-plant-map-nb3sn:c0179",
+          "20260930-magnet-material-plant-map-nb3sn:c0282",
+          "20260930-magnet-material-plant-map-nb3sn:c0132",
+          "20260930-magnet-material-plant-map-nb3sn:c0761",
+          "20260930-magnet-material-plant-map-nb3sn:c0396",
+          "20260930-magnet-material-plant-map-nb3sn:c0538",
+          "20260930-magnet-material-plant-map-nb3sn:c0752",
+          "20260930-magnet-material-plant-map-nb3sn:c0041",
+          "20260930-magnet-material-plant-map-nb3sn:c0381",
+          "20260930-magnet-material-plant-map-nb3sn:c0760",
+          "20260930-magnet-material-plant-map-nb3sn:c0636",
+          "20260930-magnet-material-plant-map-nb3sn:c0024",
+          "20260930-magnet-material-plant-map-nb3sn:c0125",
+          "20260930-magnet-material-plant-map-nb3sn:c0456",
+          "20260930-magnet-material-plant-map-nb3sn:c0207",
+          "20260930-magnet-material-plant-map-nb3sn:c0453",
+          "20260930-magnet-material-plant-map-nb3sn:c0296",
+          "20260930-magnet-material-plant-map-nb3sn:c0302",
+          "20260930-magnet-material-plant-map-nb3sn:c0297",
+          "20260930-magnet-material-plant-map-nb3sn:c0559",
+          "20260930-magnet-material-plant-map-nb3sn:c0482",
+          "20260930-magnet-material-plant-map-nb3sn:c0798",
+          "20260930-magnet-material-plant-map-nb3sn:c0591",
+          "20260930-magnet-material-plant-map-nb3sn:c0029",
+          "20260930-magnet-material-plant-map-nb3sn:c0516",
+          "20260930-magnet-material-plant-map-nb3sn:c0233",
+          "20260930-magnet-material-plant-map-nb3sn:c0071",
+          "20260930-magnet-material-plant-map-nb3sn:c0128",
+          "20260930-magnet-material-plant-map-nb3sn:c0054",
+          "20260930-magnet-material-plant-map-nb3sn:c0075",
+          "20260930-magnet-material-plant-map-nb3sn:c0095",
+          "20260930-magnet-material-plant-map-nb3sn:c0710",
+          "20260930-magnet-material-plant-map-nb3sn:c0438",
+          "20260930-magnet-material-plant-map-nb3sn:c0374",
+          "20260930-magnet-material-plant-map-nb3sn:c0435",
+          "20260930-magnet-material-plant-map-nb3sn:c0065",
+          "20260930-magnet-material-plant-map-nb3sn:c0622",
+          "20260930-magnet-material-plant-map-nb3sn:c0005",
+          "20260930-magnet-material-plant-map-nb3sn:c0154",
+          "20260930-magnet-material-plant-map-nb3sn:c0263",
+          "20260930-magnet-material-plant-map-nb3sn:c0411",
+          "20260930-magnet-material-plant-map-nb3sn:c0501",
+          "20260930-magnet-material-plant-map-nb3sn:c0247",
+          "20260930-magnet-material-plant-map-nb3sn:c0363",
+          "20260930-magnet-material-plant-map-nb3sn:c0530",
+          "20260930-magnet-material-plant-map-nb3sn:c0705",
+          "20260930-magnet-material-plant-map-nb3sn:c0202",
+          "20260930-magnet-material-plant-map-nb3sn:c0663",
+          "20260930-magnet-material-plant-map-nb3sn:c0449",
+          "20260930-magnet-material-plant-map-nb3sn:c0079",
+          "20260930-magnet-material-plant-map-nb3sn:c0784",
+          "20260930-magnet-material-plant-map-nb3sn:c0251",
+          "20260930-magnet-material-plant-map-nb3sn:c0683",
+          "20260930-magnet-material-plant-map-nb3sn:c0190",
+          "20260930-magnet-material-plant-map-nb3sn:c0408",
+          "20260930-magnet-material-plant-map-nb3sn:c0081",
+          "20260930-magnet-material-plant-map-nb3sn:c0387",
+          "20260930-magnet-material-plant-map-nb3sn:c0595",
+          "20260930-magnet-material-plant-map-nb3sn:c0287",
+          "20260930-magnet-material-plant-map-nb3sn:c0549",
+          "20260930-magnet-material-plant-map-nb3sn:c0452",
+          "20260930-magnet-material-plant-map-nb3sn:c0433",
+          "20260930-magnet-material-plant-map-nb3sn:c0299",
+          "20260930-magnet-material-plant-map-nb3sn:c0104",
+          "20260930-magnet-material-plant-map-nb3sn:c0745",
+          "20260930-magnet-material-plant-map-nb3sn:c0320",
+          "20260930-magnet-material-plant-map-nb3sn:c0544",
+          "20260930-magnet-material-plant-map-nb3sn:c0522",
+          "20260930-magnet-material-plant-map-nb3sn:c0740",
+          "20260930-magnet-material-plant-map-nb3sn:c0547",
+          "20260930-magnet-material-plant-map-nb3sn:c0015",
+          "20260930-magnet-material-plant-map-nb3sn:c0020",
+          "20260930-magnet-material-plant-map-nb3sn:c0088",
+          "20260930-magnet-material-plant-map-nb3sn:c0356",
+          "20260930-magnet-material-plant-map-nb3sn:c0210",
+          "20260930-magnet-material-plant-map-nb3sn:c0566",
+          "20260930-magnet-material-plant-map-nb3sn:c0182",
+          "20260930-magnet-material-plant-map-nb3sn:c0431",
+          "20260930-magnet-material-plant-map-nb3sn:c0208",
+          "20260930-magnet-material-plant-map-nb3sn:c0349",
+          "20260930-magnet-material-plant-map-nb3sn:c0704",
+          "20260930-magnet-material-plant-map-nb3sn:c0450",
+          "20260930-magnet-material-plant-map-nb3sn:c0339",
+          "20260930-magnet-material-plant-map-nb3sn:c0468",
+          "20260930-magnet-material-plant-map-nb3sn:c0443",
+          "20260930-magnet-material-plant-map-nb3sn:c0719",
+          "20260930-magnet-material-plant-map-nb3sn:c0491",
+          "20260930-magnet-material-plant-map-nb3sn:c0059",
+          "20260930-magnet-material-plant-map-nb3sn:c0164",
+          "20260930-magnet-material-plant-map-nb3sn:c0662",
+          "20260930-magnet-material-plant-map-nb3sn:c0337",
+          "20260930-magnet-material-plant-map-nb3sn:c0378",
+          "20260930-magnet-material-plant-map-nb3sn:c0572",
+          "20260930-magnet-material-plant-map-nb3sn:c0581",
+          "20260930-magnet-material-plant-map-nb3sn:c0388",
+          "20260930-magnet-material-plant-map-nb3sn:c0225",
+          "20260930-magnet-material-plant-map-nb3sn:c0045",
+          "20260930-magnet-material-plant-map-nb3sn:c0267",
+          "20260930-magnet-material-plant-map-nb3sn:c0012",
+          "20260930-magnet-material-plant-map-nb3sn:c0590",
+          "20260930-magnet-material-plant-map-nb3sn:c0365",
+          "20260930-magnet-material-plant-map-nb3sn:c0779",
+          "20260930-magnet-material-plant-map-nb3sn:c0243",
+          "20260930-magnet-material-plant-map-nb3sn:c0180",
+          "20260930-magnet-material-plant-map-nb3sn:c0618",
+          "20260930-magnet-material-plant-map-nb3sn:c0580",
+          "20260930-magnet-material-plant-map-nb3sn:c0523",
+          "20260930-magnet-material-plant-map-nb3sn:c0594",
+          "20260930-magnet-material-plant-map-nb3sn:c0430",
+          "20260930-magnet-material-plant-map-nb3sn:c0094",
+          "20260930-magnet-material-plant-map-nb3sn:c0026",
+          "20260930-magnet-material-plant-map-nb3sn:c0786",
+          "20260930-magnet-material-plant-map-nb3sn:c0517",
+          "20260930-magnet-material-plant-map-nb3sn:c0599",
+          "20260930-magnet-material-plant-map-nb3sn:c0582",
+          "20260930-magnet-material-plant-map-nb3sn:c0165",
+          "20260930-magnet-material-plant-map-nb3sn:c0027",
+          "20260930-magnet-material-plant-map-nb3sn:c0510",
+          "20260930-magnet-material-plant-map-nb3sn:c0669",
+          "20260930-magnet-material-plant-map-nb3sn:c0715",
+          "20260930-magnet-material-plant-map-nb3sn:c0402",
+          "20260930-magnet-material-plant-map-nb3sn:c0048",
+          "20260930-magnet-material-plant-map-nb3sn:c0537",
+          "20260930-magnet-material-plant-map-nb3sn:c0300",
+          "20260930-magnet-material-plant-map-nb3sn:c0272",
+          "20260930-magnet-material-plant-map-nb3sn:c0316",
+          "20260930-magnet-material-plant-map-nb3sn:c0310",
+          "20260930-magnet-material-plant-map-nb3sn:c0488",
+          "20260930-magnet-material-plant-map-nb3sn:c0573",
+          "20260930-magnet-material-plant-map-nb3sn:c0660",
+          "20260930-magnet-material-plant-map-nb3sn:c0793",
+          "20260930-magnet-material-plant-map-nb3sn:c0285",
+          "20260930-magnet-material-plant-map-nb3sn:c0593",
+          "20260930-magnet-material-plant-map-nb3sn:c0797",
+          "20260930-magnet-material-plant-map-nb3sn:c0051",
+          "20260930-magnet-material-plant-map-nb3sn:c0480",
+          "20260930-magnet-material-plant-map-nb3sn:c0354",
+          "20260930-magnet-material-plant-map-nb3sn:c0805",
+          "20260930-magnet-material-plant-map-nb3sn:c0614",
+          "20260930-magnet-material-plant-map-nb3sn:c0276",
+          "20260930-magnet-material-plant-map-nb3sn:c0199",
+          "20260930-magnet-material-plant-map-nb3sn:c0742",
+          "20260930-magnet-material-plant-map-nb3sn:c0698",
+          "20260930-magnet-material-plant-map-nb3sn:c0492",
+          "20260930-magnet-material-plant-map-nb3sn:c0664",
+          "20260930-magnet-material-plant-map-nb3sn:c0436",
+          "20260930-magnet-material-plant-map-nb3sn:c0194",
+          "20260930-magnet-material-plant-map-nb3sn:c0576",
+          "20260930-magnet-material-plant-map-nb3sn:c0231",
+          "20260930-magnet-material-plant-map-nb3sn:c0130",
+          "20260930-magnet-material-plant-map-nb3sn:c0717",
+          "20260930-magnet-material-plant-map-nb3sn:c0759",
+          "20260930-magnet-material-plant-map-nb3sn:c0505",
+          "20260930-magnet-material-plant-map-nb3sn:c0524",
+          "20260930-magnet-material-plant-map-nb3sn:c0656",
+          "20260930-magnet-material-plant-map-nb3sn:c0802",
+          "20260930-magnet-material-plant-map-nb3sn:c0687",
+          "20260930-magnet-material-plant-map-nb3sn:c0575",
+          "20260930-magnet-material-plant-map-nb3sn:c0564",
+          "20260930-magnet-material-plant-map-nb3sn:c0646",
+          "20260930-magnet-material-plant-map-nb3sn:c0584",
+          "20260930-magnet-material-plant-map-nb3sn:c0637",
+          "20260930-magnet-material-plant-map-nb3sn:c0268",
+          "20260930-magnet-material-plant-map-nb3sn:c0017",
+          "20260930-magnet-material-plant-map-nb3sn:c0728",
+          "20260930-magnet-material-plant-map-nb3sn:c0009",
+          "20260930-magnet-material-plant-map-nb3sn:c0787",
+          "20260930-magnet-material-plant-map-nb3sn:c0311",
+          "20260930-magnet-material-plant-map-nb3sn:c0169",
+          "20260930-magnet-material-plant-map-nb3sn:c0353",
+          "20260930-magnet-material-plant-map-nb3sn:c0148",
+          "20260930-magnet-material-plant-map-nb3sn:c0191",
+          "20260930-magnet-material-plant-map-nb3sn:c0334",
+          "20260930-magnet-material-plant-map-nb3sn:c0038",
+          "20260930-magnet-material-plant-map-nb3sn:c0217",
+          "20260930-magnet-material-plant-map-nb3sn:c0696",
+          "20260930-magnet-material-plant-map-nb3sn:c0458",
+          "20260930-magnet-material-plant-map-nb3sn:c0577",
+          "20260930-magnet-material-plant-map-nb3sn:c0036",
+          "20260930-magnet-material-plant-map-nb3sn:c0484",
+          "20260930-magnet-material-plant-map-nb3sn:c0390",
+          "20260930-magnet-material-plant-map-nb3sn:c0553",
+          "20260930-magnet-material-plant-map-nb3sn:c0177",
+          "20260930-magnet-material-plant-map-nb3sn:c0089",
+          "20260930-magnet-material-plant-map-nb3sn:c0771",
+          "20260930-magnet-material-plant-map-nb3sn:c0158",
+          "20260930-magnet-material-plant-map-nb3sn:c0455",
+          "20260930-magnet-material-plant-map-nb3sn:c0700",
+          "20260930-magnet-material-plant-map-nb3sn:c0785",
+          "20260930-magnet-material-plant-map-nb3sn:c0781",
+          "20260930-magnet-material-plant-map-nb3sn:c0098",
+          "20260930-magnet-material-plant-map-nb3sn:c0765",
+          "20260930-magnet-material-plant-map-nb3sn:c0440",
+          "20260930-magnet-material-plant-map-nb3sn:c0057",
+          "20260930-magnet-material-plant-map-nb3sn:c0368",
+          "20260930-magnet-material-plant-map-nb3sn:c0055",
+          "20260930-magnet-material-plant-map-nb3sn:c0264",
+          "20260930-magnet-material-plant-map-nb3sn:c0604",
+          "20260930-magnet-material-plant-map-nb3sn:c0783",
+          "20260930-magnet-material-plant-map-nb3sn:c0175",
+          "20260930-magnet-material-plant-map-nb3sn:c0319",
+          "20260930-magnet-material-plant-map-nb3sn:c0372",
+          "20260930-magnet-material-plant-map-nb3sn:c0223",
+          "20260930-magnet-material-plant-map-nb3sn:c0139",
+          "20260930-magnet-material-plant-map-nb3sn:c0307",
+          "20260930-magnet-material-plant-map-nb3sn:c0587",
+          "20260930-magnet-material-plant-map-nb3sn:c0684",
+          "20260930-magnet-material-plant-map-nb3sn:c0772",
+          "20260930-magnet-material-plant-map-nb3sn:c0044",
+          "20260930-magnet-material-plant-map-nb3sn:c0120",
+          "20260930-magnet-material-plant-map-nb3sn:c0414",
+          "20260930-magnet-material-plant-map-nb3sn:c0377",
+          "20260930-magnet-material-plant-map-nb3sn:c0424",
+          "20260930-magnet-material-plant-map-nb3sn:c0060",
+          "20260930-magnet-material-plant-map-nb3sn:c0168",
+          "20260930-magnet-material-plant-map-nb3sn:c0166",
+          "20260930-magnet-material-plant-map-nb3sn:c0370",
+          "20260930-magnet-material-plant-map-nb3sn:c0004",
+          "20260930-magnet-material-plant-map-nb3sn:c0639",
+          "20260930-magnet-material-plant-map-nb3sn:c0528",
+          "20260930-magnet-material-plant-map-nb3sn:c0291",
+          "20260930-magnet-material-plant-map-nb3sn:c0033",
+          "20260930-magnet-material-plant-map-nb3sn:c0292",
+          "20260930-magnet-material-plant-map-nb3sn:c0099",
+          "20260930-magnet-material-plant-map-nb3sn:c0305",
+          "20260930-magnet-material-plant-map-nb3sn:c0184",
+          "20260930-magnet-material-plant-map-nb3sn:c0392",
+          "20260930-magnet-material-plant-map-nb3sn:c0602",
+          "20260930-magnet-material-plant-map-nb3sn:c0464",
+          "20260930-magnet-material-plant-map-nb3sn:c0030",
+          "20260930-magnet-material-plant-map-nb3sn:c0603",
+          "20260930-magnet-material-plant-map-nb3sn:c0147",
+          "20260930-magnet-material-plant-map-nb3sn:c0766",
+          "20260930-magnet-material-plant-map-nb3sn:c0447",
+          "20260930-magnet-material-plant-map-nb3sn:c0389",
+          "20260930-magnet-material-plant-map-nb3sn:c0735",
+          "20260930-magnet-material-plant-map-nb3sn:c0239",
+          "20260930-magnet-material-plant-map-nb3sn:c0654",
+          "20260930-magnet-material-plant-map-nb3sn:c0249",
+          "20260930-magnet-material-plant-map-nb3sn:c0607",
+          "20260930-magnet-material-plant-map-nb3sn:c0379",
+          "20260930-magnet-material-plant-map-nb3sn:c0519",
+          "20260930-magnet-material-plant-map-nb3sn:c0172",
+          "20260930-magnet-material-plant-map-nb3sn:c0063",
+          "20260930-magnet-material-plant-map-nb3sn:c0579",
+          "20260930-magnet-material-plant-map-nb3sn:c0479",
+          "20260930-magnet-material-plant-map-nb3sn:c0615",
+          "20260930-magnet-material-plant-map-nb3sn:c0234",
+          "20260930-magnet-material-plant-map-nb3sn:c0508",
+          "20260930-magnet-material-plant-map-nb3sn:c0617",
+          "20260930-magnet-material-plant-map-nb3sn:c0645",
+          "20260930-magnet-material-plant-map-nb3sn:c0110",
+          "20260930-magnet-material-plant-map-nb3sn:c0563",
+          "20260930-magnet-material-plant-map-nb3sn:c0534",
+          "20260930-magnet-material-plant-map-nb3sn:c0552",
+          "20260930-magnet-material-plant-map-nb3sn:c0364",
+          "20260930-magnet-material-plant-map-nb3sn:c0709",
+          "20260930-magnet-material-plant-map-nb3sn:c0457",
+          "20260930-magnet-material-plant-map-nb3sn:c0153",
+          "20260930-magnet-material-plant-map-nb3sn:c0215",
+          "20260930-magnet-material-plant-map-nb3sn:c0724",
+          "20260930-magnet-material-plant-map-nb3sn:c0112",
+          "20260930-magnet-material-plant-map-nb3sn:c0672",
+          "20260930-magnet-material-plant-map-nb3sn:c0409",
+          "20260930-magnet-material-plant-map-nb3sn:c0795",
+          "20260930-magnet-material-plant-map-nb3sn:c0197",
+          "20260930-magnet-material-plant-map-nb3sn:c0689",
+          "20260930-magnet-material-plant-map-nb3sn:c0011",
+          "20260930-magnet-material-plant-map-nb3sn:c0427",
+          "20260930-magnet-material-plant-map-nb3sn:c0093",
+          "20260930-magnet-material-plant-map-nb3sn:c0773",
+          "20260930-magnet-material-plant-map-nb3sn:c0345",
+          "20260930-magnet-material-plant-map-nb3sn:c0789",
+          "20260930-magnet-material-plant-map-nb3sn:c0145",
+          "20260930-magnet-material-plant-map-nb3sn:c0571",
+          "20260930-magnet-material-plant-map-nb3sn:c0113",
+          "20260930-magnet-material-plant-map-nb3sn:c0032",
+          "20260930-magnet-material-plant-map-nb3sn:c0583",
+          "20260930-magnet-material-plant-map-nb3sn:c0301",
+          "20260930-magnet-material-plant-map-nb3sn:c0751",
+          "20260930-magnet-material-plant-map-nb3sn:c0298",
+          "20260930-magnet-material-plant-map-nb3sn:c0335",
+          "20260930-magnet-material-plant-map-nb3sn:c0570",
+          "20260930-magnet-material-plant-map-nb3sn:c0685",
+          "20260930-magnet-material-plant-map-nb3sn:c0289",
+          "20260930-magnet-material-plant-map-nb3sn:c0651",
+          "20260930-magnet-material-plant-map-nb3sn:c0203",
+          "20260930-magnet-material-plant-map-nb3sn:c0682",
+          "20260930-magnet-material-plant-map-nb3sn:c0554",
+          "20260930-magnet-material-plant-map-nb3sn:c0399",
+          "20260930-magnet-material-plant-map-nb3sn:c0778",
+          "20260930-magnet-material-plant-map-nb3sn:c0429",
+          "20260930-magnet-material-plant-map-nb3sn:c0284",
+          "20260930-magnet-material-plant-map-nb3sn:c0681",
+          "20260930-magnet-material-plant-map-nb3sn:c0170",
+          "20260930-magnet-material-plant-map-nb3sn:c0161",
+          "20260930-magnet-material-plant-map-nb3sn:c0653",
+          "20260930-magnet-material-plant-map-nb3sn:c0619",
+          "20260930-magnet-material-plant-map-nb3sn:c0527",
+          "20260930-magnet-material-plant-map-nb3sn:c0077",
+          "20260930-magnet-material-plant-map-nb3sn:c0585",
+          "20260930-magnet-material-plant-map-nb3sn:c0151",
+          "20260930-magnet-material-plant-map-nb3sn:c0062",
+          "20260930-magnet-material-plant-map-nb3sn:c0018",
+          "20260930-magnet-material-plant-map-nb3sn:c0499",
+          "20260930-magnet-material-plant-map-nb3sn:c0550",
+          "20260930-magnet-material-plant-map-nb3sn:c0367",
+          "20260930-magnet-material-plant-map-nb3sn:c0448",
+          "20260930-magnet-material-plant-map-nb3sn:c0189",
+          "20260930-magnet-material-plant-map-nb3sn:c0476",
+          "20260930-magnet-material-plant-map-nb3sn:c0475",
+          "20260930-magnet-material-plant-map-nb3sn:c0058",
+          "20260930-magnet-material-plant-map-nb3sn:c0796",
+          "20260930-magnet-material-plant-map-nb3sn:c0042",
+          "20260930-magnet-material-plant-map-nb3sn:c0025",
+          "20260930-magnet-material-plant-map-nb3sn:c0121",
+          "20260930-magnet-material-plant-map-nb3sn:c0227",
+          "20260930-magnet-material-plant-map-nb3sn:c0295",
+          "20260930-magnet-material-plant-map-nb3sn:c0109",
+          "20260930-magnet-material-plant-map-nb3sn:c0674",
+          "20260930-magnet-material-plant-map-nb3sn:c0193",
+          "20260930-magnet-material-plant-map-nb3sn:c0801",
+          "20260930-magnet-material-plant-map-nb3sn:c0206",
+          "20260930-magnet-material-plant-map-nb3sn:c0230",
+          "20260930-magnet-material-plant-map-nb3sn:c0269",
+          "20260930-magnet-material-plant-map-nb3sn:c0133",
+          "20260930-magnet-material-plant-map-nb3sn:c0283",
+          "20260930-magnet-material-plant-map-nb3sn:c0382",
+          "20260930-magnet-material-plant-map-nb3sn:c0473",
+          "20260930-magnet-material-plant-map-nb3sn:c0776",
+          "20260930-magnet-material-plant-map-nb3sn:c0688",
+          "20260930-magnet-material-plant-map-nb3sn:c0229",
+          "20260930-magnet-material-plant-map-nb3sn:c0521",
+          "20260930-magnet-material-plant-map-nb3sn:c0312",
+          "20260930-magnet-material-plant-map-nb3sn:c0052",
+          "20260930-magnet-material-plant-map-nb3sn:c0578",
+          "20260930-magnet-material-plant-map-nb3sn:c0679",
+          "20260930-magnet-material-plant-map-nb3sn:c0096",
+          "20260930-magnet-material-plant-map-nb3sn:c0201",
+          "20260930-magnet-material-plant-map-nb3sn:c0605",
+          "20260930-magnet-material-plant-map-nb3sn:c0726",
+          "20260930-magnet-material-plant-map-nb3sn:c0444",
+          "20260930-magnet-material-plant-map-nb3sn:c0008",
+          "20260930-magnet-material-plant-map-nb3sn:c0118",
+          "20260930-magnet-material-plant-map-nb3sn:c0531",
+          "20260930-magnet-material-plant-map-nb3sn:c0235",
+          "20260930-magnet-material-plant-map-nb3sn:c0708",
+          "20260930-magnet-material-plant-map-nb3sn:c0219",
+          "20260930-magnet-material-plant-map-nb3sn:c0171",
+          "20260930-magnet-material-plant-map-nb3sn:c0727",
+          "20260930-magnet-material-plant-map-nb3sn:c0245",
+          "20260930-magnet-material-plant-map-nb3sn:c0780",
+          "20260930-magnet-material-plant-map-nb3sn:c0770",
+          "20260930-magnet-material-plant-map-nb3sn:c0034",
+          "20260930-magnet-material-plant-map-nb3sn:c0324",
+          "20260930-magnet-material-plant-map-nb3sn:c0777",
+          "20260930-magnet-material-plant-map-nb3sn:c0043",
+          "20260930-magnet-material-plant-map-nb3sn:c0141",
+          "20260930-magnet-material-plant-map-nb3sn:c0497",
+          "20260930-magnet-material-plant-map-nb3sn:c0725",
+          "20260930-magnet-material-plant-map-nb3sn:c0465",
+          "20260930-magnet-material-plant-map-nb3sn:c0790",
+          "20260930-magnet-material-plant-map-nb3sn:c0513",
+          "20260930-magnet-material-plant-map-nb3sn:c0466",
+          "20260930-magnet-material-plant-map-nb3sn:c0400",
+          "20260930-magnet-material-plant-map-nb3sn:c0385",
+          "20260930-magnet-material-plant-map-nb3sn:c0262",
+          "20260930-magnet-material-plant-map-nb3sn:c0782",
+          "20260930-magnet-material-plant-map-nb3sn:c0226",
+          "20260930-magnet-material-plant-map-nb3sn:c0205",
+          "20260930-magnet-material-plant-map-nb3sn:c0360",
+          "20260930-magnet-material-plant-map-nb3sn:c0357",
+          "20260930-magnet-material-plant-map-nb3sn:c0080",
+          "20260930-magnet-material-plant-map-nb3sn:c0188",
+          "20260930-magnet-material-plant-map-nb3sn:c0535",
+          "20260930-magnet-material-plant-map-nb3sn:c0183",
+          "20260930-magnet-material-plant-map-nb3sn:c0741",
+          "20260930-magnet-material-plant-map-nb3sn:c0701",
+          "20260930-magnet-material-plant-map-nb3sn:c0338",
+          "20260930-magnet-material-plant-map-nb3sn:c0254",
+          "20260930-magnet-material-plant-map-nb3sn:c0286",
+          "20260930-magnet-material-plant-map-nb3sn:c0253",
+          "20260930-magnet-material-plant-map-nb3sn:c0568",
+          "20260930-magnet-material-plant-map-nb3sn:c0799",
+          "20260930-magnet-material-plant-map-nb3sn:c0632",
+          "20260930-magnet-material-plant-map-nb3sn:c0557",
+          "20260930-magnet-material-plant-map-nb3sn:c0714",
+          "20260930-magnet-material-plant-map-nb3sn:c0419",
+          "20260930-magnet-material-plant-map-nb3sn:c0321",
+          "20260930-magnet-material-plant-map-nb3sn:c0074",
+          "20260930-magnet-material-plant-map-nb3sn:c0432",
+          "20260930-magnet-material-plant-map-nb3sn:c0244",
+          "20260930-magnet-material-plant-map-nb3sn:c0722",
+          "20260930-magnet-material-plant-map-nb3sn:c0347",
+          "20260930-magnet-material-plant-map-nb3sn:c0097",
+          "20260930-magnet-material-plant-map-nb3sn:c0067",
+          "20260930-magnet-material-plant-map-nb3sn:c0668",
+          "20260930-magnet-material-plant-map-nb3sn:c0398",
+          "20260930-magnet-material-plant-map-nb3sn:c0744",
+          "20260930-magnet-material-plant-map-nb3sn:c0529",
+          "20260930-magnet-material-plant-map-nb3sn:c0707",
+          "20260930-magnet-material-plant-map-nb3sn:c0209",
+          "20260930-magnet-material-plant-map-nb3sn:c0711",
+          "20260930-magnet-material-plant-map-nb3sn:c0256",
+          "20260930-magnet-material-plant-map-nb3sn:c0361",
+          "20260930-magnet-material-plant-map-nb3sn:c0638",
+          "20260930-magnet-material-plant-map-nb3sn:c0644",
+          "20260930-magnet-material-plant-map-nb3sn:c0115",
+          "20260930-magnet-material-plant-map-nb3sn:c0331",
+          "20260930-magnet-material-plant-map-nb3sn:c0376",
+          "20260930-magnet-material-plant-map-nb3sn:c0362",
+          "20260930-magnet-material-plant-map-nb3sn:c0294",
+          "20260930-magnet-material-plant-map-nb3sn:c0613",
+          "20260930-magnet-material-plant-map-nb3sn:c0129",
+          "20260930-magnet-material-plant-map-nb3sn:c0126",
+          "20260930-magnet-material-plant-map-nb3sn:c0007",
+          "20260930-magnet-material-plant-map-nb3sn:c0127",
+          "20260930-magnet-material-plant-map-nb3sn:c0053",
+          "20260930-magnet-material-plant-map-nb3sn:c0515",
+          "20260930-magnet-material-plant-map-nb3sn:c0122",
+          "20260930-magnet-material-plant-map-nb3sn:c0187",
+          "20260930-magnet-material-plant-map-nb3sn:c0428",
+          "20260930-magnet-material-plant-map-nb3sn:c0658",
+          "20260930-magnet-material-plant-map-nb3sn:c0000",
+          "20260930-magnet-material-plant-map-nb3sn:c0192",
+          "20260930-magnet-material-plant-map-nb3sn:c0446",
+          "20260930-magnet-material-plant-map-nb3sn:c0648",
+          "20260930-magnet-material-plant-map-nb3sn:c0346",
+          "20260930-magnet-material-plant-map-nb3sn:c0019",
+          "20260930-magnet-material-plant-map-nb3sn:c0666",
+          "20260930-magnet-material-plant-map-nb3sn:c0069",
+          "20260930-magnet-material-plant-map-nb3sn:c0248",
+          "20260930-magnet-material-plant-map-nb3sn:c0366",
+          "20260930-magnet-material-plant-map-nb3sn:c0641",
+          "20260930-magnet-material-plant-map-nb3sn:c0340",
+          "20260930-magnet-material-plant-map-nb3sn:c0218",
+          "20260930-magnet-material-plant-map-nb3sn:c0258",
+          "20260930-magnet-material-plant-map-nb3sn:c0083",
+          "20260930-magnet-material-plant-map-nb3sn:c0541",
+          "20260930-magnet-material-plant-map-nb3sn:c0064",
+          "20260930-magnet-material-plant-map-nb3sn:c0397",
+          "20260930-magnet-material-plant-map-nb3sn:c0157",
+          "20260930-magnet-material-plant-map-nb3sn:c0504",
+          "20260930-magnet-material-plant-map-nb3sn:c0690",
+          "20260930-magnet-material-plant-map-nb3sn:c0394",
+          "20260930-magnet-material-plant-map-nb3sn:c0271",
+          "20260930-magnet-material-plant-map-nb3sn:c0329",
+          "20260930-magnet-material-plant-map-nb3sn:c0304",
+          "20260930-magnet-material-plant-map-nb3sn:c0160",
+          "20260930-magnet-material-plant-map-nb3sn:c0155",
+          "20260930-magnet-material-plant-map-nb3sn:c0405",
+          "20260930-magnet-material-plant-map-nb3sn:c0314",
+          "20260930-magnet-material-plant-map-nb3sn:c0470",
+          "20260930-magnet-material-plant-map-nb3sn:c0221",
+          "20260930-magnet-material-plant-map-nb3sn:c0351",
+          "20260930-magnet-material-plant-map-nb3sn:c0061",
+          "20260930-magnet-material-plant-map-nb3sn:c0380",
+          "20260930-magnet-material-plant-map-nb3sn:c0794",
+          "20260930-magnet-material-plant-map-nb3sn:c0070",
+          "20260930-magnet-material-plant-map-nb3sn:c0176",
+          "20260930-magnet-material-plant-map-nb3sn:c0526",
+          "20260930-magnet-material-plant-map-nb3sn:c0460",
+          "20260930-magnet-material-plant-map-nb3sn:c0144",
+          "20260930-magnet-material-plant-map-nb3sn:c0486",
+          "20260930-magnet-material-plant-map-nb3sn:c0350",
+          "20260930-magnet-material-plant-map-nb3sn:c0143",
+          "20260930-magnet-material-plant-map-nb3sn:c0624",
+          "20260930-magnet-material-plant-map-nb3sn:c0279",
+          "20260930-magnet-material-plant-map-nb3sn:c0293",
+          "20260930-magnet-material-plant-map-nb3sn:c0439",
+          "20260930-magnet-material-plant-map-nb3sn:c0642",
+          "20260930-magnet-material-plant-map-nb3sn:c0655",
+          "20260930-magnet-material-plant-map-nb3sn:c0749",
+          "20260930-magnet-material-plant-map-nb3sn:c0250",
+          "20260930-magnet-material-plant-map-nb3sn:c0404",
+          "20260930-magnet-material-plant-map-nb3sn:c0415",
+          "20260930-magnet-material-plant-map-nb3sn:c0487",
+          "20260930-magnet-material-plant-map-nb3sn:c0352",
+          "20260930-magnet-material-plant-map-nb3sn:c0702",
+          "20260930-magnet-material-plant-map-nb3sn:c0333",
+          "20260930-magnet-material-plant-map-nb3sn:c0743",
+          "20260930-magnet-material-plant-map-nb3sn:c0281",
+          "20260930-magnet-material-plant-map-nb3sn:c0551",
+          "20260930-magnet-material-plant-map-nb3sn:c0496",
+          "20260930-magnet-material-plant-map-nb3sn:c0767",
+          "20260930-magnet-material-plant-map-nb3sn:c0800",
+          "20260930-magnet-material-plant-map-nb3sn:c0425",
+          "20260930-magnet-material-plant-map-nb3sn:c0252",
+          "20260930-magnet-material-plant-map-nb3sn:c0181",
+          "20260930-magnet-material-plant-map-nb3sn:c0407",
+          "20260930-magnet-material-plant-map-nb3sn:c0001",
+          "20260930-magnet-material-plant-map-nb3sn:c0260",
+          "20260930-magnet-material-plant-map-nb3sn:c0694",
+          "20260930-magnet-material-plant-map-nb3sn:c0135",
+          "20260930-magnet-material-plant-map-nb3sn:c0021",
+          "20260930-magnet-material-plant-map-nb3sn:c0548",
+          "20260930-magnet-material-plant-map-nb3sn:c0228",
+          "20260930-magnet-material-plant-map-nb3sn:c0274",
+          "20260930-magnet-material-plant-map-nb3sn:c0137",
+          "20260930-magnet-material-plant-map-nb3sn:c0395",
+          "20260930-magnet-material-plant-map-nb3sn:c0198",
+          "20260930-magnet-material-plant-map-nb3sn:c0010",
+          "20260930-magnet-material-plant-map-nb3sn:c0116",
+          "20260930-magnet-material-plant-map-nb3sn:c0091",
+          "20260930-magnet-material-plant-map-nb3sn:c0332",
+          "20260930-magnet-material-plant-map-nb3sn:c0275",
+          "20260930-magnet-material-plant-map-nb3sn:c0050",
+          "20260930-magnet-material-plant-map-nb3sn:c0306",
+          "20260930-magnet-material-plant-map-nb3sn:c0386",
+          "20260930-magnet-material-plant-map-nb3sn:c0309",
+          "20260930-magnet-material-plant-map-nb3sn:c0748",
+          "20260930-magnet-material-plant-map-nb3sn:c0358",
+          "20260930-magnet-material-plant-map-nb3sn:c0159",
+          "20260930-magnet-material-plant-map-nb3sn:c0713",
+          "20260930-magnet-material-plant-map-nb3sn:c0140",
+          "20260930-magnet-material-plant-map-nb3sn:c0506",
+          "20260930-magnet-material-plant-map-nb3sn:c0686",
+          "20260930-magnet-material-plant-map-nb3sn:c0514",
+          "20260930-magnet-material-plant-map-nb3sn:c0002",
+          "20260930-magnet-material-plant-map-nb3sn:c0308",
+          "20260930-magnet-material-plant-map-nb3sn:c0355",
+          "20260930-magnet-material-plant-map-nb3sn:c0536",
+          "20260930-magnet-material-plant-map-nb3sn:c0764",
+          "20260930-magnet-material-plant-map-nb3sn:c0556",
+          "20260930-magnet-material-plant-map-nb3sn:c0142",
+          "20260930-magnet-material-plant-map-nb3sn:c0498",
+          "20260930-magnet-material-plant-map-nb3sn:c0150",
+          "20260930-magnet-material-plant-map-nb3sn:c0756",
+          "20260930-magnet-material-plant-map-nb3sn:c0421",
+          "20260930-magnet-material-plant-map-nb3sn:c0330",
+          "20260930-magnet-material-plant-map-nb3sn:c0418",
+          "20260930-magnet-material-plant-map-nb3sn:c0056",
+          "20260930-magnet-material-plant-map-nb3sn:c0200",
+          "20260930-magnet-material-plant-map-nb3sn:c0434",
+          "20260930-magnet-material-plant-map-nb3sn:c0706",
+          "20260930-magnet-material-plant-map-nb3sn:c0103",
+          "20260930-magnet-material-plant-map-nb3sn:c0185",
+          "20260930-magnet-material-plant-map-nb3sn:c0445",
+          "20260930-magnet-material-plant-map-nb3sn:c0222",
+          "20260930-magnet-material-plant-map-nb3sn:c0173",
+          "20260930-magnet-material-plant-map-nb3sn:c0442",
+          "20260930-magnet-material-plant-map-nb3sn:c0178",
+          "20260930-magnet-material-plant-map-nb3sn:c0675",
+          "20260930-magnet-material-plant-map-nb3sn:c0152",
+          "20260930-magnet-material-plant-map-nb3sn:c0543",
+          "20260930-magnet-material-plant-map-nb3sn:c0673",
+          "20260930-magnet-material-plant-map-nb3sn:c0472",
+          "20260930-magnet-material-plant-map-nb3sn:c0586",
+          "20260930-magnet-material-plant-map-nb3sn:c0236",
+          "20260930-magnet-material-plant-map-nb3sn:c0677",
+          "20260930-magnet-material-plant-map-nb3sn:c0076",
+          "20260930-magnet-material-plant-map-nb3sn:c0383",
+          "20260930-magnet-material-plant-map-nb3sn:c0359",
+          "20260930-magnet-material-plant-map-nb3sn:c0255",
+          "20260930-magnet-material-plant-map-nb3sn:c0022",
+          "20260930-magnet-material-plant-map-nb3sn:c0420",
+          "20260930-magnet-material-plant-map-nb3sn:c0474",
+          "20260930-magnet-material-plant-map-nb3sn:c0343",
+          "20260930-magnet-material-plant-map-nb3sn:c0046",
+          "20260930-magnet-material-plant-map-nb3sn:c0085",
+          "20260930-magnet-material-plant-map-nb3sn:c0213",
+          "20260930-magnet-material-plant-map-nb3sn:c0768",
+          "20260930-magnet-material-plant-map-nb3sn:c0336",
+          "20260930-magnet-material-plant-map-nb3sn:c0426",
+          "20260930-magnet-material-plant-map-nb3sn:c0647",
+          "20260930-magnet-material-plant-map-nb3sn:c0804",
+          "20260930-magnet-material-plant-map-nb3sn:c0509",
+          "20260930-magnet-material-plant-map-nb3sn:c0592",
+          "20260930-magnet-material-plant-map-nb3sn:c0640",
+          "20260930-magnet-material-plant-map-nb3sn:c0589",
+          "20260930-magnet-material-plant-map-nb3sn:c0569",
+          "20260930-magnet-material-plant-map-nb3sn:c0101",
+          "20260930-magnet-material-plant-map-nb3sn:c0238",
+          "20260930-magnet-material-plant-map-nb3sn:c0266",
+          "20260930-magnet-material-plant-map-nb3sn:c0023",
+          "20260930-magnet-material-plant-map-nb3sn:c0626",
+          "20260930-magnet-material-plant-map-nb3sn:c0621",
+          "20260930-magnet-material-plant-map-nb3sn:c0788",
+          "20260930-magnet-material-plant-map-nb3sn:c0739",
+          "20260930-magnet-material-plant-map-nb3sn:c0196",
+          "20260930-magnet-material-plant-map-nb3sn:c0326",
+          "20260930-magnet-material-plant-map-nb3sn:c0774",
+          "20260930-magnet-material-plant-map-nb3sn:c0280",
+          "20260930-magnet-material-plant-map-nb3sn:c0013",
+          "20260930-magnet-material-plant-map-nb3sn:c0503",
+          "20260930-magnet-material-plant-map-nb3sn:c0290",
+          "20260930-magnet-material-plant-map-nb3sn:c0597",
+          "20260930-magnet-material-plant-map-nb3sn:c0451",
+          "20260930-magnet-material-plant-map-nb3sn:c0634",
+          "20260930-magnet-material-plant-map-nb3sn:c0328",
+          "20260930-magnet-material-plant-map-nb3sn:c0437",
+          "20260930-magnet-material-plant-map-nb3sn:c0697",
+          "20260930-magnet-material-plant-map-nb3sn:c0214",
+          "20260930-magnet-material-plant-map-nb3sn:c0493",
+          "20260930-magnet-material-plant-map-nb3sn:c0620",
+          "20260930-magnet-material-plant-map-nb3sn:c0532",
+          "20260930-magnet-material-plant-map-nb3sn:c0035",
+          "20260930-magnet-material-plant-map-nb3sn:c0108",
+          "20260930-magnet-material-plant-map-nb3sn:c0500",
+          "20260930-magnet-material-plant-map-nb3sn:c0278",
+          "20260930-magnet-material-plant-map-nb3sn:c0410"
+        ]
+      },
+      "worst_channel_rel_dev": 1.9407028534003853e-06,
+      "worst_at": {
+        "case_id": "20260930-magnet-material-plant-map-nb3sn:c0667",
+        "channel": "stellarator_09_materials__nb3sn_material__magnet__conductor__acceptance_margin",
+        "value": 1.9129231231040933e-05
+      }
+    }
+  ],
+  "tolerance": 1e-09,
+  "channels_checked": [
+    {
+      "channel": "stellarator_09_materials__nb3sn_material__blanket__first_wall__wall_peak_calc__wall_load_peak",
+      "objective": null
+    },
+    {
+      "channel": "stellarator_09_materials__nb3sn_material__breeding_adequacy__defined_flag",
+      "objective": null
+    },
+    {
+      "channel": "stellarator_09_materials__nb3sn_material__breeding_adequacy__numerical_margin",
+      "objective": null
+    },
+    {
+      "channel": "stellarator_09_materials__nb3sn_material__buildings__layout__capacity_margin_units",
+      "objective": null
+    },
+    {
+      "channel": "stellarator_09_materials__nb3sn_material__buildings__layout__geometry_fit_margin_m",
+      "objective": null
+    },
+    {
+      "channel": "stellarator_09_materials__nb3sn_material__buildings__layout__initial_margin_days",
+      "objective": null
+    },
+    {
+      "channel": "stellarator_09_materials__nb3sn_material__buildings__layout__occupancy_area_margin_m2",
+      "objective": null
+    },
+    {
+      "channel": "stellarator_09_materials__nb3sn_material__buildings__layout__outage_margin_days",
+      "objective": null
+    },
+    {
+      "channel": "stellarator_09_materials__nb3sn_material__buildings__layout__parcel_fit_margin_m",
+      "objective": null
+    },
+    {
+      "channel": "stellarator_09_materials__nb3sn_material__buildings__layout__readiness_margin_days",
+      "objective": null
+    },
+    {
+      "channel": "stellarator_09_materials__nb3sn_material__buildings__layout__route_margin_m",
+      "objective": null
+    },
+    {
+      "channel": "stellarator_09_materials__nb3sn_material__buildings__layout__unused_material_capacity",
+      "objective": null
+    },
+    {
+      "channel": "stellarator_09_materials__nb3sn_material__cryoplant__aux_cooling__cryo_cost",
+      "objective": "cryo_capital"
+    },
+    {
+      "channel": "stellarator_09_materials__nb3sn_material__cryoplant__cold_stage_capability__evaluation_defined",
+      "objective": null
+    },
+    {
+      "channel": "stellarator_09_materials__nb3sn_material__cryoplant__cold_stage_capability__margin",
+      "objective": null
+    },
+    {
+      "channel": "stellarator_09_materials__nb3sn_material__cryoplant__direct_electric_capability__evaluation_defined",
+      "objective": null
+    },
+    {
+      "channel": "stellarator_09_materials__nb3sn_material__cryoplant__direct_electric_capability__margin",
+      "objective": null
+    },
+    {
+      "channel": "stellarator_09_materials__nb3sn_material__cryoplant__intercept_stage_capability__evaluation_defined",
+      "objective": null
+    },
+    {
+      "channel": "stellarator_09_materials__nb3sn_material__cryoplant__intercept_stage_capability__margin",
+      "objective": null
+    },
+    {
+      "channel": "stellarator_09_materials__nb3sn_material__cryoplant__refrigeration__capacity_margin",
+      "objective": null
+    },
+    {
+      "channel": "stellarator_09_materials__nb3sn_material__divertor__divheat__q_target_peak",
+      "objective": null
+    },
+    {
+      "channel": "stellarator_09_materials__nb3sn_material__electric_plant__electric_gross_capability__evaluation_defined",
+      "objective": null
+    },
+    {
+      "channel": "stellarator_09_materials__nb3sn_material__electric_plant__electric_gross_capability__margin",
+      "objective": null
+    },
+    {
+      "channel": "stellarator_09_materials__nb3sn_material__fuel_cycle__processing_cost__capacity_evaluation_defined",
+      "objective": null
+    },
+    {
+      "channel": "stellarator_09_materials__nb3sn_material__fuel_cycle__processing_cost__capacity_margin_kg_s",
+      "objective": null
+    },
+    {
+      "channel": "stellarator_09_materials__nb3sn_material__heat_rejection__cooling_water__condenser_water_gap_K",
+      "objective": null
+    },
+    {
+      "channel": "stellarator_09_materials__nb3sn_material__heat_rejection__water_electric_capability__evaluation_defined",
+      "objective": null
+    },
+    {
+      "channel": "stellarator_09_materials__nb3sn_material__heat_rejection__water_electric_capability__margin",
+      "objective": null
+    },
+    {
+      "channel": "stellarator_09_materials__nb3sn_material__heat_rejection__water_flow_capability__evaluation_defined",
+      "objective": null
+    },
+    {
+      "channel": "stellarator_09_materials__nb3sn_material__heat_rejection__water_flow_capability__margin",
+      "objective": null
+    },
+    {
+      "channel": "stellarator_09_materials__nb3sn_material__heat_rejection__water_head_capability__evaluation_defined",
+      "objective": null
+    },
+    {
+      "channel": "stellarator_09_materials__nb3sn_material__heat_rejection__water_head_capability__margin",
+      "objective": null
+    },
+    {
+      "channel": "stellarator_09_materials__nb3sn_material__heat_rejection__water_rejection_capability__evaluation_defined",
+      "objective": null
+    },
+    {
+      "channel": "stellarator_09_materials__nb3sn_material__heat_rejection__water_rejection_capability__margin",
+      "objective": null
+    },
+    {
+      "channel": "stellarator_09_materials__nb3sn_material__heat_transport__equipment__helium_represented_fill_margin_kg",
+      "objective": null
+    },
+    {
+      "channel": "stellarator_09_materials__nb3sn_material__heat_transport__equipment__ihx_capacity_defined",
+      "objective": null
+    },
+    {
+      "channel": "stellarator_09_materials__nb3sn_material__heat_transport__equipment__ihx_capacity_margin_m2",
+      "objective": null
+    },
+    {
+      "channel": "stellarator_09_materials__nb3sn_material__heat_transport__equipment__represented_fill_defined",
+      "objective": null
+    },
+    {
+      "channel": "stellarator_09_materials__nb3sn_material__heat_transport__equipment__salt_represented_fill_margin_kg",
+      "objective": null
+    },
+    {
+      "channel": "stellarator_09_materials__nb3sn_material__heat_transport__helium_electric_capability__evaluation_defined",
+      "objective": null
+    },
+    {
+      "channel": "stellarator_09_materials__nb3sn_material__heat_transport__helium_electric_capability__margin",
+      "objective": null
+    },
+    {
+      "channel": "stellarator_09_materials__nb3sn_material__heat_transport__helium_flow_capability__evaluation_defined",
+      "objective": null
+    },
+    {
+      "channel": "stellarator_09_materials__nb3sn_material__heat_transport__helium_flow_capability__margin",
+      "objective": null
+    },
+    {
+      "channel": "stellarator_09_materials__nb3sn_material__heat_transport__helium_pressure_rise_capability__evaluation_defined",
+      "objective": null
+    },
+    {
+      "channel": "stellarator_09_materials__nb3sn_material__heat_transport__helium_pressure_rise_capability__margin",
+      "objective": null
+    },
+    {
+      "channel": "stellarator_09_materials__nb3sn_material__heat_transport__helium_pumping_capability__evaluation_defined",
+      "objective": null
+    },
+    {
+      "channel": "stellarator_09_materials__nb3sn_material__heat_transport__helium_pumping_capability__margin",
+      "objective": null
+    },
+    {
+      "channel": "stellarator_09_materials__nb3sn_material__heat_transport__primary_loop__mdot_loop",
+      "objective": null
+    },
+    {
+      "channel": "stellarator_09_materials__nb3sn_material__heat_transport__primary_loop__p_loop_margin",
+      "objective": null
+    },
+    {
+      "channel": "stellarator_09_materials__nb3sn_material__heat_transport__salt_electric_capability__evaluation_defined",
+      "objective": null
+    },
+    {
+      "channel": "stellarator_09_materials__nb3sn_material__heat_transport__salt_electric_capability__margin",
+      "objective": null
+    },
+    {
+      "channel": "stellarator_09_materials__nb3sn_material__heat_transport__salt_flow_capability__evaluation_defined",
+      "objective": null
+    },
+    {
+      "channel": "stellarator_09_materials__nb3sn_material__heat_transport__salt_flow_capability__margin",
+      "objective": null
+    },
+    {
+      "channel": "stellarator_09_materials__nb3sn_material__heat_transport__salt_head_capability__evaluation_defined",
+      "objective": null
+    },
+    {
+      "channel": "stellarator_09_materials__nb3sn_material__heat_transport__salt_head_capability__margin",
+      "objective": null
+    },
+    {
+      "channel": "stellarator_09_materials__nb3sn_material__heat_transport__salt_shaft_capability__evaluation_defined",
+      "objective": null
+    },
+    {
+      "channel": "stellarator_09_materials__nb3sn_material__heat_transport__salt_shaft_capability__margin",
+      "objective": null
+    },
+    {
+      "channel": "stellarator_09_materials__nb3sn_material__heating__heat__p_coupled",
+      "objective": null
+    },
+    {
+      "channel": "stellarator_09_materials__nb3sn_material__lcoe_calc__lcoe",
+      "objective": "lcoe"
+    },
+    {
+      "channel": "stellarator_09_materials__nb3sn_material__magnet__area__cu_margin",
+      "objective": null
+    },
+    {
+      "channel": "stellarator_09_materials__nb3sn_material__magnet__area__fit_margin",
+      "objective": null
+    },
+    {
+      "channel": "stellarator_09_materials__nb3sn_material__magnet__area__steel_margin",
+      "objective": null
+    },
+    {
+      "channel": "stellarator_09_materials__nb3sn_material__magnet__cond_strain__eps_cond",
+      "objective": null
+    },
+    {
+      "channel": "stellarator_09_materials__nb3sn_material__magnet__conductor__acceptance_margin",
+      "objective": null
+    },
+    {
+      "channel": "stellarator_09_materials__nb3sn_material__magnet__conductor__supported",
+      "objective": null
+    },
+    {
+      "channel": "stellarator_09_materials__nb3sn_material__magnet__magnet_capital_rollup__capital_cost",
+      "objective": "magnet_capital"
+    },
+    {
+      "channel": "stellarator_09_materials__nb3sn_material__magnet__pack_field__ampere_floor_margin",
+      "objective": null
+    },
+    {
+      "channel": "stellarator_09_materials__nb3sn_material__magnet__peak_field_calc__B_peak",
+      "objective": null
+    },
+    {
+      "channel": "stellarator_09_materials__nb3sn_material__magnet__wp_fit__minimum_margin",
+      "objective": null
+    },
+    {
+      "channel": "stellarator_09_materials__nb3sn_material__magnet__wp_stress__sigma_wp",
+      "objective": null
+    },
+    {
+      "channel": "stellarator_09_materials__nb3sn_material__pb__p_net",
+      "objective": "p_net"
+    },
+    {
+      "channel": "stellarator_09_materials__nb3sn_material__pb__rec_frac",
+      "objective": null
+    },
+    {
+      "channel": "stellarator_09_materials__nb3sn_material__plasma__beta_calc__beta",
+      "objective": null
+    },
+    {
+      "channel": "stellarator_09_materials__nb3sn_material__plasma__sustain__p_aux_required",
+      "objective": "p_aux_required"
+    },
+    {
+      "channel": "stellarator_09_materials__nb3sn_material__power_supplies__magnet_pf_electric_capability__evaluation_defined",
+      "objective": null
+    },
+    {
+      "channel": "stellarator_09_materials__nb3sn_material__power_supplies__magnet_pf_electric_capability__margin",
+      "objective": null
+    },
+    {
+      "channel": "stellarator_09_materials__nb3sn_material__power_supplies__magnet_tf_electric_capability__evaluation_defined",
+      "objective": null
+    },
+    {
+      "channel": "stellarator_09_materials__nb3sn_material__power_supplies__magnet_tf_electric_capability__margin",
+      "objective": null
+    },
+    {
+      "channel": "stellarator_09_materials__nb3sn_material__total_capital__total_capital",
+      "objective": "total_capital"
+    },
+    {
+      "channel": "stellarator_09_materials__nb3sn_material__turbine__condensate_electric_capability__evaluation_defined",
+      "objective": null
+    },
+    {
+      "channel": "stellarator_09_materials__nb3sn_material__turbine__condensate_electric_capability__margin",
+      "objective": null
+    },
+    {
+      "channel": "stellarator_09_materials__nb3sn_material__turbine__condensate_flow_capability__evaluation_defined",
+      "objective": null
+    },
+    {
+      "channel": "stellarator_09_materials__nb3sn_material__turbine__condensate_flow_capability__margin",
+      "objective": null
+    },
+    {
+      "channel": "stellarator_09_materials__nb3sn_material__turbine__condensate_pressure_rise_capability__evaluation_defined",
+      "objective": null
+    },
+    {
+      "channel": "stellarator_09_materials__nb3sn_material__turbine__condensate_pressure_rise_capability__margin",
+      "objective": null
+    },
+    {
+      "channel": "stellarator_09_materials__nb3sn_material__turbine__condenser_rejection_capability__evaluation_defined",
+      "objective": null
+    },
+    {
+      "channel": "stellarator_09_materials__nb3sn_material__turbine__condenser_rejection_capability__margin",
+      "objective": null
+    },
+    {
+      "channel": "stellarator_09_materials__nb3sn_material__turbine__cycle__domain_product",
+      "objective": null
+    },
+    {
+      "channel": "stellarator_09_materials__nb3sn_material__turbine__feedwater_electric_capability__evaluation_defined",
+      "objective": null
+    },
+    {
+      "channel": "stellarator_09_materials__nb3sn_material__turbine__feedwater_electric_capability__margin",
+      "objective": null
+    },
+    {
+      "channel": "stellarator_09_materials__nb3sn_material__turbine__feedwater_flow_capability__evaluation_defined",
+      "objective": null
+    },
+    {
+      "channel": "stellarator_09_materials__nb3sn_material__turbine__feedwater_flow_capability__margin",
+      "objective": null
+    },
+    {
+      "channel": "stellarator_09_materials__nb3sn_material__turbine__feedwater_pressure_rise_capability__evaluation_defined",
+      "objective": null
+    },
+    {
+      "channel": "stellarator_09_materials__nb3sn_material__turbine__feedwater_pressure_rise_capability__margin",
+      "objective": null
+    },
+    {
+      "channel": "stellarator_09_materials__nb3sn_material__turbine__hp_flow_capability__evaluation_defined",
+      "objective": null
+    },
+    {
+      "channel": "stellarator_09_materials__nb3sn_material__turbine__hp_flow_capability__margin",
+      "objective": null
+    },
+    {
+      "channel": "stellarator_09_materials__nb3sn_material__turbine__hp_shaft_capability__evaluation_defined",
+      "objective": null
+    },
+    {
+      "channel": "stellarator_09_materials__nb3sn_material__turbine__hp_shaft_capability__margin",
+      "objective": null
+    },
+    {
+      "channel": "stellarator_09_materials__nb3sn_material__turbine__lp_flow_capability__evaluation_defined",
+      "objective": null
+    },
+    {
+      "channel": "stellarator_09_materials__nb3sn_material__turbine__lp_flow_capability__margin",
+      "objective": null
+    },
+    {
+      "channel": "stellarator_09_materials__nb3sn_material__turbine__lp_shaft_capability__evaluation_defined",
+      "objective": null
+    },
+    {
+      "channel": "stellarator_09_materials__nb3sn_material__turbine__lp_shaft_capability__margin",
+      "objective": null
+    },
+    {
+      "channel": "stellarator_09_materials__nb3sn_material__turbine__main_UA_capability__evaluation_defined",
+      "objective": null
+    },
+    {
+      "channel": "stellarator_09_materials__nb3sn_material__turbine__main_UA_capability__margin",
+      "objective": null
+    },
+    {
+      "channel": "stellarator_09_materials__nb3sn_material__turbine__matched_cycle__main_min_gap_K",
+      "objective": null
+    },
+    {
+      "channel": "stellarator_09_materials__nb3sn_material__turbine__matched_cycle__reheat_min_gap_K",
+      "objective": null
+    },
+    {
+      "channel": "stellarator_09_materials__nb3sn_material__turbine__reheat_UA_capability__evaluation_defined",
+      "objective": null
+    },
+    {
+      "channel": "stellarator_09_materials__nb3sn_material__turbine__reheat_UA_capability__margin",
+      "objective": null
+    },
+    {
+      "channel": "stellarator_09_materials__nb3sn_material__turbine__turbine_gross_capability__evaluation_defined",
+      "objective": null
+    },
+    {
+      "channel": "stellarator_09_materials__nb3sn_material__turbine__turbine_gross_capability__margin",
+      "objective": null
+    }
+  ],
+  "verdicts_rederived": true,
+  "constraints_rederived": [
+    {
+      "constraint_id": "stellarator_09_materials__nb3sn_material__beta_ok__a6d1355f00db8834",
+      "source_local_identity": "beta_ok",
+      "operands_resolved": 2
+    },
+    {
+      "constraint_id": "stellarator_09_materials__nb3sn_material__burn_hold_ok__8a46a7e0aeda985a",
+      "source_local_identity": "burn_hold_ok",
+      "operands_resolved": 1
+    },
+    {
+      "constraint_id": "stellarator_09_materials__nb3sn_material__cold_stage_capacity_ok__53d0507e047820a1",
+      "source_local_identity": "cold_stage_capacity_ok",
+      "operands_resolved": 2
+    },
+    {
+      "constraint_id": "stellarator_09_materials__nb3sn_material__cond_strain_ok__404dca1f50a13e3a",
+      "source_local_identity": "cond_strain_ok",
+      "operands_resolved": 2
+    },
+    {
+      "constraint_id": "stellarator_09_materials__nb3sn_material__condensate_electric_capacity_ok__886bd4436560bb81",
+      "source_local_identity": "condensate_electric_capacity_ok",
+      "operands_resolved": 2
+    },
+    {
+      "constraint_id": "stellarator_09_materials__nb3sn_material__condensate_flow_capacity_ok__ced096a46a13bff0",
+      "source_local_identity": "condensate_flow_capacity_ok",
+      "operands_resolved": 2
+    },
+    {
+      "constraint_id": "stellarator_09_materials__nb3sn_material__condensate_pressure_rise_capacity_ok__4758ab1d486197ab",
+      "source_local_identity": "condensate_pressure_rise_capacity_ok",
+      "operands_resolved": 2
+    },
+    {
+      "constraint_id": "stellarator_09_materials__nb3sn_material__condenser_rejection_capacity_ok__27ac304fc5982908",
+      "source_local_identity": "condenser_rejection_capacity_ok",
+      "operands_resolved": 2
+    },
+    {
+      "constraint_id": "stellarator_09_materials__nb3sn_material__cooling_water_heat_direction__96754d6cc5733ef5",
+      "source_local_identity": "cooling_water_heat_direction",
+      "operands_resolved": 2
+    },
+    {
+      "constraint_id": "stellarator_09_materials__nb3sn_material__cryoplant__capacity_ok__8830dacf5e39e904",
+      "source_local_identity": "capacity_ok",
+      "operands_resolved": 1
+    },
+    {
+      "constraint_id": "stellarator_09_materials__nb3sn_material__cycle_domain_ok__76acde2a26a78109",
+      "source_local_identity": "cycle_domain_ok",
+      "operands_resolved": 1
+    },
+    {
+      "constraint_id": "stellarator_09_materials__nb3sn_material__direct_electric_capacity_ok__a285e66b19ed2cb4",
+      "source_local_identity": "direct_electric_capacity_ok",
+      "operands_resolved": 2
+    },
+    {
+      "constraint_id": "stellarator_09_materials__nb3sn_material__divertor_heat_ok__84770e9a36dc1b57",
+      "source_local_identity": "divertor_heat_ok",
+      "operands_resolved": 2
+    },
+    {
+      "constraint_id": "stellarator_09_materials__nb3sn_material__electric_gross_capacity_ok__488a485d1eb1e88b",
+      "source_local_identity": "electric_gross_capacity_ok",
+      "operands_resolved": 2
+    },
+    {
+      "constraint_id": "stellarator_09_materials__nb3sn_material__facility_capacity_ok__6d4fb7d42a36d0a7",
+      "source_local_identity": "facility_capacity_ok",
+      "operands_resolved": 1
+    },
+    {
+      "constraint_id": "stellarator_09_materials__nb3sn_material__facility_geometry_ok__14b78dfe909c8501",
+      "source_local_identity": "facility_geometry_ok",
+      "operands_resolved": 1
+    },
+    {
+      "constraint_id": "stellarator_09_materials__nb3sn_material__facility_initial_ready__bd8b5a0e4ec512f7",
+      "source_local_identity": "facility_initial_ready",
+      "operands_resolved": 1
+    },
+    {
+      "constraint_id": "stellarator_09_materials__nb3sn_material__facility_material_capacity_ok__c7de34bf2e881cc4",
+      "source_local_identity": "facility_material_capacity_ok",
+      "operands_resolved": 1
+    },
+    {
+      "constraint_id": "stellarator_09_materials__nb3sn_material__facility_occupancy_ok__e81ea8f8cf26823a",
+      "source_local_identity": "facility_occupancy_ok",
+      "operands_resolved": 1
+    },
+    {
+      "constraint_id": "stellarator_09_materials__nb3sn_material__facility_outage_ok__93bfd834822ee642",
+      "source_local_identity": "facility_outage_ok",
+      "operands_resolved": 1
+    },
+    {
+      "constraint_id": "stellarator_09_materials__nb3sn_material__facility_parcel_ok__99f0ef2cd6538d03",
+      "source_local_identity": "facility_parcel_ok",
+      "operands_resolved": 1
+    },
+    {
+      "constraint_id": "stellarator_09_materials__nb3sn_material__facility_replacement_ready__7aa76b338808935e",
+      "source_local_identity": "facility_replacement_ready",
+      "operands_resolved": 1
+    },
+    {
+      "constraint_id": "stellarator_09_materials__nb3sn_material__facility_routes_ok__50ce1d1c00491ff5",
+      "source_local_identity": "facility_routes_ok",
+      "operands_resolved": 1
+    },
+    {
+      "constraint_id": "stellarator_09_materials__nb3sn_material__feedwater_electric_capacity_ok__c45a8ca67324291d",
+      "source_local_identity": "feedwater_electric_capacity_ok",
+      "operands_resolved": 2
+    },
+    {
+      "constraint_id": "stellarator_09_materials__nb3sn_material__feedwater_flow_capacity_ok__3bcdd6d04c7a0abb",
+      "source_local_identity": "feedwater_flow_capacity_ok",
+      "operands_resolved": 2
+    },
+    {
+      "constraint_id": "stellarator_09_materials__nb3sn_material__feedwater_pressure_rise_capacity_ok__92e4f80e79613b88",
+      "source_local_identity": "feedwater_pressure_rise_capacity_ok",
+      "operands_resolved": 2
+    },
+    {
+      "constraint_id": "stellarator_09_materials__nb3sn_material__fuel_processing_capacity_ok__d36667b777c42fe9",
+      "source_local_identity": "fuel_processing_capacity_ok",
+      "operands_resolved": 2
+    },
+    {
+      "constraint_id": "stellarator_09_materials__nb3sn_material__heating_couple_positive_ok__31dbd874e3b68e88",
+      "source_local_identity": "heating_couple_positive_ok",
+      "operands_resolved": 1
+    },
+    {
+      "constraint_id": "stellarator_09_materials__nb3sn_material__heating_couple_upper_ok__0e4c29c53a56780e",
+      "source_local_identity": "heating_couple_upper_ok",
+      "operands_resolved": 1
+    },
+    {
+      "constraint_id": "stellarator_09_materials__nb3sn_material__heating_source_positive_ok__d489a4b936f894ba",
+      "source_local_identity": "heating_source_positive_ok",
+      "operands_resolved": 1
+    },
+    {
+      "constraint_id": "stellarator_09_materials__nb3sn_material__heating_source_upper_ok__91d002eb84ef7479",
+      "source_local_identity": "heating_source_upper_ok",
+      "operands_resolved": 1
+    },
+    {
+      "constraint_id": "stellarator_09_materials__nb3sn_material__helium_electric_capacity_ok__b6ae0d7d280eacb4",
+      "source_local_identity": "helium_electric_capacity_ok",
+      "operands_resolved": 2
+    },
+    {
+      "constraint_id": "stellarator_09_materials__nb3sn_material__helium_flow_capacity_ok__631fba08153122f2",
+      "source_local_identity": "helium_flow_capacity_ok",
+      "operands_resolved": 2
+    },
+    {
+      "constraint_id": "stellarator_09_materials__nb3sn_material__helium_pressure_rise_capacity_ok__4bbd03d1c0fdffdc",
+      "source_local_identity": "helium_pressure_rise_capacity_ok",
+      "operands_resolved": 2
+    },
+    {
+      "constraint_id": "stellarator_09_materials__nb3sn_material__helium_pumping_capacity_ok__e41cbf588edbe7d8",
+      "source_local_identity": "helium_pumping_capacity_ok",
+      "operands_resolved": 2
+    },
+    {
+      "constraint_id": "stellarator_09_materials__nb3sn_material__hp_flow_capacity_ok__cc7e78dbd3c706de",
+      "source_local_identity": "hp_flow_capacity_ok",
+      "operands_resolved": 2
+    },
+    {
+      "constraint_id": "stellarator_09_materials__nb3sn_material__hp_shaft_capacity_ok__06729372362a4c6b",
+      "source_local_identity": "hp_shaft_capacity_ok",
+      "operands_resolved": 2
+    },
+    {
+      "constraint_id": "stellarator_09_materials__nb3sn_material__ihx_capacity_ok__e4869509b6443c3b",
+      "source_local_identity": "ihx_capacity_ok",
+      "operands_resolved": 2
+    },
+    {
+      "constraint_id": "stellarator_09_materials__nb3sn_material__intercept_stage_capacity_ok__94f24b6c7d86d868",
+      "source_local_identity": "intercept_stage_capacity_ok",
+      "operands_resolved": 2
+    },
+    {
+      "constraint_id": "stellarator_09_materials__nb3sn_material__loop_capacity_ok__a12ef69878182648",
+      "source_local_identity": "loop_capacity_ok",
+      "operands_resolved": 2
+    },
+    {
+      "constraint_id": "stellarator_09_materials__nb3sn_material__loop_pressure_ok__f97fa1dc432c78ba",
+      "source_local_identity": "loop_pressure_ok",
+      "operands_resolved": 1
+    },
+    {
+      "constraint_id": "stellarator_09_materials__nb3sn_material__lp_flow_capacity_ok__b9357da3012ec632",
+      "source_local_identity": "lp_flow_capacity_ok",
+      "operands_resolved": 2
+    },
+    {
+      "constraint_id": "stellarator_09_materials__nb3sn_material__lp_shaft_capacity_ok__ef6a20387b2fc647",
+      "source_local_identity": "lp_shaft_capacity_ok",
+      "operands_resolved": 2
+    },
+    {
+      "constraint_id": "stellarator_09_materials__nb3sn_material__magnet__acceptance_ok__0f682bc3436c0794",
+      "source_local_identity": "acceptance_ok",
+      "operands_resolved": 2
+    },
+    {
+      "constraint_id": "stellarator_09_materials__nb3sn_material__magnet__ampere_floor_ok__bbe387e1eb85f9b9",
+      "source_local_identity": "ampere_floor_ok",
+      "operands_resolved": 1
+    },
+    {
+      "constraint_id": "stellarator_09_materials__nb3sn_material__magnet__copper_ok__be9121bc3fcdea7a",
+      "source_local_identity": "copper_ok",
+      "operands_resolved": 1
+    },
+    {
+      "constraint_id": "stellarator_09_materials__nb3sn_material__magnet__pack_area_ok__51632f8f2a7b1d5f",
+      "source_local_identity": "pack_area_ok",
+      "operands_resolved": 1
+    },
+    {
+      "constraint_id": "stellarator_09_materials__nb3sn_material__magnet__steel_ok__3f894fc95501d96d",
+      "source_local_identity": "steel_ok",
+      "operands_resolved": 1
+    },
+    {
+      "constraint_id": "stellarator_09_materials__nb3sn_material__magnet_pf_electric_capacity_ok__ca95b633e7cc10d5",
+      "source_local_identity": "magnet_pf_electric_capacity_ok",
+      "operands_resolved": 2
+    },
+    {
+      "constraint_id": "stellarator_09_materials__nb3sn_material__magnet_tf_electric_capacity_ok__e99855ae6bf1b46e",
+      "source_local_identity": "magnet_tf_electric_capacity_ok",
+      "operands_resolved": 2
+    },
+    {
+      "constraint_id": "stellarator_09_materials__nb3sn_material__main_UA_capacity_ok__5ee8c284f5da46ad",
+      "source_local_identity": "main_UA_capacity_ok",
+      "operands_resolved": 2
+    },
+    {
+      "constraint_id": "stellarator_09_materials__nb3sn_material__matched_main_heat_direction__67f41575de96bd94",
+      "source_local_identity": "matched_main_heat_direction",
+      "operands_resolved": 2
+    },
+    {
+      "constraint_id": "stellarator_09_materials__nb3sn_material__matched_reheat_heat_direction__9cff90d247be59e3",
+      "source_local_identity": "matched_reheat_heat_direction",
+      "operands_resolved": 2
+    },
+    {
+      "constraint_id": "stellarator_09_materials__nb3sn_material__net_positive__2ff2061dd70a24f7",
+      "source_local_identity": "net_positive",
+      "operands_resolved": 1
+    },
+    {
+      "constraint_id": "stellarator_09_materials__nb3sn_material__peak_field_ok__1fcd44510d5ceb9a",
+      "source_local_identity": "peak_field_ok",
+      "operands_resolved": 2
+    },
+    {
+      "constraint_id": "stellarator_09_materials__nb3sn_material__recirc_ok__097dfc7574999504",
+      "source_local_identity": "recirc_ok",
+      "operands_resolved": 2
+    },
+    {
+      "constraint_id": "stellarator_09_materials__nb3sn_material__reference_conductor_current_ok__ed9bbbfb7399171f",
+      "source_local_identity": "reference_conductor_current_ok",
+      "operands_resolved": 1
+    },
+    {
+      "constraint_id": "stellarator_09_materials__nb3sn_material__reheat_UA_capacity_ok__3832be39603086f5",
+      "source_local_identity": "reheat_UA_capacity_ok",
+      "operands_resolved": 2
+    },
+    {
+      "constraint_id": "stellarator_09_materials__nb3sn_material__represented_coolant_fill_ok__81ed94010b513177",
+      "source_local_identity": "represented_coolant_fill_ok",
+      "operands_resolved": 3
+    },
+    {
+      "constraint_id": "stellarator_09_materials__nb3sn_material__salt_electric_capacity_ok__320f302447d67a70",
+      "source_local_identity": "salt_electric_capacity_ok",
+      "operands_resolved": 2
+    },
+    {
+      "constraint_id": "stellarator_09_materials__nb3sn_material__salt_flow_capacity_ok__090e097c99199295",
+      "source_local_identity": "salt_flow_capacity_ok",
+      "operands_resolved": 2
+    },
+    {
+      "constraint_id": "stellarator_09_materials__nb3sn_material__salt_head_capacity_ok__a3f15f8c47fee4d0",
+      "source_local_identity": "salt_head_capacity_ok",
+      "operands_resolved": 2
+    },
+    {
+      "constraint_id": "stellarator_09_materials__nb3sn_material__salt_shaft_capacity_ok__316c1c5c7f51a07c",
+      "source_local_identity": "salt_shaft_capacity_ok",
+      "operands_resolved": 2
+    },
+    {
+      "constraint_id": "stellarator_09_materials__nb3sn_material__sustainment_ok__1a778604648c352e",
+      "source_local_identity": "sustainment_ok",
+      "operands_resolved": 2
+    },
+    {
+      "constraint_id": "stellarator_09_materials__nb3sn_material__tbr_ok__d57174176b5d2862",
+      "source_local_identity": "tbr_ok",
+      "operands_resolved": 2
+    },
+    {
+      "constraint_id": "stellarator_09_materials__nb3sn_material__turbine_gross_capacity_ok__946403aa70c1c824",
+      "source_local_identity": "turbine_gross_capacity_ok",
+      "operands_resolved": 2
+    },
+    {
+      "constraint_id": "stellarator_09_materials__nb3sn_material__wall_load_ok__41289e190845d753",
+      "source_local_identity": "wall_load_ok",
+      "operands_resolved": 2
+    },
+    {
+      "constraint_id": "stellarator_09_materials__nb3sn_material__water_electric_capacity_ok__d2e2ee4a515ad778",
+      "source_local_identity": "water_electric_capacity_ok",
+      "operands_resolved": 2
+    },
+    {
+      "constraint_id": "stellarator_09_materials__nb3sn_material__water_flow_capacity_ok__71de9e2671863dbc",
+      "source_local_identity": "water_flow_capacity_ok",
+      "operands_resolved": 2
+    },
+    {
+      "constraint_id": "stellarator_09_materials__nb3sn_material__water_head_capacity_ok__148d2392c7e3b09e",
+      "source_local_identity": "water_head_capacity_ok",
+      "operands_resolved": 2
+    },
+    {
+      "constraint_id": "stellarator_09_materials__nb3sn_material__water_rejection_capacity_ok__f150ed41745d4a0f",
+      "source_local_identity": "water_rejection_capacity_ok",
+      "operands_resolved": 2
+    },
+    {
+      "constraint_id": "stellarator_09_materials__nb3sn_material__wp_fit_ok__11c66596aad579df",
+      "source_local_identity": "wp_fit_ok",
+      "operands_resolved": 1
+    },
+    {
+      "constraint_id": "stellarator_09_materials__nb3sn_material__wp_stress_ok__c61cade8f669c8f2",
+      "source_local_identity": "wp_stress_ok",
+      "operands_resolved": 2
+    }
+  ],
+  "verdict_mismatches": [],
+  "not_independently_verified": [],
+  "worst_channel_rel_dev": 1.9407028534003853e-06,
+  "outcome": "pass",
+  "absolute_tolerances": [
+    {
+      "channel": "stellarator_09_materials__nb3sn_material__magnet__conductor__acceptance_margin",
+      "value": 1e-09,
+      "units": "K (temperature rule: T_cs - T_supply - 0.7 K - 1.5 K)",
+      "basis": "plant-contract.md r5a section 9: every recorded channel compared at 1e-9 relative or 1e-9 absolute per unit of the channel, whichever is looser (Round 1's clause, restored after the Nb3Sn seam refused at gate 8); the offer policy sizes this margin at allowance, where a relative test alone measures the package's root tolerance or rounding, not disagreement"
+    },
+    {
+      "channel": "stellarator_09_materials__nb3sn_material__magnet__area__fit_margin",
+      "value": 1e-09,
+      "units": "mm^2 per turn",
+      "basis": "plant-contract.md r5a section 9: every recorded channel compared at 1e-9 relative or 1e-9 absolute per unit of the channel, whichever is looser (Round 1's clause, restored after the Nb3Sn seam refused at gate 8); the offer policy sizes this margin at allowance, where a relative test alone measures the package's root tolerance or rounding, not disagreement"
+    },
+    {
+      "channel": "stellarator_09_materials__nb3sn_material__magnet__area__cu_margin",
+      "value": 1e-09,
+      "units": "mm^2 per turn",
+      "basis": "plant-contract.md r5a section 9: every recorded channel compared at 1e-9 relative or 1e-9 absolute per unit of the channel, whichever is looser (Round 1's clause, restored after the Nb3Sn seam refused at gate 8); the offer policy sizes this margin at allowance, where a relative test alone measures the package's root tolerance or rounding, not disagreement"
+    },
+    {
+      "channel": "stellarator_09_materials__nb3sn_material__magnet__area__steel_margin",
+      "value": 1e-09,
+      "units": "mm^2 per turn",
+      "basis": "plant-contract.md r5a section 9: every recorded channel compared at 1e-9 relative or 1e-9 absolute per unit of the channel, whichever is looser (Round 1's clause, restored after the Nb3Sn seam refused at gate 8); the offer policy sizes this margin at allowance, where a relative test alone measures the package's root tolerance or rounding, not disagreement"
+    }
+  ]
+}

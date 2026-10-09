@@ -1,4 +1,4 @@
-"""Immutable production-artifact pins for the stop-parser cutover."""
+"""Current immutable dependency pins and retained stop-parser wheel provenance."""
 
 from __future__ import annotations
 
@@ -10,7 +10,9 @@ from pathlib import Path
 from typing import Any, cast
 
 ROOT = Path(__file__).resolve().parents[1]
-A_FINAL = "443388823f0db46c14df1728d3843d0a74ee7590"
+# The 2026-10-04 validator/registry fixes deliberately advance the project pin.
+# WHEEL_HASHES below still identify the retained historical integration wheels.
+A_FINAL = "c37ff53b5b6f10e8dc8733d7f4c85d22877429af"
 C_PROD = "8a758e9240707b58fe32a509c3b509941ca4fa01"
 COSTINGFE = "02543850089be175ea7c28b92a8b2a4184e1637e"
 URLS = {

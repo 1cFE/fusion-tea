@@ -1,0 +1,5 @@
+INFO: Generating code from /tmp/claude-1000/-home-reid-1cfe-fusion-tea/0a548c41-4c93-4118-8650-b762bc653a1a/scratchpad/wi100/probe/models
+INFO: Output to /tmp/claude-1000/-home-reid-1cfe-fusion-tea/0a548c41-4c93-4118-8650-b762bc653a1a/scratchpad/wi100/probe/pkg
+INFO: Package name: stellarator_materials_tea
+INFO: Building pipeline context...
+ERROR: Model failed exact-route validation: SI_EVIDENCE_INCOMPLETE: if B_peak_in > B_knot_max_in ? 1.0 else 0.0: reference='if B_peak_in > B_knot_max_in ? 1.0 else 0.0': inspect_reference_uses: resolved reference has no exact target [root-0/analyses/probe_variants.sysml:11]

@@ -1,4 +1,3 @@
-from pathlib import Path
 """The output, manifest, and digest recipes as a fixed seam.
 
 Covers the recipes and the strict manifest validator (Phase 1), the real manifest
@@ -12,12 +11,19 @@ import json
 import re
 import subprocess
 import sys
+from pathlib import Path
 
 import jsonschema
 import pytest
 
 from scripts.study import manifest
-from tests.study.conftest import DATA_DIR, REAL_MANIFEST, REAL_PACKAGE, run_tool, run_tool_raw
+from tests.study.conftest import (
+    KNOWN_ANSWER_DECLARATION,
+    REAL_MANIFEST,
+    REAL_PACKAGE,
+    run_tool,
+    run_tool_raw,
+)
 
 
 def test_fingerprint_recipe_is_stable_and_path_sorted(real_package_path):
@@ -34,7 +40,17 @@ def test_fingerprint_read_set_is_the_three_legs(real_package_path):
     files = [f["path"] for f in manifest.indicator_input_fingerprint(real_package_path)["files"]]
     assert "pipelines/pipeline.yaml" in files
     assert "contracts/model_contract.json" in files
-    assert {p for p in files if p.startswith('inputs/')} == set(json.loads((Path(__file__).resolve().parents[2]/'.project/active/aries-comparison-preparation/current-readiness/regression-evidence/input-read-set-ledger.json').read_text())['current_inputs'])  # WI-059 adds the magnet-cost input group.
+    assert {p for p in files if p.startswith("inputs/")} == set(
+        json.loads(
+            (
+                Path(__file__).resolve().parents[2]
+                / ".project/active/aries-comparison-preparation/current-readiness"
+                / "regression-evidence/input-read-set-ledger.json"
+            ).read_text()
+        )["current_inputs"]
+    ) | {
+        "inputs/mfe_viability_params.json"
+    }  # Supplied winding capability adds its independent viability defaults.
     assert "inputs/mfe_magnet_cost_params.json" in files
     assert all(
         p.startswith(("pipelines/", "inputs/")) or p == "contracts/model_contract.json"
@@ -46,9 +62,17 @@ def test_fingerprint_is_independent_of_working_directory(real_package_path, tmp_
     """The recipe hashes package-relative paths, so where the tool runs cannot change it."""
     runs = [
         subprocess.run(
-            [sys.executable, str(real_package_path.parents[3] / "scripts/study/indicators.py"),
-             "--package", str(real_package_path), "--print-fingerprint"],
-            capture_output=True, text=True, cwd=str(cwd), check=True,
+            [
+                sys.executable,
+                str(real_package_path.parents[3] / "scripts/study/indicators.py"),
+                "--package",
+                str(real_package_path),
+                "--print-fingerprint",
+            ],
+            capture_output=True,
+            text=True,
+            cwd=str(cwd),
+            check=True,
         ).stdout
         for cwd in (real_package_path.parents[3], tmp_path)
     ]
@@ -196,13 +220,11 @@ def test_schemas_are_closed(stem, load_schema):
 
 
 def _report(cwd=None):
-    return run_tool(REAL_PACKAGE, REAL_MANIFEST, DATA_DIR / "axes.known_answers.json", cwd=cwd)
+    return run_tool(REAL_PACKAGE, REAL_MANIFEST, KNOWN_ANSWER_DECLARATION, cwd=cwd)
 
 
 def _report_text(cwd=None):
-    rc, out, err = run_tool_raw(
-        REAL_PACKAGE, REAL_MANIFEST, DATA_DIR / "axes.known_answers.json", cwd=cwd
-    )
+    rc, out, err = run_tool_raw(REAL_PACKAGE, REAL_MANIFEST, KNOWN_ANSWER_DECLARATION, cwd=cwd)
     assert rc == 0, err
     return out
 
@@ -226,7 +248,7 @@ def test_the_real_output_validates_against_its_schema(load_schema):
 
 
 def test_the_axis_declaration_validates_against_its_schema(load_schema):
-    declaration = json.loads((DATA_DIR / "axes.known_answers.json").read_text())
+    declaration = json.loads((KNOWN_ANSWER_DECLARATION).read_text())
     jsonschema.validate(declaration, load_schema("axis_declaration.v1"))
 
 
@@ -243,9 +265,7 @@ def test_not_derivable_is_byte_equal(load_schema):
 def test_constraint_completeness(real_package_path):
     """Invariant 5 / S4: both halves. Every catalog constraint appears exactly once
     in bounds and exactly once across reachable + unreachable."""
-    contract = json.loads(
-        (real_package_path / "contracts" / "model_contract.json").read_text()
-    )
+    contract = json.loads((real_package_path / "contracts" / "model_contract.json").read_text())
     catalog_ids = sorted(
         e["constraint_id"] for e in contract["constraint_catalog"]["concrete_entries"]
     )
@@ -261,9 +281,7 @@ def test_bounds_is_authoritative_and_axis_varying():
     for group in doc["groups"]:
         reachable = [c for c in group["bounds"] if any(o["reached"] for o in c["operands"])]
         assert reachable == group["constraints_reachable"]
-        unreachable = [
-            c for c in group["bounds"] if not any(o["reached"] for o in c["operands"])
-        ]
+        unreachable = [c for c in group["bounds"] if not any(o["reached"] for o in c["operands"])]
         assert unreachable == group["constraints_unreachable"]
     by_axis = {g["axis"]: g["bounds"] for g in doc["groups"]}
     # bounds vary per axis, not a constant block. WI-044 (2026-09-07): R and I_coil
@@ -304,9 +322,7 @@ def test_the_report_carries_its_tool_source_digest():
 
 def test_the_report_carries_the_three_package_fingerprints(real_package_path):
     package = _report()["package"]
-    assert package["semantic_fingerprint"] == manifest.read_semantic_fingerprint(
-        real_package_path
-    )
+    assert package["semantic_fingerprint"] == manifest.read_semantic_fingerprint(real_package_path)
     assert package["recorded_executable_fingerprint"] == manifest.read_executable_fingerprint(
         real_package_path
     )
@@ -321,3 +337,65 @@ def test_the_report_carries_no_timestamp():
     text = _report_text()
     assert "timestamp" not in text
     assert "generated_at" not in text
+
+
+def test_constraint_joins_via_published_evaluation_channel(synthetic_copy):
+    """Catalog spelling may preserve capitals while pipeline names normalize them."""
+    synthetic_copy.edit(
+        "pipelines/a.yaml", "  syn__a_ok__1111111111111111:", "  syn__A_OK__1111111111111111:"
+    )
+    rc, out, err = synthetic_copy.run()
+    assert rc == 0, err
+    for group in json.loads(out)["groups"]:
+        assert "syn__a_ok__1111111111111111" in {
+            entry["constraint_id"] for entry in group["bounds"]
+        }
+
+
+def test_constraint_missing_evaluation_producer_fails_closed(synthetic_copy):
+    path = synthetic_copy.path / "contracts/model_contract.json"
+    data = json.loads(path.read_text())
+    data["constraint_catalog"]["concrete_entries"][0]["evaluation_channel"] = "missing__evaluation"
+    path.write_text(json.dumps(data))
+    rc, out, err = synthetic_copy.run()
+    assert rc != 0
+    assert out == ""
+    assert "syn__a_ok__1111111111111111" in err
+    assert "no matching module" in err
+
+
+def test_constraint_duplicate_evaluation_producers_fail_closed(synthetic_copy):
+    synthetic_copy.edit(
+        "pipelines/a.yaml",
+        "      root: RootModel[float] syn__a__y",
+        "      root: RootModel[float] syn__a__y\n"
+        "      duplicate: ConstraintEvaluation syn__a_ok__1111111111111111__evaluation",
+    )
+    rc, out, err = synthetic_copy.run()
+    assert rc != 0
+    assert out == ""
+    assert "produced by more than one module" in err
+
+
+def test_constraint_evaluation_channel_requires_evaluation_type(synthetic_copy):
+    synthetic_copy.edit(
+        "pipelines/a.yaml",
+        "evaluation: ConstraintEvaluation syn__a_ok__1111111111111111__evaluation",
+        "evaluation: float syn__a_ok__1111111111111111__evaluation",
+    )
+    rc, out, err = synthetic_copy.run()
+    assert rc != 0
+    assert out == ""
+    assert "not a ConstraintEvaluation output" in err
+
+
+@pytest.mark.parametrize("channel", [None, "", [], {}])
+def test_constraint_invalid_evaluation_channel_fails_closed(synthetic_copy, channel):
+    path = synthetic_copy.path / "contracts/model_contract.json"
+    data = json.loads(path.read_text())
+    data["constraint_catalog"]["concrete_entries"][0]["evaluation_channel"] = channel
+    path.write_text(json.dumps(data))
+    rc, out, err = synthetic_copy.run()
+    assert rc != 0
+    assert out == ""
+    assert "evaluation_channel must be a nonempty string" in err

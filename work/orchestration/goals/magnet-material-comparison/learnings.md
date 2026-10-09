@@ -19,3 +19,17 @@ Under −0.6 % intrinsic strain or a lower Nb₃Sn production grade, and under t
 ## L-004 — Process: the isolated-package route needs three things settled before the pin
 
 The integration seam refuses a CANDIDATE pin until the package's canonical SysML files are registered in `tests/model_families.py` (finding #1); sysml-codegen cannot emit a negative design literal as an entry point, so any such value must be supplied by every case and the package must never run on generated defaults; and the stock study manifest must name a real oracle module (finding #2, still open). A separately authored oracle written from the contract and design alone, with a different root finder and integrator, agreed with the package to 1e−9 on every channel of 2310 points and surfaced three design and reference-case ambiguities (A1 domain guard, A2 unrounded construction C, A6 double-counted shield load) that were then corrected in the design, the reference case and the contract test value before the study ran.
+
+[AGENT] L-005–L-007 accepted on 2026-10-05 with the Round 2 review, after [independent final assurance](evidence/pr-readiness/independent-review.md). These are reviewed agent findings, not owner-originated settled rules. Evidence: sealed `20260930-magnet-material-plant-map@a9683fa1d`, [answer](answer.md) and case-linked reporting data. Round 2 T-010 resolves L-004's historical missing Round 1 oracle-entry/manifest seam; the distinct Round 2 stock-manifest finding remains open as recorded in the discovery log.
+
+## L-005 — Plant consequences change the conditional material price threshold
+
+The plant comparison changes the subsystem price threshold through geometry, plasma, equipment and energy consequences. The eight base-cell break-even prices span 5.68–37.66 USD2021/m; anchored × 1.0 has no comparator. This is an envelope over tested supplied designs under the declared policy and mixed-year accounts, not a universal material threshold or a continuous optimum.
+
+## L-006 — Supported ingredients do not qualify an assembled configuration
+
+Sourced confinement values and field ratios do not establish support for the selected coil/plasma configurations. Every comparative best design carries U physical-transfer evidence. Numerical agreement and a source-derived slope do not upgrade that evidence grade; failed breeding, open divertor geometry and unpriced capacities remain separate obligations.
+
+## L-007 — Field plots must distinguish own-sized choices from paired duty labels
+
+Equal-duty REBCO designs can have an actual peak field different from the Nb₃Sn target used as their label. Plot own-sized field targets or actual peaks and retain paired duty explicitly. The current field panels use own-sized designs; interaction data keeps actual peaks and equal-duty flags.

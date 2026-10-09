@@ -1,0 +1,6 @@
+{
+  "stellarator_09_materials__rebco_material__fuel_cycle__held_inventory": 0.0,
+  "stellarator_09_materials__rebco_material__fuel_cycle__s_per_year": 31536000.0,
+  "stellarator_09_materials__rebco_material__heat_transport__salt_cp_kJ_kgK": 1.56,
+  "stellarator_09_materials__rebco_material__heat_transport__salt_hot_C": 465.0
+}

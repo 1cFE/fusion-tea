@@ -1,0 +1,911 @@
+{
+  "schema_version": "study-axis-declaration/v1",
+  "groups": [
+    {
+      "axis": "assumption-confinement",
+      "keys": [
+        {
+          "key": "stellarator_09_materials__rebco_material__plasma__f_ren",
+          "provenance": "fan_out"
+        },
+        {
+          "key": "stellarator_09_materials__rebco_material__beta_limit",
+          "provenance": "fan_out"
+        }
+      ],
+      "note": "Confinement assumption (contract r5 section 3.1): the ISS04 renormalization f_ren (1.0, 1.4, 1.8 by cell) and the beta limit (0.05; the 0.04 second verdict is recomputed study-side). Uniform over a cell and both materials."
+    },
+    {
+      "axis": "assumption-geometry",
+      "keys": [
+        {
+          "key": "stellarator_09_materials__rebco_material__magnet__coil__peak_ratio",
+          "provenance": "fan_out"
+        },
+        {
+          "key": "stellarator_09_materials__rebco_material__magnet__coil__arm_slope",
+          "provenance": "fan_out"
+        },
+        {
+          "key": "stellarator_09_materials__rebco_material__magnet__coil__arm_x_ref",
+          "provenance": "fan_out"
+        },
+        {
+          "key": "stellarator_09_materials__rebco_material__magnet__coil__k_link",
+          "provenance": "fan_out"
+        }
+      ],
+      "note": "Coil-geometry assumption (contract section 3.2): anchored ratio 2.7667, HELIAS-class 2.12, the pack-size arm slope 0.0641 about x_ref 35.278, and the coil-set linkage k_link (0.7731 held; 0.95 variant on HELIAS cells)."
+    },
+    {
+      "axis": "duty",
+      "keys": [
+        {
+          "key": "stellarator_09_materials__rebco_material__magnet__coil__reference_turns",
+          "provenance": "fan_out"
+        },
+        {
+          "key": "stellarator_09_materials__rebco_material__magnet__coil__turn_current",
+          "provenance": "fan_out"
+        },
+        {
+          "key": "stellarator_09_materials__rebco_material__plasma__R",
+          "provenance": "fan_out"
+        },
+        {
+          "key": "stellarator_09_materials__rebco_material__plasma__a",
+          "provenance": "fan_out"
+        },
+        {
+          "key": "stellarator_09_materials__rebco_material__magnet__coil__coil_t",
+          "provenance": "fan_out"
+        },
+        {
+          "key": "stellarator_09_materials__rebco_material__magnet__casing__interior_y",
+          "provenance": "fan_out"
+        }
+      ],
+      "note": "Supplied magnetic duty and machine size (contract section 5): turns and turn current (50 kA; 86 kA variant) set the ampere-turns; R and a the size; the radial allocation coil_t moves the bore factor, radial build and layout; interior_y is the transverse cavity (no cost response)."
+    },
+    {
+      "axis": "operating-point",
+      "keys": [
+        {
+          "key": "stellarator_09_materials__rebco_material__plasma__n_e0",
+          "provenance": "fan_out"
+        },
+        {
+          "key": "stellarator_09_materials__rebco_material__plasma__T_i0",
+          "provenance": "fan_out"
+        }
+      ],
+      "note": "Supplied plasma operating point: T_i0 from the ladder 11/13/14.63/16/18 keV and n_e0 at matched fusion power or the power-short fallback (contract section 5, r5 least-heating rule)."
+    },
+    {
+      "axis": "winding-offer",
+      "keys": [
+        {
+          "key": "stellarator_09_materials__rebco_material__magnet__n_elements",
+          "provenance": "fan_out"
+        },
+        {
+          "key": "stellarator_09_materials__rebco_material__magnet__winding_pack__wp_side",
+          "provenance": "fan_out"
+        },
+        {
+          "key": "stellarator_09_materials__rebco_material__magnet__winding_pack__B_max",
+          "provenance": "fan_out"
+        },
+        {
+          "key": "stellarator_09_materials__rebco_material__magnet__cu_space",
+          "provenance": "fan_out"
+        },
+        {
+          "key": "stellarator_09_materials__rebco_material__magnet__steel_area",
+          "provenance": "fan_out"
+        },
+        {
+          "key": "stellarator_09_materials__rebco_material__magnet__misc_area",
+          "provenance": "fan_out"
+        },
+        {
+          "key": "stellarator_09_materials__rebco_material__magnet__solder_area",
+          "provenance": "fan_out"
+        },
+        {
+          "key": "stellarator_09_materials__rebco_material__magnet__ins_fraction",
+          "provenance": "fan_out"
+        },
+        {
+          "key": "stellarator_09_materials__rebco_material__magnet__cabling_factor",
+          "provenance": "fan_out"
+        },
+        {
+          "key": "stellarator_09_materials__rebco_material__magnet__cable_void",
+          "provenance": "fan_out"
+        },
+        {
+          "key": "stellarator_09_materials__rebco_material__magnet__J_cu_rule",
+          "provenance": "fan_out"
+        },
+        {
+          "key": "stellarator_09_materials__rebco_material__magnet__cu_void",
+          "provenance": "fan_out"
+        },
+        {
+          "key": "stellarator_09_materials__rebco_material__magnet__cu_per_kA_rule",
+          "provenance": "fan_out"
+        },
+        {
+          "key": "stellarator_09_materials__rebco_material__magnet__steel_per_kA_rule",
+          "provenance": "fan_out"
+        },
+        {
+          "key": "stellarator_09_materials__rebco_material__magnet__B_steel_ref",
+          "provenance": "fan_out"
+        },
+        {
+          "key": "stellarator_09_materials__rebco_material__magnet__steel_B_scaling",
+          "provenance": "fan_out"
+        }
+      ],
+      "note": "Supplied winding (MR-7 chosen role): element count from the Round 1 acceptance rule, pack side from the construction rule, the per-turn construction areas and the construction-rule inputs (P for Nb3Sn, C for REBCO, common-P variant), and the supplied per-material design envelope B_max (a flag, never a failure)."
+    },
+    {
+      "axis": "economic-assumptions",
+      "keys": [
+        {
+          "key": "stellarator_09_materials__rebco_material__magnet__element_price_per_m",
+          "provenance": "fan_out"
+        },
+        {
+          "key": "stellarator_09_materials__rebco_material__cryoplant__usd2015_to_2021",
+          "provenance": "fan_out"
+        }
+      ],
+      "note": "Conductor price (REBCO 80/30/10 USD2021/m of 4 mm tape; Nb3Sn 8, variants 5.4 and 13.5) and the Green refrigerator capital's money-year factor, which the CPI 2021->2026 variant scales together with both prices."
+    },
+    {
+      "axis": "plant-offer",
+      "keys": [
+        {
+          "key": "stellarator_09_materials__rebco_material__blanket__cost_thermal_class_MW",
+          "provenance": "fan_out"
+        },
+        {
+          "key": "stellarator_09_materials__rebco_material__buildings__clean_positions",
+          "provenance": "fan_out"
+        },
+        {
+          "key": "stellarator_09_materials__rebco_material__buildings__component_receipt_lead_days",
+          "provenance": "fan_out"
+        },
+        {
+          "key": "stellarator_09_materials__rebco_material__buildings__cooling_clean_bundle_positions",
+          "provenance": "fan_out"
+        },
+        {
+          "key": "stellarator_09_materials__rebco_material__buildings__cooling_clean_helium_positions",
+          "provenance": "fan_out"
+        },
+        {
+          "key": "stellarator_09_materials__rebco_material__buildings__cooling_clean_salt_positions",
+          "provenance": "fan_out"
+        },
+        {
+          "key": "stellarator_09_materials__rebco_material__buildings__cooling_dirty_bundle_positions",
+          "provenance": "fan_out"
+        },
+        {
+          "key": "stellarator_09_materials__rebco_material__buildings__cooling_dirty_helium_positions",
+          "provenance": "fan_out"
+        },
+        {
+          "key": "stellarator_09_materials__rebco_material__buildings__cooling_dirty_salt_positions",
+          "provenance": "fan_out"
+        },
+        {
+          "key": "stellarator_09_materials__rebco_material__buildings__dirty_buffer_positions",
+          "provenance": "fan_out"
+        },
+        {
+          "key": "stellarator_09_materials__rebco_material__buildings__dirty_store_positions",
+          "provenance": "fan_out"
+        },
+        {
+          "key": "stellarator_09_materials__rebco_material__buildings__initial_receipt_lead_days",
+          "provenance": "fan_out"
+        },
+        {
+          "key": "stellarator_09_materials__rebco_material__buildings__legacy_cost_fusion_class_MW",
+          "provenance": "fan_out"
+        },
+        {
+          "key": "stellarator_09_materials__rebco_material__buildings__legacy_cost_gross_class_MWe",
+          "provenance": "fan_out"
+        },
+        {
+          "key": "stellarator_09_materials__rebco_material__buildings__legacy_cost_thermal_class_MW",
+          "provenance": "fan_out"
+        },
+        {
+          "key": "stellarator_09_materials__rebco_material__buildings__legacy_cost_thermal_electric_class_MWe",
+          "provenance": "fan_out"
+        },
+        {
+          "key": "stellarator_09_materials__rebco_material__buildings__parcel_origin_x_offset",
+          "provenance": "fan_out"
+        },
+        {
+          "key": "stellarator_09_materials__rebco_material__buildings__parcel_origin_y_offset",
+          "provenance": "fan_out"
+        },
+        {
+          "key": "stellarator_09_materials__rebco_material__buildings__sector_service_teams",
+          "provenance": "fan_out"
+        },
+        {
+          "key": "stellarator_09_materials__rebco_material__buildings__selected_administration_height",
+          "provenance": "fan_out"
+        },
+        {
+          "key": "stellarator_09_materials__rebco_material__buildings__selected_administration_length",
+          "provenance": "fan_out"
+        },
+        {
+          "key": "stellarator_09_materials__rebco_material__buildings__selected_administration_width",
+          "provenance": "fan_out"
+        },
+        {
+          "key": "stellarator_09_materials__rebco_material__buildings__selected_blanket_packages_per_sector",
+          "provenance": "fan_out"
+        },
+        {
+          "key": "stellarator_09_materials__rebco_material__buildings__selected_control_height",
+          "provenance": "fan_out"
+        },
+        {
+          "key": "stellarator_09_materials__rebco_material__buildings__selected_control_length",
+          "provenance": "fan_out"
+        },
+        {
+          "key": "stellarator_09_materials__rebco_material__buildings__selected_control_width",
+          "provenance": "fan_out"
+        },
+        {
+          "key": "stellarator_09_materials__rebco_material__buildings__selected_cooling_annex_height",
+          "provenance": "fan_out"
+        },
+        {
+          "key": "stellarator_09_materials__rebco_material__buildings__selected_cooling_annex_length",
+          "provenance": "fan_out"
+        },
+        {
+          "key": "stellarator_09_materials__rebco_material__buildings__selected_cooling_annex_north_depth",
+          "provenance": "fan_out"
+        },
+        {
+          "key": "stellarator_09_materials__rebco_material__buildings__selected_cooling_annex_width",
+          "provenance": "fan_out"
+        },
+        {
+          "key": "stellarator_09_materials__rebco_material__buildings__selected_cooling_bundle_store_width",
+          "provenance": "fan_out"
+        },
+        {
+          "key": "stellarator_09_materials__rebco_material__buildings__selected_cooling_hall_height",
+          "provenance": "fan_out"
+        },
+        {
+          "key": "stellarator_09_materials__rebco_material__buildings__selected_cooling_hall_length",
+          "provenance": "fan_out"
+        },
+        {
+          "key": "stellarator_09_materials__rebco_material__buildings__selected_cooling_hall_width",
+          "provenance": "fan_out"
+        },
+        {
+          "key": "stellarator_09_materials__rebco_material__buildings__selected_cooling_helium_store_width",
+          "provenance": "fan_out"
+        },
+        {
+          "key": "stellarator_09_materials__rebco_material__buildings__selected_cooling_link_height",
+          "provenance": "fan_out"
+        },
+        {
+          "key": "stellarator_09_materials__rebco_material__buildings__selected_cooling_link_length",
+          "provenance": "fan_out"
+        },
+        {
+          "key": "stellarator_09_materials__rebco_material__buildings__selected_cooling_link_width",
+          "provenance": "fan_out"
+        },
+        {
+          "key": "stellarator_09_materials__rebco_material__buildings__selected_cooling_salt_store_width",
+          "provenance": "fan_out"
+        },
+        {
+          "key": "stellarator_09_materials__rebco_material__buildings__selected_cryo_coldbox_height",
+          "provenance": "fan_out"
+        },
+        {
+          "key": "stellarator_09_materials__rebco_material__buildings__selected_cryo_coldbox_length",
+          "provenance": "fan_out"
+        },
+        {
+          "key": "stellarator_09_materials__rebco_material__buildings__selected_cryo_coldbox_width",
+          "provenance": "fan_out"
+        },
+        {
+          "key": "stellarator_09_materials__rebco_material__buildings__selected_cryo_compressors_height",
+          "provenance": "fan_out"
+        },
+        {
+          "key": "stellarator_09_materials__rebco_material__buildings__selected_cryo_compressors_length",
+          "provenance": "fan_out"
+        },
+        {
+          "key": "stellarator_09_materials__rebco_material__buildings__selected_cryo_compressors_width",
+          "provenance": "fan_out"
+        },
+        {
+          "key": "stellarator_09_materials__rebco_material__buildings__selected_electrical_building_height",
+          "provenance": "fan_out"
+        },
+        {
+          "key": "stellarator_09_materials__rebco_material__buildings__selected_electrical_building_length",
+          "provenance": "fan_out"
+        },
+        {
+          "key": "stellarator_09_materials__rebco_material__buildings__selected_electrical_building_width",
+          "provenance": "fan_out"
+        },
+        {
+          "key": "stellarator_09_materials__rebco_material__buildings__selected_fuel_building_height",
+          "provenance": "fan_out"
+        },
+        {
+          "key": "stellarator_09_materials__rebco_material__buildings__selected_fuel_building_length",
+          "provenance": "fan_out"
+        },
+        {
+          "key": "stellarator_09_materials__rebco_material__buildings__selected_fuel_building_width",
+          "provenance": "fan_out"
+        },
+        {
+          "key": "stellarator_09_materials__rebco_material__buildings__selected_maintenance_shop_height",
+          "provenance": "fan_out"
+        },
+        {
+          "key": "stellarator_09_materials__rebco_material__buildings__selected_maintenance_shop_length",
+          "provenance": "fan_out"
+        },
+        {
+          "key": "stellarator_09_materials__rebco_material__buildings__selected_maintenance_shop_width",
+          "provenance": "fan_out"
+        },
+        {
+          "key": "stellarator_09_materials__rebco_material__buildings__selected_parcel_length",
+          "provenance": "fan_out"
+        },
+        {
+          "key": "stellarator_09_materials__rebco_material__buildings__selected_parcel_width",
+          "provenance": "fan_out"
+        },
+        {
+          "key": "stellarator_09_materials__rebco_material__buildings__selected_power_supply_building_height",
+          "provenance": "fan_out"
+        },
+        {
+          "key": "stellarator_09_materials__rebco_material__buildings__selected_power_supply_building_length",
+          "provenance": "fan_out"
+        },
+        {
+          "key": "stellarator_09_materials__rebco_material__buildings__selected_power_supply_building_width",
+          "provenance": "fan_out"
+        },
+        {
+          "key": "stellarator_09_materials__rebco_material__buildings__selected_reactor_auxiliaries_height",
+          "provenance": "fan_out"
+        },
+        {
+          "key": "stellarator_09_materials__rebco_material__buildings__selected_reactor_auxiliaries_length",
+          "provenance": "fan_out"
+        },
+        {
+          "key": "stellarator_09_materials__rebco_material__buildings__selected_reactor_auxiliaries_width",
+          "provenance": "fan_out"
+        },
+        {
+          "key": "stellarator_09_materials__rebco_material__buildings__selected_reactor_hall_height",
+          "provenance": "fan_out"
+        },
+        {
+          "key": "stellarator_09_materials__rebco_material__buildings__selected_reactor_hall_length",
+          "provenance": "fan_out"
+        },
+        {
+          "key": "stellarator_09_materials__rebco_material__buildings__selected_reactor_hall_width",
+          "provenance": "fan_out"
+        },
+        {
+          "key": "stellarator_09_materials__rebco_material__buildings__selected_sector_link_east_height",
+          "provenance": "fan_out"
+        },
+        {
+          "key": "stellarator_09_materials__rebco_material__buildings__selected_sector_link_east_length",
+          "provenance": "fan_out"
+        },
+        {
+          "key": "stellarator_09_materials__rebco_material__buildings__selected_sector_link_east_width",
+          "provenance": "fan_out"
+        },
+        {
+          "key": "stellarator_09_materials__rebco_material__buildings__selected_sector_link_north_height",
+          "provenance": "fan_out"
+        },
+        {
+          "key": "stellarator_09_materials__rebco_material__buildings__selected_sector_link_north_length",
+          "provenance": "fan_out"
+        },
+        {
+          "key": "stellarator_09_materials__rebco_material__buildings__selected_sector_link_north_width",
+          "provenance": "fan_out"
+        },
+        {
+          "key": "stellarator_09_materials__rebco_material__buildings__selected_sector_link_south_height",
+          "provenance": "fan_out"
+        },
+        {
+          "key": "stellarator_09_materials__rebco_material__buildings__selected_sector_link_south_length",
+          "provenance": "fan_out"
+        },
+        {
+          "key": "stellarator_09_materials__rebco_material__buildings__selected_sector_link_south_width",
+          "provenance": "fan_out"
+        },
+        {
+          "key": "stellarator_09_materials__rebco_material__buildings__selected_sector_link_west_height",
+          "provenance": "fan_out"
+        },
+        {
+          "key": "stellarator_09_materials__rebco_material__buildings__selected_sector_link_west_length",
+          "provenance": "fan_out"
+        },
+        {
+          "key": "stellarator_09_materials__rebco_material__buildings__selected_sector_link_west_width",
+          "provenance": "fan_out"
+        },
+        {
+          "key": "stellarator_09_materials__rebco_material__buildings__selected_sector_wing_east_height",
+          "provenance": "fan_out"
+        },
+        {
+          "key": "stellarator_09_materials__rebco_material__buildings__selected_sector_wing_east_length",
+          "provenance": "fan_out"
+        },
+        {
+          "key": "stellarator_09_materials__rebco_material__buildings__selected_sector_wing_east_width",
+          "provenance": "fan_out"
+        },
+        {
+          "key": "stellarator_09_materials__rebco_material__buildings__selected_sector_wing_north_height",
+          "provenance": "fan_out"
+        },
+        {
+          "key": "stellarator_09_materials__rebco_material__buildings__selected_sector_wing_north_length",
+          "provenance": "fan_out"
+        },
+        {
+          "key": "stellarator_09_materials__rebco_material__buildings__selected_sector_wing_north_width",
+          "provenance": "fan_out"
+        },
+        {
+          "key": "stellarator_09_materials__rebco_material__buildings__selected_sector_wing_south_height",
+          "provenance": "fan_out"
+        },
+        {
+          "key": "stellarator_09_materials__rebco_material__buildings__selected_sector_wing_south_length",
+          "provenance": "fan_out"
+        },
+        {
+          "key": "stellarator_09_materials__rebco_material__buildings__selected_sector_wing_south_width",
+          "provenance": "fan_out"
+        },
+        {
+          "key": "stellarator_09_materials__rebco_material__buildings__selected_sector_wing_west_height",
+          "provenance": "fan_out"
+        },
+        {
+          "key": "stellarator_09_materials__rebco_material__buildings__selected_sector_wing_west_length",
+          "provenance": "fan_out"
+        },
+        {
+          "key": "stellarator_09_materials__rebco_material__buildings__selected_sector_wing_west_width",
+          "provenance": "fan_out"
+        },
+        {
+          "key": "stellarator_09_materials__rebco_material__buildings__selected_security_height",
+          "provenance": "fan_out"
+        },
+        {
+          "key": "stellarator_09_materials__rebco_material__buildings__selected_security_length",
+          "provenance": "fan_out"
+        },
+        {
+          "key": "stellarator_09_materials__rebco_material__buildings__selected_security_width",
+          "provenance": "fan_out"
+        },
+        {
+          "key": "stellarator_09_materials__rebco_material__buildings__selected_service_water_building_height",
+          "provenance": "fan_out"
+        },
+        {
+          "key": "stellarator_09_materials__rebco_material__buildings__selected_service_water_building_length",
+          "provenance": "fan_out"
+        },
+        {
+          "key": "stellarator_09_materials__rebco_material__buildings__selected_service_water_building_width",
+          "provenance": "fan_out"
+        },
+        {
+          "key": "stellarator_09_materials__rebco_material__buildings__selected_site_services_building_height",
+          "provenance": "fan_out"
+        },
+        {
+          "key": "stellarator_09_materials__rebco_material__buildings__selected_site_services_building_length",
+          "provenance": "fan_out"
+        },
+        {
+          "key": "stellarator_09_materials__rebco_material__buildings__selected_site_services_building_width",
+          "provenance": "fan_out"
+        },
+        {
+          "key": "stellarator_09_materials__rebco_material__buildings__selected_turbine_hall_height",
+          "provenance": "fan_out"
+        },
+        {
+          "key": "stellarator_09_materials__rebco_material__buildings__selected_turbine_hall_length",
+          "provenance": "fan_out"
+        },
+        {
+          "key": "stellarator_09_materials__rebco_material__buildings__selected_turbine_hall_width",
+          "provenance": "fan_out"
+        },
+        {
+          "key": "stellarator_09_materials__rebco_material__cryoplant__T_cold_cryo",
+          "provenance": "fan_out"
+        },
+        {
+          "key": "stellarator_09_materials__rebco_material__cryoplant__aux_cost_thermal_class_MW",
+          "provenance": "fan_out"
+        },
+        {
+          "key": "stellarator_09_materials__rebco_material__cryoplant__rated_cold_W",
+          "provenance": "fan_out"
+        },
+        {
+          "key": "stellarator_09_materials__rebco_material__cryoplant__rated_cryogenic_ambient_K",
+          "provenance": "fan_out"
+        },
+        {
+          "key": "stellarator_09_materials__rebco_material__cryoplant__rated_cryogenic_cold_K",
+          "provenance": "fan_out"
+        },
+        {
+          "key": "stellarator_09_materials__rebco_material__cryoplant__rated_cryogenic_intercept_K",
+          "provenance": "fan_out"
+        },
+        {
+          "key": "stellarator_09_materials__rebco_material__cryoplant__rated_direct_electric_MW",
+          "provenance": "fan_out"
+        },
+        {
+          "key": "stellarator_09_materials__rebco_material__cryoplant__rated_intercept_W",
+          "provenance": "fan_out"
+        },
+        {
+          "key": "stellarator_09_materials__rebco_material__decom_cost_net_class_MWe",
+          "provenance": "fan_out"
+        },
+        {
+          "key": "stellarator_09_materials__rebco_material__divertor__purchase_cost_per_module",
+          "provenance": "fan_out"
+        },
+        {
+          "key": "stellarator_09_materials__rebco_material__electric_plant__installed_gross_rating_MWe",
+          "provenance": "fan_out"
+        },
+        {
+          "key": "stellarator_09_materials__rebco_material__fuel_cycle__legacy_cost_net_class_MWe",
+          "provenance": "fan_out"
+        },
+        {
+          "key": "stellarator_09_materials__rebco_material__heat_rejection__purchase_cost_per_module",
+          "provenance": "fan_out"
+        },
+        {
+          "key": "stellarator_09_materials__rebco_material__heat_rejection__rated_rejection_MW",
+          "provenance": "fan_out"
+        },
+        {
+          "key": "stellarator_09_materials__rebco_material__heat_rejection__rated_water_condenser_C",
+          "provenance": "fan_out"
+        },
+        {
+          "key": "stellarator_09_materials__rebco_material__heat_rejection__rated_water_electric_MW",
+          "provenance": "fan_out"
+        },
+        {
+          "key": "stellarator_09_materials__rebco_material__heat_rejection__rated_water_flow_kg_s",
+          "provenance": "fan_out"
+        },
+        {
+          "key": "stellarator_09_materials__rebco_material__heat_rejection__rated_water_head_m",
+          "provenance": "fan_out"
+        },
+        {
+          "key": "stellarator_09_materials__rebco_material__heat_rejection__rated_water_inlet_C",
+          "provenance": "fan_out"
+        },
+        {
+          "key": "stellarator_09_materials__rebco_material__heat_rejection__rated_water_outlet_C",
+          "provenance": "fan_out"
+        },
+        {
+          "key": "stellarator_09_materials__rebco_material__heat_transport__equipment_helium_design_shaft_MW",
+          "provenance": "fan_out"
+        },
+        {
+          "key": "stellarator_09_materials__rebco_material__heat_transport__equipment_helium_design_suction_Pa",
+          "provenance": "fan_out"
+        },
+        {
+          "key": "stellarator_09_materials__rebco_material__heat_transport__equipment_helium_purchased_mass_kg",
+          "provenance": "fan_out"
+        },
+        {
+          "key": "stellarator_09_materials__rebco_material__heat_transport__equipment_salt_design_eta_motor",
+          "provenance": "fan_out"
+        },
+        {
+          "key": "stellarator_09_materials__rebco_material__heat_transport__equipment_salt_design_eta_p",
+          "provenance": "fan_out"
+        },
+        {
+          "key": "stellarator_09_materials__rebco_material__heat_transport__equipment_salt_design_flow_kg_s",
+          "provenance": "fan_out"
+        },
+        {
+          "key": "stellarator_09_materials__rebco_material__heat_transport__equipment_salt_design_head_m",
+          "provenance": "fan_out"
+        },
+        {
+          "key": "stellarator_09_materials__rebco_material__heat_transport__equipment_salt_purchased_mass_kg",
+          "provenance": "fan_out"
+        },
+        {
+          "key": "stellarator_09_materials__rebco_material__heat_transport__helium_rated_dp_Pa",
+          "provenance": "fan_out"
+        },
+        {
+          "key": "stellarator_09_materials__rebco_material__heat_transport__helium_rated_electric_MW",
+          "provenance": "fan_out"
+        },
+        {
+          "key": "stellarator_09_materials__rebco_material__heat_transport__legacy_cost_net_class_MWe",
+          "provenance": "fan_out"
+        },
+        {
+          "key": "stellarator_09_materials__rebco_material__heat_transport__legacy_cost_thermal_class_MW",
+          "provenance": "fan_out"
+        },
+        {
+          "key": "stellarator_09_materials__rebco_material__heat_transport__mdot_loop_rated",
+          "provenance": "fan_out"
+        },
+        {
+          "key": "stellarator_09_materials__rebco_material__heat_transport__n_loops",
+          "provenance": "fan_out"
+        },
+        {
+          "key": "stellarator_09_materials__rebco_material__heat_transport__rated_helium_cp",
+          "provenance": "fan_out"
+        },
+        {
+          "key": "stellarator_09_materials__rebco_material__heat_transport__rated_helium_discharge_Pa",
+          "provenance": "fan_out"
+        },
+        {
+          "key": "stellarator_09_materials__rebco_material__heat_transport__rated_helium_gamma",
+          "provenance": "fan_out"
+        },
+        {
+          "key": "stellarator_09_materials__rebco_material__heat_transport__rated_helium_hot_K",
+          "provenance": "fan_out"
+        },
+        {
+          "key": "stellarator_09_materials__rebco_material__heat_transport__rated_helium_suction_K",
+          "provenance": "fan_out"
+        },
+        {
+          "key": "stellarator_09_materials__rebco_material__heat_transport__rated_helium_suction_Pa",
+          "provenance": "fan_out"
+        },
+        {
+          "key": "stellarator_09_materials__rebco_material__heat_transport__rated_salt_cp",
+          "provenance": "fan_out"
+        },
+        {
+          "key": "stellarator_09_materials__rebco_material__heat_transport__rated_salt_hot_C",
+          "provenance": "fan_out"
+        },
+        {
+          "key": "stellarator_09_materials__rebco_material__heat_transport__rated_salt_return_C",
+          "provenance": "fan_out"
+        },
+        {
+          "key": "stellarator_09_materials__rebco_material__heating__p_wallplug_heat",
+          "provenance": "fan_out"
+        },
+        {
+          "key": "stellarator_09_materials__rebco_material__inc_cost_thermal_class_MW",
+          "provenance": "fan_out"
+        },
+        {
+          "key": "stellarator_09_materials__rebco_material__magnet__m_support",
+          "provenance": "fan_out"
+        },
+        {
+          "key": "stellarator_09_materials__rebco_material__misc_plant__cost_gross_class_MWe",
+          "provenance": "fan_out"
+        },
+        {
+          "key": "stellarator_09_materials__rebco_material__om_staffing_net_class_MWe",
+          "provenance": "fan_out"
+        },
+        {
+          "key": "stellarator_09_materials__rebco_material__other_rpe_cost_net_class_MWe",
+          "provenance": "fan_out"
+        },
+        {
+          "key": "stellarator_09_materials__rebco_material__owner_cost_net_class_MWe",
+          "provenance": "fan_out"
+        },
+        {
+          "key": "stellarator_09_materials__rebco_material__power_supplies__purchase_cost_per_module",
+          "provenance": "fan_out"
+        },
+        {
+          "key": "stellarator_09_materials__rebco_material__power_supplies__rated_pf_MWe",
+          "provenance": "fan_out"
+        },
+        {
+          "key": "stellarator_09_materials__rebco_material__power_supplies__rated_tf_MWe",
+          "provenance": "fan_out"
+        },
+        {
+          "key": "stellarator_09_materials__rebco_material__precon_legacy_cost_net_class_MWe",
+          "provenance": "fan_out"
+        },
+        {
+          "key": "stellarator_09_materials__rebco_material__remote_handling_cost_gross_class_MWe",
+          "provenance": "fan_out"
+        },
+        {
+          "key": "stellarator_09_materials__rebco_material__shield__cost_thermal_class_MW",
+          "provenance": "fan_out"
+        },
+        {
+          "key": "stellarator_09_materials__rebco_material__startup_cost_net_class_MWe",
+          "provenance": "fan_out"
+        },
+        {
+          "key": "stellarator_09_materials__rebco_material__structure__cost_gross_class_MWe",
+          "provenance": "fan_out"
+        },
+        {
+          "key": "stellarator_09_materials__rebco_material__turbine__condensate_pump__rated_dp_MPa",
+          "provenance": "fan_out"
+        },
+        {
+          "key": "stellarator_09_materials__rebco_material__turbine__condensate_pump__rated_electric_MW",
+          "provenance": "fan_out"
+        },
+        {
+          "key": "stellarator_09_materials__rebco_material__turbine__condensate_pump__rated_flow_kg_s",
+          "provenance": "fan_out"
+        },
+        {
+          "key": "stellarator_09_materials__rebco_material__turbine__condenser__rated_rejection_MW",
+          "provenance": "fan_out"
+        },
+        {
+          "key": "stellarator_09_materials__rebco_material__turbine__feedwater_pump__rated_dp_MPa",
+          "provenance": "fan_out"
+        },
+        {
+          "key": "stellarator_09_materials__rebco_material__turbine__feedwater_pump__rated_electric_MW",
+          "provenance": "fan_out"
+        },
+        {
+          "key": "stellarator_09_materials__rebco_material__turbine__feedwater_pump__rated_flow_kg_s",
+          "provenance": "fan_out"
+        },
+        {
+          "key": "stellarator_09_materials__rebco_material__turbine__hp_turbine__rated_flow_kg_s",
+          "provenance": "fan_out"
+        },
+        {
+          "key": "stellarator_09_materials__rebco_material__turbine__hp_turbine__rated_shaft_MW",
+          "provenance": "fan_out"
+        },
+        {
+          "key": "stellarator_09_materials__rebco_material__turbine__lp_turbine__rated_flow_kg_s",
+          "provenance": "fan_out"
+        },
+        {
+          "key": "stellarator_09_materials__rebco_material__turbine__lp_turbine__rated_shaft_MW",
+          "provenance": "fan_out"
+        },
+        {
+          "key": "stellarator_09_materials__rebco_material__turbine__main_steam_generator__installed_UA_MW_K",
+          "provenance": "fan_out"
+        },
+        {
+          "key": "stellarator_09_materials__rebco_material__turbine__purchase_cost_per_module",
+          "provenance": "fan_out"
+        },
+        {
+          "key": "stellarator_09_materials__rebco_material__turbine__rated_steam_condenser_C",
+          "provenance": "fan_out"
+        },
+        {
+          "key": "stellarator_09_materials__rebco_material__turbine__rated_steam_extraction_pressure_MPa",
+          "provenance": "fan_out"
+        },
+        {
+          "key": "stellarator_09_materials__rebco_material__turbine__rated_steam_main_pressure_MPa",
+          "provenance": "fan_out"
+        },
+        {
+          "key": "stellarator_09_materials__rebco_material__turbine__rated_steam_reheat_C",
+          "provenance": "fan_out"
+        },
+        {
+          "key": "stellarator_09_materials__rebco_material__turbine__rated_steam_salt_cp",
+          "provenance": "fan_out"
+        },
+        {
+          "key": "stellarator_09_materials__rebco_material__turbine__rated_steam_salt_hot_C",
+          "provenance": "fan_out"
+        },
+        {
+          "key": "stellarator_09_materials__rebco_material__turbine__rated_steam_salt_return_C",
+          "provenance": "fan_out"
+        },
+        {
+          "key": "stellarator_09_materials__rebco_material__turbine__rated_steam_steam_C",
+          "provenance": "fan_out"
+        },
+        {
+          "key": "stellarator_09_materials__rebco_material__turbine__reheater__installed_UA_MW_K",
+          "provenance": "fan_out"
+        },
+        {
+          "key": "stellarator_09_materials__rebco_material__turbine__selected_gross_MWe",
+          "provenance": "fan_out"
+        },
+        {
+          "key": "stellarator_09_materials__rebco_material__vessel__cost_gross_class_MWe",
+          "provenance": "fan_out"
+        },
+        {
+          "key": "stellarator_09_materials__rebco_material__waste_cost_thermal_class_MW",
+          "provenance": "fan_out"
+        }
+      ],
+      "note": "Supplied plant offer re-supplied per design by the policy (contract section 5 rows F2/F8, r5 (P) Q13/Q14): structure mass, installed heating, cryo ratings and rated states, every screened package rating and offered state, purchased coolant masses, purchase costs per module (the purchase-exponent variant acts here), the 22 power classes, the building and parcel selections and dimensions, the facility positions, receipt leads and service teams, and the IHX exchanger count."
+    }
+  ]
+}

@@ -1,0 +1,11 @@
+{
+  "modules": {
+    "agentic_mbse": "/home/reid/1cfe/fusion-tea/.venv/lib/python3.12/site-packages/agentic_mbse/__init__.py",
+    "sysml_codegen": "/home/reid/1cfe/fusion-tea/.venv/lib/python3.12/site-packages/sysml_codegen/__init__.py",
+    "costingfe": "/home/reid/1cfe/fusion-tea/.venv/lib/python3.12/site-packages/costingfe/__init__.py"
+  },
+  "teax_revision": "8d877460ac4f6f264561d916e40c1708adb13397",
+  "existing_smoke_receipt_hash": "d251e5cd0db7a98ce6f0bd9cc141f2db874916d84db84da799c59af209f0cd2b",
+  "existing_smoke_verification_hash": "db5fd1e4a6c04ac1e9f39c56eea078ee045bc7cfa8a368e028fb7cbc3fbe9678",
+  "full_verification_hash": "4bcad5940cb2261190d0df07e6e92bee79b20e73911d96173db1c54e405902bc"
+}

@@ -3,8 +3,29 @@
 This file provides common fixtures used across all model tests.
 Place in tests/ to make fixtures available to tests/models/*.
 """
-import pytest
+
 from pathlib import Path
+
+import pytest
+
+
+@pytest.fixture(scope="session")
+def playwright_manager():
+    """Share one sync manager across the browser test groups."""
+    try:
+        from playwright.sync_api import sync_playwright
+    except ImportError as exc:
+        pytest.fail(
+            "The browser tests need Playwright and Chromium. Install them with:\n"
+            "  uv sync --extra e2e\n"
+            "  uv run playwright install chromium\n"
+            f"Import failed: {exc}"
+        )
+    manager = sync_playwright().start()
+    try:
+        yield manager
+    finally:
+        manager.stop()
 
 
 @pytest.fixture

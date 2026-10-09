@@ -46,7 +46,7 @@ def advisory_copy(package_copy):
         lambda d: d.update(
             ties=[
                 {
-                    "key": "stellarator_09__stellaris__magnet__coil__I_coil",
+                    "key": "stellarator_09__stellaris__magnet__coil__turn_current",
                     "rides_with": ["stellarator_09__stellaris__plasma__R"],
                 }
             ]
@@ -73,14 +73,16 @@ def test_the_tie_candidate_names_the_key_and_says_it_was_not_added(advisory_copy
     assert rc == 0, err
     (warning,) = group_by_axis(json.loads(out), "R_partial")["warnings"]
     assert warning["kind"] == "tie_candidate"
-    assert "magnet__coil__I_coil" in warning["detail"]  # WI-057 (2026-09-13): the key carries its part's path
+    assert (
+        "magnet__coil__turn_current" in warning["detail"]
+    )  # WI-057 (2026-09-13): the key carries its part's path
     assert "not added" in warning["detail"]
 
 
 def test_a_declared_tie_earns_no_candidate_warning(advisory_copy):
     advisory_copy.edit_axes(
         lambda d: next(g for g in d["groups"] if g["axis"] == "R_partial")["keys"].append(
-            {"key": "stellarator_09__stellaris__magnet__coil__I_coil", "provenance": "tie"}
+            {"key": "stellarator_09__stellaris__magnet__coil__turn_current", "provenance": "tie"}
         )
     )
     rc, out, err = advisory_copy.run()
@@ -94,7 +96,12 @@ def test_suffix_siblings_land_in_their_own_named_field():
     warnings — there is exactly one place to read them."""
     doc = run_tool(REAL_PACKAGE, REAL_MANIFEST, EXTRAS)
     group = group_by_axis(doc, "n_mod")
-    assert len(group["sibling_candidates"]) == 2  # 3 keys share the suffix, 1 declared
+    assert group["sibling_candidates"] == [
+        "stellarator_09__stellaris__divertor__divertor_cost__n_mod_in",
+        "stellarator_09__stellaris__om_cost__n_mod_in",
+        "stellarator_09__stellaris__power_supplies__power_supplies_cost__n_mod_in",
+        "stellarator_09__stellaris__precon_cost__n_mod_in",
+    ]
     assert all(key.endswith("__n_mod_in") for key in group["sibling_candidates"])
     assert group["sibling_candidates"] == sorted(group["sibling_candidates"])
     assert warning_kinds(doc, "n_mod") == []
@@ -113,7 +120,7 @@ def test_the_declared_tie_is_not_a_suffix_sibling(advisory_copy):
     rc, out, err = advisory_copy.run()
     assert rc == 0, err
     siblings = group_by_axis(json.loads(out), "R_partial")["sibling_candidates"]
-    assert "stellarator_09__stellaris__magnet__coil__I_coil" not in siblings
+    assert "stellarator_09__stellaris__magnet__coil__turn_current" not in siblings
 
 
 def test_a_key_in_two_groups_earns_a_document_warning():

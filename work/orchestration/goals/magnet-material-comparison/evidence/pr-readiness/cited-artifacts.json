@@ -1,0 +1,134 @@
+[
+  {
+    "from": "work/orchestration/goals/magnet-material-comparison/answer.md",
+    "target": "work/orchestration/goals/magnet-material-comparison/evidence/pr-readiness/independent-review.md",
+    "exists": true,
+    "tracked": false
+  },
+  {
+    "from": "work/orchestration/goals/magnet-material-comparison/answer.md",
+    "target": "work/orchestration/goals/magnet-material-comparison/answer-round1.md",
+    "exists": true,
+    "tracked": true
+  },
+  {
+    "from": "work/orchestration/goals/magnet-material-comparison/answer.md",
+    "target": "work/orchestration/goals/magnet-material-comparison/goal.md",
+    "exists": true,
+    "tracked": true
+  },
+  {
+    "from": "work/orchestration/goals/magnet-material-comparison/answer.md",
+    "target": "exploration/stellarator_materials/studies/20260930-magnet-material-plant-map/record.md",
+    "exists": true,
+    "tracked": true
+  },
+  {
+    "from": "work/orchestration/goals/magnet-material-comparison/answer.md",
+    "target": "work/orchestration/goals/magnet-material-comparison/evidence/round2-report/README.md",
+    "exists": true,
+    "tracked": true
+  },
+  {
+    "from": "work/orchestration/goals/magnet-material-comparison/answer.md",
+    "target": "work/orchestration/goals/magnet-material-comparison/answer-round1.md",
+    "exists": true,
+    "tracked": true
+  },
+  {
+    "from": "work/orchestration/goals/magnet-material-comparison/answer.md",
+    "target": "work/orchestration/goals/magnet-material-comparison/evidence/plant-contract.md",
+    "exists": true,
+    "tracked": true
+  },
+  {
+    "from": "work/orchestration/goals/magnet-material-comparison/answer.md",
+    "target": "work/orchestration/goals/magnet-material-comparison/evidence/round2-report/README.md",
+    "exists": true,
+    "tracked": true
+  },
+  {
+    "from": "work/orchestration/goals/magnet-material-comparison/answer.md",
+    "target": "work/orchestration/goals/magnet-material-comparison/evidence/round2-report/assumption-map.png",
+    "exists": true,
+    "tracked": true
+  },
+  {
+    "from": "work/orchestration/goals/magnet-material-comparison/answer.md",
+    "target": "work/orchestration/goals/magnet-material-comparison/evidence/round2-report/README.md",
+    "exists": true,
+    "tracked": true
+  },
+  {
+    "from": "work/orchestration/goals/magnet-material-comparison/answer.md",
+    "target": "work/orchestration/goals/magnet-material-comparison/evidence/round2-report/interactions.csv",
+    "exists": true,
+    "tracked": true
+  },
+  {
+    "from": "work/orchestration/goals/magnet-material-comparison/answer.md",
+    "target": "work/orchestration/goals/magnet-material-comparison/evidence/round2-report/field-size-interactions.png",
+    "exists": true,
+    "tracked": true
+  },
+  {
+    "from": "work/orchestration/goals/magnet-material-comparison/answer.md",
+    "target": "work/orchestration/goals/magnet-material-comparison/evidence/round2-report/decomposition.csv",
+    "exists": true,
+    "tracked": true
+  },
+  {
+    "from": "work/orchestration/goals/magnet-material-comparison/answer.md",
+    "target": "work/orchestration/goals/magnet-material-comparison/evidence/round2-report/lcoe-decomposition.png",
+    "exists": true,
+    "tracked": true
+  },
+  {
+    "from": "work/orchestration/goals/magnet-material-comparison/answer.md",
+    "target": "work/orchestration/goals/magnet-material-comparison/trail.md",
+    "exists": true,
+    "tracked": true
+  },
+  {
+    "from": "work/orchestration/goals/magnet-material-comparison/answer.md",
+    "target": "work/orchestration/goals/magnet-material-comparison/evidence/pr-readiness/README.md",
+    "exists": true,
+    "tracked": false
+  },
+  {
+    "from": "work/orchestration/goals/magnet-material-comparison/answer.md",
+    "target": "work/orchestration/goals/magnet-material-comparison/evidence/round2-report/README.md",
+    "exists": true,
+    "tracked": true
+  },
+  {
+    "from": "work/orchestration/goals/magnet-material-comparison/answer.md",
+    "target": "work/orchestration/goals/magnet-material-comparison/evidence/round2-report/provenance.json",
+    "exists": true,
+    "tracked": true
+  },
+  {
+    "from": "work/orchestration/goals/magnet-material-comparison/answer.md",
+    "target": "work/orchestration/goals/magnet-material-comparison/evidence/round2-report/proposed-narrative.md",
+    "exists": true,
+    "tracked": true
+  },
+  {
+    "from": "work/orchestration/goals/magnet-material-comparison/answer.md",
+    "target": "work/orchestration/goals/magnet-material-comparison/evidence/round2-report/proposed-dispositions.md",
+    "exists": true,
+    "tracked": true
+  },
+  {
+    "from": "work/orchestration/goals/magnet-material-comparison/evidence/round2-report/README.md",
+    "target": "work/orchestration/goals/magnet-material-comparison/evidence/pr-readiness/independent-review.md",
+    "exists": true,
+    "tracked": false
+  },
+  {
+    "from": "work/orchestration/goals/magnet-material-comparison/evidence/round2-report/README.md",
+    "target": "work/orchestration/goals/magnet-material-comparison/evidence/pr-readiness/independent-review.md",
+    "exists": true,
+    "tracked": false
+  }
+]

@@ -1,0 +1,11 @@
+{
+  "scope": "build",
+  "protected_roots": [
+    "models",
+    "exploration/stellarator_e2e",
+    "exploration/magnet_materials",
+    "tests/model_families.py"
+  ],
+  "files": 76581,
+  "changed": []
+}

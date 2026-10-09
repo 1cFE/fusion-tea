@@ -1,0 +1,25 @@
+--- exploration/stellarator_e2e/generated/handwritten/mfe_conductor_current/rebco_conductor_current_impl.py
++++ exploration/stellarator_materials/bodies/mfe_conductor_current/rebco_conductor_current_impl.py
+@@ -6,7 +6,13 @@
+ AUTO_IMPLEMENTED = False
+ 
+ 
+-def run_rebco_conductor_current(inputs: REBCO_Conductor_CurrentInput) -> tuple[float, float, float, float, float, float, float, float, float, float, float]:
++def run_rebco_conductor_current(inputs: REBCO_Conductor_CurrentInput) -> tuple[float, float, float, float, float, float, float, float, float, float, float, float]:
++    # WI-100 gate (design section 2.1, body B1): only 0 or 1; at 0 every output is 0.0 before any domain check.
++    if isinstance(inputs.enabled, bool) or inputs.enabled not in (0.0, 1.0):
++        raise ValueError(f'REBCO Conductor Current: enabled must be 0 or 1; actual={inputs.enabled!r}')
++    if inputs.enabled == 0.0:
++        return tuple(0.0 for _ in REBCO_Conductor_CurrentOutput.model_fields)
++
+     def positive(key, value):
+         if not math.isfinite(value) or value <= 0:
+             raise ValueError(f'REBCO Conductor Current: {key} must be finite and positive')
+@@ -51,6 +57,7 @@
+     out['margin_fraction'] = inputs.allowable_fraction - out['operating_fraction_reference']
+     out['margin_current'] = out['allowable_current'] - inputs.turn_current
+     out['field_extrapolated'] = extrapolated
++    out['evaluation_defined'] = 1.0  # WI-100 gate output (B1)
+     for key, value in out.items():
+         if not math.isfinite(value):
+             raise ValueError(f'REBCO Conductor Current: nonfinite {key}')

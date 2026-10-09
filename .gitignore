@@ -64,6 +64,7 @@ exploration/stellarator_e2e/outputs/
 /exploration/exchanger_architecture/studies/**/pkg_link/
 /exploration/exchanger_architecture/thermal_requirements/studies/**/pkg_link/
 /work/active/WI-097_exchanger-thermal-requirements/evidence/**/pkg_link/
+/work/completed/*_WI-097_exchanger-thermal-requirements/evidence/**/pkg_link/
 /work/orchestration/goals/**/pkg_link/
 /.project/active/aries-comparison-preparation/current-readiness/candidate/evidence/**/pkg_link/
 /work/active/WI-073_matched-steam-cycle-for-current-comparison/evidence/structure-probe/selector/probe_selector
@@ -89,6 +90,7 @@ exploration/stellarator_e2e/outputs/
 /exploration/whole_plant_conversion/studies/20260927-design-study-whole-plant-conversion/results/cases.json
 /exploration/whole_plant_conversion/studies/20260927-design-study-whole-plant-conversion/results/native/20260927-design-study-whole-plant-conversion.db
 /work/active/WI-098_whole-plant-conversion-comparison/evidence/conversion-controls/native/cases.json
+/work/completed/*_WI-098_whole-plant-conversion-comparison/evidence/conversion-controls/native/cases.json
 
 # Magnet material comparison study outputs kept on the machine that ran the study (goal magnet-material-comparison);
 # digests are in the record's snapshot.json. The declared case list regenerates from declare_cases.py.
@@ -99,3 +101,6 @@ exploration/magnet_materials/studies/20260929-magnet-material-comparison/results
 exploration/magnet_materials/studies/20260929-magnet-material-comparison/results/native/
 exploration/magnet_materials/studies/20260929-magnet-material-comparison/results/_work/
 exploration/magnet_materials/studies/baseline/_work/
+# Round 2 (WI-100) declared case list: regenerates from declare_cases.py; its sha256 is recorded in
+# exploration/stellarator_materials/studies/policy-notes.md.
+exploration/stellarator_materials/studies/cases.json

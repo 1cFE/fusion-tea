@@ -1,0 +1,93 @@
+{
+  "entry_commit": "0e045fb30d9ba1b2f62b3a14b3c3fbfcb3985bc9",
+  "original_failures": 10,
+  "outcome_counts": {
+    "passed": 147,
+    "xfail": 1
+  },
+  "attributions": [
+    {
+      "original_node": "tests/models/test_mfe_financial_rate_limits.py::test_current_regeneration_refuses_nonfresh_without_mutation[visible]",
+      "original_kind": "FAILED",
+      "current_node": "tests/models/test_mfe_financial_rate_limits.py::test_current_regeneration_refuses_nonfresh_without_mutation[visible]",
+      "outcome": "passed"
+    },
+    {
+      "original_node": "tests/models/test_mfe_financial_rate_limits.py::test_current_regeneration_refuses_nonfresh_without_mutation[hidden]",
+      "original_kind": "FAILED",
+      "current_node": "tests/models/test_mfe_financial_rate_limits.py::test_current_regeneration_refuses_nonfresh_without_mutation[hidden]",
+      "outcome": "passed"
+    },
+    {
+      "original_node": "tests/models/test_mfe_major_radius.py::test_binding_documentation_and_source_preservation",
+      "original_kind": "FAILED",
+      "current_node": "tests/models/test_mfe_major_radius.py::test_binding_documentation_and_source_preservation",
+      "outcome": "passed"
+    },
+    {
+      "original_node": "tests/models/test_mfe_major_radius.py::test_current_contract_edges_and_fresh_package_agreement",
+      "original_kind": "FAILED",
+      "current_node": "tests/models/test_mfe_major_radius.py::test_current_contract_edges_and_fresh_package_agreement",
+      "outcome": "passed"
+    },
+    {
+      "original_node": "tests/test_codegen_teax_acceptance.py::test_live_and_snapshot_packages_are_byte_identical[primary]",
+      "original_kind": "FAILED",
+      "current_node": "tests/test_codegen_teax_acceptance.py::test_live_and_snapshot_packages_are_byte_identical[primary]",
+      "outcome": "passed"
+    },
+    {
+      "original_node": "tests/test_codegen_teax_acceptance.py::test_typed_handwritten_quotient_survives_supported_regeneration[primary-False]",
+      "original_kind": "FAILED",
+      "current_node": "tests/test_codegen_teax_acceptance.py::test_typed_handwritten_quotient_survives_supported_regeneration[primary-False]",
+      "outcome": "passed"
+    },
+    {
+      "original_node": "tests/test_codegen_teax_acceptance.py::test_typed_handwritten_quotient_survives_supported_regeneration[primary-True]",
+      "original_kind": "FAILED",
+      "current_node": "tests/test_codegen_teax_acceptance.py::test_typed_handwritten_quotient_survives_supported_regeneration[primary-True]",
+      "outcome": "passed"
+    },
+    {
+      "original_node": "tests/test_codegen_teax_acceptance.py::test_live_and_snapshot_packages_are_byte_identical[exploration]",
+      "original_kind": "FAILED",
+      "current_node": "tests/test_codegen_teax_acceptance.py::test_live_and_snapshot_packages_are_byte_identical[exploration]",
+      "outcome": "passed"
+    },
+    {
+      "original_node": "tests/test_codegen_teax_acceptance.py::test_typed_handwritten_quotient_survives_supported_regeneration[exploration-False]",
+      "original_kind": "FAILED",
+      "current_node": "tests/test_codegen_teax_acceptance.py::test_typed_handwritten_quotient_survives_supported_regeneration[exploration-False]",
+      "outcome": "passed"
+    },
+    {
+      "original_node": "tests/test_codegen_teax_acceptance.py::test_typed_handwritten_quotient_survives_supported_regeneration[exploration-True]",
+      "original_kind": "FAILED",
+      "current_node": "tests/test_codegen_teax_acceptance.py::test_typed_handwritten_quotient_survives_supported_regeneration[exploration-True]",
+      "outcome": "passed"
+    }
+  ],
+  "artifacts": [
+    {
+      "path": "/tmp/20261008-model-codegen-suite.xml",
+      "sha256": "6e1384a25146f72b156c0d24e463995352dd021c2b0e9bea02928d7e9b1cd6fa",
+      "bytes": 98160
+    },
+    {
+      "path": "/tmp/20261008-model-codegen-suite.log",
+      "sha256": "43b5b72207a31f169fad32dac933e90cfab971d8d1fb8ec05f8b713afeeb113a",
+      "bytes": 1814
+    }
+  ],
+  "tested_source_hashes": {
+    "tests/models/test_mfe_financial_rate_limits.py": "10d771fab485464dbfd8b9ae41afbb3e8d9660eed0d27ba31154cffa926c7638",
+    "tests/models/test_mfe_major_radius.py": "7d56e421aa8d6178350328f6761e99dd39af599597be315608be8eb68a88fafe",
+    "tests/test_codegen_teax_acceptance.py": "7708786597eb265caf58c2ea4421adc2cd839f4b72ea1d890e1aa7255a756e59"
+  },
+  "command": "bash /tmp/fusion-tea-study-repair-tests.sh -q -ra --tb=short --junitxml=/tmp/20261008-model-codegen-suite.xml tests/models/test_mfe_financial_rate_limits.py tests/models/test_mfe_major_radius.py tests/test_codegen_teax_acceptance.py",
+  "limitations": [
+    "Scoped three-module qualification only; no fresh full-repository gate.",
+    "Other 52 recorded failures and repository-wide style policy remain pending."
+  ],
+  "duration_seconds": 56.56
+}

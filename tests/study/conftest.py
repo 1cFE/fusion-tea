@@ -5,12 +5,15 @@ these tests. Anything that mutates a package goes through the ``package_copy``
 factory (added in Phase 4), which copies into ``tmp_path``.
 """
 
+import io
 import itertools
 import json
 import os
 import shutil
 import subprocess
 import sys
+import tarfile
+from contextlib import contextmanager
 from dataclasses import dataclass
 from pathlib import Path
 
@@ -88,7 +91,9 @@ def minimal_manifest_dict() -> dict:
     }
 
 
-KNOWN_ANSWER_DECLARATION = DATA_DIR / "axes.known_answers.json"
+KNOWN_ANSWER_DECLARATION = (
+    REPO_ROOT / "exploration/stellarator_e2e/studies/axes.supplied_design.json"
+)
 INDICATORS_CLI = REPO_ROOT / "scripts" / "study" / "indicators.py"
 
 
@@ -101,9 +106,12 @@ def run_tool_raw(package, manifest_path, groups, *, out=None, group=(), cwd=None
     argv = [
         sys.executable,
         str(INDICATORS_CLI),
-        "--package", str(package),
-        "--manifest", str(manifest_path),
-        "--groups", str(groups),
+        "--package",
+        str(package),
+        "--manifest",
+        str(manifest_path),
+        "--groups",
+        str(groups),
     ]
     for name in group:
         argv += ["--group", name]
@@ -283,6 +291,7 @@ def stock_route_run(tmp_path_factory, stock_simkit_session_path):
 
     out = tmp_path_factory.mktemp("stock_route_run")
     from tests.models.current_mfe_regressions import LEGACY_COOLING_FACILITIES
+
     study_route.run_availability_sweep(out, scenario_overrides=LEGACY_COOLING_FACILITIES)
     study_route.execute_baseline(out)
     return {
@@ -366,10 +375,7 @@ class IntegrationWorkspace:
         }
         request.update(overrides)
         return [
-            token
-            for flag, value in request.items()
-            if value is not None
-            for token in (flag, value)
+            token for flag, value in request.items() if value is not None for token in (flag, value)
         ]
 
 
@@ -379,8 +385,9 @@ def _copy_tree_digests(source: Path, destination: Path, root: Path) -> dict[str,
 
     # Interpreter bytecode caches are not artifacts and the repository ignores them; copying
     # them would put files in the workspace that no tracked digest can be compared against.
-    shutil.copytree(source, destination, symlinks=True,
-                    ignore=shutil.ignore_patterns(integrate.CACHE_DIRECTORY))
+    shutil.copytree(
+        source, destination, symlinks=True, ignore=shutil.ignore_patterns(integrate.CACHE_DIRECTORY)
+    )
     digests = {}
     for path in sorted(source.rglob("*")):
         if not path.is_file() or path.is_symlink():
@@ -403,7 +410,9 @@ def _copy_file_digest(source: Path, destination: Path, root: Path) -> dict[str, 
 def _repo_clean_over(paths) -> bool:
     done = subprocess.run(
         ["git", "status", "--porcelain", "--untracked-files=all", "--", *(str(p) for p in paths)],
-        cwd=str(REPO_ROOT), capture_output=True, text=True,
+        cwd=str(REPO_ROOT),
+        capture_output=True,
+        text=True,
     )
     assert done.returncode == 0, done.stderr
     return not done.stdout.strip()
@@ -416,6 +425,19 @@ def integration_workspace(stock_simkit_path):
     Function-scoped: the refusal fixtures doctor different files, and a shared workspace
     would couple their assertions to each other's mutations.
     """
+    with _integration_workspace() as workspace:
+        yield workspace
+
+
+@pytest.fixture(scope="module")
+def integration_success_workspace(stock_simkit_session_path):
+    """One isolated workspace for a module's read-only success assertions."""
+    with _integration_workspace() as workspace:
+        yield workspace
+
+
+@contextmanager
+def _integration_workspace():
     from scripts.study import manifest as manifest_mod
 
     assert not WORKSPACE_ROOT.exists(), f"a previous run left {WORKSPACE_ROOT} behind"
@@ -431,7 +453,9 @@ def integration_workspace(stock_simkit_path):
         digests |= _copy_tree_digests(REAL_MODELS, root / "models", root)
         digests |= _copy_file_digest(REAL_SNAPSHOT, root / REAL_SNAPSHOT.name, root)
         digests |= _copy_file_digest(REAL_MANIFEST, root / "studies" / "manifest.json", root)
-        digests |= _copy_file_digest(REAL_ROUTE_DIR / "axes.supplied_design.json", root / "studies" / "axes.json", root)
+        digests |= _copy_file_digest(
+            REAL_ROUTE_DIR / "axes.supplied_design.json", root / "studies" / "axes.json", root
+        )
         digests |= _copy_file_digest(REAL_CENSUS, root / "mfe_census.json", root)
 
         for relative, digest in digests.items():
@@ -460,7 +484,14 @@ def integration_workspace(stock_simkit_path):
             source_digests=digests,
             entry_digests=entry_digests,
             repo_clean_over_sources=_repo_clean_over(
-                [REAL_PACKAGE.resolve(), REAL_MODELS, REAL_SNAPSHOT, REAL_MANIFEST, REAL_CENSUS, REAL_ROUTE_DIR / "axes.supplied_design.json"]
+                [
+                    REAL_PACKAGE.resolve(),
+                    REAL_MODELS,
+                    REAL_SNAPSHOT,
+                    REAL_MANIFEST,
+                    REAL_CENSUS,
+                    REAL_ROUTE_DIR / "axes.supplied_design.json",
+                ]
             ),
             expected_teax_revision=integrate.teax_revision(
                 Path(os.environ["STOP_PARSER_TEAX_ROOT"])
@@ -484,7 +515,10 @@ SEAM_CLI = REPO_ROOT / "scripts" / "integrate.py"
 def run_seam_raw(argv, env=None):
     return subprocess.run(
         [sys.executable, str(SEAM_CLI), *argv],
-        capture_output=True, text=True, cwd=str(REPO_ROOT), env=env,
+        capture_output=True,
+        text=True,
+        cwd=str(REPO_ROOT),
+        env=env,
     )
 
 
@@ -499,3 +533,29 @@ def read_return(done, out_dir) -> dict:
 
 def run_seam(argv, out_dir, env=None) -> dict:
     return read_return(run_seam_raw(argv, env), out_dir)
+
+
+@pytest.fixture(scope="session")
+def historical_cycle_package(tmp_path_factory):
+    """Exact cycle-migration graph sources, before supplied magnet design choices.
+
+    The immutable ledger pins semantic 989f6a44 at d7383342e. Materialize Git bytes
+    explicitly; only a separate manifest copy changes its package-location field.
+    """
+    root = tmp_path_factory.mktemp("historical_cycle_package")
+    paths = [
+        "exploration/stellarator_e2e/generated",
+        "exploration/stellarator_e2e/pkg",
+        "exploration/stellarator_e2e/studies/manifest.json",
+        "tests/study/data",
+    ]
+    archive = subprocess.check_output(["git", "archive", "d7383342e", *paths], cwd=REPO_ROOT)
+    with tarfile.open(fileobj=io.BytesIO(archive)) as tree:
+        tree.extractall(root, filter="data")
+    package = root / "exploration/stellarator_e2e/pkg/stellarator_tea"
+    original = root / "exploration/stellarator_e2e/studies/manifest.json"
+    data = json.loads(original.read_bytes())
+    data["package"]["path"] = os.path.relpath(package, REPO_ROOT)
+    manifest_path = root / "relocated-manifest.json"
+    manifest_path.write_text(json.dumps(data, indent=2) + "\n")
+    return root, package, manifest_path

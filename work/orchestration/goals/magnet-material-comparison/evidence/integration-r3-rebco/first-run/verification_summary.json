@@ -1,0 +1,926 @@
+{
+  "schema_version": "study-verification-summary/v1",
+  "tool": {
+    "path": "scripts/study/verify.py",
+    "source_digest": {
+      "recipe": "tool-source-digest/v1",
+      "digest": "f733a8c2c236082aea48853c2da7e060c727bd1bb11d2515c8fce25657329831",
+      "files": [
+        {
+          "path": "scripts/study/common.py",
+          "sha256": "ae5fbca7be87d2fa1783affe4773332c9a898a265f70215aec9ad1489c8df521"
+        },
+        {
+          "path": "scripts/study/identity.py",
+          "sha256": "a6871eaaba1078a524b27c998744c6778ac6b5304d39d6eb083b9be4533dc01e"
+        },
+        {
+          "path": "scripts/study/manifest.py",
+          "sha256": "3c1bd8043b1f4ab0424ea9a77cc243e03bc10b3766e7ac634b9e93c25eb749ee"
+        },
+        {
+          "path": "scripts/study/schemas/package_identity.v1.schema.json",
+          "sha256": "d312ac300f1f639bccad3300e5c617658fe307594eaf9deadea66d6162008ad9"
+        },
+        {
+          "path": "scripts/study/schemas/verification_summary.v1.schema.json",
+          "sha256": "7afe14d745ac7241116096f0a93af35f675d3570c96e5b0e080fac427a17fc87"
+        },
+        {
+          "path": "scripts/study/verify.py",
+          "sha256": "34ee38ed9ae38f448199f0e968a13cd2448ec97098bef601995031d1c3fbc8ba"
+        }
+      ]
+    }
+  },
+  "command": [
+    "scripts/study/verify.py",
+    "--package",
+    "/home/reid/1cfe/fusion-tea/exploration/stellarator_materials/units/rebco/stellarator_materials_rebco_tea",
+    "--manifest",
+    "/home/reid/1cfe/fusion-tea/exploration/stellarator_materials/studies/20260930-magnet-material-plant-map/manifest_rebco.json",
+    "--identity",
+    "/home/reid/1cfe/fusion-tea/work/orchestration/goals/magnet-material-comparison/evidence/integration-r3-rebco/package_identity.json",
+    "--store",
+    "/home/reid/1cfe/fusion-tea/work/orchestration/goals/magnet-material-comparison/evidence/integration-r3-rebco/_work/stellarator-materials-rebco-baseline-r3.db",
+    "--out",
+    "/home/reid/1cfe/fusion-tea/work/orchestration/goals/magnet-material-comparison/evidence/integration-r3-rebco/verification_summary.json"
+  ],
+  "teax": {
+    "module_path": "../teax/packages/teax-simkit/simkit",
+    "revision": "unrecorded"
+  },
+  "package": {
+    "path": "exploration/stellarator_materials/units/rebco/stellarator_materials_rebco_tea",
+    "package_name": "stellarator_materials_rebco_tea",
+    "git_clean": true
+  },
+  "identity": {
+    "kind": "sealed",
+    "digest": "f441442c116ed0bdb1cd438ccfd282146b312b20db928039da61b59719624fe6",
+    "matches_preflight": true
+  },
+  "manifest": {
+    "path": "exploration/stellarator_materials/studies/20260930-magnet-material-plant-map/manifest_rebco.json",
+    "schema_version": "study-package-manifest/v1",
+    "digest": "fb87e344ab20c7759e796f3da2d66417beeb20a6ae155219cbfefeb7030cf97c"
+  },
+  "oracle": {
+    "kind": "python_callable",
+    "sys_path": ".",
+    "module": "exploration.stellarator_materials.studies.20260930-magnet-material-plant-map.oracle_rebco",
+    "callable": "evaluate",
+    "operand_bindings_digest": "2d9b6963b540982401a024d13f3623960e63b7dedf2c22f95d8ab6e6aa4f2ad2"
+  },
+  "stores": [
+    {
+      "path": "work/orchestration/goals/magnet-material-comparison/evidence/integration-r3-rebco/_work/stellarator-materials-rebco-baseline-r3.db",
+      "study_id": "stellarator-materials-rebco-baseline-r3",
+      "compatibility": {
+        "digest": "76dbd18818f44ecf2b3e179955a86f3b43fce73e1c6fabf30defda81657dbafd",
+        "evidence_schema_version": "v3",
+        "executable_fingerprint": "f441442c116ed0bdb1cd438ccfd282146b312b20db928039da61b59719624fe6",
+        "input_schema_version": "input-v1",
+        "model_contract_fingerprint": "6b920b065e17ff3baca4b92d177bffa235647bddd9a7fc8ddb16535fd4e0ae7e",
+        "strategy_config": "b9a73667c2b89553b3ca8e18c6ef32684ad10f34d660c0dac98fd8ff99d7b4c2",
+        "strategy_identity": "prepared-list/v1",
+        "study_definition_fingerprint": "3f371bdbb62cd8ace72dc3e72d0c9f403933706ea7207ed85328c710e8b4c435",
+        "study_id": "stellarator-materials-rebco-baseline-r3"
+      },
+      "cases_total": 1,
+      "cases_completed": 1,
+      "sampling": {
+        "scheme": "stratified-by-verdict-combination/v1",
+        "seed": "cc888084d601f9c",
+        "seed_source": "derived",
+        "sample_size_requested": 12,
+        "strata_observed": 1,
+        "sampled_rows": 1,
+        "sampled_case_ids": [
+          "stellarator-materials-rebco-baseline-r3:c0000"
+        ]
+      },
+      "worst_channel_rel_dev": 2.409591420195442e-15,
+      "worst_at": {
+        "case_id": "stellarator-materials-rebco-baseline-r3:c0000",
+        "channel": "stellarator_09_materials__rebco_material__heat_transport__equipment__helium_represented_fill_margin_kg",
+        "value": 1509.7907373842772
+      }
+    }
+  ],
+  "tolerance": 1e-09,
+  "channels_checked": [
+    {
+      "channel": "stellarator_09_materials__rebco_material__blanket__first_wall__wall_peak_calc__wall_load_peak",
+      "objective": null
+    },
+    {
+      "channel": "stellarator_09_materials__rebco_material__breeding_adequacy__defined_flag",
+      "objective": null
+    },
+    {
+      "channel": "stellarator_09_materials__rebco_material__breeding_adequacy__numerical_margin",
+      "objective": null
+    },
+    {
+      "channel": "stellarator_09_materials__rebco_material__buildings__layout__capacity_margin_units",
+      "objective": null
+    },
+    {
+      "channel": "stellarator_09_materials__rebco_material__buildings__layout__geometry_fit_margin_m",
+      "objective": null
+    },
+    {
+      "channel": "stellarator_09_materials__rebco_material__buildings__layout__initial_margin_days",
+      "objective": null
+    },
+    {
+      "channel": "stellarator_09_materials__rebco_material__buildings__layout__occupancy_area_margin_m2",
+      "objective": null
+    },
+    {
+      "channel": "stellarator_09_materials__rebco_material__buildings__layout__outage_margin_days",
+      "objective": null
+    },
+    {
+      "channel": "stellarator_09_materials__rebco_material__buildings__layout__parcel_fit_margin_m",
+      "objective": null
+    },
+    {
+      "channel": "stellarator_09_materials__rebco_material__buildings__layout__readiness_margin_days",
+      "objective": null
+    },
+    {
+      "channel": "stellarator_09_materials__rebco_material__buildings__layout__route_margin_m",
+      "objective": null
+    },
+    {
+      "channel": "stellarator_09_materials__rebco_material__buildings__layout__unused_material_capacity",
+      "objective": null
+    },
+    {
+      "channel": "stellarator_09_materials__rebco_material__cryoplant__aux_cooling__cryo_cost",
+      "objective": "cryo_capital"
+    },
+    {
+      "channel": "stellarator_09_materials__rebco_material__cryoplant__cold_stage_capability__evaluation_defined",
+      "objective": null
+    },
+    {
+      "channel": "stellarator_09_materials__rebco_material__cryoplant__cold_stage_capability__margin",
+      "objective": null
+    },
+    {
+      "channel": "stellarator_09_materials__rebco_material__cryoplant__direct_electric_capability__evaluation_defined",
+      "objective": null
+    },
+    {
+      "channel": "stellarator_09_materials__rebco_material__cryoplant__direct_electric_capability__margin",
+      "objective": null
+    },
+    {
+      "channel": "stellarator_09_materials__rebco_material__cryoplant__intercept_stage_capability__evaluation_defined",
+      "objective": null
+    },
+    {
+      "channel": "stellarator_09_materials__rebco_material__cryoplant__intercept_stage_capability__margin",
+      "objective": null
+    },
+    {
+      "channel": "stellarator_09_materials__rebco_material__cryoplant__refrigeration__capacity_margin",
+      "objective": null
+    },
+    {
+      "channel": "stellarator_09_materials__rebco_material__divertor__divheat__q_target_peak",
+      "objective": null
+    },
+    {
+      "channel": "stellarator_09_materials__rebco_material__electric_plant__electric_gross_capability__evaluation_defined",
+      "objective": null
+    },
+    {
+      "channel": "stellarator_09_materials__rebco_material__electric_plant__electric_gross_capability__margin",
+      "objective": null
+    },
+    {
+      "channel": "stellarator_09_materials__rebco_material__fuel_cycle__processing_cost__capacity_evaluation_defined",
+      "objective": null
+    },
+    {
+      "channel": "stellarator_09_materials__rebco_material__fuel_cycle__processing_cost__capacity_margin_kg_s",
+      "objective": null
+    },
+    {
+      "channel": "stellarator_09_materials__rebco_material__heat_rejection__cooling_water__condenser_water_gap_K",
+      "objective": null
+    },
+    {
+      "channel": "stellarator_09_materials__rebco_material__heat_rejection__water_electric_capability__evaluation_defined",
+      "objective": null
+    },
+    {
+      "channel": "stellarator_09_materials__rebco_material__heat_rejection__water_electric_capability__margin",
+      "objective": null
+    },
+    {
+      "channel": "stellarator_09_materials__rebco_material__heat_rejection__water_flow_capability__evaluation_defined",
+      "objective": null
+    },
+    {
+      "channel": "stellarator_09_materials__rebco_material__heat_rejection__water_flow_capability__margin",
+      "objective": null
+    },
+    {
+      "channel": "stellarator_09_materials__rebco_material__heat_rejection__water_head_capability__evaluation_defined",
+      "objective": null
+    },
+    {
+      "channel": "stellarator_09_materials__rebco_material__heat_rejection__water_head_capability__margin",
+      "objective": null
+    },
+    {
+      "channel": "stellarator_09_materials__rebco_material__heat_rejection__water_rejection_capability__evaluation_defined",
+      "objective": null
+    },
+    {
+      "channel": "stellarator_09_materials__rebco_material__heat_rejection__water_rejection_capability__margin",
+      "objective": null
+    },
+    {
+      "channel": "stellarator_09_materials__rebco_material__heat_transport__equipment__helium_represented_fill_margin_kg",
+      "objective": null
+    },
+    {
+      "channel": "stellarator_09_materials__rebco_material__heat_transport__equipment__ihx_capacity_defined",
+      "objective": null
+    },
+    {
+      "channel": "stellarator_09_materials__rebco_material__heat_transport__equipment__ihx_capacity_margin_m2",
+      "objective": null
+    },
+    {
+      "channel": "stellarator_09_materials__rebco_material__heat_transport__equipment__represented_fill_defined",
+      "objective": null
+    },
+    {
+      "channel": "stellarator_09_materials__rebco_material__heat_transport__equipment__salt_represented_fill_margin_kg",
+      "objective": null
+    },
+    {
+      "channel": "stellarator_09_materials__rebco_material__heat_transport__helium_electric_capability__evaluation_defined",
+      "objective": null
+    },
+    {
+      "channel": "stellarator_09_materials__rebco_material__heat_transport__helium_electric_capability__margin",
+      "objective": null
+    },
+    {
+      "channel": "stellarator_09_materials__rebco_material__heat_transport__helium_flow_capability__evaluation_defined",
+      "objective": null
+    },
+    {
+      "channel": "stellarator_09_materials__rebco_material__heat_transport__helium_flow_capability__margin",
+      "objective": null
+    },
+    {
+      "channel": "stellarator_09_materials__rebco_material__heat_transport__helium_pressure_rise_capability__evaluation_defined",
+      "objective": null
+    },
+    {
+      "channel": "stellarator_09_materials__rebco_material__heat_transport__helium_pressure_rise_capability__margin",
+      "objective": null
+    },
+    {
+      "channel": "stellarator_09_materials__rebco_material__heat_transport__helium_pumping_capability__evaluation_defined",
+      "objective": null
+    },
+    {
+      "channel": "stellarator_09_materials__rebco_material__heat_transport__helium_pumping_capability__margin",
+      "objective": null
+    },
+    {
+      "channel": "stellarator_09_materials__rebco_material__heat_transport__primary_loop__mdot_loop",
+      "objective": null
+    },
+    {
+      "channel": "stellarator_09_materials__rebco_material__heat_transport__primary_loop__p_loop_margin",
+      "objective": null
+    },
+    {
+      "channel": "stellarator_09_materials__rebco_material__heat_transport__salt_electric_capability__evaluation_defined",
+      "objective": null
+    },
+    {
+      "channel": "stellarator_09_materials__rebco_material__heat_transport__salt_electric_capability__margin",
+      "objective": null
+    },
+    {
+      "channel": "stellarator_09_materials__rebco_material__heat_transport__salt_flow_capability__evaluation_defined",
+      "objective": null
+    },
+    {
+      "channel": "stellarator_09_materials__rebco_material__heat_transport__salt_flow_capability__margin",
+      "objective": null
+    },
+    {
+      "channel": "stellarator_09_materials__rebco_material__heat_transport__salt_head_capability__evaluation_defined",
+      "objective": null
+    },
+    {
+      "channel": "stellarator_09_materials__rebco_material__heat_transport__salt_head_capability__margin",
+      "objective": null
+    },
+    {
+      "channel": "stellarator_09_materials__rebco_material__heat_transport__salt_shaft_capability__evaluation_defined",
+      "objective": null
+    },
+    {
+      "channel": "stellarator_09_materials__rebco_material__heat_transport__salt_shaft_capability__margin",
+      "objective": null
+    },
+    {
+      "channel": "stellarator_09_materials__rebco_material__heating__heat__p_coupled",
+      "objective": null
+    },
+    {
+      "channel": "stellarator_09_materials__rebco_material__lcoe_calc__lcoe",
+      "objective": "lcoe"
+    },
+    {
+      "channel": "stellarator_09_materials__rebco_material__magnet__area__cu_margin",
+      "objective": null
+    },
+    {
+      "channel": "stellarator_09_materials__rebco_material__magnet__area__fit_margin",
+      "objective": null
+    },
+    {
+      "channel": "stellarator_09_materials__rebco_material__magnet__area__steel_margin",
+      "objective": null
+    },
+    {
+      "channel": "stellarator_09_materials__rebco_material__magnet__cond_strain__eps_cond",
+      "objective": null
+    },
+    {
+      "channel": "stellarator_09_materials__rebco_material__magnet__conductor__acceptance_margin",
+      "objective": null
+    },
+    {
+      "channel": "stellarator_09_materials__rebco_material__magnet__conductor__supported",
+      "objective": null
+    },
+    {
+      "channel": "stellarator_09_materials__rebco_material__magnet__magnet_capital_rollup__capital_cost",
+      "objective": "magnet_capital"
+    },
+    {
+      "channel": "stellarator_09_materials__rebco_material__magnet__pack_field__ampere_floor_margin",
+      "objective": null
+    },
+    {
+      "channel": "stellarator_09_materials__rebco_material__magnet__peak_field_calc__B_peak",
+      "objective": null
+    },
+    {
+      "channel": "stellarator_09_materials__rebco_material__magnet__wp_fit__minimum_margin",
+      "objective": null
+    },
+    {
+      "channel": "stellarator_09_materials__rebco_material__magnet__wp_stress__sigma_wp",
+      "objective": null
+    },
+    {
+      "channel": "stellarator_09_materials__rebco_material__pb__p_net",
+      "objective": "p_net"
+    },
+    {
+      "channel": "stellarator_09_materials__rebco_material__pb__rec_frac",
+      "objective": null
+    },
+    {
+      "channel": "stellarator_09_materials__rebco_material__plasma__beta_calc__beta",
+      "objective": null
+    },
+    {
+      "channel": "stellarator_09_materials__rebco_material__plasma__sustain__p_aux_required",
+      "objective": "p_aux_required"
+    },
+    {
+      "channel": "stellarator_09_materials__rebco_material__power_supplies__magnet_pf_electric_capability__evaluation_defined",
+      "objective": null
+    },
+    {
+      "channel": "stellarator_09_materials__rebco_material__power_supplies__magnet_pf_electric_capability__margin",
+      "objective": null
+    },
+    {
+      "channel": "stellarator_09_materials__rebco_material__power_supplies__magnet_tf_electric_capability__evaluation_defined",
+      "objective": null
+    },
+    {
+      "channel": "stellarator_09_materials__rebco_material__power_supplies__magnet_tf_electric_capability__margin",
+      "objective": null
+    },
+    {
+      "channel": "stellarator_09_materials__rebco_material__total_capital__total_capital",
+      "objective": "total_capital"
+    },
+    {
+      "channel": "stellarator_09_materials__rebco_material__turbine__condensate_electric_capability__evaluation_defined",
+      "objective": null
+    },
+    {
+      "channel": "stellarator_09_materials__rebco_material__turbine__condensate_electric_capability__margin",
+      "objective": null
+    },
+    {
+      "channel": "stellarator_09_materials__rebco_material__turbine__condensate_flow_capability__evaluation_defined",
+      "objective": null
+    },
+    {
+      "channel": "stellarator_09_materials__rebco_material__turbine__condensate_flow_capability__margin",
+      "objective": null
+    },
+    {
+      "channel": "stellarator_09_materials__rebco_material__turbine__condensate_pressure_rise_capability__evaluation_defined",
+      "objective": null
+    },
+    {
+      "channel": "stellarator_09_materials__rebco_material__turbine__condensate_pressure_rise_capability__margin",
+      "objective": null
+    },
+    {
+      "channel": "stellarator_09_materials__rebco_material__turbine__condenser_rejection_capability__evaluation_defined",
+      "objective": null
+    },
+    {
+      "channel": "stellarator_09_materials__rebco_material__turbine__condenser_rejection_capability__margin",
+      "objective": null
+    },
+    {
+      "channel": "stellarator_09_materials__rebco_material__turbine__cycle__domain_product",
+      "objective": null
+    },
+    {
+      "channel": "stellarator_09_materials__rebco_material__turbine__feedwater_electric_capability__evaluation_defined",
+      "objective": null
+    },
+    {
+      "channel": "stellarator_09_materials__rebco_material__turbine__feedwater_electric_capability__margin",
+      "objective": null
+    },
+    {
+      "channel": "stellarator_09_materials__rebco_material__turbine__feedwater_flow_capability__evaluation_defined",
+      "objective": null
+    },
+    {
+      "channel": "stellarator_09_materials__rebco_material__turbine__feedwater_flow_capability__margin",
+      "objective": null
+    },
+    {
+      "channel": "stellarator_09_materials__rebco_material__turbine__feedwater_pressure_rise_capability__evaluation_defined",
+      "objective": null
+    },
+    {
+      "channel": "stellarator_09_materials__rebco_material__turbine__feedwater_pressure_rise_capability__margin",
+      "objective": null
+    },
+    {
+      "channel": "stellarator_09_materials__rebco_material__turbine__hp_flow_capability__evaluation_defined",
+      "objective": null
+    },
+    {
+      "channel": "stellarator_09_materials__rebco_material__turbine__hp_flow_capability__margin",
+      "objective": null
+    },
+    {
+      "channel": "stellarator_09_materials__rebco_material__turbine__hp_shaft_capability__evaluation_defined",
+      "objective": null
+    },
+    {
+      "channel": "stellarator_09_materials__rebco_material__turbine__hp_shaft_capability__margin",
+      "objective": null
+    },
+    {
+      "channel": "stellarator_09_materials__rebco_material__turbine__lp_flow_capability__evaluation_defined",
+      "objective": null
+    },
+    {
+      "channel": "stellarator_09_materials__rebco_material__turbine__lp_flow_capability__margin",
+      "objective": null
+    },
+    {
+      "channel": "stellarator_09_materials__rebco_material__turbine__lp_shaft_capability__evaluation_defined",
+      "objective": null
+    },
+    {
+      "channel": "stellarator_09_materials__rebco_material__turbine__lp_shaft_capability__margin",
+      "objective": null
+    },
+    {
+      "channel": "stellarator_09_materials__rebco_material__turbine__main_UA_capability__evaluation_defined",
+      "objective": null
+    },
+    {
+      "channel": "stellarator_09_materials__rebco_material__turbine__main_UA_capability__margin",
+      "objective": null
+    },
+    {
+      "channel": "stellarator_09_materials__rebco_material__turbine__matched_cycle__main_min_gap_K",
+      "objective": null
+    },
+    {
+      "channel": "stellarator_09_materials__rebco_material__turbine__matched_cycle__reheat_min_gap_K",
+      "objective": null
+    },
+    {
+      "channel": "stellarator_09_materials__rebco_material__turbine__reheat_UA_capability__evaluation_defined",
+      "objective": null
+    },
+    {
+      "channel": "stellarator_09_materials__rebco_material__turbine__reheat_UA_capability__margin",
+      "objective": null
+    },
+    {
+      "channel": "stellarator_09_materials__rebco_material__turbine__turbine_gross_capability__evaluation_defined",
+      "objective": null
+    },
+    {
+      "channel": "stellarator_09_materials__rebco_material__turbine__turbine_gross_capability__margin",
+      "objective": null
+    }
+  ],
+  "verdicts_rederived": true,
+  "constraints_rederived": [
+    {
+      "constraint_id": "stellarator_09_materials__rebco_material__beta_ok__35a0c2df4310d104",
+      "source_local_identity": "beta_ok",
+      "operands_resolved": 2
+    },
+    {
+      "constraint_id": "stellarator_09_materials__rebco_material__burn_hold_ok__b5da7626bab05382",
+      "source_local_identity": "burn_hold_ok",
+      "operands_resolved": 1
+    },
+    {
+      "constraint_id": "stellarator_09_materials__rebco_material__cold_stage_capacity_ok__3bc0a73db9d3e213",
+      "source_local_identity": "cold_stage_capacity_ok",
+      "operands_resolved": 2
+    },
+    {
+      "constraint_id": "stellarator_09_materials__rebco_material__cond_strain_ok__347e1ae0d46e036c",
+      "source_local_identity": "cond_strain_ok",
+      "operands_resolved": 2
+    },
+    {
+      "constraint_id": "stellarator_09_materials__rebco_material__condensate_electric_capacity_ok__d94728038066f7cb",
+      "source_local_identity": "condensate_electric_capacity_ok",
+      "operands_resolved": 2
+    },
+    {
+      "constraint_id": "stellarator_09_materials__rebco_material__condensate_flow_capacity_ok__2853033437fa7007",
+      "source_local_identity": "condensate_flow_capacity_ok",
+      "operands_resolved": 2
+    },
+    {
+      "constraint_id": "stellarator_09_materials__rebco_material__condensate_pressure_rise_capacity_ok__79f16d6e8bc1b15b",
+      "source_local_identity": "condensate_pressure_rise_capacity_ok",
+      "operands_resolved": 2
+    },
+    {
+      "constraint_id": "stellarator_09_materials__rebco_material__condenser_rejection_capacity_ok__1cdb674fdf5b2141",
+      "source_local_identity": "condenser_rejection_capacity_ok",
+      "operands_resolved": 2
+    },
+    {
+      "constraint_id": "stellarator_09_materials__rebco_material__cooling_water_heat_direction__77d713899c16e2ab",
+      "source_local_identity": "cooling_water_heat_direction",
+      "operands_resolved": 2
+    },
+    {
+      "constraint_id": "stellarator_09_materials__rebco_material__cryoplant__capacity_ok__a7ae0d27f2e7a69e",
+      "source_local_identity": "capacity_ok",
+      "operands_resolved": 1
+    },
+    {
+      "constraint_id": "stellarator_09_materials__rebco_material__cycle_domain_ok__bca3373bdd5bb090",
+      "source_local_identity": "cycle_domain_ok",
+      "operands_resolved": 1
+    },
+    {
+      "constraint_id": "stellarator_09_materials__rebco_material__direct_electric_capacity_ok__2ca22857e50ae9a8",
+      "source_local_identity": "direct_electric_capacity_ok",
+      "operands_resolved": 2
+    },
+    {
+      "constraint_id": "stellarator_09_materials__rebco_material__divertor_heat_ok__4848b02ea1557c2d",
+      "source_local_identity": "divertor_heat_ok",
+      "operands_resolved": 2
+    },
+    {
+      "constraint_id": "stellarator_09_materials__rebco_material__electric_gross_capacity_ok__6d466b03bfce1ad5",
+      "source_local_identity": "electric_gross_capacity_ok",
+      "operands_resolved": 2
+    },
+    {
+      "constraint_id": "stellarator_09_materials__rebco_material__facility_capacity_ok__c0747ad3c5d93311",
+      "source_local_identity": "facility_capacity_ok",
+      "operands_resolved": 1
+    },
+    {
+      "constraint_id": "stellarator_09_materials__rebco_material__facility_geometry_ok__0258a993c78f2ff1",
+      "source_local_identity": "facility_geometry_ok",
+      "operands_resolved": 1
+    },
+    {
+      "constraint_id": "stellarator_09_materials__rebco_material__facility_initial_ready__d38e32e55e61fdc5",
+      "source_local_identity": "facility_initial_ready",
+      "operands_resolved": 1
+    },
+    {
+      "constraint_id": "stellarator_09_materials__rebco_material__facility_material_capacity_ok__b001b53a93bea9e7",
+      "source_local_identity": "facility_material_capacity_ok",
+      "operands_resolved": 1
+    },
+    {
+      "constraint_id": "stellarator_09_materials__rebco_material__facility_occupancy_ok__23c7d3c0c97b254a",
+      "source_local_identity": "facility_occupancy_ok",
+      "operands_resolved": 1
+    },
+    {
+      "constraint_id": "stellarator_09_materials__rebco_material__facility_outage_ok__12cedaf5124fff79",
+      "source_local_identity": "facility_outage_ok",
+      "operands_resolved": 1
+    },
+    {
+      "constraint_id": "stellarator_09_materials__rebco_material__facility_parcel_ok__09e54f5187da2c9f",
+      "source_local_identity": "facility_parcel_ok",
+      "operands_resolved": 1
+    },
+    {
+      "constraint_id": "stellarator_09_materials__rebco_material__facility_replacement_ready__b4650f2585ff4e4a",
+      "source_local_identity": "facility_replacement_ready",
+      "operands_resolved": 1
+    },
+    {
+      "constraint_id": "stellarator_09_materials__rebco_material__facility_routes_ok__31d1e5a5efc9b026",
+      "source_local_identity": "facility_routes_ok",
+      "operands_resolved": 1
+    },
+    {
+      "constraint_id": "stellarator_09_materials__rebco_material__feedwater_electric_capacity_ok__ec4b1f09526dad32",
+      "source_local_identity": "feedwater_electric_capacity_ok",
+      "operands_resolved": 2
+    },
+    {
+      "constraint_id": "stellarator_09_materials__rebco_material__feedwater_flow_capacity_ok__9871a398794bd034",
+      "source_local_identity": "feedwater_flow_capacity_ok",
+      "operands_resolved": 2
+    },
+    {
+      "constraint_id": "stellarator_09_materials__rebco_material__feedwater_pressure_rise_capacity_ok__2c733f473a68f18e",
+      "source_local_identity": "feedwater_pressure_rise_capacity_ok",
+      "operands_resolved": 2
+    },
+    {
+      "constraint_id": "stellarator_09_materials__rebco_material__fuel_processing_capacity_ok__4ccc57f69813cb74",
+      "source_local_identity": "fuel_processing_capacity_ok",
+      "operands_resolved": 2
+    },
+    {
+      "constraint_id": "stellarator_09_materials__rebco_material__heating_couple_positive_ok__3969a43f5fda8071",
+      "source_local_identity": "heating_couple_positive_ok",
+      "operands_resolved": 1
+    },
+    {
+      "constraint_id": "stellarator_09_materials__rebco_material__heating_couple_upper_ok__d388de0d1f5a62b5",
+      "source_local_identity": "heating_couple_upper_ok",
+      "operands_resolved": 1
+    },
+    {
+      "constraint_id": "stellarator_09_materials__rebco_material__heating_source_positive_ok__622599bd0a938078",
+      "source_local_identity": "heating_source_positive_ok",
+      "operands_resolved": 1
+    },
+    {
+      "constraint_id": "stellarator_09_materials__rebco_material__heating_source_upper_ok__6811904a62eebc34",
+      "source_local_identity": "heating_source_upper_ok",
+      "operands_resolved": 1
+    },
+    {
+      "constraint_id": "stellarator_09_materials__rebco_material__helium_electric_capacity_ok__cb84e81c1d9f4ff2",
+      "source_local_identity": "helium_electric_capacity_ok",
+      "operands_resolved": 2
+    },
+    {
+      "constraint_id": "stellarator_09_materials__rebco_material__helium_flow_capacity_ok__bf55136c825f0dde",
+      "source_local_identity": "helium_flow_capacity_ok",
+      "operands_resolved": 2
+    },
+    {
+      "constraint_id": "stellarator_09_materials__rebco_material__helium_pressure_rise_capacity_ok__800684f4fbfd04ab",
+      "source_local_identity": "helium_pressure_rise_capacity_ok",
+      "operands_resolved": 2
+    },
+    {
+      "constraint_id": "stellarator_09_materials__rebco_material__helium_pumping_capacity_ok__b3df6c4ada78f0e8",
+      "source_local_identity": "helium_pumping_capacity_ok",
+      "operands_resolved": 2
+    },
+    {
+      "constraint_id": "stellarator_09_materials__rebco_material__hp_flow_capacity_ok__ae582a956a8ee301",
+      "source_local_identity": "hp_flow_capacity_ok",
+      "operands_resolved": 2
+    },
+    {
+      "constraint_id": "stellarator_09_materials__rebco_material__hp_shaft_capacity_ok__b373b1d4ff3823c8",
+      "source_local_identity": "hp_shaft_capacity_ok",
+      "operands_resolved": 2
+    },
+    {
+      "constraint_id": "stellarator_09_materials__rebco_material__ihx_capacity_ok__e64acdb414b82e94",
+      "source_local_identity": "ihx_capacity_ok",
+      "operands_resolved": 2
+    },
+    {
+      "constraint_id": "stellarator_09_materials__rebco_material__intercept_stage_capacity_ok__d3b9b3c84a8d0f8c",
+      "source_local_identity": "intercept_stage_capacity_ok",
+      "operands_resolved": 2
+    },
+    {
+      "constraint_id": "stellarator_09_materials__rebco_material__loop_capacity_ok__d6532a89816fb7e2",
+      "source_local_identity": "loop_capacity_ok",
+      "operands_resolved": 2
+    },
+    {
+      "constraint_id": "stellarator_09_materials__rebco_material__loop_pressure_ok__aef108bdfd08fc32",
+      "source_local_identity": "loop_pressure_ok",
+      "operands_resolved": 1
+    },
+    {
+      "constraint_id": "stellarator_09_materials__rebco_material__lp_flow_capacity_ok__fbaebe15b4b2669f",
+      "source_local_identity": "lp_flow_capacity_ok",
+      "operands_resolved": 2
+    },
+    {
+      "constraint_id": "stellarator_09_materials__rebco_material__lp_shaft_capacity_ok__734f3bc0941a792d",
+      "source_local_identity": "lp_shaft_capacity_ok",
+      "operands_resolved": 2
+    },
+    {
+      "constraint_id": "stellarator_09_materials__rebco_material__magnet__acceptance_ok__998be97e16fad569",
+      "source_local_identity": "acceptance_ok",
+      "operands_resolved": 2
+    },
+    {
+      "constraint_id": "stellarator_09_materials__rebco_material__magnet__ampere_floor_ok__527f82db402c44d5",
+      "source_local_identity": "ampere_floor_ok",
+      "operands_resolved": 1
+    },
+    {
+      "constraint_id": "stellarator_09_materials__rebco_material__magnet__copper_ok__4c832191ef5eb0d7",
+      "source_local_identity": "copper_ok",
+      "operands_resolved": 1
+    },
+    {
+      "constraint_id": "stellarator_09_materials__rebco_material__magnet__pack_area_ok__4d2ccf27ef95a21a",
+      "source_local_identity": "pack_area_ok",
+      "operands_resolved": 1
+    },
+    {
+      "constraint_id": "stellarator_09_materials__rebco_material__magnet__steel_ok__3833f52286c5bd91",
+      "source_local_identity": "steel_ok",
+      "operands_resolved": 1
+    },
+    {
+      "constraint_id": "stellarator_09_materials__rebco_material__magnet_pf_electric_capacity_ok__b38a37482abd8213",
+      "source_local_identity": "magnet_pf_electric_capacity_ok",
+      "operands_resolved": 2
+    },
+    {
+      "constraint_id": "stellarator_09_materials__rebco_material__magnet_tf_electric_capacity_ok__f8a1bf91be445766",
+      "source_local_identity": "magnet_tf_electric_capacity_ok",
+      "operands_resolved": 2
+    },
+    {
+      "constraint_id": "stellarator_09_materials__rebco_material__main_UA_capacity_ok__c2196a4dedc17d72",
+      "source_local_identity": "main_UA_capacity_ok",
+      "operands_resolved": 2
+    },
+    {
+      "constraint_id": "stellarator_09_materials__rebco_material__matched_main_heat_direction__d54ab1b7234536a0",
+      "source_local_identity": "matched_main_heat_direction",
+      "operands_resolved": 2
+    },
+    {
+      "constraint_id": "stellarator_09_materials__rebco_material__matched_reheat_heat_direction__8bc64e6763926d8f",
+      "source_local_identity": "matched_reheat_heat_direction",
+      "operands_resolved": 2
+    },
+    {
+      "constraint_id": "stellarator_09_materials__rebco_material__net_positive__f137773a88435534",
+      "source_local_identity": "net_positive",
+      "operands_resolved": 1
+    },
+    {
+      "constraint_id": "stellarator_09_materials__rebco_material__peak_field_ok__d2be7a2c6d0ebc66",
+      "source_local_identity": "peak_field_ok",
+      "operands_resolved": 2
+    },
+    {
+      "constraint_id": "stellarator_09_materials__rebco_material__recirc_ok__5d4235cfd9f4768c",
+      "source_local_identity": "recirc_ok",
+      "operands_resolved": 2
+    },
+    {
+      "constraint_id": "stellarator_09_materials__rebco_material__reference_conductor_current_ok__0dd0d2cb1e851094",
+      "source_local_identity": "reference_conductor_current_ok",
+      "operands_resolved": 1
+    },
+    {
+      "constraint_id": "stellarator_09_materials__rebco_material__reheat_UA_capacity_ok__a8194f424b087b57",
+      "source_local_identity": "reheat_UA_capacity_ok",
+      "operands_resolved": 2
+    },
+    {
+      "constraint_id": "stellarator_09_materials__rebco_material__represented_coolant_fill_ok__bc6a51fed9b48ceb",
+      "source_local_identity": "represented_coolant_fill_ok",
+      "operands_resolved": 3
+    },
+    {
+      "constraint_id": "stellarator_09_materials__rebco_material__salt_electric_capacity_ok__99532fdbf4beb4d1",
+      "source_local_identity": "salt_electric_capacity_ok",
+      "operands_resolved": 2
+    },
+    {
+      "constraint_id": "stellarator_09_materials__rebco_material__salt_flow_capacity_ok__891f3985476a4a75",
+      "source_local_identity": "salt_flow_capacity_ok",
+      "operands_resolved": 2
+    },
+    {
+      "constraint_id": "stellarator_09_materials__rebco_material__salt_head_capacity_ok__88b673b363c69f34",
+      "source_local_identity": "salt_head_capacity_ok",
+      "operands_resolved": 2
+    },
+    {
+      "constraint_id": "stellarator_09_materials__rebco_material__salt_shaft_capacity_ok__569c89a5b855b295",
+      "source_local_identity": "salt_shaft_capacity_ok",
+      "operands_resolved": 2
+    },
+    {
+      "constraint_id": "stellarator_09_materials__rebco_material__sustainment_ok__60ca4f2cb2aaa5bd",
+      "source_local_identity": "sustainment_ok",
+      "operands_resolved": 2
+    },
+    {
+      "constraint_id": "stellarator_09_materials__rebco_material__tbr_ok__8ce4a3c0d3818607",
+      "source_local_identity": "tbr_ok",
+      "operands_resolved": 2
+    },
+    {
+      "constraint_id": "stellarator_09_materials__rebco_material__turbine_gross_capacity_ok__887d77cd5a478001",
+      "source_local_identity": "turbine_gross_capacity_ok",
+      "operands_resolved": 2
+    },
+    {
+      "constraint_id": "stellarator_09_materials__rebco_material__wall_load_ok__bb886accb1fe4358",
+      "source_local_identity": "wall_load_ok",
+      "operands_resolved": 2
+    },
+    {
+      "constraint_id": "stellarator_09_materials__rebco_material__water_electric_capacity_ok__c74614e39b597493",
+      "source_local_identity": "water_electric_capacity_ok",
+      "operands_resolved": 2
+    },
+    {
+      "constraint_id": "stellarator_09_materials__rebco_material__water_flow_capacity_ok__2a464637ca64c033",
+      "source_local_identity": "water_flow_capacity_ok",
+      "operands_resolved": 2
+    },
+    {
+      "constraint_id": "stellarator_09_materials__rebco_material__water_head_capacity_ok__ab846ad3af228cf2",
+      "source_local_identity": "water_head_capacity_ok",
+      "operands_resolved": 2
+    },
+    {
+      "constraint_id": "stellarator_09_materials__rebco_material__water_rejection_capacity_ok__b282501b0da7ba05",
+      "source_local_identity": "water_rejection_capacity_ok",
+      "operands_resolved": 2
+    },
+    {
+      "constraint_id": "stellarator_09_materials__rebco_material__wp_fit_ok__63e3c00c99928ca9",
+      "source_local_identity": "wp_fit_ok",
+      "operands_resolved": 1
+    },
+    {
+      "constraint_id": "stellarator_09_materials__rebco_material__wp_stress_ok__fdb21f48452667e8",
+      "source_local_identity": "wp_stress_ok",
+      "operands_resolved": 2
+    }
+  ],
+  "verdict_mismatches": [],
+  "not_independently_verified": [],
+  "worst_channel_rel_dev": 2.409591420195442e-15,
+  "outcome": "pass"
+}
