@@ -687,7 +687,7 @@ uv run python -m pytest exploration/concept_explorer/tests/ -v
 
 ## 9. Deployment and Downstream Consumers
 
-Pushing to `main` deploys this app to production. Two public pages depend on it. A deploy gate checks each push first and holds back a push that would break the website (see [The deploy gate](#the-deploy-gate)).
+Pushing to `main` deploys this app to production. Two public pages depend on it. A deploy gate checks each push first. It holds back a push that would break the website only once the owner turns on Railway's "Wait for CI"; until then a red gate is a warning only (see [The deploy gate](#the-deploy-gate)).
 
 ### What runs where
 
@@ -701,7 +701,7 @@ fusion-tea main ──push──► Railway service "1cfe-fusion-tea-explorer"
                                                pinned to one fusion-tea commit)
 ```
 
-- **`concepts.1cf.energy`** is this FastAPI app. Railway rebuilds it from the repo-root `Dockerfile` and `railway.toml` on every push to `main` that passes the deploy gate. Setup, dependency bumps and troubleshooting are in `.project/completed/20260821_explorer-web-hosting/RUNBOOK.md`.
+- **`concepts.1cf.energy`** is this FastAPI app. Railway rebuilds it from the repo-root `Dockerfile` and `railway.toml` on every push to `main`, and once "Wait for CI" is on, only on a push that passes the deploy gate. Setup, dependency bumps and troubleshooting are in `.project/completed/20260821_explorer-web-hosting/RUNBOOK.md`.
 - **`1cf.energy/tools/concepts/`** comes from the `1cFE/website` repo (private). It serves a copy of this app's `static/` and `templates/` taken at one fusion-tea commit, recorded in that repo's `src/vendor/concepts/provenance.json`. Its JavaScript fetches all data, findings, compute results and explorer state from the live API at `concepts.1cf.energy`. The website's side is documented in its `docs/concepts-integration.md`.
 
 ### What a push to `main` changes
@@ -725,7 +725,7 @@ After a frontend change lands on `main`, someone with access to `1cFE/website` r
 
 ### The deploy gate
 
-Every push runs the `website-contract` workflow (`.github/workflows/website-contract.yml`). It replays the requests the website's frozen frontend makes against the pushed code, and compares the answers with a recording taken at the website's pinned commit (`website_contract/contract.txt`). It also runs `tests/test_cors.py`. With Railway's "Wait for CI" on, a failed run skips the deploy, and `concepts.1cf.energy` keeps serving the previous version. The decisions behind it are ADRs 0011 and 0012 in `.project/adr/`. Operating steps are in the RUNBOOK's "Deploy gate" section.
+Every push runs the `website-contract` workflow (`.github/workflows/website-contract.yml`). It replays the requests the website's frozen frontend makes against the pushed code, and compares the answers with a recording taken at the website's pinned commit (`website_contract/contract.txt`). It also runs `tests/test_cors.py`. With Railway's "Wait for CI" on, a failed run skips the deploy, and `concepts.1cf.energy` keeps serving the previous version. The owner turns that setting on after the gate merges (RUNBOOK, "Owner setup steps"). Until then a failed run is a warning only, and the push still deploys. The decisions behind it are ADRs 0011 and 0012 in `.project/adr/`. Operating steps are in the RUNBOOK's "Deploy gate" section.
 
 - **Run it locally** before pushing an API or data change: `exploration/concept_explorer/website_contract/gate.sh`. It needs `uv` and takes about a minute.
 - **A failure the website can't notice** (a false block, such as removing a field the frozen frontend never reads) clears with one entry in `website_contract/waivers.toml`. The RUNBOOK says how to judge it and write the entry.

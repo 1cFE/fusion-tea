@@ -41,6 +41,7 @@ Owner acceptance after merge (needs owner-only steps):
 - [ ] After the owner turns on "Wait for CI", Railway shows a push to `main` waiting on the gate, then deploying once it passes. Turning the setting on doesn't hold back the first deploy, because the gate is green on the merge commit.
 - [ ] On its first pushed run, the gate finishes in under 5 minutes on a GitHub-hosted runner.
 - [ ] Optional: one deliberate break on a pushed scratch branch fails the check in GitHub.
+- [ ] The owner's ruling on how strict the gate is (false blocks): whether to soften the Shape and Unpopulated rules, which the orchestrator parked with the owner. See ADR 0011 (`.project/adr/0011-explorer-deploys-wait-for-website-contract.md`).
 
 The failure path on `main`, a failing push being skipped, is never observed, since nobody should push a break to production. It rests on Railway's documented behavior.
 

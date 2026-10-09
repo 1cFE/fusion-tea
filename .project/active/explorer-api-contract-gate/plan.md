@@ -609,6 +609,7 @@ Also from the design's [Validation Approach](design.md#validation-approach): `ga
 - [ ] Optional: a deliberate break on a pushed scratch branch fails the check.
 - [ ] Optional: a branch rule or ruleset on `main` requiring the `gate` check.
 - [ ] Optional: the re-pin line in the website's checklist.
+- [ ] The owner's ruling on how strict the gate is (false blocks): whether to soften the Shape and Unpopulated rules, which the orchestrator parked with the owner. See ADR 0011 (`.project/adr/0011-explorer-deploys-wait-for-website-contract.md`).
 
 ---
 

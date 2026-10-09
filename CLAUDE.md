@@ -255,7 +255,7 @@ Source selection is iterative — sources are ingested as the investigation iden
 A push to `main` publishes to public sites.
 
 - **Concept Explorer** (`exploration/concept_explorer/`): Railway rebuilds it from `Dockerfile` and `railway.toml` and serves it at `concepts.1cf.energy`. The public website page `1cf.energy/tools/concepts/` runs a frozen copy of the explorer's frontend against this live API. A change to API response fields, the CORS allowlist or the set of served concepts can break the website even when the explorer itself still works. Read [§9 of the explorer README](exploration/concept_explorer/README.md#9-deployment-and-downstream-consumers) before changing the explorer's API, its data files or which concepts it serves.
-  - The `website-contract` workflow checks every push against what the website's frozen frontend needs. Any failing push-triggered workflow skips the production deploy (Railway's "Wait for CI"), so a new push-triggered workflow must not be able to fail. Held deploys, waivers, new concepts and re-pinning are in the hosting RUNBOOK's "Deploy gate" section (`.project/completed/20260821_explorer-web-hosting/RUNBOOK.md`).
+  - The `website-contract` workflow checks every push against what the website's frozen frontend needs. Once the owner turns on Railway's "Wait for CI", any failing push-triggered workflow skips the production deploy; until then a red gate is a warning only. So a new push-triggered workflow must not be able to fail. Held deploys, waivers, new concepts and re-pinning are in the hosting RUNBOOK's "Deploy gate" section (`.project/completed/20260821_explorer-web-hosting/RUNBOOK.md`).
 - **`docs/`**: GitHub Pages publishes it to `scoring.1cf.energy`.
 
 ## Browser / UI Inspection

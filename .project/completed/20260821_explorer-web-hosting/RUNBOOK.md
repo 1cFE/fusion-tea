@@ -225,7 +225,7 @@ There are two ways through. Pick by which site matters more until the website ad
 2. Commit and push. The gate passes. Nothing else is needed.
 
 - Cost: `concepts.1cf.energy` hides the concept too, until the line comes out.
-- Bringing it onto both sites later: remove the line on a branch. The website imports that branch's commit, which serves the concept. Then re-pin the gate to the same commit (see **Re-pinning**) and merge the removal and the new contract together. Whichever site updates first, the other shows a broken page or a dead link for the concept until the second catches up, so do the two close together.
+- Bringing it onto both sites later: remove the line on a branch. The website imports that branch's commit, which serves the concept. Then re-pin the gate to the same commit (see **Re-pinning**) and merge the removal and the new contract together. Merge with a merge commit, not a squash or rebase, so the commit the website pinned stays in `main`'s history. Whichever site updates first, the other shows a broken page or a dead link for the concept until the second catches up, so do the two close together.
 
 **Option 2: waive it. The concept shows on `concepts.1cf.energy` now.**
 
@@ -339,7 +339,7 @@ These are for the owner after the deploy gate merges to `main`. None of them nee
 ## Notes / decisions of record
 
 - **Public by design.** The service has no auth and serves the full analysis findings (only display names/companies are anonymized). This is intentional.
-- **Deploys wait for the deploy gate.** This replaces hosting FR-6's "no GitHub Actions" clause. Decision record: `.project/adr/0011-explorer-deploys-wait-for-website-contract.md`; how the contract is recorded: `.project/adr/0012-website-contract-recorded-from-pin.md`.
+- **Deploys wait for the deploy gate.** This changes two clauses of hosting FR-6: "without a hand-authored GitHub Actions workflow" no longer holds, and "with no manual deploy step" now holds only for pushes the gate passes. Decision record: `.project/adr/0011-explorer-deploys-wait-for-website-contract.md`; how the contract is recorded: `.project/adr/0012-website-contract-recorded-from-pin.md`.
 - **Single worker is load-bearing.** Don't scale to multiple workers/replicas without redesigning state handling.
 - **Image size ~1.16 GB** is the CPU-JAX floor (jaxlib + scipy + numpy); the heavy *pipeline* deps (torch/docling/agentic-mbse/sysml-codegen) are excluded. Fine for Railway.
 - **Fallback platforms** (documented, not set up): Render uses the same Dockerfile with native push-to-main (`$PORT` injected). Hugging Face Spaces needs the container to listen on 7860 (`app_port: 7860` in the Space README) and deploys by pushing to the **HF** git remote, not GitHub — so GitHub push-to-main does **not** auto-deploy there.
