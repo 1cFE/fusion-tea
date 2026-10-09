@@ -8,6 +8,7 @@ gate and the CAS72 guard gate.
 from __future__ import annotations
 
 import importlib
+import json
 import os
 import subprocess
 import sys
@@ -54,16 +55,39 @@ def historical_cli_result(stock_simkit_path, tmp_path):
         capture_output=True,
         text=True,
     )
-    (tmp_path/'historical-cli.log').write_text(done.stdout+done.stderr)
+    (tmp_path / "historical-cli.log").write_text(done.stdout + done.stderr)
     assert done.returncode == 1
-    assert 'assessed_entry_count 28 != 20' in done.stderr
-    assert done.stdout.count('*** DEVIATION') == 8
-    for anchor in ('total capital $','LCOE $/MWh','p_net MW','q_eng','rec_frac','magnet %','CAS70 $/yr','CAS80 $/yr','lcoe_1cfe $/MWh (comparison)'):
+    contract = json.loads(
+        (
+            REPO_ROOT / "exploration/stellarator_e2e/generated/contracts/model_contract.json"
+        ).read_text()
+    )
+    count = len(contract["constraint_catalog"]["concrete_entries"])
+    assert count == 67  # Current supplied equipment catalog; demo calibration still expects 20.
+    assert f"assessed_entry_count {count} != 20" in done.stderr
+    assert done.stdout.count("*** DEVIATION") == 8
+    for anchor in (
+        "total capital $",
+        "LCOE $/MWh",
+        "p_net MW",
+        "q_eng",
+        "rec_frac",
+        "magnet %",
+        "CAS70 $/yr",
+        "CAS80 $/yr",
+        "lcoe_1cfe $/MWh (comparison)",
+    ):
         assert anchor in done.stdout, anchor
     return done
 
 
 def test_green_single_point_command_exits_zero(historical_cli_result, request):
-    request.node.add_marker(pytest.mark.xfail(strict=True, reason='Historical nine-anchor/twenty-predicate CLI calibration is incompatible; exact refusal guards completed before this marker'))
-    done=historical_cli_result
+    request.node.add_marker(
+        pytest.mark.xfail(
+            strict=True,
+            reason="Historical nine-anchor/twenty-predicate CLI calibration is incompatible; "
+            "exact refusal guards completed before this marker",
+        )
+    )
+    done = historical_cli_result
     assert done.returncode == 0, done.stdout + done.stderr

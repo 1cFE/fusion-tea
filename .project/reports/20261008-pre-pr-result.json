@@ -1,0 +1,3072 @@
+{
+  "entry_commit": "f9e1d6564d16c29c6d4e1c20f4a8920eb32cb135",
+  "base_commit": "f96ad312c63e8c66695971b12feab971f3ba6eb3",
+  "counts": {
+    "passed": 5874,
+    "failed": 0,
+    "errors": 0,
+    "skipped": 55,
+    "xfailed": 2
+  },
+  "testcases": 5931,
+  "suites": [
+    {
+      "name": "pytest",
+      "errors": "0",
+      "failures": "0",
+      "skipped": "57",
+      "tests": "5931",
+      "time": "6032.288",
+      "timestamp": "2026-10-08T17:33:56.040747-07:00",
+      "hostname": "reid-workstation"
+    }
+  ],
+  "xml_sha256": "6e752e6736efd09b86517483e0f92deb35cb29cef2dd5b84e76a1109b07ce4ad",
+  "log_sha256": "ab78721a75762237d6e47b7c28c5167d8b0cab7e89c819cc48c03467cc13988a",
+  "nonpassing": [
+    {
+      "classname": "tests.models.test_example.TestModelStructure",
+      "name": "test_example_definition_exists",
+      "seconds": 0.093,
+      "type": "pytest.skip",
+      "message": "Customize this test with your actual definition names",
+      "outcome": "skipped"
+    },
+    {
+      "classname": "tests.models.test_foundation.TestFoundationParsing",
+      "name": "test_foundation_types_parse_without_errors",
+      "seconds": 0.0,
+      "type": "pytest.skip",
+      "message": "types.sysml not found",
+      "outcome": "skipped"
+    },
+    {
+      "classname": "tests.models.test_foundation.TestFoundationParsing",
+      "name": "test_foundation_units_parse_without_errors",
+      "seconds": 0.0,
+      "type": "pytest.skip",
+      "message": "units.sysml not found",
+      "outcome": "skipped"
+    },
+    {
+      "classname": "tests.models.test_foundation.TestFoundationParsing",
+      "name": "test_foundation_materials_parse_without_errors",
+      "seconds": 0.0,
+      "type": "pytest.skip",
+      "message": "materials.sysml not found",
+      "outcome": "skipped"
+    },
+    {
+      "classname": "tests.models.test_foundation.TestEnumDefinitions",
+      "name": "test_enum_definitions_count",
+      "seconds": 0.0,
+      "type": "pytest.skip",
+      "message": "types.sysml not found",
+      "outcome": "skipped"
+    },
+    {
+      "classname": "tests.models.test_foundation.TestEnumDefinitions",
+      "name": "test_reactor_type_variants",
+      "seconds": 0.0,
+      "type": "pytest.skip",
+      "message": "types.sysml not found",
+      "outcome": "skipped"
+    },
+    {
+      "classname": "tests.models.test_foundation.TestEnumDefinitions",
+      "name": "test_confinement_type_variants_count",
+      "seconds": 0.0,
+      "type": "pytest.skip",
+      "message": "types.sysml not found",
+      "outcome": "skipped"
+    },
+    {
+      "classname": "tests.models.test_foundation.TestEnumDefinitions",
+      "name": "test_all_expected_enums_exist",
+      "seconds": 0.0,
+      "type": "pytest.skip",
+      "message": "types.sysml not found",
+      "outcome": "skipped"
+    },
+    {
+      "classname": "tests.models.test_foundation.TestCustomUnits",
+      "name": "test_custom_units_defined",
+      "seconds": 0.0,
+      "type": "pytest.skip",
+      "message": "units.sysml not found",
+      "outcome": "skipped"
+    },
+    {
+      "classname": "tests.models.test_foundation.TestCustomUnits",
+      "name": "test_custom_units_count",
+      "seconds": 0.0,
+      "type": "pytest.skip",
+      "message": "units.sysml not found",
+      "outcome": "skipped"
+    },
+    {
+      "classname": "tests.models.test_foundation.TestMaterialDefinitions",
+      "name": "test_materials_exist",
+      "seconds": 0.0,
+      "type": "pytest.skip",
+      "message": "materials.sysml not found",
+      "outcome": "skipped"
+    },
+    {
+      "classname": "tests.models.test_foundation.TestMaterialDefinitions",
+      "name": "test_material_has_required_attributes",
+      "seconds": 0.0,
+      "type": "pytest.skip",
+      "message": "materials.sysml not found",
+      "outcome": "skipped"
+    },
+    {
+      "classname": "tests.models.test_foundation.TestMaterialDefinitions",
+      "name": "test_all_materials_have_required_attributes",
+      "seconds": 0.0,
+      "type": "pytest.skip",
+      "message": "materials.sysml not found",
+      "outcome": "skipped"
+    },
+    {
+      "classname": "tests.models.test_mfe_major_radius",
+      "name": "test_historical_cli_baseline_success",
+      "seconds": 0.001,
+      "type": "pytest.xfail",
+      "message": "Historical nine-anchor/twenty-predicate CLI calibration is incompatible; exact refusal guards completed before this marker",
+      "outcome": "xfailed"
+    },
+    {
+      "classname": "tests.scoring_v2.test_spec_conformance.TestSpecPredictedScoresLand",
+      "name": "test_predicted_score_matches[plant_complexity-06-magnetic-mirror-3.5]",
+      "seconds": 1.514,
+      "type": "pytest.skip",
+      "message": "KNOWN_DRIFTS carve-out: plant_complexity.06-magnetic-mirror",
+      "outcome": "skipped"
+    },
+    {
+      "classname": "tests.scoring_v2.test_spec_conformance.TestSpecPredictedScoresLand",
+      "name": "test_predicted_score_matches[plant_complexity-07-maglif-2.0]",
+      "seconds": 1.464,
+      "type": "pytest.skip",
+      "message": "KNOWN_DRIFTS carve-out: plant_complexity.07-maglif",
+      "outcome": "skipped"
+    },
+    {
+      "classname": "tests.scoring_v2.test_spec_conformance.TestSpecPredictedScoresLand",
+      "name": "test_predicted_score_matches[plant_complexity-17a-laser-icf-hybrid-drive-1.0]",
+      "seconds": 1.455,
+      "type": "pytest.skip",
+      "message": "KNOWN_DRIFTS carve-out: plant_complexity.17a-laser-icf-hybrid-drive",
+      "outcome": "skipped"
+    },
+    {
+      "classname": "tests.scoring_v2.test_spec_conformance.TestSpecPredictedScoresLand",
+      "name": "test_predicted_score_matches[technical_feasibility-39-spherical-tokamak-cs-free-p-b11-1.0]",
+      "seconds": 1.538,
+      "type": "pytest.skip",
+      "message": "KNOWN_DRIFTS carve-out: technical_feasibility.39-spherical-tokamak-cs-free-p-b11",
+      "outcome": "skipped"
+    },
+    {
+      "classname": "tests.scoring_v2.test_spec_conformance.TestSpecPredictedScoresLand",
+      "name": "test_predicted_score_matches[upper_cf-27-polywell-3.0]",
+      "seconds": 1.419,
+      "type": "pytest.skip",
+      "message": "KNOWN_DRIFTS carve-out: upper_cf.27-polywell",
+      "outcome": "skipped"
+    },
+    {
+      "classname": "tests.scoring_v2.test_spec_conformance.TestSpecPredictedScoresLand",
+      "name": "test_predicted_score_matches[upper_cf-33-state-backed-tokamak-best-3.0]",
+      "seconds": 1.489,
+      "type": "pytest.skip",
+      "message": "KNOWN_DRIFTS carve-out: upper_cf.33-state-backed-tokamak-best",
+      "outcome": "skipped"
+    },
+    {
+      "classname": "tests.scoring_v2.test_spec_conformance.TestSpecPredictedScoresLand",
+      "name": "test_predicted_score_matches[supply_chain-01-hts-compact-tokamak-2.0]",
+      "seconds": 1.641,
+      "type": "pytest.skip",
+      "message": "KNOWN_DRIFTS carve-out: supply_chain.01-hts-compact-tokamak",
+      "outcome": "skipped"
+    },
+    {
+      "classname": "tests.scoring_v2.test_spec_conformance.TestSpecPredictedScoresLand",
+      "name": "test_predicted_score_matches[supply_chain-05-planar-coil-stellarator-3.0]",
+      "seconds": 1.442,
+      "type": "pytest.skip",
+      "message": "KNOWN_DRIFTS carve-out: supply_chain.05-planar-coil-stellarator",
+      "outcome": "skipped"
+    },
+    {
+      "classname": "tests.scoring_v2.test_spec_conformance.TestSpecPredictedScoresLand",
+      "name": "test_predicted_score_matches[supply_chain-07-maglif-3.0]",
+      "seconds": 1.488,
+      "type": "pytest.skip",
+      "message": "KNOWN_DRIFTS carve-out: supply_chain.07-maglif",
+      "outcome": "skipped"
+    },
+    {
+      "classname": "tests.scoring_v2.test_spec_conformance.TestSpecPredictedScoresLand",
+      "name": "test_predicted_score_matches[supply_chain-09-qi-stellarator-hts-3.0]",
+      "seconds": 1.438,
+      "type": "pytest.skip",
+      "message": "KNOWN_DRIFTS carve-out: supply_chain.09-qi-stellarator-hts",
+      "outcome": "skipped"
+    },
+    {
+      "classname": "tests.scoring_v2.test_spec_conformance.TestSpecPredictedScoresLand",
+      "name": "test_predicted_score_matches[supply_chain-10-large-scale-stellarator-3.0]",
+      "seconds": 1.447,
+      "type": "pytest.skip",
+      "message": "KNOWN_DRIFTS carve-out: supply_chain.10-large-scale-stellarator",
+      "outcome": "skipped"
+    },
+    {
+      "classname": "tests.scoring_v2.test_spec_conformance.TestSpecPredictedScoresLand",
+      "name": "test_predicted_score_matches[supply_chain-11-magnetic-mirror-3.0]",
+      "seconds": 1.437,
+      "type": "pytest.skip",
+      "message": "KNOWN_DRIFTS carve-out: supply_chain.11-magnetic-mirror",
+      "outcome": "skipped"
+    },
+    {
+      "classname": "tests.scoring_v2.test_spec_conformance.TestSpecPredictedScoresLand",
+      "name": "test_predicted_score_matches[supply_chain-12-levitated-dipole-2.5]",
+      "seconds": 1.451,
+      "type": "pytest.skip",
+      "message": "KNOWN_DRIFTS carve-out: supply_chain.12-levitated-dipole",
+      "outcome": "skipped"
+    },
+    {
+      "classname": "tests.scoring_v2.test_spec_conformance.TestSpecPredictedScoresLand",
+      "name": "test_predicted_score_matches[supply_chain-13-electrostatic-hybrid-3.0]",
+      "seconds": 1.455,
+      "type": "pytest.skip",
+      "message": "KNOWN_DRIFTS carve-out: supply_chain.13-electrostatic-hybrid",
+      "outcome": "skipped"
+    },
+    {
+      "classname": "tests.scoring_v2.test_spec_conformance.TestSpecPredictedScoresLand",
+      "name": "test_predicted_score_matches[supply_chain-14-magnetized-target-fusion-pneumatic-compression-3.0]",
+      "seconds": 1.436,
+      "type": "pytest.skip",
+      "message": "KNOWN_DRIFTS carve-out: supply_chain.14-magnetized-target-fusion-pneumatic-compression",
+      "outcome": "skipped"
+    },
+    {
+      "classname": "tests.scoring_v2.test_spec_conformance.TestSpecPredictedScoresLand",
+      "name": "test_predicted_score_matches[supply_chain-15-sheared-flow-stabilized-z-pinch-3.0]",
+      "seconds": 1.441,
+      "type": "pytest.skip",
+      "message": "KNOWN_DRIFTS carve-out: supply_chain.15-sheared-flow-stabilized-z-pinch",
+      "outcome": "skipped"
+    },
+    {
+      "classname": "tests.scoring_v2.test_spec_conformance.TestSpecPredictedScoresLand",
+      "name": "test_predicted_score_matches[supply_chain-16-muon-catalyzed-fusion-3.0]",
+      "seconds": 1.46,
+      "type": "pytest.skip",
+      "message": "KNOWN_DRIFTS carve-out: supply_chain.16-muon-catalyzed-fusion",
+      "outcome": "skipped"
+    },
+    {
+      "classname": "tests.scoring_v2.test_spec_conformance.TestSpecPredictedScoresLand",
+      "name": "test_predicted_score_matches[supply_chain-17b-laser-icf-fast-ignition-2.0]",
+      "seconds": 1.485,
+      "type": "pytest.skip",
+      "message": "KNOWN_DRIFTS carve-out: supply_chain.17b-laser-icf-fast-ignition",
+      "outcome": "skipped"
+    },
+    {
+      "classname": "tests.scoring_v2.test_spec_conformance.TestSpecPredictedScoresLand",
+      "name": "test_predicted_score_matches[supply_chain-20a-type-one-stellarator-2.5]",
+      "seconds": 1.413,
+      "type": "pytest.skip",
+      "message": "KNOWN_DRIFTS carve-out: supply_chain.20a-type-one-stellarator",
+      "outcome": "skipped"
+    },
+    {
+      "classname": "tests.scoring_v2.test_spec_conformance.TestSpecPredictedScoresLand",
+      "name": "test_predicted_score_matches[supply_chain-20b-renaissance-stellarator-2.5]",
+      "seconds": 1.446,
+      "type": "pytest.skip",
+      "message": "KNOWN_DRIFTS carve-out: supply_chain.20b-renaissance-stellarator",
+      "outcome": "skipped"
+    },
+    {
+      "classname": "tests.scoring_v2.test_spec_conformance.TestSpecPredictedScoresLand",
+      "name": "test_predicted_score_matches[supply_chain-21-spherical-tokamak-hts-3.0]",
+      "seconds": 1.612,
+      "type": "pytest.skip",
+      "message": "KNOWN_DRIFTS carve-out: supply_chain.21-spherical-tokamak-hts",
+      "outcome": "skipped"
+    },
+    {
+      "classname": "tests.scoring_v2.test_spec_conformance.TestSpecPredictedScoresLand",
+      "name": "test_predicted_score_matches[supply_chain-22-projectile-icf-3.0]",
+      "seconds": 1.479,
+      "type": "pytest.skip",
+      "message": "KNOWN_DRIFTS carve-out: supply_chain.22-projectile-icf",
+      "outcome": "skipped"
+    },
+    {
+      "classname": "tests.scoring_v2.test_spec_conformance.TestSpecPredictedScoresLand",
+      "name": "test_predicted_score_matches[supply_chain-24-dense-plasma-focus-5.0]",
+      "seconds": 1.454,
+      "type": "pytest.skip",
+      "message": "KNOWN_DRIFTS carve-out: supply_chain.24-dense-plasma-focus",
+      "outcome": "skipped"
+    },
+    {
+      "classname": "tests.scoring_v2.test_spec_conformance.TestSpecPredictedScoresLand",
+      "name": "test_predicted_score_matches[supply_chain-25-heavy-ion-beam-icf-3.0]",
+      "seconds": 1.462,
+      "type": "pytest.skip",
+      "message": "KNOWN_DRIFTS carve-out: supply_chain.25-heavy-ion-beam-icf",
+      "outcome": "skipped"
+    },
+    {
+      "classname": "tests.scoring_v2.test_spec_conformance.TestSpecPredictedScoresLand",
+      "name": "test_predicted_score_matches[supply_chain-26-laser-icf-indirect-drive-2.0]",
+      "seconds": 1.458,
+      "type": "pytest.skip",
+      "message": "KNOWN_DRIFTS carve-out: supply_chain.26-laser-icf-indirect-drive",
+      "outcome": "skipped"
+    },
+    {
+      "classname": "tests.scoring_v2.test_spec_conformance.TestSpecPredictedScoresLand",
+      "name": "test_predicted_score_matches[supply_chain-27-polywell-3.0]",
+      "seconds": 1.463,
+      "type": "pytest.skip",
+      "message": "KNOWN_DRIFTS carve-out: supply_chain.27-polywell",
+      "outcome": "skipped"
+    },
+    {
+      "classname": "tests.scoring_v2.test_spec_conformance.TestSpecPredictedScoresLand",
+      "name": "test_predicted_score_matches[supply_chain-28-hts-tokamak-full-hts-3.0]",
+      "seconds": 1.475,
+      "type": "pytest.skip",
+      "message": "KNOWN_DRIFTS carve-out: supply_chain.28-hts-tokamak-full-hts",
+      "outcome": "skipped"
+    },
+    {
+      "classname": "tests.scoring_v2.test_spec_conformance.TestSpecPredictedScoresLand",
+      "name": "test_predicted_score_matches[supply_chain-29-negative-triangularity-tokamak-3.0]",
+      "seconds": 1.476,
+      "type": "pytest.skip",
+      "message": "KNOWN_DRIFTS carve-out: supply_chain.29-negative-triangularity-tokamak",
+      "outcome": "skipped"
+    },
+    {
+      "classname": "tests.scoring_v2.test_spec_conformance.TestSpecPredictedScoresLand",
+      "name": "test_predicted_score_matches[supply_chain-30-laser-icf-nif-commercialization-2.0]",
+      "seconds": 1.477,
+      "type": "pytest.skip",
+      "message": "KNOWN_DRIFTS carve-out: supply_chain.30-laser-icf-nif-commercialization",
+      "outcome": "skipped"
+    },
+    {
+      "classname": "tests.scoring_v2.test_spec_conformance.TestSpecPredictedScoresLand",
+      "name": "test_predicted_score_matches[supply_chain-33-state-backed-tokamak-best-3.0]",
+      "seconds": 1.529,
+      "type": "pytest.skip",
+      "message": "KNOWN_DRIFTS carve-out: supply_chain.33-state-backed-tokamak-best",
+      "outcome": "skipped"
+    },
+    {
+      "classname": "tests.scoring_v2.test_spec_conformance.TestSpecPredictedScoresLand",
+      "name": "test_predicted_score_matches[supply_chain-35-polomac-magnetic-confinement-5.0]",
+      "seconds": 1.45,
+      "type": "pytest.skip",
+      "message": "KNOWN_DRIFTS carve-out: supply_chain.35-polomac-magnetic-confinement",
+      "outcome": "skipped"
+    },
+    {
+      "classname": "tests.scoring_v2.test_spec_conformance.TestSpecPredictedScoresLand",
+      "name": "test_predicted_score_matches[supply_chain-36-helical-coil-stellarator-3.0]",
+      "seconds": 1.543,
+      "type": "pytest.skip",
+      "message": "KNOWN_DRIFTS carve-out: supply_chain.36-helical-coil-stellarator",
+      "outcome": "skipped"
+    },
+    {
+      "classname": "tests.scoring_v2.test_spec_conformance.TestSpecPredictedScoresLand",
+      "name": "test_predicted_score_matches[supply_chain-37-magnetized-target-inertial-fusion-mtif-5.0]",
+      "seconds": 1.411,
+      "type": "pytest.skip",
+      "message": "KNOWN_DRIFTS carve-out: supply_chain.37-magnetized-target-inertial-fusion-mtif",
+      "outcome": "skipped"
+    },
+    {
+      "classname": "tests.scoring_v2.test_spec_conformance.TestSpecPredictedScoresLand",
+      "name": "test_predicted_score_matches[supply_chain-38-particle-accelerator-driven-fusion-4.0]",
+      "seconds": 1.49,
+      "type": "pytest.skip",
+      "message": "KNOWN_DRIFTS carve-out: supply_chain.38-particle-accelerator-driven-fusion",
+      "outcome": "skipped"
+    },
+    {
+      "classname": "tests.scoring_v2.test_spec_conformance.TestSpecPredictedScoresLand",
+      "name": "test_predicted_score_matches[supply_chain-39-spherical-tokamak-cs-free-p-b11-5.0]",
+      "seconds": 1.486,
+      "type": "pytest.skip",
+      "message": "KNOWN_DRIFTS carve-out: supply_chain.39-spherical-tokamak-cs-free-p-b11",
+      "outcome": "skipped"
+    },
+    {
+      "classname": "tests.scoring_v2.test_spec_conformance.TestSpecPredictedScoresLand",
+      "name": "test_predicted_score_matches[customization-04-laser-icf-5.0]",
+      "seconds": 1.422,
+      "type": "pytest.skip",
+      "message": "KNOWN_DRIFTS carve-out: customization.04-laser-icf",
+      "outcome": "skipped"
+    },
+    {
+      "classname": "tests.scoring_v2.test_spec_conformance.TestSpecPredictedScoresLand",
+      "name": "test_predicted_score_matches[customization-11-magnetic-mirror-1.67]",
+      "seconds": 1.491,
+      "type": "pytest.skip",
+      "message": "KNOWN_DRIFTS carve-out: customization.11-magnetic-mirror",
+      "outcome": "skipped"
+    },
+    {
+      "classname": "tests.scoring_v2.test_spec_conformance.TestSpecPredictedScoresLand",
+      "name": "test_predicted_score_matches[customization-18-p-b11-frc-5.0]",
+      "seconds": 1.431,
+      "type": "pytest.skip",
+      "message": "KNOWN_DRIFTS carve-out: customization.18-p-b11-frc",
+      "outcome": "skipped"
+    },
+    {
+      "classname": "tests.scoring_v2.test_spec_conformance.TestSpecPredictedScoresLand",
+      "name": "test_predicted_score_matches[customization-23-laser-icf-nanostructured-target-5.0]",
+      "seconds": 1.43,
+      "type": "pytest.skip",
+      "message": "KNOWN_DRIFTS carve-out: customization.23-laser-icf-nanostructured-target",
+      "outcome": "skipped"
+    },
+    {
+      "classname": "tests.scoring_v2.test_spec_conformance.TestSpecPredictedScoresLand",
+      "name": "test_predicted_score_matches[customization-27-polywell-3.0]",
+      "seconds": 1.428,
+      "type": "pytest.skip",
+      "message": "KNOWN_DRIFTS carve-out: customization.27-polywell",
+      "outcome": "skipped"
+    },
+    {
+      "classname": "tests.scoring_v2.test_spec_conformance.TestSpecPredictedScoresLand",
+      "name": "test_predicted_score_matches[customization-31-laser-icf-oec-architecture-1.67]",
+      "seconds": 1.43,
+      "type": "pytest.skip",
+      "message": "KNOWN_DRIFTS carve-out: customization.31-laser-icf-oec-architecture",
+      "outcome": "skipped"
+    },
+    {
+      "classname": "tests.study.test_single_point_gate",
+      "name": "test_green_single_point_command_exits_zero",
+      "seconds": 4.726,
+      "type": "pytest.xfail",
+      "message": "Historical nine-anchor/twenty-predicate CLI calibration is incompatible; exact refusal guards completed before this marker",
+      "outcome": "xfailed"
+    },
+    {
+      "classname": "tests.study.test_verify",
+      "name": "test_a_store_bound_to_another_identity_is_refused",
+      "seconds": 0.002,
+      "type": "pytest.skip",
+      "message": "proof-of-life store unavailable: /home/reid/1cfe/fusion-tea/exploration/stellarator_e2e/study/_work/availability_sweep.db",
+      "outcome": "skipped"
+    }
+  ],
+  "preservation": {
+    "source": {
+      "checked": 234,
+      "changed": [],
+      "missing": []
+    },
+    "protected": {
+      "checked": 202,
+      "changed": [],
+      "missing": []
+    }
+  },
+  "scope": "Unfiltered default pytest testpaths; separate explorer-local suite outside default testpaths is not claimed passing.",
+  "entry_source_hashes": {
+    "scripts/add_modularity_features.py": "3bf1a978be6b27798fb632c9479998623d79c25f49b8d8d89d2c706db89ccf75",
+    "scripts/archived_work.py": "fe451bc7bbaf09d0f4e734e854dff3a70c1203eeb6216d88f941710795bb5e8e",
+    "scripts/browser_inspect.py": "188c6dec26c894d00996102af41dbab985a58e800a3fddab07c7765b2d74856f",
+    "scripts/combine_results.py": "92eac1c587739afa582c3642c6e02b3af9171f3a13e11c7f6638934816fe773e",
+    "scripts/compare_fixed_point.py": "b18c39ed38af1d7d63b694c5cf4e7236a467f0837f29102256fc9e6f73e10f8f",
+    "scripts/diagnose_model_setup_slowness.py": "af20e95c113457773bf67a96fb8539d3b8eb334f1a8352262f440ddb4fa93758",
+    "scripts/holdout_guard.py": "6ea540568c83a760fccc434799cb7a162105b58e6aa2ff97a4fc411119209b9e",
+    "scripts/integrate.py": "6dd5ab46530f9dc1e259af2ca8aa62e95304ba97b29615b8963d6c04773cdc2f",
+    "scripts/migrate_research.py": "c9fcfe47ec9db3831d19590019d2da3e222b05f93ecd5858768beb9163ca765b",
+    "scripts/parity_explorer.py": "645589726cf9b60a9351dfd1900a39327d65c803f741014be41dfd54bdce6707",
+    "scripts/research_seam.py": "865c2c1afd458d6adeb7f3bbd2b023102ab62112715d58fc61d9d3376edc185f",
+    "scripts/screenshot_explorer.py": "e925493d01a6fbc5e99f0e91f93f2c4dc0ab4bc1dd1453621db06a9bbd023540",
+    "scripts/smoke_explorer.py": "2daec3778c961722585d504699e78ab614e1d40a1e3086977d5918c5157050f2",
+    "scripts/source_registry.py": "c32fccc6ac953c685ce9cf5e555d82d5158c3ebfec3b5f287a8fe86abb83cdad",
+    "scripts/study/common.py": "ae5fbca7be87d2fa1783affe4773332c9a898a265f70215aec9ad1489c8df521",
+    "scripts/study/identity.py": "a6871eaaba1078a524b27c998744c6778ac6b5304d39d6eb083b9be4533dc01e",
+    "scripts/study/indicators.py": "41fdc42c6e6720bab5e3370df24df82085ea94161f6f19f4e5b79a6a06a028e0",
+    "scripts/study/manifest.py": "3c1bd8043b1f4ab0424ea9a77cc243e03bc10b3766e7ac634b9e93c25eb749ee",
+    "scripts/study/preflight.py": "86acedcd1b5c35a658c692b5a6631f2f2e0e96ccd05d1e11c65143fa55688472",
+    "scripts/study/read_coverage.py": "3a63ba15c37d889c40420c66317ed8c685089ac1bb778b60fbe7e7c0e808412c",
+    "scripts/study/verify.py": "34ee38ed9ae38f448199f0e968a13cd2448ec97098bef601995031d1c3fbc8ba",
+    "scripts/test_zotero_write_access.py": "756b1fe60078b1640297219fde193b9c05ca6e955035bc315c3d7e5c714b5128",
+    "scripts/verify_hif_costs.py": "a77c9c8b1bd196e1d923a525dbaa57149a749d270155160d8759a2bee85c1d03",
+    "scripts/verify_ife_lcoe.py": "426739b4fd0c024cdab12d52e1cf742f2f33e0da36c2c1211701b6772b8329c2",
+    "scripts/zotero_group_download.py": "c28531ebdbc2d447068092ac8653d4633e9781500aa50a5c8c4c2c86a9875927",
+    "scripts/zotero_ingest.py": "ddefaf4ab550e327b7414e60ea008fe9b211acb1e2f21d4029b8d6f60b7d949b",
+    "scripts/zotero_lib.py": "1a4897587d2c3ab1ad95993d990751a08afa1b83e6bcba148d6541293b05f765",
+    "scripts/zotero_test.py": "8ae20561180ccdcd1be086287fe2aa8462a7c798b73910b20074dff505dda54a",
+    "tests/conftest.py": "eef6d59cb210785096feb64801ebb9f877ac8a90482f66d323cdafcc25d7a851",
+    "tests/ife_execution.py": "9e5a53b9e2d143b50955e243c6aba40b65c5ea676894a8aa884b6298074fbe2c",
+    "tests/ife_oracle.py": "877dc5e22dd1ba0b2b46746a627314fc3772ce9d2c37bd7b6000b738ad90cf0b",
+    "tests/model_families.py": "a1283b565ab407e7a282956e40516319e27314fbd02aa13889d9f9b4612e5124",
+    "tests/model_viz/conftest.py": "343efca1084b4aad7dc1f59a4608d0606c30df3ead820a781e8598b754bf00de",
+    "tests/model_viz/edge_oracle.py": "b84934039a18fbf74cf108d2132fb4b3ea0d04002b1890c1cf2145c88c7f59b4",
+    "tests/model_viz/panel_dom.py": "62ab323737a80a93314cda4b6eabab4f34a33e218a36f7b0f647a47ce9c65b6f",
+    "tests/model_viz/part_panel_dom.py": "3a249719b935af8a82b2d2db9da5d01b179570910455618730524a3035099c61",
+    "tests/model_viz/structure_oracle.py": "ce7995b255b3685f977bf6ede9549f8b0dd7579f1eb2d9b414c736037dfd217d",
+    "tests/model_viz/test_export.py": "f6c7b6918378d5f552052703fd21a00f2738b6b8b955278544d0ea1c63b104c5",
+    "tests/model_viz/test_graph_edges.py": "1c7166ab944371b7b2d4204c1106954fd077e750052b0815e5e3c30be83b064e",
+    "tests/model_viz/test_guards.py": "cdf5bdad44707f53a63683bf6030a3053d5f9db1aad13e50420b9f86c33ccf95",
+    "tests/model_viz/test_loading.py": "547191cc539ee0e281df576f40d5976456ad4954e152115e0b57a703291b0f5f",
+    "tests/model_viz/test_navigation.py": "f54165a4ab9618490fef71c7c0411ddd6d5063f22b825a4374158cbeefafb449",
+    "tests/model_viz/test_panel.py": "5f2dd356934ae75cdf4dfd4d1983e900217d901cb469e362b59581a1f4470b0d",
+    "tests/model_viz/test_part_panel.py": "394f7665bde87be6877c6649c0e9822767f996d5dacacd57a6c3e7e30c3d1b53",
+    "tests/model_viz/test_pure_layer.py": "9073af0a3a61d50b47aa4f288419a2f5a8ba08631ac562d4021c801112819e1a",
+    "tests/model_viz/test_structure_layout.py": "a7b734831b13d85b7df0cccc2ee0b5636dac409a414dd29ae46bdba48c8797df",
+    "tests/model_viz/test_structure_pure.py": "3e422f6070a51f286dfd1f6f5957e8140594ef449ed28fd2ecb6f417a84a6c05",
+    "tests/model_viz/test_structure_view.py": "8897f96652accaeb65642e2e5c62cbaad7395848078e92b8edf6dccae5bce12b",
+    "tests/model_viz/test_view_switch.py": "76453b1bbebc176634d8724bb55e43a32867c0552d94027e830d558e5746883d",
+    "tests/model_viz/viewer_harness.py": "bc5796105e107fd899621fd6bb8d90451e8c7f74f291abd8060d2ea0bf4425b4",
+    "tests/model_viz/viewer_snapshots.py": "8731d73b1792219c6107f7fbddba9513c400fec2fe94879cee2b376015388634",
+    "tests/model_viz_evolution/conftest.py": "7631732d0c97aaa3c63e6cd1b332c0358770939fe109c2a9db4a60b3f313c21f",
+    "tests/model_viz_evolution/test_article.py": "d855d28c465954bb6a489f888d7a104a4ac4413866a710453286412d8fb90a57",
+    "tests/model_viz_evolution/test_diff.py": "7410859a9da1385d05b6a4376717497cc7433343531ad623e661e76cc4a68358",
+    "tests/model_viz_evolution/test_page.py": "488b4e3db4e4eb6b8239d5d8322a97f05920c82d06893320cf9a5a66f7b6411a",
+    "tests/model_viz_v2/conftest.py": "517c18aea0d02b64d894318b10d46fc402da4234c929cbac3bbc6819ffae7a76",
+    "tests/model_viz_v2/overlay_oracle.py": "07da14f464580deb3556c4ca5ed158c39c140624e756ac439f63ddfc6885b16e",
+    "tests/model_viz_v2/test_dynamic_v2.py": "77687eeb4a0c0a061015ccfb4b5d177e1101da8b833737e8feb710e041ea4260",
+    "tests/model_viz_v2/test_export_v2.py": "7b173b104330deffa843c923cc1bcd71390a23e49b231469dbcb2b4c16db6b4b",
+    "tests/model_viz_v2/test_find_v2.py": "e960ddd528df5ea4a6141fd7b1f1205b873e0a85a464bb189e0c1a696ff5e5f1",
+    "tests/model_viz_v2/test_flow_v2.py": "c8839c67c0f5bb7c46ffabf80a66e8b6344bc0d6ecbfb090a885908cf6931231",
+    "tests/model_viz_v2/test_harness_v2.py": "cdcfd29cddf57fa8141d91d39b67b3123f166e3e7a1d058ac3128ac14c1064d0",
+    "tests/model_viz_v2/test_loading_v2.py": "febe61d92d6b5287a55c70d9425908c8a3e5ce3b6a8d047ea2d6373906969a4c",
+    "tests/model_viz_v2/test_panels_v2.py": "551c667788caf62ba9bb07bbf78702b6796a9fac0bd5654bf5e94c99cdc2cfb1",
+    "tests/model_viz_v2/test_picture_v2.py": "e1e0bfc8535857d44cd745b29d32a2b1b2db3432769b00f5b5f188624e365412",
+    "tests/model_viz_v2/test_pure_v2.py": "de750cbca445fd306cba2f3ed221dd2af46fe76cb8aa9139bb84ed19548312ea",
+    "tests/model_viz_v2/test_reach_v2.py": "506319f67881bf5dbb983fc23b5aada74274d6ac35dc945eaf0b41cca06071ba",
+    "tests/model_viz_v2/test_readability_v2.py": "e02409509da5008c23e363dcef342db3051c5de72702542a0fdaa3cc121f1fbc",
+    "tests/model_viz_v2/test_stability_v2.py": "00cb72b365ebce9b45e118b53ab6724144059f8f72e0cf0898d76d6892025b7a",
+    "tests/model_viz_v2/viewer2_harness.py": "4e7a3230c7393c61bb8982c58cfc79ef1c9041ec1fd6c090f58ee92bf1116bba",
+    "tests/model_viz_v2/viewer2_snapshots.py": "3dddc613f67422ca7367ac51c951e268954f2aa6c96d091e4565d47cfc4fbfd3",
+    "tests/models/conftest.py": "ab5661c27dc534232bd4b3270b3c17956d1e18b5f652ba6afddc0d284c869b34",
+    "tests/models/current_mfe_regressions.py": "f8e30889f0d25571e9680edb71febab5ef79daae8e0cef45b08e8a7f669d4f89",
+    "tests/models/optional_magnet_analysis.py": "f8c7f60666282623c1705ee74415e8d3c052a934b147a46cbe74bbeac61ce1b5",
+    "tests/models/test_beta_peak_field.py": "a96cb0fc5df72b17f9ada970ba5f0332586fd03e62fbf1ed7bd9662fb219e5cb",
+    "tests/models/test_coil_thermal_inventory.py": "129046dbdd452f5a525489c8bce9c0bd3aeed34d79ce732a45e18b33c53732af",
+    "tests/models/test_computed_tritium_breeding.py": "7b25b881ac92e7f505162f517721c155ad804c578d2ea3c9e8d8cec43f3b49f1",
+    "tests/models/test_conductor_current.py": "90d51c2e3db14918121c946bbc06d0f0bfbedbbbae8421d9ecf0343bfd74cc36",
+    "tests/models/test_conductor_current_oracle.py": "8f52732cb5b3a92bc1d72e29e5cd4ecd7fa18f0a602ccc6f2e640f9b547d6faa",
+    "tests/models/test_conductor_grade.py": "2578ff10236bb699af72d31b06b6baed13975e74571973024f7677867c5718bc",
+    "tests/models/test_current_driven_sizing.py": "5f029bc4a4890095dfe67c5d512e8fd15662a9a73b118e4860cc7c122628d0d3",
+    "tests/models/test_current_driven_sizing_integration.py": "383f944eb7cd61d6c2dd8e7c0f5e511f0b168e31c69c60169c5d754fc53b94cd",
+    "tests/models/test_current_numeric_coverage.py": "c37bf58ca9b66d4edd108f9adcd8f38791f5924a24f1678806f26e7af1a3cffe",
+    "tests/models/test_divertor_heat_account.py": "080dfc31cb1338b7603e4a52614d227c08bb89950f2b53cf6b335e17f3e1aede",
+    "tests/models/test_divertor_heat_integration.py": "6c24b4d6b6a12158a5ea88ccb360ce5865b74568956760f3922ec0b031ce8807",
+    "tests/models/test_example.py": "234d37638882c2ba40dacb71df696db690eff7dbd2f052060f2ca47986d69175",
+    "tests/models/test_facilities_oracle.py": "1b0d8bb6663ee0515aa784dc737ebd27ad648bff263c9171f957f377232b18bd",
+    "tests/models/test_facility_account_consumers.py": "d82c4522e39c6fa3e0e15ad49f0ae779df9478f4dbe904503672c1e54c3f8f1d",
+    "tests/models/test_foundation.py": "b87f9bf5513801cf100155e3921db9838f9fb9da66e2b968ae8bda9c65cb6278",
+    "tests/models/test_fuel_inventory.py": "6ac83a0ede2edb773133e89f63fccc8d8b29426d231b2f3ff9745fdb9e0e25ca",
+    "tests/models/test_fuel_inventory_oracle.py": "e829c8a350bef8b35b38c7f758d13c795ec241072189f67d4fcfd804de10d34f",
+    "tests/models/test_fuel_processing_costs.py": "f0f660df0ba142297df3a5a8b6196b155806aab9d0af55a19a7898727d419cfc",
+    "tests/models/test_fuel_processing_oracle.py": "c0fd37678b40e153cfd30d8c9769144170f40e711ee4672dd8b14a99d517e7d9",
+    "tests/models/test_ife_operating_point_repair.py": "8deca2ccf567ab82fa7b8ec942637e3813c69eacc4a815f5bc9ade98d63b4e38",
+    "tests/models/test_ife_zero_discount_repair.py": "5fb40c88903e532fcbee489867dc853025a8236446f3fdb4c568a31a92ad60a7",
+    "tests/models/test_installed_cooling_equipment.py": "37d460de38e9d64e81d762d2877f6c6627f6c8829752de7e1bbd85c78ed15dd7",
+    "tests/models/test_layout_facilities.py": "1794995fc44b011bd3f6b170cc6ce0525612720fcb0db479b71465bef1abb0f2",
+    "tests/models/test_lifecycle_calendar.py": "cf68f2ba1cb1da6175b5ce7be5ce868db1eca1887124d166d9d9fcafe7ec3b3f",
+    "tests/models/test_magnet_cryo_domains.py": "0170a412c0e314eb3b728dfd4af31f56ef51d632e5ff8e1ace0c77a6f9d70875",
+    "tests/models/test_magnet_manufacturing.py": "977b3c37d316c893fbc8958ccd2d89c4aa5cad4b9d29f7d120440ffa28a47e87",
+    "tests/models/test_magnet_manufacturing_integration.py": "879be92eaeef7bbd9936d27122ac761b38e897b095ae334fb6220d417b363b35",
+    "tests/models/test_magnet_manufacturing_oracle.py": "229332d0a2e5e0d85d68e7d859b4cfa457c855e6966ff9b05af608759b807d75",
+    "tests/models/test_magnet_materials.py": "33ffc26029dc1e471cdc2d458cd6cdbb8c0c6fc1414a1cdabfa930a80269beda",
+    "tests/models/test_magnet_oracle.py": "c863c89be5ce7248753131cea4986a0189b7845416ed7baaa486a498ae38ead9",
+    "tests/models/test_mfe_financial_calendar.py": "e3b7d5091e9b80bb35465581da37c939e8cde02e53394271e28724718679eb8b",
+    "tests/models/test_mfe_financial_rate_limits.py": "10d771fab485464dbfd8b9ae41afbb3e8d9660eed0d27ba31154cffa926c7638",
+    "tests/models/test_mfe_major_radius.py": "7d56e421aa8d6178350328f6761e99dd39af599597be315608be8eb68a88fafe",
+    "tests/models/test_mfe_operating_heating.py": "970f3a39e20a2b7651cd60ef2c372b4640d42c594565e6ffecb8f826dc8933f9",
+    "tests/models/test_model_family_spines.py": "d5fa93c50c7af55726043b83da897c7410d8aca142a2d5c1b4e3af41e0144210",
+    "tests/models/test_offered_capability_flag_native.py": "e3b02b2b64137cf65200c494fd81e39f33186ccad6c057fc7fd5ffaaa7be61e0",
+    "tests/models/test_offered_capability_oracle.py": "9f0733e09cd9a4df002ebe781433ae4d60fca42aba064644af98fc4e5e07ffc0",
+    "tests/models/test_power_balance.py": "49fcc76dfe76b2b05cdd0c86e9e6059ed34721cb93ae1a2c07c134e75b488281",
+    "tests/models/test_primary_loop_domains.py": "7f97f52eccc589129a36bcb1ae4ac4991ab82e69b7dcaf59f2b64ff1e96cd8ac",
+    "tests/models/test_shared_cooling_fabrication_rate.py": "f27725c4bdbe3d31ed70d3dc6e7ccc5fd63ae3421d7e319bcb128763f612d0c2",
+    "tests/models/test_stellarator_materials.py": "c47346a2ab1b33366f7bde08d7084ddef17a4fcb34b0017e3c724279337f8313",
+    "tests/models/test_stellarator_materials_oracle.py": "12115b51d635d419eed85d3d9c552027176245f37d4fea976d155c9048ea94fc",
+    "tests/models/test_structure_translation.py": "064e80a8d1e384f8984758b534ce2ea23f8f286d87c7d03276ec4b61fefdb439",
+    "tests/models/test_supplied_cooling_design.py": "7e12d3243f8d59002821539227e0ab1d5563e686bb41949e92d3ca3175bebce7",
+    "tests/models/test_supplied_design_native.py": "c423eb5e93fc63f3257573d7c57d6bc897d85c0ba5544917875606538a50a37b",
+    "tests/models/test_supplied_equipment_integration.py": "0454fb40f407a8b0c9ea63189c526a04d5cec2f5de6c36a75bddb055513eacd0",
+    "tests/models/test_supplied_equipment_propagation.py": "a66c80c55a18ad26d09e022403467c31811cb461e424333b9452027ebdd797f0",
+    "tests/models/test_supplied_facility_design.py": "a329e89b51dc5d87d57804a9ba2ac5e84dce5a4651c6b9173aec2568a64d416f",
+    "tests/models/test_supplied_magnet_design.py": "5ee0a13d47d43deeab4a5800fcaa55cfd4787ab6a74f291f54eff3076ae0c900",
+    "tests/models/test_supplied_residual_costs.py": "2d25baf968fe4819817965caa558af2e8f4d4fe79400e13e9e53693916e1045e",
+    "tests/models/test_supplied_thermal_capability.py": "e7328e9b92831f12a026f86c9bec671bfb80a20157a85d892fd1394792fada99",
+    "tests/models/test_tape_procurement.py": "32daad28c7e7aaa22afcec2fda28182915b3410550aa031d5c0325ee085a1ea6",
+    "tests/models/test_wi038_oracle.py": "66ec3315e0dafa92c2cc0e1bd929cd5edb229660d5e664750556b76905daa43b",
+    "tests/models/test_wi040_oracle.py": "0ec340e69154156b0166c005cd772ff497e2a2cedf0c086c80e8cefa8617263e",
+    "tests/models/test_winding_length_bore.py": "5b9c93be103f8a255c358d821751af7a14291d07838a9a0f3b26d2bfe3a0c5ab",
+    "tests/models/test_winding_pack_cost.py": "c7c28c404380af515fc9a0efcf174cd1283ebf02740e1fbede4fecb0db945a50",
+    "tests/models/test_winding_pack_domains.py": "1d837a7abf67514f259f207b33d498487a8b7f6039f7071ec35e1ff0b8ea46ab",
+    "tests/models/test_winding_pack_fit.py": "cf1c10a94ae3b3093493ecf6120f7ef86f03773c5537e84338901a6233d7a1d7",
+    "tests/orchestration/conftest.py": "27bbe275575b59e4badf34b9d965647b0ba790642c12805581767c589a919ede",
+    "tests/orchestration/test_goal_contract.py": "2e12a7ed72251de52d117dc9915dd207527b7f1b2df2093cd1ce4421bac4e822",
+    "tests/research/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "tests/research/conftest.py": "1cf6c84f362b67dec216940e05f7bbd61216830774653efb41a175205b14cc47",
+    "tests/research/test_command_contract.py": "c0050e30f309735fcadc3edbdf438d5a8f0853bf63d3272713caa5d78242809b",
+    "tests/research/test_duplicate.py": "15b681005d709cc17d25e08e17e6187e79985053b3157fe741bc152e4670a796",
+    "tests/research/test_hermetic_paths.py": "ae56bd536673827d8f8bded517a545bad583a42dce8d39ced3c7a8f3011a535c",
+    "tests/research/test_holdout.py": "39c3f573e198f3c11177b0a77cf592b59ffe05612cc476e912980cf957d7ea3a",
+    "tests/research/test_holdout_guard_parse.py": "ce14936eecff58525d5b329e374188ff4eb8a6cab2b40f980ab3807b7f58f5b6",
+    "tests/research/test_index_writer.py": "0c17ecc50418ca9ea9245a456d2510cc64d1d8a360f3ade1d15daf83e79c808e",
+    "tests/research/test_negative.py": "c6488cab4d13fb3106ec69ce2bf163a1f6ce34b34000535c6a6de600dbbf3231",
+    "tests/research/test_receipts.py": "5c5528d7f785eee638821cc7e94187a00b026deeed7868ce1d9c9e96f20286b2",
+    "tests/research/test_register_pdf_chain.py": "3464ee70e14e5a784e28157b42d7916efce766506ed8e151dfcce725183ceaac",
+    "tests/research/test_register_url_chain.py": "6fb784bb2c36d4445539ddcd41b6a71b88c1ff30abb8d3b1a9ad5e42670df5ed",
+    "tests/research/test_retire.py": "5d6b2e81011ffd4cb21f52f579d4c1cde8e49f68a225e533ee87210b33864afd",
+    "tests/research/test_return_contract.py": "b760d06367c281322c667ccc4ca87ccc827b726204c545b4faae3803c57a6ebc",
+    "tests/research/test_rollback.py": "efa90e3283a106418d907f3c0b601dad150c82a1db21dffd432823daacf5349b",
+    "tests/research/test_staging_concurrency.py": "711c33d7028a9cbb7582d0dd972d9e788cf25ac07384917b1adbb1fdea73b45f",
+    "tests/research/test_triage_queue.py": "77264b58e03548c786f4738c7b7824d952101ac1eb2c7874cedd1ec8e01af8f3",
+    "tests/research/test_verify.py": "94a199e9dd0f2e61b11c8031ca6e18d09e83f423cd92bf88da872c39bdd3e25c",
+    "tests/research/test_zotero_path_contract.py": "bce161e2e5aa4b36cc047d05b44765a2ec7649cf3e0287c5656ed5e591c7d158",
+    "tests/research/test_zotero_paths_are_callers.py": "bf0a3af9f039969b4de520bc1947320d71645c31cc463731b532a6854a8c2f32",
+    "tests/scoring_v2/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "tests/scoring_v2/conftest.py": "9d787d7e3040e58e9f6f950e6bd0af4ac6fada0af4bac7a0abad105e48d4d5cf",
+    "tests/scoring_v2/test_cost_model.py": "491c3cbde98fca6e555db883aae9549941e61553df812bafffe56b7269a53a2d",
+    "tests/scoring_v2/test_customization.py": "7a0ba0b92181b7e3a7f8e656ab7c30b060a3d1d63202d427e86944fddd51ddb6",
+    "tests/scoring_v2/test_data_availability.py": "fd391f2fa45938d2942d41b094746bee84c0318578f186d12ea7ac2d09667c46",
+    "tests/scoring_v2/test_extract.py": "8bdb1a7c41986d1b9a78192999405e5f9b3291f8efa0ef01c100443397dec218",
+    "tests/scoring_v2/test_modularity.py": "1aa7ffb6eb030867182b53b6d6c40e6366bc6412f6a9a4c7682fe0234883074c",
+    "tests/scoring_v2/test_normalization.py": "2c7cdc2f4b1cd4a1bd0dce0c36b334cccd2332779aa643362e8b78af8da107b5",
+    "tests/scoring_v2/test_plant_complexity.py": "9f9d6d57a71410aeef34e91fe21ae8d3a647a198d8e390ea007cff5d93946ec5",
+    "tests/scoring_v2/test_score_explorer_build.py": "f0342e391565c2c3d51e7cccb64f474bfb36eacb1ecb1d2873055d1fa78e29d6",
+    "tests/scoring_v2/test_score_framework.py": "8fb1b2c4b276af92c7c2e8f511b88a459ddc2473a128c01526a857ac234cfc68",
+    "tests/scoring_v2/test_spec_conformance.py": "6f09d1b4a9a317d7319e5bd204bf2e92e468ddb703342a536439e5bf087b6869",
+    "tests/scoring_v2/test_supply_chain.py": "59172d7b6664b398e55d174cf49cd55e785cba70e581204555478d56b93d2190",
+    "tests/scoring_v2/test_technical_feasibility.py": "91a73540340c9e94951bac8c0ab796165297bfc8b19961cebcf241d853fb1e29",
+    "tests/scoring_v2/test_upper_cf.py": "7869dccdaffdfe4ff0f9b11d4743cb2d9c86886d40d18404edc54af29759642e",
+    "tests/study/conftest.py": "62c3e55302914e844e7124a04d39c2638331bada6116c97076ddc6bad5a8676c",
+    "tests/study/financial_channels.py": "92eecd5f647e5a04ba696f69085064e4f20040f28ef1526f4e5e5b3fc54a33a7",
+    "tests/study/financial_radius_controls.py": "29865fc2cdf157ae363fd54f8d863afdf91da84b21cd383bbfab3e145b782d1b",
+    "tests/study/structure_ledger.py": "8fb06869313075ad171ff722f0797eb10ecc2ddc9d41f08fb7d862c0729fb299",
+    "tests/study/test_absolute_tolerances.py": "718c9c783b99a0df52cb071d09504c38ca83aecad43ee25fc48f617164bd8ba4",
+    "tests/study/test_annex.py": "110994b440dfab6ed219defa0e9133efff919bc1b57901a2237eede138a726cc",
+    "tests/study/test_breeding_predicate.py": "b336fd07f77f294e4b862055cff04581334a05254d1cb810ea75b5417d84d8fe",
+    "tests/study/test_committed_store.py": "28ad5aece90d7c070b8d6b7589b6bf72cd2e3cd7b19c73bd23b7c036faf120c6",
+    "tests/study/test_common.py": "42a807ac906fd5057a39d0195eeab1bc9c2b4b088d52258a1ef2346a0f67d782",
+    "tests/study/test_domain_consumers.py": "1efa057c2dbe315b2fe4c6f9a220fa4f0c192e040bc4317ec54feb4965125180",
+    "tests/study/test_financial_consumers.py": "ca0d3bb8628263a7775f74a4cbff9a1b9c13a08771a825f6545991cb97be78c8",
+    "tests/study/test_generic.py": "630a7ab168b98e2978548a1370f7fbf20c205f22847f7539c7d3fa26e70e2c51",
+    "tests/study/test_identity.py": "2bc80b502ee504d20483bb95095d20680c5ddf3bbe9e70be41a04d982dd18614",
+    "tests/study/test_ife_native_route.py": "16d440a60f9774040a8ae04979a61cc7c8eec66d4972abc0fa96f765d9cd8426",
+    "tests/study/test_indicator_operands.py": "6cbc6cbb7177aab02b9d52b38b981b940138d10efcf839b08e9de52779ca6011",
+    "tests/study/test_integrate_guide_contract.py": "f360d222bc431860c1569f7d5e231a8ee4d4d9d8e8ea1600a6aea437ce820434",
+    "tests/study/test_integrate_internal_error.py": "abb6f9ea57f1dddfc8ca092ee1de003a2967ccba9268eb95e35f838dd1b57d2c",
+    "tests/study/test_integrate_lineage.py": "5fcad5b874ca02bbaebaf51743f5701852d3cf4a214ded0c84e203ced1091336",
+    "tests/study/test_integrate_preconditions.py": "23c4324e22a5e7098394c881b8bf7f8a4ede4d6187dd68591fc10efb0d3da444",
+    "tests/study/test_integrate_refusals.py": "457e948fd632b6c9897bf38f39d8ef2e64170c72ffcab1f870660baebf54c9dd",
+    "tests/study/test_integrate_rerun.py": "d5c08ef3ac11d7d951b99bae2da54eb59fd138ead8af07cc3f3d90413b9d5d5f",
+    "tests/study/test_integrate_restore.py": "8459edfa2c561cad342fb555167561b870ad1b086c71afee5930b4c8237836cd",
+    "tests/study/test_integrate_stock_route.py": "127e1320a014d1e0650e1ee694ccd29e42e0835654c47b3d7794956521c6e1e8",
+    "tests/study/test_integrate_success.py": "0ea7aa43c32755c960806a78ff175f6c4a4cab5fdd72cacdb0cfc2e945bdedd3",
+    "tests/study/test_integration_workspace.py": "0bc6c9877d6e444c3474aa0afff107b4042625cc0e9055d5cfa4c5f9d372e717",
+    "tests/study/test_known_answers.py": "baebddc8bc9fba6f403c83ef9da417bee3d4aa05f91228d80df2b81fdac7ca73",
+    "tests/study/test_magnet_materials_oracle_entry.py": "2dd966314a864a4463b51e65c2ea06a1f6745a440229e2f8ef90e47c98247c80",
+    "tests/study/test_major_radius.py": "96e6778d11fbf953d16e9e4542c96e76b2ef8364496dcf955c92b670cbc52560",
+    "tests/study/test_mechanical_failures.py": "673800cf3533e065cf22920f79fae549c779fd3806669a0b74598bfc8fd221af",
+    "tests/study/test_multipipeline.py": "927994ec80f45c665c856199472ea664e90269fd52caf981c2f817cb1213c53c",
+    "tests/study/test_native_publication.py": "5e8d9e7fe5855bf15816914cd29e548ca7a127995cde794812f34df431c1708f",
+    "tests/study/test_no_retired_identifiers.py": "f98d77d8c41250065ab1cd9d4cb9509486f2d2e9ff168ef4c38a220666944ed0",
+    "tests/study/test_numeric_evidence.py": "7ab49e7dc4295ec8bb233ad12fdf1f08e9cf1f656999acbf41a33d7cf38b68f8",
+    "tests/study/test_operand_bindings.py": "d290365acbc3490dc659525214bda327e0db296dbd36f1966e4ca47588aa55f8",
+    "tests/study/test_output_contract.py": "9979b6e5bf8e3c498125b30d38fb01a60d5c951c8feb16e9bff6ca997812730d",
+    "tests/study/test_policy_path.py": "21936adb6c4c9a92bfb8fb6f7a03df112479bb2a45d5e31eb59844447c958870",
+    "tests/study/test_preflight_gates.py": "664d99ad8ba28bb0107b6bf3650147276b4e4d6dab7cf9adf046b3f95113980b",
+    "tests/study/test_preflight_negatives.py": "6e83d5ad3ca7bf6444b9e71ad41f791dc508b33af8485a55facd68bcc1f0a7cd",
+    "tests/study/test_primary_loop_consumers.py": "3ac37937c89cfbe197392dbff6596941fe3ba5bf0e8ab21526e6f592b2622bdc",
+    "tests/study/test_provenance.py": "c9a5b220a8d3dee053b0487f8027fc706b44c86af47948fb828512a52a0beba6",
+    "tests/study/test_read_coverage.py": "a19a28dba006de63cd33ddc083b296a3e7ebdab2f3ba68f2dbcda78252a3a144",
+    "tests/study/test_read_set_coverage.py": "d7315bfb274f117542e198262e3ec1dc0f4678c231ff55801b91fba37d9180a6",
+    "tests/study/test_record_template.py": "15704b87f7f2123fde50a0dfa5bc331be31212cc95bd6bc5ac1db5dd8a2a64a9",
+    "tests/study/test_records.py": "88a87fcd28235ea5225c0a0b7667f03250ca3dc0e5635b3575d82329c2ac322e",
+    "tests/study/test_reference_profile_mapping.py": "30487147f5e4c9b4b9bb5f795f24d26e83ac5b13930a7daaeb147f0cc9822ff3",
+    "tests/study/test_single_point_gate.py": "761020a96bb0e46b7b78d0a779d063fd9250fc661711ffbab72c96ce41d2fa31",
+    "tests/study/test_stellarator_materials_policy.py": "1fde2748516b0a289a61ec919c292ea3fd87b3911dff9dce773953a9a95c0638",
+    "tests/study/test_stock_route.py": "e35855fd1efa5e43324f31112f35c7f3cd27802d2d4c9f6020b6945bbe70fd29",
+    "tests/study/test_study_publication_fail_closed.py": "d888ad587b7260b87b1ae4c017c63ed56c5883c81fb449a9a8de441fc4b36324",
+    "tests/study/test_subset_flag.py": "d55ac6cf5b5466bc37177588f7b2cea2a4c4fc0561a4065714bde1072d83025b",
+    "tests/study/test_valid_empty.py": "7c9dc372ee88cf27536c4afbcc9c2fa4f319b7c7117775ba42680132cb07b564",
+    "tests/study/test_verify.py": "868ca914da1c229f6ec9ff36dd0ec80f62d3876275786ac4609e46017919eb46",
+    "tests/study/test_verify_operands.py": "5df920c8640b264ae94953b79e45ee56609388967e5cc0c597bd9a8b97dc4f90",
+    "tests/study/test_warnings.py": "d1247369411de24f7be8c340592c08f74c3f3f4dfde646df09e051113bf063ff",
+    "tests/study/test_winding_consumers.py": "868948581bbc88e42a7f31ca51ea3ad9f2ff674fe2f73c305c4e78834aeb6e2d",
+    "tests/test_archived_work.py": "4eecf53b76690055d93ea09a77196d35fb2290118a1a73610aae480cde34a870",
+    "tests/test_candidate_report_custody.py": "4ac6ee5d4dcb81565790895815c83c3f807a34f8c9fbbde2f196f08f6a637e5f",
+    "tests/test_codegen_teax_acceptance.py": "7708786597eb265caf58c2ea4421adc2cd839f4b72ea1d890e1aa7255a756e59",
+    "tests/test_compare_fixed_point.py": "a8e1fd61876e6f40d95b7cc49c9a075f70865a8c3640b182c7d4cec362797f48",
+    "tests/test_current_comparison_candidate.py": "d2a07a98b2bb97696edf34f8adc77716ccf10a7ef48dd1ea4ce444f5989e391f",
+    "tests/test_dependency_provenance.py": "c301aeac1afc8d958866a1a786b3acc25e8610632cb30fc368ae0ffd95d0d65b",
+    "tests/test_frozen_comparison_execution.py": "c8c0a28d929f18f5d6b9dce9475bf073ae7a7ee4557902b4d21112a0e8e5afb9",
+    "tests/test_ife_consumer_eligibility.py": "34518025d54394998f7608b8e5d62edd451bb7f5eab7b948430bd21215923266",
+    "tests/test_model_evaluation_adapter.py": "e93a37a7e390ac2a60614a3791d2e561107e7dc237713cfe4615a344af20117a",
+    "tests/test_occurrence_mutation_teax.py": "f590d2eabf16ac1c5207058b0024075a303eebe2bd6b0b4b8f8e650016caea70"
+  },
+  "entry_protected_hashes": {
+    ".project/active/aries-comparison-preparation/current-readiness/candidate/account-inventory.json": "44b35193b16f9a3d32b10524956af591006b3a5a0bb0af1f64a03b0d2eb79469",
+    ".project/active/aries-comparison-preparation/current-readiness/candidate/archive-members.json": "a939ada5a0afb3a16326cebd7409569d667830072c46d92545e6c43c05d41708",
+    ".project/active/aries-comparison-preparation/current-readiness/candidate/base-required-files.json": "ca3d163bab055381827226140568f3bef7eaac187cebd76878e0b63e9e442356",
+    ".project/active/aries-comparison-preparation/current-readiness/candidate/build_freeze.py": "c10844cadb7b118163bd979224282fa26b008fd25ea6cb274f214b8bd56ac507",
+    ".project/active/aries-comparison-preparation/current-readiness/candidate/candidate-identity.json": "b8d5b9935dbaefed6952400e2afcce097094863ec0dfcb8a8ffcbd3f856639bc",
+    ".project/active/aries-comparison-preparation/current-readiness/candidate/candidate_common.py": "4da243490df04111416e69583115ebe4e4660515084855075c066e031f9ac68d",
+    ".project/active/aries-comparison-preparation/current-readiness/candidate/check_accounting.py": "2d749428d338c079b74ddaba7a0df94e4cda4882073d4679c5b6a7da8788619c",
+    ".project/active/aries-comparison-preparation/current-readiness/candidate/check_lineage.py": "daa13a6af770102f7bf10d270943a0793efa9f4e4d3d4a25e3ba216c41131927",
+    ".project/active/aries-comparison-preparation/current-readiness/candidate/check_selected_mode.py": "57164a00bba2406e1d9828bb463526901288b17053989d48e5d51370e301a798",
+    ".project/active/aries-comparison-preparation/current-readiness/candidate/compare_candidate.py": "96eb08fc81205dabda8eacb9faa231efc92cd81348cd0be720c3a318f3bbee61",
+    ".project/active/aries-comparison-preparation/current-readiness/candidate/constraint-inventory.json": "3099e0d76a8afb363e3044d62f8d43ccd97de60b2d721d00e7d699dfe6dd3c8d",
+    ".project/active/aries-comparison-preparation/current-readiness/candidate/diagnostic-inventory.json": "9d1dec8fcad422ee94bf6fb2830d2a845a044614b67a7b9cc2f437da5d0b7216",
+    ".project/active/aries-comparison-preparation/current-readiness/candidate/evidence/checks/entering-accounting-reproducible.json": "6a9093322ddf29393d15268ea8507c4ab5a9f6fcf8495ccdf78bac12a21e766e",
+    ".project/active/aries-comparison-preparation/current-readiness/candidate/evidence/checks/entering-accounting-reproducible.json.attempt-puskjww_/produced.raw.json": "6a9093322ddf29393d15268ea8507c4ab5a9f6fcf8495ccdf78bac12a21e766e",
+    ".project/active/aries-comparison-preparation/current-readiness/candidate/evidence/checks/entering-accounting-reproducible.json.attempt-puskjww_/receipt.json": "8c47c5bf8a8a3feeae6db020d006670473f0aa44dcc089db62f1f9ddf6b735aa",
+    ".project/active/aries-comparison-preparation/current-readiness/candidate/evidence/checks/entering-accounting-reproducible.json.attempt-puskjww_.identity.json": "e1bbd95ecdfb86c19499172a239fbead220ed78603326130b6289c1e3833fbf1",
+    ".project/active/aries-comparison-preparation/current-readiness/candidate/evidence/checks/entering-accounting.json": "07b372e63e7a5ec214ce72ad57d12bfdb5f5697cea53d911316ad6b98c1d7fb8",
+    ".project/active/aries-comparison-preparation/current-readiness/candidate/evidence/checks/entering-power-and-cost-accounts.json": "61d44f3c610a4afe0b341e116a4665e299aba9737af79412235b32fc028bbeff",
+    ".project/active/aries-comparison-preparation/current-readiness/candidate/evidence/checks/entering-power-and-cost-accounts.json.attempt-1v4haymo/produced.raw.json": "61d44f3c610a4afe0b341e116a4665e299aba9737af79412235b32fc028bbeff",
+    ".project/active/aries-comparison-preparation/current-readiness/candidate/evidence/checks/entering-power-and-cost-accounts.json.attempt-1v4haymo/receipt.json": "04cbad23be1c47df2bb3baa269da05d7e38124d15b4b7eafea8c792102cadb67",
+    ".project/active/aries-comparison-preparation/current-readiness/candidate/evidence/checks/entering-power-and-cost-accounts.json.attempt-1v4haymo.identity.json": "36928bf0f30ed815f49cb452d4858af6d310e0f4debc231fe35e7ea516ceb37b",
+    ".project/active/aries-comparison-preparation/current-readiness/candidate/evidence/checks/runtime-gate-live.json": "25b560e12652f1e5cd3feae547ec07e919008a85b19ee1d4a6386efdcc137e01",
+    ".project/active/aries-comparison-preparation/current-readiness/candidate/evidence/checks/runtime-gate-live.json.attempt-71nrca2q/produced.raw.json": "25b560e12652f1e5cd3feae547ec07e919008a85b19ee1d4a6386efdcc137e01",
+    ".project/active/aries-comparison-preparation/current-readiness/candidate/evidence/checks/runtime-gate-live.json.attempt-71nrca2q/receipt.json": "626050ae6a17c1676d80f544da99899fde82c0d688134afb1e5c861873746351",
+    ".project/active/aries-comparison-preparation/current-readiness/candidate/evidence/checks/runtime-gate-live.json.attempt-71nrca2q.identity.json": "1083b8c1bc990a06ca623c5133454b5a3d4bad2c8664a14dc4f97cf52b7a4938",
+    ".project/active/aries-comparison-preparation/current-readiness/candidate/evidence/final-cases/held-calendar-incompatibility/disposition.json": "bd5196f410e1c6adb742a7f56106f9070956a2f2bbd112147bd72ece7eea416b",
+    ".project/active/aries-comparison-preparation/current-readiness/candidate/evidence/final-cases/held-calendar-incompatibility/native-result.json": "23a911549ceb352b46b451c091a8167398646711949fe209c8f47c43334a7cfa",
+    ".project/active/aries-comparison-preparation/current-readiness/candidate/evidence/final-cases/held-calendar-incompatibility/request.json": "a5ad0258f4ab717252786cf266faf225b51e931d67e5bb022e82cecfca36a38d",
+    ".project/active/aries-comparison-preparation/current-readiness/candidate/evidence/final-cases/held-calendar-incompatibility/request.raw.json": "a5ad0258f4ab717252786cf266faf225b51e931d67e5bb022e82cecfca36a38d",
+    ".project/active/aries-comparison-preparation/current-readiness/candidate/evidence/final-cases/held-calendar-incompatibility.identity.json": "9e60231212fa57f0740acfd0bfffdd32821138e33311e60b9c19c46f399ca80f",
+    ".project/active/aries-comparison-preparation/current-readiness/candidate/evidence/final-cases/held-cycle-diagnostic/account-check.json": "514cca8c9fb57a061ed5a01990353223ff131716ba277e6fe4bf339a27ce60ce",
+    ".project/active/aries-comparison-preparation/current-readiness/candidate/evidence/final-cases/held-cycle-diagnostic/account-check.json.attempt-11uxqa_d/produced.raw.json": "514cca8c9fb57a061ed5a01990353223ff131716ba277e6fe4bf339a27ce60ce",
+    ".project/active/aries-comparison-preparation/current-readiness/candidate/evidence/final-cases/held-cycle-diagnostic/account-check.json.attempt-11uxqa_d/receipt.json": "a5a691433cc0226fd82829f1b98b9f9aba6aa66e70a1d273a718d6eaba9bcef0",
+    ".project/active/aries-comparison-preparation/current-readiness/candidate/evidence/final-cases/held-cycle-diagnostic/account-check.json.attempt-11uxqa_d.identity.json": "246b00ee11adf8abbc5d238abd04d53859d6951687d1917eee2efe4d020b37dd",
+    ".project/active/aries-comparison-preparation/current-readiness/candidate/evidence/final-cases/held-cycle-diagnostic/export.json": "cc64565d7d1995265f2e44df3890a45030b2758fdd5ec265e0aaa059d95712dd",
+    ".project/active/aries-comparison-preparation/current-readiness/candidate/evidence/final-cases/held-cycle-diagnostic/export.json.attempt-3go2k8sh/produced.raw.json": "cc64565d7d1995265f2e44df3890a45030b2758fdd5ec265e0aaa059d95712dd",
+    ".project/active/aries-comparison-preparation/current-readiness/candidate/evidence/final-cases/held-cycle-diagnostic/export.json.attempt-3go2k8sh/receipt.json": "d0a75356d7fffe84ea99be36f45b29b85a825553e42880e682cd73a2575a1203",
+    ".project/active/aries-comparison-preparation/current-readiness/candidate/evidence/final-cases/held-cycle-diagnostic/export.json.attempt-3go2k8sh.identity.json": "bcd825e97e629e75d0b1fc1955c596f1ccd646a605e88e70a83736103b97328f",
+    ".project/active/aries-comparison-preparation/current-readiness/candidate/evidence/final-cases/held-cycle-diagnostic/independent-check.json": "85868bc29f829962d2d57dc764148e1a2965c1610f9d1eaa59b362f1f5efde88",
+    ".project/active/aries-comparison-preparation/current-readiness/candidate/evidence/final-cases/held-cycle-diagnostic/independent-check.json.attempt-mb8yp8tw/produced.raw.json": "85868bc29f829962d2d57dc764148e1a2965c1610f9d1eaa59b362f1f5efde88",
+    ".project/active/aries-comparison-preparation/current-readiness/candidate/evidence/final-cases/held-cycle-diagnostic/independent-check.json.attempt-mb8yp8tw/receipt.json": "01ccabf32ef0222af83d5483960d809177e6942ed9447fc36548a10d13efd7f8",
+    ".project/active/aries-comparison-preparation/current-readiness/candidate/evidence/final-cases/held-cycle-diagnostic/independent-check.json.attempt-mb8yp8tw.identity.json": "f78172b08d1dc501c0743000a74e7e91180da640c8e793947a8eef2863af7d82",
+    ".project/active/aries-comparison-preparation/current-readiness/candidate/evidence/final-cases/held-cycle-diagnostic/native/artifacts/5377ea95dae24404212956b205878e244d7ba958315deaa35b38e1bc775e1cfa.json": "5377ea95dae24404212956b205878e244d7ba958315deaa35b38e1bc775e1cfa",
+    ".project/active/aries-comparison-preparation/current-readiness/candidate/evidence/final-cases/held-cycle-diagnostic/native-result.json": "d92755fbf92956d7ec211622dea6d92cb30de5f95ecbc36937555dada70e742f",
+    ".project/active/aries-comparison-preparation/current-readiness/candidate/evidence/final-cases/held-cycle-diagnostic/request.json": "42ff3ce5d8b3d64806ab68e4a3aceb1ac7ead2dc7cec133b042a85a500c21e7e",
+    ".project/active/aries-comparison-preparation/current-readiness/candidate/evidence/final-cases/held-cycle-diagnostic/request.raw.json": "42ff3ce5d8b3d64806ab68e4a3aceb1ac7ead2dc7cec133b042a85a500c21e7e",
+    ".project/active/aries-comparison-preparation/current-readiness/candidate/evidence/final-cases/held-cycle-diagnostic.identity.json": "a5352233e2a6abdd964b922b82c08a6c62b79760ca242ca401444b44adcb539e",
+    ".project/active/aries-comparison-preparation/current-readiness/candidate/evidence/final-cases/selected-forward/account-check.json": "8dad82e9e5b7acfb7c2c3748c132930e5c530850ef24c3e7af02169b586fb32d",
+    ".project/active/aries-comparison-preparation/current-readiness/candidate/evidence/final-cases/selected-forward/account-check.json.attempt-xeczzmke/produced.raw.json": "8dad82e9e5b7acfb7c2c3748c132930e5c530850ef24c3e7af02169b586fb32d",
+    ".project/active/aries-comparison-preparation/current-readiness/candidate/evidence/final-cases/selected-forward/account-check.json.attempt-xeczzmke/receipt.json": "8174d2e2555848781aa0b9f05c9cce0a55bf577f68cea6f2400ba06700303750",
+    ".project/active/aries-comparison-preparation/current-readiness/candidate/evidence/final-cases/selected-forward/account-check.json.attempt-xeczzmke.identity.json": "d21637501708ace6f4e16d1f0b2c233370e395961adf0c03a8cd370153305b89",
+    ".project/active/aries-comparison-preparation/current-readiness/candidate/evidence/final-cases/selected-forward/export.json": "8b8ed024200ded95be9f7c17dbda18c289ddf64fa9e46988b4e02590d4d57e1b",
+    ".project/active/aries-comparison-preparation/current-readiness/candidate/evidence/final-cases/selected-forward/export.json.attempt-2j2_edux/produced.raw.json": "8b8ed024200ded95be9f7c17dbda18c289ddf64fa9e46988b4e02590d4d57e1b",
+    ".project/active/aries-comparison-preparation/current-readiness/candidate/evidence/final-cases/selected-forward/export.json.attempt-2j2_edux/receipt.json": "00d3a6c84b231589a056384e81691815799b855dc7fed45d07770ab5c72b441c",
+    ".project/active/aries-comparison-preparation/current-readiness/candidate/evidence/final-cases/selected-forward/export.json.attempt-2j2_edux.identity.json": "5b1016918db5237188553770801d55401da97d86b3d69ca6190d15664dee5882",
+    ".project/active/aries-comparison-preparation/current-readiness/candidate/evidence/final-cases/selected-forward/independent-check.json": "8c73d88cbe9b116f216b56584a9f0a2cb9c8ebe31bd5a4d2043907c842717dcd",
+    ".project/active/aries-comparison-preparation/current-readiness/candidate/evidence/final-cases/selected-forward/independent-check.json.attempt-bwcbgpnn/produced.raw.json": "8c73d88cbe9b116f216b56584a9f0a2cb9c8ebe31bd5a4d2043907c842717dcd",
+    ".project/active/aries-comparison-preparation/current-readiness/candidate/evidence/final-cases/selected-forward/independent-check.json.attempt-bwcbgpnn/receipt.json": "27f72dbab321939be0594ea17174f85681b10950dce15bfbeb1b7f208b35f5ce",
+    ".project/active/aries-comparison-preparation/current-readiness/candidate/evidence/final-cases/selected-forward/independent-check.json.attempt-bwcbgpnn.identity.json": "a4b0d18721df4e6b513e0a1ba13c48595c051df8e3cf5f9381307b2234e4539b",
+    ".project/active/aries-comparison-preparation/current-readiness/candidate/evidence/final-cases/selected-forward/native/artifacts/16d131ea9049971f8b7b0732bbc977ff2841015a235a4f35d1de65baf0f84325.json": "16d131ea9049971f8b7b0732bbc977ff2841015a235a4f35d1de65baf0f84325",
+    ".project/active/aries-comparison-preparation/current-readiness/candidate/evidence/final-cases/selected-forward/native-result.json": "13647fc37bf5a2c248759507db56f4b277b028983018633c721296ff826d4a4d",
+    ".project/active/aries-comparison-preparation/current-readiness/candidate/evidence/final-cases/selected-forward/request.json": "f99d60c3889f09d66795179101824d58d39d9b210b87aeb2e12d787dfca5d268",
+    ".project/active/aries-comparison-preparation/current-readiness/candidate/evidence/final-cases/selected-forward/request.raw.json": "f99d60c3889f09d66795179101824d58d39d9b210b87aeb2e12d787dfca5d268",
+    ".project/active/aries-comparison-preparation/current-readiness/candidate/evidence/final-cases/selected-forward.identity.json": "8d28a1557a19e49f6b0dd983b0db3403ef965a82458d891b566f05588a1b3c83",
+    ".project/active/aries-comparison-preparation/current-readiness/candidate/evidence/final-cases/store-custody.json": "dd25184ddeca83e3853c2b64534a71c5ee7337d60269a9d2c77505d9f9074c8f",
+    ".project/active/aries-comparison-preparation/current-readiness/candidate/evidence/final-cases/summary.json": "5f989bd7e78dd92c4152c5bc9a1ee955a71a3c4abbb0d8064b71c62c944caff9",
+    ".project/active/aries-comparison-preparation/current-readiness/candidate/evidence/final-cases/table5-conditioned/account-check.json": "17faa4035fc0ba294d26cf771f582fba1d97714f0a120a6db89201ced641bb02",
+    ".project/active/aries-comparison-preparation/current-readiness/candidate/evidence/final-cases/table5-conditioned/account-check.json.attempt-6xjegpb6/produced.raw.json": "17faa4035fc0ba294d26cf771f582fba1d97714f0a120a6db89201ced641bb02",
+    ".project/active/aries-comparison-preparation/current-readiness/candidate/evidence/final-cases/table5-conditioned/account-check.json.attempt-6xjegpb6/receipt.json": "a7a673513cef9546bc60920682ed5c6167cabed3aeb575d9750473a58b2ae8a3",
+    ".project/active/aries-comparison-preparation/current-readiness/candidate/evidence/final-cases/table5-conditioned/account-check.json.attempt-6xjegpb6.identity.json": "c8a63056f7d69146894174835777b0800c2ea76b0c395ae732951b7fe0681dd7",
+    ".project/active/aries-comparison-preparation/current-readiness/candidate/evidence/final-cases/table5-conditioned/export.json": "f87de363b9f000e604af62444e3aa549ee44d5ca7ec21819205f6c1a3d039557",
+    ".project/active/aries-comparison-preparation/current-readiness/candidate/evidence/final-cases/table5-conditioned/export.json.attempt-grk22fh5/produced.raw.json": "f87de363b9f000e604af62444e3aa549ee44d5ca7ec21819205f6c1a3d039557",
+    ".project/active/aries-comparison-preparation/current-readiness/candidate/evidence/final-cases/table5-conditioned/export.json.attempt-grk22fh5/receipt.json": "c633a9c57538c349d53b1cb5013c1e4f3c509ff3346e5b8e740a818daf6b9dc7",
+    ".project/active/aries-comparison-preparation/current-readiness/candidate/evidence/final-cases/table5-conditioned/export.json.attempt-grk22fh5.identity.json": "685a7cdcb9626959e2890bb632be9ec9ab9e0f34f46e94028ada5ceb3418d4ad",
+    ".project/active/aries-comparison-preparation/current-readiness/candidate/evidence/final-cases/table5-conditioned/independent-check.json": "f5840535df94557eceb448006d637a0f16d2e82e90a5b20950e0e9496073528f",
+    ".project/active/aries-comparison-preparation/current-readiness/candidate/evidence/final-cases/table5-conditioned/independent-check.json.attempt-b5rxtusz/produced.raw.json": "f5840535df94557eceb448006d637a0f16d2e82e90a5b20950e0e9496073528f",
+    ".project/active/aries-comparison-preparation/current-readiness/candidate/evidence/final-cases/table5-conditioned/independent-check.json.attempt-b5rxtusz/receipt.json": "17c0e2c1188de2507da59d3abdcbe13596ca9a12bf1ee0da362348b5bd496a67",
+    ".project/active/aries-comparison-preparation/current-readiness/candidate/evidence/final-cases/table5-conditioned/independent-check.json.attempt-b5rxtusz.identity.json": "3ab145e9da45045ac31cdacebeb7f50d06c10d47f927ddee56a334030a60187e",
+    ".project/active/aries-comparison-preparation/current-readiness/candidate/evidence/final-cases/table5-conditioned/native/artifacts/5e99f3024079114d9fb89061c86fd846c8a61255622c0e6ceb7c131f1a85fa14.json": "5e99f3024079114d9fb89061c86fd846c8a61255622c0e6ceb7c131f1a85fa14",
+    ".project/active/aries-comparison-preparation/current-readiness/candidate/evidence/final-cases/table5-conditioned/native-result.json": "bc6feb19c87b777b5d0659eff0ead8f563beb39f145707f94d111c2b13f87bb4",
+    ".project/active/aries-comparison-preparation/current-readiness/candidate/evidence/final-cases/table5-conditioned/request.json": "368a0a80de765a708b46e77631e52de6b091ecf295a538f0d016ab232ff473dc",
+    ".project/active/aries-comparison-preparation/current-readiness/candidate/evidence/final-cases/table5-conditioned/request.raw.json": "368a0a80de765a708b46e77631e52de6b091ecf295a538f0d016ab232ff473dc",
+    ".project/active/aries-comparison-preparation/current-readiness/candidate/evidence/final-cases/table5-conditioned.identity.json": "c00bd7d65489151534cd9fa77a92b7f8ec4e6b5a2eeaf796bc1477f2d15e6250",
+    ".project/active/aries-comparison-preparation/current-readiness/candidate/evidence/final-lineage.json": "99f2f4f44721971d4298e9e1771330dfd2b062c5ef8f73e92afb3350ca4fd6b4",
+    ".project/active/aries-comparison-preparation/current-readiness/candidate/evidence/final-lineage.json.attempt-iqg00p_9/produced.raw.json": "99f2f4f44721971d4298e9e1771330dfd2b062c5ef8f73e92afb3350ca4fd6b4",
+    ".project/active/aries-comparison-preparation/current-readiness/candidate/evidence/final-lineage.json.attempt-iqg00p_9/receipt.json": "302af089f7b78c1132eec57c9a22a5559b66375e17619ac795afeecf1661364a",
+    ".project/active/aries-comparison-preparation/current-readiness/candidate/evidence/final-lineage.json.attempt-iqg00p_9.identity.json": "42eaecbaabf0cf16af37edae975648e98b1f3ada16f212e181169b2e690db350",
+    ".project/active/aries-comparison-preparation/current-readiness/candidate/evidence/r2-custody.json": "3e3445ef4e8857dd99d51ba045596092a951319b77c7ead67b91d5f5c5228ace",
+    ".project/active/aries-comparison-preparation/current-readiness/candidate/execute_frozen.py": "c5c34256a246086e9662750f7105429c4ba0ca7fb84061d4ecb49e5ef9a49719",
+    ".project/active/aries-comparison-preparation/current-readiness/candidate/export_model_values.py": "bdf83ff919d4a312a12a3a7946f2a0aac24edd832a0dbe49c75a7d6127627fd2",
+    ".project/active/aries-comparison-preparation/current-readiness/candidate/input-rules.json": "0c583113515f6803116f9f41162c6f00ce27d4b1a7735570c0b198d512678276",
+    ".project/active/aries-comparison-preparation/current-readiness/candidate/manifest.json": "d253a273a944611ee5b49f5994029b061b26e6c753c7fd6c7d3373a0d702373e",
+    ".project/active/aries-comparison-preparation/current-readiness/candidate/refresh_contract.py": "200dc03a73ae9236a522d976c06af7e1fa4a4837240247ffb961a1c18feecf27",
+    ".project/active/aries-comparison-preparation/current-readiness/candidate/report_custody.py": "549ce8136dd2ca34fd3742745ee95c56d319b3e7677f5bf6d2a01ff6e8880e92",
+    ".project/active/aries-comparison-preparation/current-readiness/candidate/requests/held-calendar-incompatibility.json": "a5ad0258f4ab717252786cf266faf225b51e931d67e5bb022e82cecfca36a38d",
+    ".project/active/aries-comparison-preparation/current-readiness/candidate/requests/held-cycle-diagnostic.json": "42ff3ce5d8b3d64806ab68e4a3aceb1ac7ead2dc7cec133b042a85a500c21e7e",
+    ".project/active/aries-comparison-preparation/current-readiness/candidate/requests/selected-forward.json": "f99d60c3889f09d66795179101824d58d39d9b210b87aeb2e12d787dfca5d268",
+    ".project/active/aries-comparison-preparation/current-readiness/candidate/requests/table5-conditioned.json": "368a0a80de765a708b46e77631e52de6b091ecf295a538f0d016ab232ff473dc",
+    ".project/active/aries-comparison-preparation/current-readiness/candidate/runtime-requirements.json": "1bbe8f8c0e42ab8eed0a22ea1c863e49247f01097a019186d035a7cd9905c319",
+    ".project/active/aries-comparison-preparation/current-readiness/candidate/runtime-requirements.json.attempt-pf7fnhu5/produced.raw.json": "1bbe8f8c0e42ab8eed0a22ea1c863e49247f01097a019186d035a7cd9905c319",
+    ".project/active/aries-comparison-preparation/current-readiness/candidate/runtime-requirements.json.attempt-pf7fnhu5/receipt.json": "8d757b3208ea26becbf542658fe1254d6757d2a5db6cab08b734e811d6d79abd",
+    ".project/active/aries-comparison-preparation/current-readiness/candidate/runtime-requirements.json.attempt-pf7fnhu5.identity.json": "9eb9ae3e9f1fa3284aa0e5b89f64b19db08e91e63e2a09395b2643612f751a19",
+    ".project/active/aries-comparison-preparation/current-readiness/candidate/runtime_identity.py": "b90119533a4159afcf3888ba1115e5da5c989270ec7a5f56b139e70c2ef9277b",
+    ".project/active/aries-comparison-preparation/current-readiness/candidate/selection-policy.json": "9d995bb9b8cd1733721d8e07712b0b289e3d423afa863eb02672731b0c934b71",
+    ".project/active/explorer-api-contract-gate/product-lens.md": "1e5f9c6ca929fceaebfffd6c19f0ea360165fc0719a8ab40c1cad4c47cb87661",
+    ".project/active/explorer-api-contract-gate/spec.md": "c40b4d35c44f0c9c3de1872aadb03a35e28c29444bcf3291a1664a38aed4c4bc",
+    ".project/backlog/BACKLOG.md": "1998383713887fb754ec52a9851535ef3c16d0e143c9d98aa4ddbb964e093b26",
+    "CLAUDE.md": "215376ff7ad32e400e8e786fc005e397f782ed198251b0ec7cd81770e9cf9e6f",
+    "exploration/concept_explorer/README.md": "b017d8609a0fbd66eefb54cdbce34ef8177a52ec4977e5f34ea231e0e39ecd42",
+    "exploration/concept_explorer/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "exploration/concept_explorer/extract_explorer_data.py": "19ed7822ef2ab623211ef3f2763a404189917448e96952f1b4bcd37af7db9566",
+    "exploration/concept_explorer/findings.py": "3b92d8b29dd874fa4c7d9699d2c50ed8d7bcaeb738edf8804e276abec2535ba9",
+    "exploration/concept_explorer/models.py": "a26a6585f1b9f2b6c4de027e4d5da6a19b75d5a0842c3b2df96f97dcd77da086",
+    "exploration/concept_explorer/seed_registry.py": "7c1fdfc4fd9b2f096ee4d077609f12978e971488964636e81dded108ba76223f",
+    "exploration/concept_explorer/server.py": "5df63b0ee46f156448294aaeee722ad77804fcca59913c4bb0b8dbf57135635e",
+    "exploration/concept_explorer/similarity.py": "74c662857c9a2351475717fe1edf8991272fcc3a1798cef60bac5b7d9727850d",
+    "exploration/concept_explorer/taxonomy_models.py": "b774b93e4ef9e8109ab3ded1b8c4947cf6c43ddf5d90f9eff2c976a19780ad4d",
+    "exploration/concept_explorer/tests/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "exploration/concept_explorer/tests/test_caveat.py": "1806d13d580d2567c504847248f651bb1d811731d0d2c72a6713dfb39165c446",
+    "exploration/concept_explorer/tests/test_cost_landscape_api.py": "b618bf053e12990e1969acbc214e635680e289fbba43d64c93052e05ab13e214",
+    "exploration/concept_explorer/tests/test_cost_landscape_decomposition.py": "001febe614f7ce74ea1f4cd22fdcb561fe075421b203127ae27bd8e5a356d448",
+    "exploration/concept_explorer/tests/test_extract_adapter.py": "01da9a4b523f12abfb14340d2d8aa3b032193c27f08dbbd772a7263d3cc36c7f",
+    "exploration/concept_explorer/tests/test_extraction.py": "5383ea476c56dfc6233e57c18221b8575a857e5285a7ef2924b6b4d15cc6913a",
+    "exploration/concept_explorer/tests/test_identity.py": "022e4b5683f593b9831155a7492968bfb998999dd0e3f950cd46b7a2c6fce521",
+    "exploration/concept_explorer/tests/test_identity_frontend.py": "60541f20c8b714c29992d83d495609d73fc26cfdcaec1f02c276b41c509f8e7e",
+    "exploration/concept_explorer/tests/test_integration_manual.py": "4237e3e5862911a5b63742bc73b146fcaaf413fa8a90dd5b51703b03aa2098cc",
+    "exploration/concept_explorer/tests/test_matrix_frontend.py": "135d96d64d65c48923e18b667ccf3090f79e570b4a6bf210691d75932f531e29",
+    "exploration/concept_explorer/tests/test_model_setup_resolution.py": "470c9b65220266aa6cce4105fccb59753d7831e23dad8a7888a2e74dac46a9fc",
+    "exploration/concept_explorer/tests/test_models.py": "4e86fbb374e664378425c7288da8b0b60a69927407e367d5272119bd8c25dc68",
+    "exploration/concept_explorer/tests/test_palette.py": "b1bcce7f77339cb7815dba7b843552ad2a85a2e0f786208a8ad403f383b533b4",
+    "exploration/concept_explorer/tests/test_server.py": "017f60db140519a581d08b536fc8253cd241277568316ed43d695c11a82d13aa",
+    "exploration/concept_explorer/tests/test_similarity.py": "ec188b95280ef4ceadab4a2d0d92c7c0ed82cc88bae5d2e199ba7969c7afa7ef",
+    "exploration/concept_explorer/tests/test_slider_override_semantics.py": "b8ba4d47ea4a8e36ae6a414d00136ad814cb11f95848a6c765f6742d48403474",
+    "exploration/concept_explorer/tests/test_state_and_compute.py": "eccda0d39422411b4a6b622e81ee56df2afee677e4aba395f452648c9e6e683d",
+    "exploration/concept_explorer/tests/test_taxonomy_models.py": "88bed2bf38ef7152dcac751b7c0e38195a91159623bcb72cbeed9eb6cd9c4a30",
+    "exploration/concept_explorer/tests/test_taxonomy_server.py": "bf976fd52b6ab4c5dfa1d93fea8bcaf50b8982d8554995cdead752a0271727ff",
+    "exploration/concept_explorer/tests/test_views_manual.py": "ce53627377e6476c87f28299bf1dab00b7557493cad599802dc2523f3cf1a735",
+    "exploration/scoring_v2/features/01-hts-compact-tokamak.yaml": "d7ab91c7b3d4b610c5c725d16aa7146af443ff4800c7bf2633ecfd11ec587023",
+    "exploration/scoring_v2/features/02-acoustic-icf-sonofusion.yaml": "74672480d1796a403290092af8ba4b6b458d904b2bcea3946df0353443fe9314",
+    "exploration/scoring_v2/features/03-laser-icf-liquid-jet-target.yaml": "9ff8f00c56cd08b73a264ce86fa9c8581265b1c8bb107d097b4e1c3c8a885e82",
+    "exploration/scoring_v2/features/04-laser-icf.yaml": "424e6f482b548b321ece293fff2d8044b1f76356523d0b250e0a78c88db215e9",
+    "exploration/scoring_v2/features/05-planar-coil-stellarator.yaml": "8e7dbebe4e6eb51b9dabcf64ed44d8bedb0f56378c19eb0a1200e7c46d6fe9cb",
+    "exploration/scoring_v2/features/06-magnetic-mirror.yaml": "c68fe757888669d46711819701ae042c71d388c38cbf7b9f66b58a6f12831df6",
+    "exploration/scoring_v2/features/07-maglif.yaml": "5a8683a3493eb647c95aed6f154bf3a447f8c9c425bcaa73640ffd4a3775d48a",
+    "exploration/scoring_v2/features/08-frc-w-direct-conversion.yaml": "99da21a014ebd50e3df11567340d0b51d587cb5383b31dddd3e159185e9b929e",
+    "exploration/scoring_v2/features/09-qi-stellarator-hts.yaml": "2e184d4db51b3701ce0081ba2b19cbd78b947185fc2f79612dda896745b2c899",
+    "exploration/scoring_v2/features/10-large-scale-stellarator.yaml": "0b4606c5fb457221eb286f7936b4bef41557ca78ada8a5196ee876862fe30fd0",
+    "exploration/scoring_v2/features/11-magnetic-mirror.yaml": "b133a39ccdf402572ee8fd777479565fa728edf7bf7f2cf6e92e683f3cab8a7b",
+    "exploration/scoring_v2/features/12-levitated-dipole.yaml": "cffbfe5ba2d9e8d5e9c143ec5f1bb0c9b3127b97ced8e5f084d94ad34a56451b",
+    "exploration/scoring_v2/features/13-electrostatic-hybrid.yaml": "9a6304c1376779fb2714672efd3e1edd3be58b501fa1adc300a2c0cbfb92318e",
+    "exploration/scoring_v2/features/14-magnetized-target-fusion-pneumatic-compression.yaml": "ed570a30a7b6ce8ebc0e40a63ef785d2dabda958bf1a09deec81a27513575087",
+    "exploration/scoring_v2/features/15-sheared-flow-stabilized-z-pinch.yaml": "c2a906c52b031a710c198fbf11c1a65ee7fc4d51faaa97db8a5a89077c5b99e5",
+    "exploration/scoring_v2/features/16-muon-catalyzed-fusion.yaml": "daa91d66fc1c52f03c89c6bdfeada1d809c6f54742d8b8bcfdb72265d0e4c64f",
+    "exploration/scoring_v2/features/17a-laser-icf-hybrid-drive.yaml": "80516fd253680c23f8cf801d5efce274490491fe0b5e8b23fe40358f9a2cc4fb",
+    "exploration/scoring_v2/features/17b-laser-icf-fast-ignition.yaml": "fec271314cfe3e74db362c0b73ba6876e93befedec121ff60dd3ec5b7b916109",
+    "exploration/scoring_v2/features/18-p-b11-frc.yaml": "ed882ecd745ce12b1e0155b30dec177f501c1d0e80bde0280e70346497138fd3",
+    "exploration/scoring_v2/features/19-orbital-levitated-dipole.yaml": "b87792b483e85b1cc2151c8cf86fdbc2bc5e1830f1a0031c35a005b62f17e6ff",
+    "exploration/scoring_v2/features/20a-type-one-stellarator.yaml": "926a28f24657ba96b5c69bec79baad53f1988c41fdd1c07b9864173bb282856c",
+    "exploration/scoring_v2/features/20b-renaissance-stellarator.yaml": "ed44a7ead99a2d7e53b9392b1833a34c3b4a4c6b1d0e69d1ee72524896d6fc30",
+    "exploration/scoring_v2/features/21-spherical-tokamak-hts.yaml": "74b28995edffb1f16b756b1424bb317d72e801a3235eb7e5aacec202ba3934d3",
+    "exploration/scoring_v2/features/22-projectile-icf.yaml": "4862cd58fae333fa688104260979077a1554679f93b710928133972285285a98",
+    "exploration/scoring_v2/features/23-laser-icf-nanostructured-target.yaml": "af5c07ffcab1fd5088f1589dafa3e62b3f27014e0b31b6b55bd5231ce1a12f94",
+    "exploration/scoring_v2/features/24-dense-plasma-focus.yaml": "35ff12b22ecd85628838ba072e8e86094382e0f401ffc325da26c4f8ff873e9f",
+    "exploration/scoring_v2/features/25-heavy-ion-beam-icf.yaml": "161c2a9ead2f0442cac0dc5fe5ad430b77169ac85f1396d8a8917eca52b3b599",
+    "exploration/scoring_v2/features/26-laser-icf-indirect-drive.yaml": "243de76dd185b7c80fa34ea0b13f66b544293f8dacbfd97f745732a19bfe0a08",
+    "exploration/scoring_v2/features/27-polywell.yaml": "8a453b2ebfb60b0f3eaed6257b784156fa8b958144f3b79aa6cb0e3e621ee841",
+    "exploration/scoring_v2/features/28-hts-tokamak-full-hts.yaml": "e3e7ac00d79e7d87fe265b1a460d3f2254bfdd7ecfb7792960218e7f80280c6b",
+    "exploration/scoring_v2/features/29-negative-triangularity-tokamak.yaml": "be354cc5e3242b7b1d29408c192c78a367e6dba09082ae930a13bcd49ae2dd54",
+    "exploration/scoring_v2/features/30-laser-icf-nif-commercialization.yaml": "89f6810aced2d512cfd432cfbaed7e2939f4137b90629ef7152e5c583bf23624",
+    "exploration/scoring_v2/features/31-laser-icf-oec-architecture.yaml": "27974e3a30fdee6d52a1652ab0f4597fd34b02c4c7b3ef6f33407d2460ad9fd6",
+    "exploration/scoring_v2/features/32-laser-icf-french-national.yaml": "b585bad9485331377039f0b617e5bbf5b55adc221dd89940e13d73081fa576f1",
+    "exploration/scoring_v2/features/33-state-backed-tokamak-best.yaml": "e7bc0e96873d19b0e07ef645da011d089e664c881458654383d82ad0b1a3b8f7",
+    "exploration/scoring_v2/features/35-polomac-magnetic-confinement.yaml": "da63d98ca78752b8cb6e3453f6c8b65fd9652f2ee3369c233b26b70aee2b90cd",
+    "exploration/scoring_v2/features/36-helical-coil-stellarator.yaml": "93604ea2f83e70438d888a664e773de954cb214d9c823c99e6b0cf9191b8c26f",
+    "exploration/scoring_v2/features/37-magnetized-target-inertial-fusion-mtif.yaml": "ab20b408e3e62463813855c5c9753696e7f84fe6dcd5b71d2caf841f14f537a5",
+    "exploration/scoring_v2/features/38-particle-accelerator-driven-fusion.yaml": "7f8231fdae0affbcd25405871774f022d73294a18e13fa5871bcc68eafe0678f",
+    "exploration/scoring_v2/features/39-spherical-tokamak-cs-free-p-b11.yaml": "b60ebc20ca039f13063c5b39f3f877eae996808d956fcdca57821e46481c87f6",
+    "exploration/scoring_v2/lookup_bottlenecks.yaml": "cb5ee16379dc6c317aefac8d1d947a959a27259a87dfda2c6a0e17c911691bc9",
+    "exploration/scoring_v2/lookup_customization.yaml": "34d5e3607ab2777619cb3ea094291e091ef2d173ae19d9ac4ba82f08db86202a",
+    "exploration/scoring_v2/lookup_modularity.yaml": "16ebd94a08c03e48ea4f2ab9a536c8afefec404ac0b3d92bf8986047bdb35698",
+    "exploration/scoring_v2/lookup_plant_subsystems.yaml": "60fa2a2a56d8191eaf7a0794499b13ab5ff71b69b1e0da9ee8d289a5fca2d269",
+    "exploration/scoring_v2/lookup_triple_product.yaml": "4de89f6780664baa82d61931d19df174cde815ac51840e2df0c4c3f8696e6225",
+    "exploration/scoring_v2/lookup_upper_cf_penalties.yaml": "a0b5e977933ec9ca74c0ddf16b9dd73b99f1e2c27848ebc0dcb7710c4bdee6c2",
+    "exploration/scoring_v2/schema.yaml": "373a3dbdab7802de2efcf47d4779951de5cfa050aacb58a07bb0da02e1069ce3",
+    "exploration/scoring_v2/scores/table.csv": "079cd4620e75ac481eb75ea9ef3a83d654dd9c7227ab525ff52436f017f6732c",
+    "exploration/scoring_v2/weights/default.yaml": "8dd232f7df51d12e12ff1a238553158171cd62b829df140eee45d5365cac09b0",
+    "exploration/stellarator_e2e/generated/contracts/model_contract.json": "604899c431df73f81f9e5114a055c589a114c554f40f786a1aaaf8c6967968f8",
+    "exploration/stellarator_e2e/generated/inputs/mfe_account_costs_params.json": "29d6eb7e561ef20137d854643fc80a7713ae7810ca9609c9f199419fbac1a017",
+    "exploration/stellarator_e2e/generated/inputs/mfe_cryo_plant_params.json": "7b009726b59885f0ee1b5b11febea1afd7dc26e42755689e0e3a74383247e65f",
+    "exploration/stellarator_e2e/generated/inputs/mfe_fuel_cycle_params.json": "d4cb30bd5e71239fd0bbf7fb0de26244ca8340548065b5a7efcaf37e574a7009",
+    "exploration/stellarator_e2e/generated/inputs/mfe_magnet_cost_params.json": "6f1d9f7be63cad7b70fa2ce49ad6deb969e1c0eb09d867e2c7eaf1037ce33cee",
+    "exploration/stellarator_e2e/generated/inputs/mfe_magnet_field_params.json": "3ddee962745fd715c173906c9fc82345507b23fe5c2341e10e132ed48fea3bb6",
+    "exploration/stellarator_e2e/generated/inputs/mfe_plant_params.json": "ff041fec8a149e6c789ca1bd5cf0cc1c6f55c6d96da3f96179f9541131b94814",
+    "exploration/stellarator_e2e/generated/inputs/mfe_plant_systems_params.json": "bda8499c1bdeef2ca69717598d7d423471dc999f3c25f5f79564d071da903983",
+    "exploration/stellarator_e2e/generated/inputs/mfe_plasma_scaling_params.json": "7651898e02c098f30ab10b4a19b1b471d627f9b674c06651607bca5a36576e86",
+    "exploration/stellarator_e2e/generated/inputs/mfe_plasma_sustainment_params.json": "da8b1efe9eb1b21f71e42e95eb4fef19ca3d8503d2ac2ebd0dce74df6e0676dc",
+    "exploration/stellarator_e2e/generated/inputs/mfe_vacuum_params.json": "07e515e8cae3939c558172fb9579ecaf4e6397b499ecbaf14de76ade79db3240",
+    "exploration/stellarator_e2e/generated/inputs/mfe_viability_params.json": "d7d1c32dd9a18a7d4b44d043f33584e69f1e09bbf33fa3a1d3f5981e4a4ad348",
+    "exploration/stellarator_e2e/generated/inputs/stellarator_plant_params.json": "05a721522ec8f920543fd9461f96a9b9e61663eb4f541c4144c39802add4782a",
+    "tools/score_explorer/data/concepts.json": "915d63d7d55fa3ff2035d587e3fcb92eed6b88299d0f6d8ff7c6f4d9742fccb3",
+    "tools/score_explorer/data/weights.json": "f7e868913d0b1c30cc92522a3ece91c8f845b613799b85172aeefe8da92d2e9a",
+    "work/active/WI-073_matched-steam-cycle-for-current-comparison/evidence/independent-oracle/native-check-results.json": "a9e433cb0868e3d7be78fb42921e09d2c5d7f170fce5b081caabbd02571e53eb"
+  },
+  "static": {
+    "lint_total": 173945,
+    "lint_files": 11619,
+    "lint_by_category": {
+      "baseline_identical_bytes": 152966,
+      "changed_existing_path": 142,
+      "new_bytes_or_path": 20837
+    },
+    "format_files": 12138,
+    "format_by_category": {
+      "baseline_identical_bytes": 11086,
+      "changed_existing_path": 1,
+      "new_bytes_or_path": 1051
+    },
+    "secret_content_candidates": [],
+    "secret_path_candidates": [],
+    "debug_candidates": [],
+    "large_files": [
+      {
+        "path": "exploration/stellarator_materials/units/nb3sn/stellarator_materials_nb3sn.snapshot.json",
+        "bytes": 6284636,
+        "baseline_identical_bytes": false
+      },
+      {
+        "path": "exploration/stellarator_materials/units/rebco/stellarator_materials_rebco.snapshot.json",
+        "bytes": 6290167,
+        "baseline_identical_bytes": false
+      },
+      {
+        "path": "exploration/stellarator_materials/units/reference/stellarator_materials_reference.snapshot.json",
+        "bytes": 5926236,
+        "baseline_identical_bytes": false
+      },
+      {
+        "path": "work/completed/20261006_WI-096_matched-conversion-subsystems/evidence/validation-detail.json",
+        "bytes": 9650322,
+        "baseline_identical_bytes": true
+      },
+      {
+        "path": "work/completed/20261006_WI-097_exchanger-thermal-requirements/evidence/development-followup.json",
+        "bytes": 14511814,
+        "baseline_identical_bytes": true
+      },
+      {
+        "path": "work/completed/20261006_WI-097_exchanger-thermal-requirements/evidence/development-probe.json",
+        "bytes": 6338843,
+        "baseline_identical_bytes": true
+      },
+      {
+        "path": "work/completed/20261006_WI-098_whole-plant-conversion-comparison/evidence/conversion-controls/native/batch-00/cases.json",
+        "bytes": 7072398,
+        "baseline_identical_bytes": true
+      },
+      {
+        "path": "work/completed/20261006_WI-098_whole-plant-conversion-comparison/evidence/conversion-controls/native/batch-01/cases.json",
+        "bytes": 7077878,
+        "baseline_identical_bytes": true
+      },
+      {
+        "path": "work/completed/20261006_WI-098_whole-plant-conversion-comparison/evidence/conversion-controls/native/batch-02/cases.json",
+        "bytes": 7078837,
+        "baseline_identical_bytes": true
+      },
+      {
+        "path": "work/completed/20261006_WI-098_whole-plant-conversion-comparison/evidence/conversion-controls/native/batch-03/cases.json",
+        "bytes": 7077098,
+        "baseline_identical_bytes": true
+      },
+      {
+        "path": "work/completed/20261006_WI-098_whole-plant-conversion-comparison/evidence/conversion-controls/native/batch-04/cases.json",
+        "bytes": 7075592,
+        "baseline_identical_bytes": true
+      },
+      {
+        "path": "work/completed/20261006_WI-098_whole-plant-conversion-comparison/evidence/conversion-controls/native/batch-05/cases.json",
+        "bytes": 7071894,
+        "baseline_identical_bytes": true
+      },
+      {
+        "path": "work/completed/20261006_WI-098_whole-plant-conversion-comparison/evidence/conversion-controls/native/batch-06/cases.json",
+        "bytes": 7076456,
+        "baseline_identical_bytes": true
+      },
+      {
+        "path": "work/completed/20261006_WI-098_whole-plant-conversion-comparison/evidence/conversion-controls/native/batch-07/cases.json",
+        "bytes": 7078343,
+        "baseline_identical_bytes": true
+      },
+      {
+        "path": "work/completed/20261006_WI-098_whole-plant-conversion-comparison/evidence/conversion-controls/native/batch-08/cases.json",
+        "bytes": 7075813,
+        "baseline_identical_bytes": true
+      },
+      {
+        "path": "work/completed/20261006_WI-098_whole-plant-conversion-comparison/evidence/conversion-controls/native/batch-09/cases.json",
+        "bytes": 7074242,
+        "baseline_identical_bytes": true
+      },
+      {
+        "path": "work/completed/20261006_WI-098_whole-plant-conversion-comparison/evidence/conversion-controls/native/batch-10/cases.json",
+        "bytes": 7074094,
+        "baseline_identical_bytes": true
+      },
+      {
+        "path": "work/completed/20261006_WI-098_whole-plant-conversion-comparison/evidence/conversion-controls/native/batch-11/cases.json",
+        "bytes": 7079378,
+        "baseline_identical_bytes": true
+      },
+      {
+        "path": "work/completed/20261006_WI-098_whole-plant-conversion-comparison/evidence/conversion-controls/native/batch-12/cases.json",
+        "bytes": 7079904,
+        "baseline_identical_bytes": true
+      },
+      {
+        "path": "work/completed/20261006_WI-098_whole-plant-conversion-comparison/evidence/conversion-controls/native/batch-13/cases.json",
+        "bytes": 7076877,
+        "baseline_identical_bytes": true
+      },
+      {
+        "path": "work/completed/20261006_WI-098_whole-plant-conversion-comparison/evidence/conversion-controls/native/batch-14/cases.json",
+        "bytes": 7075248,
+        "baseline_identical_bytes": true
+      },
+      {
+        "path": "work/completed/20261006_WI-098_whole-plant-conversion-comparison/evidence/conversion-controls/native/batch-15/cases.json",
+        "bytes": 7084856,
+        "baseline_identical_bytes": true
+      },
+      {
+        "path": "work/completed/20261006_WI-098_whole-plant-conversion-comparison/evidence/conversion-controls/native/batch-16/cases.json",
+        "bytes": 7083281,
+        "baseline_identical_bytes": true
+      },
+      {
+        "path": "work/completed/20261006_WI-098_whole-plant-conversion-comparison/evidence/conversion-controls/native/batch-17/cases.json",
+        "bytes": 7086055,
+        "baseline_identical_bytes": true
+      },
+      {
+        "path": "work/completed/20261006_WI-098_whole-plant-conversion-comparison/evidence/conversion-controls/native/batch-18/cases.json",
+        "bytes": 7083989,
+        "baseline_identical_bytes": true
+      },
+      {
+        "path": "work/completed/20261006_WI-098_whole-plant-conversion-comparison/evidence/conversion-controls/native/batch-19/cases.json",
+        "bytes": 6519021,
+        "baseline_identical_bytes": true
+      },
+      {
+        "path": "work/completed/20261006_WI-098_whole-plant-conversion-comparison/evidence/conversion-controls/native/migrated-controls.json",
+        "bytes": 26838581,
+        "baseline_identical_bytes": true
+      },
+      {
+        "path": "work/completed/20261006_WI-098_whole-plant-conversion-comparison/evidence/development-final/native/cases.json",
+        "bytes": 9240008,
+        "baseline_identical_bytes": true
+      },
+      {
+        "path": "work/completed/20261006_WI-098_whole-plant-conversion-comparison/evidence/development/native/cases.json",
+        "bytes": 9969641,
+        "baseline_identical_bytes": true
+      },
+      {
+        "path": "work/completed/20261006_WI-098_whole-plant-conversion-comparison/evidence/validation-detail.json",
+        "bytes": 9450926,
+        "baseline_identical_bytes": true
+      },
+      {
+        "path": "work/orchestration/goals/magnet-material-comparison/evidence/integration-r3-nb3sn/blocker-run/recaptured.snapshot.json",
+        "bytes": 6284636,
+        "baseline_identical_bytes": false
+      },
+      {
+        "path": "work/orchestration/goals/magnet-material-comparison/evidence/integration-r3-nb3sn/recaptured.snapshot.json",
+        "bytes": 6284636,
+        "baseline_identical_bytes": false
+      },
+      {
+        "path": "work/orchestration/goals/magnet-material-comparison/evidence/integration-r3-rebco/first-run/recaptured.snapshot.json",
+        "bytes": 6290167,
+        "baseline_identical_bytes": false
+      },
+      {
+        "path": "work/orchestration/goals/magnet-material-comparison/evidence/integration-r3-rebco/recaptured.snapshot.json",
+        "bytes": 6290167,
+        "baseline_identical_bytes": false
+      },
+      {
+        "path": "work/orchestration/goals/magnet-material-comparison/evidence/integration-r3-reference/recaptured.snapshot.json",
+        "bytes": 5926236,
+        "baseline_identical_bytes": false
+      }
+    ],
+    "changed_product_lenses": []
+  },
+  "static_log_hashes": {
+    "20261008-pre-pr-ruff.json": "ac91407e2d73789d37d05788d4d3c61657a2d181cbe45b03c3a3a698dbfe5c88",
+    "20261008-pre-pr-format.log": "812cec1b0b6ebd677824f34af7276982ba9d332bef12a33661bbcc01a46a29d9",
+    "20261008-pre-pr-merge.log": "25c25e32bc43155ea085e2e46b35e052b6440bd93d630eb4a538e39f4a0312a6"
+  },
+  "original_failure_reconciliation": [
+    {
+      "original_node": "tests/study/test_domain_consumers.py::test_valid_outputs_exactly_preserved_and_physical_identities[row0]",
+      "current_nodes": [
+        "tests/study/test_domain_consumers.py::test_valid_outputs_exactly_preserved_and_physical_identities[row0]"
+      ],
+      "repair_disposition": [
+        "passed"
+      ],
+      "full_run_outcomes": {
+        "tests/study/test_domain_consumers.py::test_valid_outputs_exactly_preserved_and_physical_identities[row0]": "passed"
+      }
+    },
+    {
+      "original_node": "tests/study/test_domain_consumers.py::test_valid_outputs_exactly_preserved_and_physical_identities[row1]",
+      "current_nodes": [
+        "tests/study/test_domain_consumers.py::test_valid_outputs_exactly_preserved_and_physical_identities[row1]"
+      ],
+      "repair_disposition": [
+        "passed"
+      ],
+      "full_run_outcomes": {
+        "tests/study/test_domain_consumers.py::test_valid_outputs_exactly_preserved_and_physical_identities[row1]": "passed"
+      }
+    },
+    {
+      "original_node": "tests/study/test_domain_consumers.py::test_valid_outputs_exactly_preserved_and_physical_identities[row3]",
+      "current_nodes": [
+        "tests/study/test_domain_consumers.py::test_valid_outputs_exactly_preserved_and_physical_identities[row3]"
+      ],
+      "repair_disposition": [
+        "passed"
+      ],
+      "full_run_outcomes": {
+        "tests/study/test_domain_consumers.py::test_valid_outputs_exactly_preserved_and_physical_identities[row3]": "passed"
+      }
+    },
+    {
+      "original_node": "tests/study/test_financial_consumers.py::test_current_rate_route_and_coverage",
+      "current_nodes": [
+        "tests/study/test_financial_consumers.py::test_current_rate_route_and_coverage"
+      ],
+      "repair_disposition": [
+        "passed"
+      ],
+      "full_run_outcomes": {
+        "tests/study/test_financial_consumers.py::test_current_rate_route_and_coverage": "passed"
+      }
+    },
+    {
+      "original_node": "tests/study/test_integrate_preconditions.py::test_simkit_probe_refuses_without_the_teax_root",
+      "current_nodes": [
+        "tests/study/test_integrate_preconditions.py::test_simkit_probe_refuses_without_the_teax_root"
+      ],
+      "repair_disposition": [
+        "passed"
+      ],
+      "full_run_outcomes": {
+        "tests/study/test_integrate_preconditions.py::test_simkit_probe_refuses_without_the_teax_root": "passed"
+      }
+    },
+    {
+      "original_node": "tests/study/test_known_answers.py::test_fixture_binding",
+      "current_nodes": [
+        "tests/study/test_known_answers.py::test_fixture_binding"
+      ],
+      "repair_disposition": [
+        "passed"
+      ],
+      "full_run_outcomes": {
+        "tests/study/test_known_answers.py::test_fixture_binding": "passed"
+      }
+    },
+    {
+      "original_node": "tests/study/test_known_answers.py::test_current_heating_reachability",
+      "current_nodes": [
+        "tests/study/test_known_answers.py::test_historical_heating_reachability"
+      ],
+      "repair_disposition": [
+        "passed"
+      ],
+      "full_run_outcomes": {
+        "tests/study/test_known_answers.py::test_historical_heating_reachability": "passed"
+      }
+    },
+    {
+      "original_node": "tests/study/test_major_radius.py::test_current_radius_controls_match_frozen_model_and_independent_oracle",
+      "current_nodes": [
+        "tests/study/test_major_radius.py::test_current_radius_controls_match_frozen_model_and_independent_oracle"
+      ],
+      "repair_disposition": [
+        "passed"
+      ],
+      "full_run_outcomes": {
+        "tests/study/test_major_radius.py::test_current_radius_controls_match_frozen_model_and_independent_oracle": "passed"
+      }
+    },
+    {
+      "original_node": "tests/study/test_mechanical_failures.py::test_fails_closed[missing_declared_key]",
+      "current_nodes": [
+        "tests/study/test_mechanical_failures.py::test_fails_closed[missing_declared_key]"
+      ],
+      "repair_disposition": [
+        "passed"
+      ],
+      "full_run_outcomes": {
+        "tests/study/test_mechanical_failures.py::test_fails_closed[missing_declared_key]": "passed"
+      }
+    },
+    {
+      "original_node": "tests/study/test_mechanical_failures.py::test_fails_closed[key_names_produced_channel]",
+      "current_nodes": [
+        "tests/study/test_mechanical_failures.py::test_fails_closed[key_names_produced_channel]"
+      ],
+      "repair_disposition": [
+        "passed"
+      ],
+      "full_run_outcomes": {
+        "tests/study/test_mechanical_failures.py::test_fails_closed[key_names_produced_channel]": "passed"
+      }
+    },
+    {
+      "original_node": "tests/study/test_mechanical_failures.py::test_fails_closed[unclassifiable_key]",
+      "current_nodes": [
+        "tests/study/test_mechanical_failures.py::test_fails_closed[unclassifiable_key]"
+      ],
+      "repair_disposition": [
+        "passed"
+      ],
+      "full_run_outcomes": {
+        "tests/study/test_mechanical_failures.py::test_fails_closed[unclassifiable_key]": "passed"
+      }
+    },
+    {
+      "original_node": "tests/study/test_mechanical_failures.py::test_the_absent_key_and_the_computed_quantity_say_different_things",
+      "current_nodes": [
+        "tests/study/test_mechanical_failures.py::test_the_absent_key_and_the_computed_quantity_say_different_things"
+      ],
+      "repair_disposition": [
+        "passed"
+      ],
+      "full_run_outcomes": {
+        "tests/study/test_mechanical_failures.py::test_the_absent_key_and_the_computed_quantity_say_different_things": "passed"
+      }
+    },
+    {
+      "original_node": "tests/study/test_mechanical_failures.py::test_the_computed_quantity_message_names_the_producing_module",
+      "current_nodes": [
+        "tests/study/test_mechanical_failures.py::test_the_computed_quantity_message_names_the_producing_module"
+      ],
+      "repair_disposition": [
+        "passed"
+      ],
+      "full_run_outcomes": {
+        "tests/study/test_mechanical_failures.py::test_the_computed_quantity_message_names_the_producing_module": "passed"
+      }
+    },
+    {
+      "original_node": "tests/study/test_native_publication.py::test_native_publication_preserves_values_and_case_identity[20260911-model-owned-radius]",
+      "current_nodes": [
+        "tests/study/test_native_publication.py::test_native_publication_preserves_values_and_case_identity[20260911-model-owned-radius]"
+      ],
+      "repair_disposition": [
+        "passed"
+      ],
+      "full_run_outcomes": {
+        "tests/study/test_native_publication.py::test_native_publication_preserves_values_and_case_identity[20260911-model-owned-radius]": "passed"
+      }
+    },
+    {
+      "original_node": "tests/study/test_native_publication.py::test_native_publication_refuses_before_replacing_evidence[absent-20260911-model-owned-radius]",
+      "current_nodes": [
+        "tests/study/test_native_publication.py::test_native_publication_refuses_before_replacing_evidence[absent-20260911-model-owned-radius]"
+      ],
+      "repair_disposition": [
+        "passed"
+      ],
+      "full_run_outcomes": {
+        "tests/study/test_native_publication.py::test_native_publication_refuses_before_replacing_evidence[absent-20260911-model-owned-radius]": "passed"
+      }
+    },
+    {
+      "original_node": "tests/study/test_native_publication.py::test_native_publication_refuses_before_replacing_evidence[null-20260911-model-owned-radius]",
+      "current_nodes": [
+        "tests/study/test_native_publication.py::test_native_publication_refuses_before_replacing_evidence[null-20260911-model-owned-radius]"
+      ],
+      "repair_disposition": [
+        "passed"
+      ],
+      "full_run_outcomes": {
+        "tests/study/test_native_publication.py::test_native_publication_refuses_before_replacing_evidence[null-20260911-model-owned-radius]": "passed"
+      }
+    },
+    {
+      "original_node": "tests/study/test_native_publication.py::test_native_publication_refuses_before_replacing_evidence[nan-20260911-model-owned-radius]",
+      "current_nodes": [
+        "tests/study/test_native_publication.py::test_native_publication_refuses_before_replacing_evidence[nan-20260911-model-owned-radius]"
+      ],
+      "repair_disposition": [
+        "passed"
+      ],
+      "full_run_outcomes": {
+        "tests/study/test_native_publication.py::test_native_publication_refuses_before_replacing_evidence[nan-20260911-model-owned-radius]": "passed"
+      }
+    },
+    {
+      "original_node": "tests/study/test_operand_bindings.py::test_every_constraint_operand_resolves",
+      "current_nodes": [
+        "tests/study/test_operand_bindings.py::test_every_constraint_operand_resolves"
+      ],
+      "repair_disposition": [
+        "passed"
+      ],
+      "full_run_outcomes": {
+        "tests/study/test_operand_bindings.py::test_every_constraint_operand_resolves": "passed"
+      }
+    },
+    {
+      "original_node": "tests/study/test_operand_bindings.py::test_the_shim_reproduces_the_pinned_headline",
+      "current_nodes": [
+        "tests/study/test_operand_bindings.py::test_the_shim_reproduces_the_pinned_headline"
+      ],
+      "repair_disposition": [
+        "passed"
+      ],
+      "full_run_outcomes": {
+        "tests/study/test_operand_bindings.py::test_the_shim_reproduces_the_pinned_headline": "passed"
+      }
+    },
+    {
+      "original_node": "tests/study/test_output_contract.py::test_fingerprint_read_set_is_the_three_legs",
+      "current_nodes": [
+        "tests/study/test_output_contract.py::test_fingerprint_read_set_is_the_three_legs"
+      ],
+      "repair_disposition": [
+        "passed"
+      ],
+      "full_run_outcomes": {
+        "tests/study/test_output_contract.py::test_fingerprint_read_set_is_the_three_legs": "passed"
+      }
+    },
+    {
+      "original_node": "tests/study/test_output_contract.py::test_byte_determinism_across_working_directories",
+      "current_nodes": [
+        "tests/study/test_output_contract.py::test_byte_determinism_across_working_directories"
+      ],
+      "repair_disposition": [
+        "passed"
+      ],
+      "full_run_outcomes": {
+        "tests/study/test_output_contract.py::test_byte_determinism_across_working_directories": "passed"
+      }
+    },
+    {
+      "original_node": "tests/study/test_output_contract.py::test_two_runs_from_the_same_directory_are_byte_identical",
+      "current_nodes": [
+        "tests/study/test_output_contract.py::test_two_runs_from_the_same_directory_are_byte_identical"
+      ],
+      "repair_disposition": [
+        "passed"
+      ],
+      "full_run_outcomes": {
+        "tests/study/test_output_contract.py::test_two_runs_from_the_same_directory_are_byte_identical": "passed"
+      }
+    },
+    {
+      "original_node": "tests/study/test_output_contract.py::test_the_real_output_validates_against_its_schema",
+      "current_nodes": [
+        "tests/study/test_output_contract.py::test_the_real_output_validates_against_its_schema"
+      ],
+      "repair_disposition": [
+        "passed"
+      ],
+      "full_run_outcomes": {
+        "tests/study/test_output_contract.py::test_the_real_output_validates_against_its_schema": "passed"
+      }
+    },
+    {
+      "original_node": "tests/study/test_output_contract.py::test_not_derivable_is_byte_equal",
+      "current_nodes": [
+        "tests/study/test_output_contract.py::test_not_derivable_is_byte_equal"
+      ],
+      "repair_disposition": [
+        "passed"
+      ],
+      "full_run_outcomes": {
+        "tests/study/test_output_contract.py::test_not_derivable_is_byte_equal": "passed"
+      }
+    },
+    {
+      "original_node": "tests/study/test_output_contract.py::test_constraint_completeness",
+      "current_nodes": [
+        "tests/study/test_output_contract.py::test_constraint_completeness"
+      ],
+      "repair_disposition": [
+        "passed"
+      ],
+      "full_run_outcomes": {
+        "tests/study/test_output_contract.py::test_constraint_completeness": "passed"
+      }
+    },
+    {
+      "original_node": "tests/study/test_output_contract.py::test_bounds_is_authoritative_and_axis_varying",
+      "current_nodes": [
+        "tests/study/test_output_contract.py::test_bounds_is_authoritative_and_axis_varying"
+      ],
+      "repair_disposition": [
+        "passed"
+      ],
+      "full_run_outcomes": {
+        "tests/study/test_output_contract.py::test_bounds_is_authoritative_and_axis_varying": "passed"
+      }
+    },
+    {
+      "original_node": "tests/study/test_output_contract.py::test_lists_are_sorted_by_a_stated_key",
+      "current_nodes": [
+        "tests/study/test_output_contract.py::test_lists_are_sorted_by_a_stated_key"
+      ],
+      "repair_disposition": [
+        "passed"
+      ],
+      "full_run_outcomes": {
+        "tests/study/test_output_contract.py::test_lists_are_sorted_by_a_stated_key": "passed"
+      }
+    },
+    {
+      "original_node": "tests/study/test_output_contract.py::test_the_report_carries_its_tool_source_digest",
+      "current_nodes": [
+        "tests/study/test_output_contract.py::test_the_report_carries_its_tool_source_digest"
+      ],
+      "repair_disposition": [
+        "passed"
+      ],
+      "full_run_outcomes": {
+        "tests/study/test_output_contract.py::test_the_report_carries_its_tool_source_digest": "passed"
+      }
+    },
+    {
+      "original_node": "tests/study/test_output_contract.py::test_the_report_carries_the_three_package_fingerprints",
+      "current_nodes": [
+        "tests/study/test_output_contract.py::test_the_report_carries_the_three_package_fingerprints"
+      ],
+      "repair_disposition": [
+        "passed"
+      ],
+      "full_run_outcomes": {
+        "tests/study/test_output_contract.py::test_the_report_carries_the_three_package_fingerprints": "passed"
+      }
+    },
+    {
+      "original_node": "tests/study/test_output_contract.py::test_the_report_carries_no_timestamp",
+      "current_nodes": [
+        "tests/study/test_output_contract.py::test_the_report_carries_no_timestamp"
+      ],
+      "repair_disposition": [
+        "passed"
+      ],
+      "full_run_outcomes": {
+        "tests/study/test_output_contract.py::test_the_report_carries_no_timestamp": "passed"
+      }
+    },
+    {
+      "original_node": "tests/study/test_primary_loop_consumers.py::test_valid_full_oracle_outputs_and_heat_accounting[row0]",
+      "current_nodes": [
+        "tests/study/test_primary_loop_consumers.py::test_valid_full_oracle_outputs_and_heat_accounting[row0]"
+      ],
+      "repair_disposition": [
+        "passed"
+      ],
+      "full_run_outcomes": {
+        "tests/study/test_primary_loop_consumers.py::test_valid_full_oracle_outputs_and_heat_accounting[row0]": "passed"
+      }
+    },
+    {
+      "original_node": "tests/study/test_primary_loop_consumers.py::test_valid_full_oracle_outputs_and_heat_accounting[row1]",
+      "current_nodes": [
+        "tests/study/test_primary_loop_consumers.py::test_valid_full_oracle_outputs_and_heat_accounting[row1]"
+      ],
+      "repair_disposition": [
+        "passed"
+      ],
+      "full_run_outcomes": {
+        "tests/study/test_primary_loop_consumers.py::test_valid_full_oracle_outputs_and_heat_accounting[row1]": "passed"
+      }
+    },
+    {
+      "original_node": "tests/study/test_primary_loop_consumers.py::test_valid_full_oracle_outputs_and_heat_accounting[row2]",
+      "current_nodes": [
+        "tests/study/test_primary_loop_consumers.py::test_valid_full_oracle_outputs_and_heat_accounting[row2]"
+      ],
+      "repair_disposition": [
+        "passed"
+      ],
+      "full_run_outcomes": {
+        "tests/study/test_primary_loop_consumers.py::test_valid_full_oracle_outputs_and_heat_accounting[row2]": "passed"
+      }
+    },
+    {
+      "original_node": "tests/study/test_primary_loop_consumers.py::test_valid_full_oracle_outputs_and_heat_accounting[row3]",
+      "current_nodes": [
+        "tests/study/test_primary_loop_consumers.py::test_valid_full_oracle_outputs_and_heat_accounting[row3]"
+      ],
+      "repair_disposition": [
+        "passed"
+      ],
+      "full_run_outcomes": {
+        "tests/study/test_primary_loop_consumers.py::test_valid_full_oracle_outputs_and_heat_accounting[row3]": "passed"
+      }
+    },
+    {
+      "original_node": "tests/study/test_primary_loop_consumers.py::test_adapter_coverage_remains_exact",
+      "current_nodes": [
+        "tests/study/test_primary_loop_consumers.py::test_adapter_coverage_remains_exact"
+      ],
+      "repair_disposition": [
+        "passed"
+      ],
+      "full_run_outcomes": {
+        "tests/study/test_primary_loop_consumers.py::test_adapter_coverage_remains_exact": "passed"
+      }
+    },
+    {
+      "original_node": "tests/study/test_primary_loop_consumers.py::test_current_native_primary_route_agrees_with_independent_oracle",
+      "current_nodes": [
+        "tests/study/test_primary_loop_consumers.py::test_current_native_primary_route_agrees_with_independent_oracle"
+      ],
+      "repair_disposition": [
+        "passed"
+      ],
+      "full_run_outcomes": {
+        "tests/study/test_primary_loop_consumers.py::test_current_native_primary_route_agrees_with_independent_oracle": "passed"
+      }
+    },
+    {
+      "original_node": "tests/study/test_provenance.py::test_every_declared_key_carries_its_provenance",
+      "current_nodes": [
+        "tests/study/test_provenance.py::test_every_declared_key_carries_its_provenance"
+      ],
+      "repair_disposition": [
+        "passed"
+      ],
+      "full_run_outcomes": {
+        "tests/study/test_provenance.py::test_every_declared_key_carries_its_provenance": "passed"
+      }
+    },
+    {
+      "original_node": "tests/study/test_provenance.py::test_provenance_round_trips_from_the_declaration",
+      "current_nodes": [
+        "tests/study/test_provenance.py::test_provenance_round_trips_from_the_declaration"
+      ],
+      "repair_disposition": [
+        "passed"
+      ],
+      "full_run_outcomes": {
+        "tests/study/test_provenance.py::test_provenance_round_trips_from_the_declaration": "passed"
+      }
+    },
+    {
+      "original_node": "tests/study/test_provenance.py::test_the_tie_key_is_marked_and_the_others_are_not",
+      "current_nodes": [
+        "tests/study/test_provenance.py::test_the_tie_key_is_marked_and_the_others_are_not"
+      ],
+      "repair_disposition": [
+        "passed"
+      ],
+      "full_run_outcomes": {
+        "tests/study/test_provenance.py::test_the_tie_key_is_marked_and_the_others_are_not": "passed"
+      }
+    },
+    {
+      "original_node": "tests/study/test_provenance.py::test_a_tie_key_traces_identically_to_a_fan_out_key",
+      "current_nodes": [
+        "tests/study/test_provenance.py::test_a_tie_key_traces_identically_to_a_fan_out_key"
+      ],
+      "repair_disposition": [
+        "passed"
+      ],
+      "full_run_outcomes": {
+        "tests/study/test_provenance.py::test_a_tie_key_traces_identically_to_a_fan_out_key": "passed"
+      }
+    },
+    {
+      "original_node": "tests/study/test_provenance.py::test_entry_type_is_reported_per_declared_key",
+      "current_nodes": [
+        "tests/study/test_provenance.py::test_entry_type_is_reported_per_declared_key"
+      ],
+      "repair_disposition": [
+        "passed"
+      ],
+      "full_run_outcomes": {
+        "tests/study/test_provenance.py::test_entry_type_is_reported_per_declared_key": "passed"
+      }
+    },
+    {
+      "original_node": "tests/study/test_read_set_coverage.py::test_a_renamed_inputs_file_is_followed_not_guessed",
+      "current_nodes": [
+        "tests/study/test_read_set_coverage.py::test_a_renamed_inputs_file_is_followed_not_guessed"
+      ],
+      "repair_disposition": [
+        "passed"
+      ],
+      "full_run_outcomes": {
+        "tests/study/test_read_set_coverage.py::test_a_renamed_inputs_file_is_followed_not_guessed": "passed"
+      }
+    },
+    {
+      "original_node": "tests/study/test_subset_flag.py::test_a_full_run_covers_the_whole_declaration",
+      "current_nodes": [
+        "tests/study/test_subset_flag.py::test_a_full_run_covers_the_whole_declaration"
+      ],
+      "repair_disposition": [
+        "passed"
+      ],
+      "full_run_outcomes": {
+        "tests/study/test_subset_flag.py::test_a_full_run_covers_the_whole_declaration": "passed"
+      }
+    },
+    {
+      "original_node": "tests/study/test_subset_flag.py::test_a_group_run_is_visibly_narrower",
+      "current_nodes": [
+        "tests/study/test_subset_flag.py::test_a_group_run_is_visibly_narrower"
+      ],
+      "repair_disposition": [
+        "passed"
+      ],
+      "full_run_outcomes": {
+        "tests/study/test_subset_flag.py::test_a_group_run_is_visibly_narrower": "passed"
+      }
+    },
+    {
+      "original_node": "tests/study/test_subset_flag.py::test_several_groups_can_be_selected",
+      "current_nodes": [
+        "tests/study/test_subset_flag.py::test_several_groups_can_be_selected"
+      ],
+      "repair_disposition": [
+        "passed"
+      ],
+      "full_run_outcomes": {
+        "tests/study/test_subset_flag.py::test_several_groups_can_be_selected": "passed"
+      }
+    },
+    {
+      "original_node": "tests/study/test_subset_flag.py::test_a_subset_group_is_byte_identical_to_its_full_run_counterpart",
+      "current_nodes": [
+        "tests/study/test_subset_flag.py::test_a_subset_group_is_byte_identical_to_its_full_run_counterpart"
+      ],
+      "repair_disposition": [
+        "passed"
+      ],
+      "full_run_outcomes": {
+        "tests/study/test_subset_flag.py::test_a_subset_group_is_byte_identical_to_its_full_run_counterpart": "passed"
+      }
+    },
+    {
+      "original_node": "tests/study/test_subset_flag.py::test_the_axis_declaration_digest_matches_the_file_bytes",
+      "current_nodes": [
+        "tests/study/test_subset_flag.py::test_the_axis_declaration_digest_matches_the_file_bytes"
+      ],
+      "repair_disposition": [
+        "passed"
+      ],
+      "full_run_outcomes": {
+        "tests/study/test_subset_flag.py::test_the_axis_declaration_digest_matches_the_file_bytes": "passed"
+      }
+    },
+    {
+      "original_node": "tests/study/test_valid_empty.py::test_a_group_with_no_constraint_reach_exits_zero",
+      "current_nodes": [
+        "tests/study/test_valid_empty.py::test_a_group_with_no_constraint_reach_exits_zero"
+      ],
+      "repair_disposition": [
+        "passed"
+      ],
+      "full_run_outcomes": {
+        "tests/study/test_valid_empty.py::test_a_group_with_no_constraint_reach_exits_zero": "passed"
+      }
+    },
+    {
+      "original_node": "tests/study/test_valid_empty.py::test_the_empty_result_still_carries_the_whole_catalog",
+      "current_nodes": [
+        "tests/study/test_valid_empty.py::test_the_empty_result_still_carries_the_whole_catalog"
+      ],
+      "repair_disposition": [
+        "passed"
+      ],
+      "full_run_outcomes": {
+        "tests/study/test_valid_empty.py::test_the_empty_result_still_carries_the_whole_catalog": "passed"
+      }
+    },
+    {
+      "original_node": "tests/study/test_valid_empty.py::test_no_constraint_response_is_emitted_even_when_false",
+      "current_nodes": [
+        "tests/study/test_valid_empty.py::test_no_constraint_response_is_emitted_even_when_false"
+      ],
+      "repair_disposition": [
+        "passed"
+      ],
+      "full_run_outcomes": {
+        "tests/study/test_valid_empty.py::test_no_constraint_response_is_emitted_even_when_false": "passed"
+      }
+    },
+    {
+      "original_node": "tests/study/test_valid_empty.py::test_the_document_goes_to_stdout_and_the_summary_to_stderr",
+      "current_nodes": [
+        "tests/study/test_valid_empty.py::test_the_document_goes_to_stdout_and_the_summary_to_stderr"
+      ],
+      "repair_disposition": [
+        "passed"
+      ],
+      "full_run_outcomes": {
+        "tests/study/test_valid_empty.py::test_the_document_goes_to_stdout_and_the_summary_to_stderr": "passed"
+      }
+    },
+    {
+      "original_node": "tests/study/test_verify.py::test_every_catalog_constraint_is_rederived_with_its_operand_count",
+      "current_nodes": [
+        "tests/study/test_verify.py::test_every_catalog_constraint_is_rederived_with_its_operand_count"
+      ],
+      "repair_disposition": [
+        "passed"
+      ],
+      "full_run_outcomes": {
+        "tests/study/test_verify.py::test_every_catalog_constraint_is_rederived_with_its_operand_count": "passed"
+      }
+    },
+    {
+      "original_node": "tests/study/test_verify.py::test_stored_operating_controls_preserve_procurement_and_signed_capacity",
+      "current_nodes": [
+        "tests/study/test_verify.py::test_stored_operating_controls_preserve_procurement_and_signed_capacity"
+      ],
+      "repair_disposition": [
+        "passed"
+      ],
+      "full_run_outcomes": {
+        "tests/study/test_verify.py::test_stored_operating_controls_preserve_procurement_and_signed_capacity": "passed"
+      }
+    },
+    {
+      "original_node": "tests/study/test_warnings.py::test_advisory_never_changes_the_trace",
+      "current_nodes": [
+        "tests/study/test_warnings.py::test_advisory_never_changes_the_trace"
+      ],
+      "repair_disposition": [
+        "passed"
+      ],
+      "full_run_outcomes": {
+        "tests/study/test_warnings.py::test_advisory_never_changes_the_trace": "passed"
+      }
+    },
+    {
+      "original_node": "tests/study/test_warnings.py::test_the_tie_candidate_names_the_key_and_says_it_was_not_added",
+      "current_nodes": [
+        "tests/study/test_warnings.py::test_the_tie_candidate_names_the_key_and_says_it_was_not_added"
+      ],
+      "repair_disposition": [
+        "passed"
+      ],
+      "full_run_outcomes": {
+        "tests/study/test_warnings.py::test_the_tie_candidate_names_the_key_and_says_it_was_not_added": "passed"
+      }
+    },
+    {
+      "original_node": "tests/study/test_warnings.py::test_a_declared_tie_earns_no_candidate_warning",
+      "current_nodes": [
+        "tests/study/test_warnings.py::test_a_declared_tie_earns_no_candidate_warning"
+      ],
+      "repair_disposition": [
+        "passed"
+      ],
+      "full_run_outcomes": {
+        "tests/study/test_warnings.py::test_a_declared_tie_earns_no_candidate_warning": "passed"
+      }
+    },
+    {
+      "original_node": "tests/study/test_warnings.py::test_suffix_siblings_land_in_their_own_named_field",
+      "current_nodes": [
+        "tests/study/test_warnings.py::test_suffix_siblings_land_in_their_own_named_field"
+      ],
+      "repair_disposition": [
+        "passed"
+      ],
+      "full_run_outcomes": {
+        "tests/study/test_warnings.py::test_suffix_siblings_land_in_their_own_named_field": "passed"
+      }
+    },
+    {
+      "original_node": "tests/study/test_warnings.py::test_suffix_siblings_never_join_the_traced_set",
+      "current_nodes": [
+        "tests/study/test_warnings.py::test_suffix_siblings_never_join_the_traced_set"
+      ],
+      "repair_disposition": [
+        "passed"
+      ],
+      "full_run_outcomes": {
+        "tests/study/test_warnings.py::test_suffix_siblings_never_join_the_traced_set": "passed"
+      }
+    },
+    {
+      "original_node": "tests/study/test_warnings.py::test_the_declared_tie_is_not_a_suffix_sibling",
+      "current_nodes": [
+        "tests/study/test_warnings.py::test_the_declared_tie_is_not_a_suffix_sibling"
+      ],
+      "repair_disposition": [
+        "passed"
+      ],
+      "full_run_outcomes": {
+        "tests/study/test_warnings.py::test_the_declared_tie_is_not_a_suffix_sibling": "passed"
+      }
+    },
+    {
+      "original_node": "tests/study/test_warnings.py::test_a_key_in_two_groups_earns_a_document_warning",
+      "current_nodes": [
+        "tests/study/test_warnings.py::test_a_key_in_two_groups_earns_a_document_warning"
+      ],
+      "repair_disposition": [
+        "passed"
+      ],
+      "full_run_outcomes": {
+        "tests/study/test_warnings.py::test_a_key_in_two_groups_earns_a_document_warning": "passed"
+      }
+    },
+    {
+      "original_node": "tests/study/test_warnings.py::test_provenance_drift_warns_on_both_recorded_fingerprints",
+      "current_nodes": [
+        "tests/study/test_warnings.py::test_provenance_drift_warns_on_both_recorded_fingerprints"
+      ],
+      "repair_disposition": [
+        "passed"
+      ],
+      "full_run_outcomes": {
+        "tests/study/test_warnings.py::test_provenance_drift_warns_on_both_recorded_fingerprints": "passed"
+      }
+    },
+    {
+      "original_node": "tests/study/test_winding_consumers.py::test_invalid_public_oracle_inputs_are_deliberate[overrides0-I_coil must be finite and nonnegative]",
+      "current_nodes": [
+        "tests/study/test_winding_consumers.py::test_retired_sizing_inputs_are_refused[-1.0-magnet_I_coil]"
+      ],
+      "repair_disposition": [
+        "passed"
+      ],
+      "full_run_outcomes": {
+        "tests/study/test_winding_consumers.py::test_retired_sizing_inputs_are_refused[-1.0-magnet_I_coil]": "passed"
+      }
+    },
+    {
+      "original_node": "tests/study/test_winding_consumers.py::test_invalid_public_oracle_inputs_are_deliberate[overrides1-I_coil must be finite and nonnegative]",
+      "current_nodes": [
+        "tests/study/test_winding_consumers.py::test_combined_retired_public_sizing_inputs_are_refused"
+      ],
+      "repair_disposition": [
+        "passed"
+      ],
+      "full_run_outcomes": {
+        "tests/study/test_winding_consumers.py::test_combined_retired_public_sizing_inputs_are_refused": "passed"
+      }
+    },
+    {
+      "original_node": "tests/study/test_winding_consumers.py::test_invalid_public_oracle_inputs_are_deliberate[overrides2-I_coil must be finite and nonnegative]",
+      "current_nodes": [
+        "tests/study/test_winding_consumers.py::test_retired_sizing_inputs_are_refused[nan-magnet_I_coil]"
+      ],
+      "repair_disposition": [
+        "passed"
+      ],
+      "full_run_outcomes": {
+        "tests/study/test_winding_consumers.py::test_retired_sizing_inputs_are_refused[nan-magnet_I_coil]": "passed"
+      }
+    },
+    {
+      "original_node": "tests/study/test_winding_consumers.py::test_invalid_public_oracle_inputs_are_deliberate[overrides3-I_coil must be finite and nonnegative]",
+      "current_nodes": [
+        "tests/study/test_winding_consumers.py::test_retired_sizing_inputs_are_refused[inf-magnet_I_coil]"
+      ],
+      "repair_disposition": [
+        "passed"
+      ],
+      "full_run_outcomes": {
+        "tests/study/test_winding_consumers.py::test_retired_sizing_inputs_are_refused[inf-magnet_I_coil]": "passed"
+      }
+    },
+    {
+      "original_node": "tests/study/test_winding_consumers.py::test_invalid_public_oracle_inputs_are_deliberate[overrides4-I_coil must be finite and nonnegative]",
+      "current_nodes": [
+        "tests/study/test_winding_consumers.py::test_retired_sizing_inputs_are_refused[-inf-magnet_I_coil]"
+      ],
+      "repair_disposition": [
+        "passed"
+      ],
+      "full_run_outcomes": {
+        "tests/study/test_winding_consumers.py::test_retired_sizing_inputs_are_refused[-inf-magnet_I_coil]": "passed"
+      }
+    },
+    {
+      "original_node": "tests/study/test_winding_consumers.py::test_invalid_public_oracle_inputs_are_deliberate[overrides5-j_wp must be finite and positive]",
+      "current_nodes": [
+        "tests/study/test_winding_consumers.py::test_retired_sizing_inputs_are_refused[-1.0-magnet_j_wp]"
+      ],
+      "repair_disposition": [
+        "passed"
+      ],
+      "full_run_outcomes": {
+        "tests/study/test_winding_consumers.py::test_retired_sizing_inputs_are_refused[-1.0-magnet_j_wp]": "passed"
+      }
+    },
+    {
+      "original_node": "tests/study/test_winding_consumers.py::test_invalid_public_oracle_inputs_are_deliberate[overrides6-j_wp must be finite and positive]",
+      "current_nodes": [
+        "tests/study/test_winding_consumers.py::test_retired_sizing_inputs_are_refused[0.0-magnet_j_wp]"
+      ],
+      "repair_disposition": [
+        "passed"
+      ],
+      "full_run_outcomes": {
+        "tests/study/test_winding_consumers.py::test_retired_sizing_inputs_are_refused[0.0-magnet_j_wp]": "passed"
+      }
+    },
+    {
+      "original_node": "tests/study/test_winding_consumers.py::test_invalid_public_oracle_inputs_are_deliberate[overrides7-j_wp must be finite and positive]",
+      "current_nodes": [
+        "tests/study/test_winding_consumers.py::test_retired_sizing_inputs_are_refused[nan-magnet_j_wp]"
+      ],
+      "repair_disposition": [
+        "passed"
+      ],
+      "full_run_outcomes": {
+        "tests/study/test_winding_consumers.py::test_retired_sizing_inputs_are_refused[nan-magnet_j_wp]": "passed"
+      }
+    },
+    {
+      "original_node": "tests/study/test_winding_consumers.py::test_invalid_public_oracle_inputs_are_deliberate[overrides8-j_wp must be finite and positive]",
+      "current_nodes": [
+        "tests/study/test_winding_consumers.py::test_retired_sizing_inputs_are_refused[inf-magnet_j_wp]"
+      ],
+      "repair_disposition": [
+        "passed"
+      ],
+      "full_run_outcomes": {
+        "tests/study/test_winding_consumers.py::test_retired_sizing_inputs_are_refused[inf-magnet_j_wp]": "passed"
+      }
+    },
+    {
+      "original_node": "tests/study/test_winding_consumers.py::test_invalid_public_oracle_inputs_are_deliberate[overrides9-j_wp must be finite and positive]",
+      "current_nodes": [
+        "tests/study/test_winding_consumers.py::test_retired_sizing_inputs_are_refused[-inf-magnet_j_wp]"
+      ],
+      "repair_disposition": [
+        "passed"
+      ],
+      "full_run_outcomes": {
+        "tests/study/test_winding_consumers.py::test_retired_sizing_inputs_are_refused[-inf-magnet_j_wp]": "passed"
+      }
+    },
+    {
+      "original_node": "tests/study/test_winding_consumers.py::test_invalid_public_oracle_inputs_are_deliberate[overrides10-oracle current sizing: invalid loading]",
+      "current_nodes": [
+        "tests/study/test_winding_consumers.py::test_retired_sizing_inputs_are_refused[0.0-magnet_I_coil]"
+      ],
+      "repair_disposition": [
+        "passed"
+      ],
+      "full_run_outcomes": {
+        "tests/study/test_winding_consumers.py::test_retired_sizing_inputs_are_refused[0.0-magnet_I_coil]": "passed"
+      }
+    },
+    {
+      "original_node": "tests/study/test_winding_consumers.py::test_local_sizing_invalid_magnitudes[overrides0-I_coil must be finite and nonnegative]",
+      "current_nodes": [
+        "tests/study/test_winding_consumers.py::test_local_sizing_invalid_magnitudes[overrides0-I_coil must be finite and nonnegative]"
+      ],
+      "repair_disposition": [
+        "passed"
+      ],
+      "full_run_outcomes": {
+        "tests/study/test_winding_consumers.py::test_local_sizing_invalid_magnitudes[overrides0-I_coil must be finite and nonnegative]": "passed"
+      }
+    },
+    {
+      "original_node": "tests/study/test_winding_consumers.py::test_local_sizing_invalid_magnitudes[overrides2-I_coil must be finite and nonnegative]",
+      "current_nodes": [
+        "tests/study/test_winding_consumers.py::test_local_sizing_invalid_magnitudes[overrides2-I_coil must be finite and nonnegative]"
+      ],
+      "repair_disposition": [
+        "passed"
+      ],
+      "full_run_outcomes": {
+        "tests/study/test_winding_consumers.py::test_local_sizing_invalid_magnitudes[overrides2-I_coil must be finite and nonnegative]": "passed"
+      }
+    },
+    {
+      "original_node": "tests/study/test_winding_consumers.py::test_local_sizing_invalid_magnitudes[overrides3-I_coil must be finite and nonnegative]",
+      "current_nodes": [
+        "tests/study/test_winding_consumers.py::test_local_sizing_invalid_magnitudes[overrides3-I_coil must be finite and nonnegative]"
+      ],
+      "repair_disposition": [
+        "passed"
+      ],
+      "full_run_outcomes": {
+        "tests/study/test_winding_consumers.py::test_local_sizing_invalid_magnitudes[overrides3-I_coil must be finite and nonnegative]": "passed"
+      }
+    },
+    {
+      "original_node": "tests/study/test_winding_consumers.py::test_local_sizing_invalid_magnitudes[overrides4-I_coil must be finite and nonnegative]",
+      "current_nodes": [
+        "tests/study/test_winding_consumers.py::test_local_sizing_invalid_magnitudes[overrides4-I_coil must be finite and nonnegative]"
+      ],
+      "repair_disposition": [
+        "passed"
+      ],
+      "full_run_outcomes": {
+        "tests/study/test_winding_consumers.py::test_local_sizing_invalid_magnitudes[overrides4-I_coil must be finite and nonnegative]": "passed"
+      }
+    },
+    {
+      "original_node": "tests/study/test_winding_consumers.py::test_local_sizing_invalid_magnitudes[overrides5-j_wp must be finite and positive]",
+      "current_nodes": [
+        "tests/study/test_winding_consumers.py::test_local_sizing_invalid_magnitudes[overrides5-j_wp must be finite and positive]"
+      ],
+      "repair_disposition": [
+        "passed"
+      ],
+      "full_run_outcomes": {
+        "tests/study/test_winding_consumers.py::test_local_sizing_invalid_magnitudes[overrides5-j_wp must be finite and positive]": "passed"
+      }
+    },
+    {
+      "original_node": "tests/study/test_winding_consumers.py::test_local_sizing_invalid_magnitudes[overrides6-j_wp must be finite and positive]",
+      "current_nodes": [
+        "tests/study/test_winding_consumers.py::test_local_sizing_invalid_magnitudes[overrides6-j_wp must be finite and positive]"
+      ],
+      "repair_disposition": [
+        "passed"
+      ],
+      "full_run_outcomes": {
+        "tests/study/test_winding_consumers.py::test_local_sizing_invalid_magnitudes[overrides6-j_wp must be finite and positive]": "passed"
+      }
+    },
+    {
+      "original_node": "tests/study/test_winding_consumers.py::test_local_sizing_invalid_magnitudes[overrides7-j_wp must be finite and positive]",
+      "current_nodes": [
+        "tests/study/test_winding_consumers.py::test_local_sizing_invalid_magnitudes[overrides7-j_wp must be finite and positive]"
+      ],
+      "repair_disposition": [
+        "passed"
+      ],
+      "full_run_outcomes": {
+        "tests/study/test_winding_consumers.py::test_local_sizing_invalid_magnitudes[overrides7-j_wp must be finite and positive]": "passed"
+      }
+    },
+    {
+      "original_node": "tests/study/test_winding_consumers.py::test_local_sizing_invalid_magnitudes[overrides8-j_wp must be finite and positive]",
+      "current_nodes": [
+        "tests/study/test_winding_consumers.py::test_local_sizing_invalid_magnitudes[overrides8-j_wp must be finite and positive]"
+      ],
+      "repair_disposition": [
+        "passed"
+      ],
+      "full_run_outcomes": {
+        "tests/study/test_winding_consumers.py::test_local_sizing_invalid_magnitudes[overrides8-j_wp must be finite and positive]": "passed"
+      }
+    },
+    {
+      "original_node": "tests/study/test_winding_consumers.py::test_local_sizing_invalid_magnitudes[overrides9-j_wp must be finite and positive]",
+      "current_nodes": [
+        "tests/study/test_winding_consumers.py::test_local_sizing_invalid_magnitudes[overrides9-j_wp must be finite and positive]"
+      ],
+      "repair_disposition": [
+        "passed"
+      ],
+      "full_run_outcomes": {
+        "tests/study/test_winding_consumers.py::test_local_sizing_invalid_magnitudes[overrides9-j_wp must be finite and positive]": "passed"
+      }
+    },
+    {
+      "original_node": "tests/study/test_winding_consumers.py::test_valid_full_oracle_outputs_and_stress_units_preserved[row0]",
+      "current_nodes": [
+        "tests/study/test_winding_consumers.py::test_valid_full_oracle_outputs_and_stress_units_preserved[row0]"
+      ],
+      "repair_disposition": [
+        "passed"
+      ],
+      "full_run_outcomes": {
+        "tests/study/test_winding_consumers.py::test_valid_full_oracle_outputs_and_stress_units_preserved[row0]": "passed"
+      }
+    },
+    {
+      "original_node": "tests/study/test_winding_consumers.py::test_valid_full_oracle_outputs_and_stress_units_preserved[row1]",
+      "current_nodes": [
+        "tests/study/test_winding_consumers.py::test_valid_full_oracle_outputs_and_stress_units_preserved[row1]"
+      ],
+      "repair_disposition": [
+        "passed"
+      ],
+      "full_run_outcomes": {
+        "tests/study/test_winding_consumers.py::test_valid_full_oracle_outputs_and_stress_units_preserved[row1]": "passed"
+      }
+    },
+    {
+      "original_node": "tests/study/test_winding_consumers.py::test_valid_full_oracle_outputs_and_stress_units_preserved[row2]",
+      "current_nodes": [
+        "tests/study/test_winding_consumers.py::test_valid_full_oracle_outputs_and_stress_units_preserved[row2]"
+      ],
+      "repair_disposition": [
+        "passed"
+      ],
+      "full_run_outcomes": {
+        "tests/study/test_winding_consumers.py::test_valid_full_oracle_outputs_and_stress_units_preserved[row2]": "passed"
+      }
+    },
+    {
+      "original_node": "tests/study/test_winding_consumers.py::test_adapter_coverage_remains_exact",
+      "current_nodes": [
+        "tests/study/test_winding_consumers.py::test_adapter_coverage_remains_exact"
+      ],
+      "repair_disposition": [
+        "passed"
+      ],
+      "full_run_outcomes": {
+        "tests/study/test_winding_consumers.py::test_adapter_coverage_remains_exact": "passed"
+      }
+    },
+    {
+      "original_node": "tests/study/test_winding_consumers.py::test_current_native_winding_route_agrees_with_independent_oracle",
+      "current_nodes": [
+        "tests/study/test_winding_consumers.py::test_current_native_winding_route_agrees_with_independent_oracle"
+      ],
+      "repair_disposition": [
+        "passed"
+      ],
+      "full_run_outcomes": {
+        "tests/study/test_winding_consumers.py::test_current_native_winding_route_agrees_with_independent_oracle": "passed"
+      }
+    },
+    {
+      "original_node": "tests/study/test_known_answers.py::test_known_answer[availability_direct]",
+      "current_nodes": [
+        "tests/study/test_known_answers.py::test_known_answer[availability_direct]"
+      ],
+      "repair_disposition": [
+        "passed"
+      ],
+      "full_run_outcomes": {
+        "tests/study/test_known_answers.py::test_known_answer[availability_direct]": "passed"
+      }
+    },
+    {
+      "original_node": "tests/study/test_known_answers.py::test_known_answer[interest_rate]",
+      "current_nodes": [
+        "tests/study/test_known_answers.py::test_known_answer[interest_rate]"
+      ],
+      "repair_disposition": [
+        "passed"
+      ],
+      "full_run_outcomes": {
+        "tests/study/test_known_answers.py::test_known_answer[interest_rate]": "passed"
+      }
+    },
+    {
+      "original_node": "tests/study/test_known_answers.py::test_known_answer[R]",
+      "current_nodes": [
+        "tests/study/test_known_answers.py::test_known_answer[R]"
+      ],
+      "repair_disposition": [
+        "passed"
+      ],
+      "full_run_outcomes": {
+        "tests/study/test_known_answers.py::test_known_answer[R]": "passed"
+      }
+    },
+    {
+      "original_node": "tests/study/test_known_answers.py::test_known_answer[a]",
+      "current_nodes": [
+        "tests/study/test_known_answers.py::test_known_answer[a]"
+      ],
+      "repair_disposition": [
+        "passed"
+      ],
+      "full_run_outcomes": {
+        "tests/study/test_known_answers.py::test_known_answer[a]": "passed"
+      }
+    },
+    {
+      "original_node": "tests/study/test_known_answers.py::test_known_answer[I_coil]",
+      "current_nodes": [
+        "tests/study/test_known_answers.py::test_known_answer[I_coil]"
+      ],
+      "repair_disposition": [
+        "passed"
+      ],
+      "full_run_outcomes": {
+        "tests/study/test_known_answers.py::test_known_answer[I_coil]": "passed"
+      }
+    },
+    {
+      "original_node": "tests/study/test_known_answers.py::test_matches_the_item_1_fixture_contract[availability_direct]",
+      "current_nodes": [
+        "tests/study/test_known_answers.py::test_matches_the_item_1_fixture_contract[availability_direct]"
+      ],
+      "repair_disposition": [
+        "passed"
+      ],
+      "full_run_outcomes": {
+        "tests/study/test_known_answers.py::test_matches_the_item_1_fixture_contract[availability_direct]": "passed"
+      }
+    },
+    {
+      "original_node": "tests/study/test_known_answers.py::test_matches_the_item_1_fixture_contract[interest_rate]",
+      "current_nodes": [
+        "tests/study/test_known_answers.py::test_matches_the_item_1_fixture_contract[interest_rate]"
+      ],
+      "repair_disposition": [
+        "passed"
+      ],
+      "full_run_outcomes": {
+        "tests/study/test_known_answers.py::test_matches_the_item_1_fixture_contract[interest_rate]": "passed"
+      }
+    },
+    {
+      "original_node": "tests/study/test_known_answers.py::test_matches_the_item_1_fixture_contract[R]",
+      "current_nodes": [
+        "tests/study/test_known_answers.py::test_matches_the_item_1_fixture_contract[R]"
+      ],
+      "repair_disposition": [
+        "passed"
+      ],
+      "full_run_outcomes": {
+        "tests/study/test_known_answers.py::test_matches_the_item_1_fixture_contract[R]": "passed"
+      }
+    },
+    {
+      "original_node": "tests/study/test_known_answers.py::test_matches_the_item_1_fixture_contract[a]",
+      "current_nodes": [
+        "tests/study/test_known_answers.py::test_matches_the_item_1_fixture_contract[a]"
+      ],
+      "repair_disposition": [
+        "passed"
+      ],
+      "full_run_outcomes": {
+        "tests/study/test_known_answers.py::test_matches_the_item_1_fixture_contract[a]": "passed"
+      }
+    },
+    {
+      "original_node": "tests/study/test_known_answers.py::test_matches_the_item_1_fixture_contract[I_coil]",
+      "current_nodes": [
+        "tests/study/test_known_answers.py::test_matches_the_item_1_fixture_contract[I_coil]"
+      ],
+      "repair_disposition": [
+        "passed"
+      ],
+      "full_run_outcomes": {
+        "tests/study/test_known_answers.py::test_matches_the_item_1_fixture_contract[I_coil]": "passed"
+      }
+    },
+    {
+      "original_node": "tests/study/test_known_answers.py::test_availability_direct_reaches_no_constraint",
+      "current_nodes": [
+        "tests/study/test_known_answers.py::test_availability_direct_reaches_no_constraint"
+      ],
+      "repair_disposition": [
+        "passed"
+      ],
+      "full_run_outcomes": {
+        "tests/study/test_known_answers.py::test_availability_direct_reaches_no_constraint": "passed"
+      }
+    },
+    {
+      "original_node": "tests/study/test_known_answers.py::test_I_coil_reaches_the_field_constraints_through_calcs",
+      "current_nodes": [
+        "tests/study/test_known_answers.py::test_I_coil_reaches_the_field_constraints_through_calcs"
+      ],
+      "repair_disposition": [
+        "passed"
+      ],
+      "full_run_outcomes": {
+        "tests/study/test_known_answers.py::test_I_coil_reaches_the_field_constraints_through_calcs": "passed"
+      }
+    },
+    {
+      "original_node": "tests/study/test_known_answers.py::test_r_reaches_net_positive_through_a_computed_operand",
+      "current_nodes": [
+        "tests/study/test_known_answers.py::test_r_reaches_net_positive_through_a_computed_operand"
+      ],
+      "repair_disposition": [
+        "passed"
+      ],
+      "full_run_outcomes": {
+        "tests/study/test_known_answers.py::test_r_reaches_net_positive_through_a_computed_operand": "passed"
+      }
+    },
+    {
+      "original_node": "tests/study/test_known_answers.py::test_model_owned_radius_reaches_magnet_and_plasma",
+      "current_nodes": [
+        "tests/study/test_known_answers.py::test_model_owned_radius_reaches_magnet_and_plasma"
+      ],
+      "repair_disposition": [
+        "passed"
+      ],
+      "full_run_outcomes": {
+        "tests/study/test_known_answers.py::test_model_owned_radius_reaches_magnet_and_plasma": "passed"
+      }
+    },
+    {
+      "original_node": "tests/study/test_known_answers.py::test_every_constraint_carries_all_three_identities",
+      "current_nodes": [
+        "tests/study/test_known_answers.py::test_every_constraint_carries_all_three_identities"
+      ],
+      "repair_disposition": [
+        "passed"
+      ],
+      "full_run_outcomes": {
+        "tests/study/test_known_answers.py::test_every_constraint_carries_all_three_identities": "passed"
+      }
+    },
+    {
+      "original_node": "tests/study/test_known_answers.py::test_current_availability_has_structural_breeding_and_facility_paths",
+      "current_nodes": [
+        "tests/study/test_known_answers.py::test_historical_availability_has_structural_breeding_and_facility_paths"
+      ],
+      "repair_disposition": [
+        "passed"
+      ],
+      "full_run_outcomes": {
+        "tests/study/test_known_answers.py::test_historical_availability_has_structural_breeding_and_facility_paths": "passed"
+      }
+    },
+    {
+      "original_node": "tests/study/test_preflight_gates.py::test_all_six_checks_pass_on_the_real_package",
+      "current_nodes": [
+        "tests/study/test_preflight_gates.py::test_all_six_checks_pass_on_the_real_package"
+      ],
+      "repair_disposition": [
+        "passed"
+      ],
+      "full_run_outcomes": {
+        "tests/study/test_preflight_gates.py::test_all_six_checks_pass_on_the_real_package": "passed"
+      }
+    },
+    {
+      "original_node": "tests/study/test_preflight_gates.py::test_the_results_document_validates_against_its_schema",
+      "current_nodes": [
+        "tests/study/test_preflight_gates.py::test_the_results_document_validates_against_its_schema"
+      ],
+      "repair_disposition": [
+        "passed"
+      ],
+      "full_run_outcomes": {
+        "tests/study/test_preflight_gates.py::test_the_results_document_validates_against_its_schema": "passed"
+      }
+    },
+    {
+      "original_node": "tests/study/test_preflight_gates.py::test_the_document_carries_a_digest_for_every_input_it_read",
+      "current_nodes": [
+        "tests/study/test_preflight_gates.py::test_the_document_carries_a_digest_for_every_input_it_read"
+      ],
+      "repair_disposition": [
+        "passed"
+      ],
+      "full_run_outcomes": {
+        "tests/study/test_preflight_gates.py::test_the_document_carries_a_digest_for_every_input_it_read": "passed"
+      }
+    },
+    {
+      "original_node": "tests/study/test_preflight_gates.py::test_the_six_results_map_onto_record_section_9s_five_rows",
+      "current_nodes": [
+        "tests/study/test_preflight_gates.py::test_the_six_results_map_onto_record_section_9s_five_rows"
+      ],
+      "repair_disposition": [
+        "passed"
+      ],
+      "full_run_outcomes": {
+        "tests/study/test_preflight_gates.py::test_the_six_results_map_onto_record_section_9s_five_rows": "passed"
+      }
+    },
+    {
+      "original_node": "tests/study/test_preflight_gates.py::test_the_tool_reports_its_own_revision_as_a_named_recipe_over_a_named_file_list",
+      "current_nodes": [
+        "tests/study/test_preflight_gates.py::test_the_tool_reports_its_own_revision_as_a_named_recipe_over_a_named_file_list"
+      ],
+      "repair_disposition": [
+        "passed"
+      ],
+      "full_run_outcomes": {
+        "tests/study/test_preflight_gates.py::test_the_tool_reports_its_own_revision_as_a_named_recipe_over_a_named_file_list": "passed"
+      }
+    },
+    {
+      "original_node": "tests/study/test_preflight_gates.py::test_the_sibling_scan_is_advisory_and_can_never_fail",
+      "current_nodes": [
+        "tests/study/test_preflight_gates.py::test_the_sibling_scan_is_advisory_and_can_never_fail"
+      ],
+      "repair_disposition": [
+        "passed"
+      ],
+      "full_run_outcomes": {
+        "tests/study/test_preflight_gates.py::test_the_sibling_scan_is_advisory_and_can_never_fail": "passed"
+      }
+    },
+    {
+      "original_node": "tests/study/test_preflight_gates.py::test_the_identity_gate_reports_the_recomputed_digest",
+      "current_nodes": [
+        "tests/study/test_preflight_gates.py::test_the_identity_gate_reports_the_recomputed_digest"
+      ],
+      "repair_disposition": [
+        "passed"
+      ],
+      "full_run_outcomes": {
+        "tests/study/test_preflight_gates.py::test_the_identity_gate_reports_the_recomputed_digest": "passed"
+      }
+    },
+    {
+      "original_node": "tests/study/test_single_point_gate.py::test_green_single_point_command_exits_zero",
+      "current_nodes": [
+        "tests/study/test_single_point_gate.py::test_green_single_point_command_exits_zero"
+      ],
+      "repair_disposition": [
+        "xfail"
+      ],
+      "full_run_outcomes": {
+        "tests/study/test_single_point_gate.py::test_green_single_point_command_exits_zero": "xfailed"
+      }
+    },
+    {
+      "original_node": "tests/models/test_mfe_financial_rate_limits.py::test_current_regeneration_refuses_nonfresh_without_mutation[visible]",
+      "current_nodes": [
+        "tests/models/test_mfe_financial_rate_limits.py::test_current_regeneration_refuses_nonfresh_without_mutation[visible]"
+      ],
+      "repair_disposition": "passed",
+      "full_run_outcomes": {
+        "tests/models/test_mfe_financial_rate_limits.py::test_current_regeneration_refuses_nonfresh_without_mutation[visible]": "passed"
+      }
+    },
+    {
+      "original_node": "tests/models/test_mfe_financial_rate_limits.py::test_current_regeneration_refuses_nonfresh_without_mutation[hidden]",
+      "current_nodes": [
+        "tests/models/test_mfe_financial_rate_limits.py::test_current_regeneration_refuses_nonfresh_without_mutation[hidden]"
+      ],
+      "repair_disposition": "passed",
+      "full_run_outcomes": {
+        "tests/models/test_mfe_financial_rate_limits.py::test_current_regeneration_refuses_nonfresh_without_mutation[hidden]": "passed"
+      }
+    },
+    {
+      "original_node": "tests/models/test_mfe_major_radius.py::test_binding_documentation_and_source_preservation",
+      "current_nodes": [
+        "tests/models/test_mfe_major_radius.py::test_binding_documentation_and_source_preservation"
+      ],
+      "repair_disposition": "passed",
+      "full_run_outcomes": {
+        "tests/models/test_mfe_major_radius.py::test_binding_documentation_and_source_preservation": "passed"
+      }
+    },
+    {
+      "original_node": "tests/models/test_mfe_major_radius.py::test_current_contract_edges_and_fresh_package_agreement",
+      "current_nodes": [
+        "tests/models/test_mfe_major_radius.py::test_current_contract_edges_and_fresh_package_agreement"
+      ],
+      "repair_disposition": "passed",
+      "full_run_outcomes": {
+        "tests/models/test_mfe_major_radius.py::test_current_contract_edges_and_fresh_package_agreement": "passed"
+      }
+    },
+    {
+      "original_node": "tests/test_codegen_teax_acceptance.py::test_live_and_snapshot_packages_are_byte_identical[primary]",
+      "current_nodes": [
+        "tests/test_codegen_teax_acceptance.py::test_live_and_snapshot_packages_are_byte_identical[primary]"
+      ],
+      "repair_disposition": "passed",
+      "full_run_outcomes": {
+        "tests/test_codegen_teax_acceptance.py::test_live_and_snapshot_packages_are_byte_identical[primary]": "passed"
+      }
+    },
+    {
+      "original_node": "tests/test_codegen_teax_acceptance.py::test_typed_handwritten_quotient_survives_supported_regeneration[primary-False]",
+      "current_nodes": [
+        "tests/test_codegen_teax_acceptance.py::test_typed_handwritten_quotient_survives_supported_regeneration[primary-False]"
+      ],
+      "repair_disposition": "passed",
+      "full_run_outcomes": {
+        "tests/test_codegen_teax_acceptance.py::test_typed_handwritten_quotient_survives_supported_regeneration[primary-False]": "passed"
+      }
+    },
+    {
+      "original_node": "tests/test_codegen_teax_acceptance.py::test_typed_handwritten_quotient_survives_supported_regeneration[primary-True]",
+      "current_nodes": [
+        "tests/test_codegen_teax_acceptance.py::test_typed_handwritten_quotient_survives_supported_regeneration[primary-True]"
+      ],
+      "repair_disposition": "passed",
+      "full_run_outcomes": {
+        "tests/test_codegen_teax_acceptance.py::test_typed_handwritten_quotient_survives_supported_regeneration[primary-True]": "passed"
+      }
+    },
+    {
+      "original_node": "tests/test_codegen_teax_acceptance.py::test_live_and_snapshot_packages_are_byte_identical[exploration]",
+      "current_nodes": [
+        "tests/test_codegen_teax_acceptance.py::test_live_and_snapshot_packages_are_byte_identical[exploration]"
+      ],
+      "repair_disposition": "passed",
+      "full_run_outcomes": {
+        "tests/test_codegen_teax_acceptance.py::test_live_and_snapshot_packages_are_byte_identical[exploration]": "passed"
+      }
+    },
+    {
+      "original_node": "tests/test_codegen_teax_acceptance.py::test_typed_handwritten_quotient_survives_supported_regeneration[exploration-False]",
+      "current_nodes": [
+        "tests/test_codegen_teax_acceptance.py::test_typed_handwritten_quotient_survives_supported_regeneration[exploration-False]"
+      ],
+      "repair_disposition": "passed",
+      "full_run_outcomes": {
+        "tests/test_codegen_teax_acceptance.py::test_typed_handwritten_quotient_survives_supported_regeneration[exploration-False]": "passed"
+      }
+    },
+    {
+      "original_node": "tests/test_codegen_teax_acceptance.py::test_typed_handwritten_quotient_survives_supported_regeneration[exploration-True]",
+      "current_nodes": [
+        "tests/test_codegen_teax_acceptance.py::test_typed_handwritten_quotient_survives_supported_regeneration[exploration-True]"
+      ],
+      "repair_disposition": "passed",
+      "full_run_outcomes": {
+        "tests/test_codegen_teax_acceptance.py::test_typed_handwritten_quotient_survives_supported_regeneration[exploration-True]": "passed"
+      }
+    },
+    {
+      "original_node": "tests/scoring_v2/test_cost_model.py::test_dollars_dominated_subsystem_matches_design_expectation",
+      "current_nodes": [
+        "tests/scoring_v2/test_cost_model.py::test_dollars_dominated_subsystem_matches_design_expectation"
+      ],
+      "repair_disposition": "passed",
+      "full_run_outcomes": {
+        "tests/scoring_v2/test_cost_model.py::test_dollars_dominated_subsystem_matches_design_expectation": "passed"
+      }
+    },
+    {
+      "original_node": "tests/scoring_v2/test_modularity.py::test_v5_anchor[07-maglif-4.93-Pacific MagLIF]",
+      "current_nodes": [
+        "tests/scoring_v2/test_modularity.py::test_v5_anchor[07-maglif-4.93-Pacific MagLIF]"
+      ],
+      "repair_disposition": "passed",
+      "full_run_outcomes": {
+        "tests/scoring_v2/test_modularity.py::test_v5_anchor[07-maglif-4.93-Pacific MagLIF]": "passed"
+      }
+    },
+    {
+      "original_node": "tests/scoring_v2/test_modularity.py::test_v5_anchor[37-magnetized-target-inertial-fusion-mtif-5.0-NearStar MTIF]",
+      "current_nodes": [
+        "tests/scoring_v2/test_modularity.py::test_v5_anchor[37-magnetized-target-inertial-fusion-mtif-5.0-NearStar MTIF]"
+      ],
+      "repair_disposition": "passed",
+      "full_run_outcomes": {
+        "tests/scoring_v2/test_modularity.py::test_v5_anchor[37-magnetized-target-inertial-fusion-mtif-5.0-NearStar MTIF]": "passed"
+      }
+    },
+    {
+      "original_node": "tests/scoring_v2/test_modularity.py::test_all_concepts_within_tolerance",
+      "current_nodes": [],
+      "repair_disposition": "owner_authorized_retirement",
+      "full_run_outcomes": {}
+    },
+    {
+      "original_node": "tests/scoring_v2/test_modularity.py::test_corpus_mean_drift_under_threshold",
+      "current_nodes": [],
+      "repair_disposition": "owner_authorized_retirement",
+      "full_run_outcomes": {}
+    },
+    {
+      "original_node": "tests/scoring_v2/test_modularity.py::test_all_lookup_keys_resolve_for_all_concepts",
+      "current_nodes": [
+        "tests/scoring_v2/test_modularity.py::test_all_lookup_keys_resolve_for_all_concepts"
+      ],
+      "repair_disposition": "passed",
+      "full_run_outcomes": {
+        "tests/scoring_v2/test_modularity.py::test_all_lookup_keys_resolve_for_all_concepts": "passed"
+      }
+    },
+    {
+      "original_node": "tests/scoring_v2/test_normalization.py::test_normalization_preserves_per_concept_ordering_within_tier",
+      "current_nodes": [
+        "tests/scoring_v2/test_normalization.py::test_normalization_preserves_per_concept_ordering_within_tier"
+      ],
+      "repair_disposition": "passed",
+      "full_run_outcomes": {
+        "tests/scoring_v2/test_normalization.py::test_normalization_preserves_per_concept_ordering_within_tier": "passed"
+      }
+    },
+    {
+      "original_node": "tests/scoring_v2/test_score_explorer_build.py::test_build_emits_concepts_json",
+      "current_nodes": [
+        "tests/scoring_v2/test_score_explorer_build.py::test_build_emits_concepts_json"
+      ],
+      "repair_disposition": "passed",
+      "full_run_outcomes": {
+        "tests/scoring_v2/test_score_explorer_build.py::test_build_emits_concepts_json": "passed"
+      }
+    },
+    {
+      "original_node": "tests/scoring_v2/test_score_explorer_build.py::test_excluded_concept_absent_from_ui",
+      "current_nodes": [
+        "tests/scoring_v2/test_score_explorer_build.py::test_excluded_concept_absent_from_ui"
+      ],
+      "repair_disposition": "passed",
+      "full_run_outcomes": {
+        "tests/scoring_v2/test_score_explorer_build.py::test_excluded_concept_absent_from_ui": "passed"
+      }
+    },
+    {
+      "original_node": "tests/scoring_v2/test_score_explorer_build.py::test_all_concepts_score_all_seven_axes",
+      "current_nodes": [
+        "tests/scoring_v2/test_score_explorer_build.py::test_all_concepts_score_all_seven_axes"
+      ],
+      "repair_disposition": "passed",
+      "full_run_outcomes": {
+        "tests/scoring_v2/test_score_explorer_build.py::test_all_concepts_score_all_seven_axes": "passed"
+      }
+    },
+    {
+      "original_node": "tests/scoring_v2/test_spec_conformance.py::TestSpecPredictedScoresLand::test_predicted_score_matches[upper_cf-01-hts-compact-tokamak-3.5]",
+      "current_nodes": [
+        "tests/scoring_v2/test_spec_conformance.py::TestSpecPredictedScoresLand::test_predicted_score_matches[upper_cf-01-hts-compact-tokamak-3.5]"
+      ],
+      "repair_disposition": "passed",
+      "full_run_outcomes": {
+        "tests/scoring_v2/test_spec_conformance.py::TestSpecPredictedScoresLand::test_predicted_score_matches[upper_cf-01-hts-compact-tokamak-3.5]": "passed"
+      }
+    },
+    {
+      "original_node": "tests/scoring_v2/test_spec_conformance.py::TestSpecPredictedScoresLand::test_predicted_score_matches[upper_cf-02-acoustic-icf-sonofusion-3.5]",
+      "current_nodes": [
+        "tests/scoring_v2/test_spec_conformance.py::TestSpecPredictedScoresLand::test_predicted_score_matches[upper_cf-02-acoustic-icf-sonofusion-3.5]"
+      ],
+      "repair_disposition": "passed",
+      "full_run_outcomes": {
+        "tests/scoring_v2/test_spec_conformance.py::TestSpecPredictedScoresLand::test_predicted_score_matches[upper_cf-02-acoustic-icf-sonofusion-3.5]": "passed"
+      }
+    },
+    {
+      "original_node": "tests/scoring_v2/test_spec_conformance.py::TestSpecPredictedScoresLand::test_predicted_score_matches[upper_cf-03-laser-icf-liquid-jet-target-3.5]",
+      "current_nodes": [
+        "tests/scoring_v2/test_spec_conformance.py::TestSpecPredictedScoresLand::test_predicted_score_matches[upper_cf-03-laser-icf-liquid-jet-target-3.5]"
+      ],
+      "repair_disposition": "passed",
+      "full_run_outcomes": {
+        "tests/scoring_v2/test_spec_conformance.py::TestSpecPredictedScoresLand::test_predicted_score_matches[upper_cf-03-laser-icf-liquid-jet-target-3.5]": "passed"
+      }
+    },
+    {
+      "original_node": "tests/scoring_v2/test_spec_conformance.py::TestSpecPredictedScoresLand::test_predicted_score_matches[upper_cf-04-laser-icf-4.5]",
+      "current_nodes": [
+        "tests/scoring_v2/test_spec_conformance.py::TestSpecPredictedScoresLand::test_predicted_score_matches[upper_cf-04-laser-icf-4.5]"
+      ],
+      "repair_disposition": "passed",
+      "full_run_outcomes": {
+        "tests/scoring_v2/test_spec_conformance.py::TestSpecPredictedScoresLand::test_predicted_score_matches[upper_cf-04-laser-icf-4.5]": "passed"
+      }
+    },
+    {
+      "original_node": "tests/scoring_v2/test_spec_conformance.py::TestSpecPredictedScoresLand::test_predicted_score_matches[upper_cf-05-planar-coil-stellarator-3.5]",
+      "current_nodes": [
+        "tests/scoring_v2/test_spec_conformance.py::TestSpecPredictedScoresLand::test_predicted_score_matches[upper_cf-05-planar-coil-stellarator-3.5]"
+      ],
+      "repair_disposition": "passed",
+      "full_run_outcomes": {
+        "tests/scoring_v2/test_spec_conformance.py::TestSpecPredictedScoresLand::test_predicted_score_matches[upper_cf-05-planar-coil-stellarator-3.5]": "passed"
+      }
+    },
+    {
+      "original_node": "tests/scoring_v2/test_spec_conformance.py::TestSpecPredictedScoresLand::test_predicted_score_matches[upper_cf-07-maglif-3.0]",
+      "current_nodes": [
+        "tests/scoring_v2/test_spec_conformance.py::TestSpecPredictedScoresLand::test_predicted_score_matches[upper_cf-07-maglif-3.0]"
+      ],
+      "repair_disposition": "passed",
+      "full_run_outcomes": {
+        "tests/scoring_v2/test_spec_conformance.py::TestSpecPredictedScoresLand::test_predicted_score_matches[upper_cf-07-maglif-3.0]": "passed"
+      }
+    },
+    {
+      "original_node": "tests/scoring_v2/test_spec_conformance.py::TestSpecPredictedScoresLand::test_predicted_score_matches[upper_cf-08-frc-w-direct-conversion-4.5]",
+      "current_nodes": [
+        "tests/scoring_v2/test_spec_conformance.py::TestSpecPredictedScoresLand::test_predicted_score_matches[upper_cf-08-frc-w-direct-conversion-4.5]"
+      ],
+      "repair_disposition": "passed",
+      "full_run_outcomes": {
+        "tests/scoring_v2/test_spec_conformance.py::TestSpecPredictedScoresLand::test_predicted_score_matches[upper_cf-08-frc-w-direct-conversion-4.5]": "passed"
+      }
+    },
+    {
+      "original_node": "tests/scoring_v2/test_spec_conformance.py::TestSpecPredictedScoresLand::test_predicted_score_matches[upper_cf-09-qi-stellarator-hts-3.5]",
+      "current_nodes": [
+        "tests/scoring_v2/test_spec_conformance.py::TestSpecPredictedScoresLand::test_predicted_score_matches[upper_cf-09-qi-stellarator-hts-3.5]"
+      ],
+      "repair_disposition": "passed",
+      "full_run_outcomes": {
+        "tests/scoring_v2/test_spec_conformance.py::TestSpecPredictedScoresLand::test_predicted_score_matches[upper_cf-09-qi-stellarator-hts-3.5]": "passed"
+      }
+    },
+    {
+      "original_node": "tests/scoring_v2/test_spec_conformance.py::TestSpecPredictedScoresLand::test_predicted_score_matches[upper_cf-10-large-scale-stellarator-3.5]",
+      "current_nodes": [
+        "tests/scoring_v2/test_spec_conformance.py::TestSpecPredictedScoresLand::test_predicted_score_matches[upper_cf-10-large-scale-stellarator-3.5]"
+      ],
+      "repair_disposition": "passed",
+      "full_run_outcomes": {
+        "tests/scoring_v2/test_spec_conformance.py::TestSpecPredictedScoresLand::test_predicted_score_matches[upper_cf-10-large-scale-stellarator-3.5]": "passed"
+      }
+    },
+    {
+      "original_node": "tests/scoring_v2/test_spec_conformance.py::TestSpecPredictedScoresLand::test_predicted_score_matches[upper_cf-11-magnetic-mirror-3.5]",
+      "current_nodes": [
+        "tests/scoring_v2/test_spec_conformance.py::TestSpecPredictedScoresLand::test_predicted_score_matches[upper_cf-11-magnetic-mirror-3.5]"
+      ],
+      "repair_disposition": "passed",
+      "full_run_outcomes": {
+        "tests/scoring_v2/test_spec_conformance.py::TestSpecPredictedScoresLand::test_predicted_score_matches[upper_cf-11-magnetic-mirror-3.5]": "passed"
+      }
+    },
+    {
+      "original_node": "tests/scoring_v2/test_spec_conformance.py::TestSpecPredictedScoresLand::test_predicted_score_matches[upper_cf-12-levitated-dipole-3.5]",
+      "current_nodes": [
+        "tests/scoring_v2/test_spec_conformance.py::TestSpecPredictedScoresLand::test_predicted_score_matches[upper_cf-12-levitated-dipole-3.5]"
+      ],
+      "repair_disposition": "passed",
+      "full_run_outcomes": {
+        "tests/scoring_v2/test_spec_conformance.py::TestSpecPredictedScoresLand::test_predicted_score_matches[upper_cf-12-levitated-dipole-3.5]": "passed"
+      }
+    },
+    {
+      "original_node": "tests/scoring_v2/test_spec_conformance.py::TestSpecPredictedScoresLand::test_predicted_score_matches[upper_cf-13-electrostatic-hybrid-3.5]",
+      "current_nodes": [
+        "tests/scoring_v2/test_spec_conformance.py::TestSpecPredictedScoresLand::test_predicted_score_matches[upper_cf-13-electrostatic-hybrid-3.5]"
+      ],
+      "repair_disposition": "passed",
+      "full_run_outcomes": {
+        "tests/scoring_v2/test_spec_conformance.py::TestSpecPredictedScoresLand::test_predicted_score_matches[upper_cf-13-electrostatic-hybrid-3.5]": "passed"
+      }
+    },
+    {
+      "original_node": "tests/scoring_v2/test_spec_conformance.py::TestSpecPredictedScoresLand::test_predicted_score_matches[upper_cf-14-magnetized-target-fusion-pneumatic-compression-3.5]",
+      "current_nodes": [
+        "tests/scoring_v2/test_spec_conformance.py::TestSpecPredictedScoresLand::test_predicted_score_matches[upper_cf-14-magnetized-target-fusion-pneumatic-compression-3.5]"
+      ],
+      "repair_disposition": "passed",
+      "full_run_outcomes": {
+        "tests/scoring_v2/test_spec_conformance.py::TestSpecPredictedScoresLand::test_predicted_score_matches[upper_cf-14-magnetized-target-fusion-pneumatic-compression-3.5]": "passed"
+      }
+    },
+    {
+      "original_node": "tests/scoring_v2/test_spec_conformance.py::TestSpecPredictedScoresLand::test_predicted_score_matches[upper_cf-15-sheared-flow-stabilized-z-pinch-3.5]",
+      "current_nodes": [
+        "tests/scoring_v2/test_spec_conformance.py::TestSpecPredictedScoresLand::test_predicted_score_matches[upper_cf-15-sheared-flow-stabilized-z-pinch-3.5]"
+      ],
+      "repair_disposition": "passed",
+      "full_run_outcomes": {
+        "tests/scoring_v2/test_spec_conformance.py::TestSpecPredictedScoresLand::test_predicted_score_matches[upper_cf-15-sheared-flow-stabilized-z-pinch-3.5]": "passed"
+      }
+    },
+    {
+      "original_node": "tests/scoring_v2/test_spec_conformance.py::TestSpecPredictedScoresLand::test_predicted_score_matches[upper_cf-16-muon-catalyzed-fusion-3.5]",
+      "current_nodes": [
+        "tests/scoring_v2/test_spec_conformance.py::TestSpecPredictedScoresLand::test_predicted_score_matches[upper_cf-16-muon-catalyzed-fusion-3.5]"
+      ],
+      "repair_disposition": "passed",
+      "full_run_outcomes": {
+        "tests/scoring_v2/test_spec_conformance.py::TestSpecPredictedScoresLand::test_predicted_score_matches[upper_cf-16-muon-catalyzed-fusion-3.5]": "passed"
+      }
+    },
+    {
+      "original_node": "tests/scoring_v2/test_spec_conformance.py::TestSpecPredictedScoresLand::test_predicted_score_matches[upper_cf-17a-laser-icf-hybrid-drive-3.0]",
+      "current_nodes": [
+        "tests/scoring_v2/test_spec_conformance.py::TestSpecPredictedScoresLand::test_predicted_score_matches[upper_cf-17a-laser-icf-hybrid-drive-3.0]"
+      ],
+      "repair_disposition": "passed",
+      "full_run_outcomes": {
+        "tests/scoring_v2/test_spec_conformance.py::TestSpecPredictedScoresLand::test_predicted_score_matches[upper_cf-17a-laser-icf-hybrid-drive-3.0]": "passed"
+      }
+    },
+    {
+      "original_node": "tests/scoring_v2/test_spec_conformance.py::TestSpecPredictedScoresLand::test_predicted_score_matches[upper_cf-17b-laser-icf-fast-ignition-3.0]",
+      "current_nodes": [
+        "tests/scoring_v2/test_spec_conformance.py::TestSpecPredictedScoresLand::test_predicted_score_matches[upper_cf-17b-laser-icf-fast-ignition-3.0]"
+      ],
+      "repair_disposition": "passed",
+      "full_run_outcomes": {
+        "tests/scoring_v2/test_spec_conformance.py::TestSpecPredictedScoresLand::test_predicted_score_matches[upper_cf-17b-laser-icf-fast-ignition-3.0]": "passed"
+      }
+    },
+    {
+      "original_node": "tests/scoring_v2/test_spec_conformance.py::TestSpecPredictedScoresLand::test_predicted_score_matches[upper_cf-20a-type-one-stellarator-3.5]",
+      "current_nodes": [
+        "tests/scoring_v2/test_spec_conformance.py::TestSpecPredictedScoresLand::test_predicted_score_matches[upper_cf-20a-type-one-stellarator-3.5]"
+      ],
+      "repair_disposition": "passed",
+      "full_run_outcomes": {
+        "tests/scoring_v2/test_spec_conformance.py::TestSpecPredictedScoresLand::test_predicted_score_matches[upper_cf-20a-type-one-stellarator-3.5]": "passed"
+      }
+    },
+    {
+      "original_node": "tests/scoring_v2/test_spec_conformance.py::TestSpecPredictedScoresLand::test_predicted_score_matches[upper_cf-20b-renaissance-stellarator-3.5]",
+      "current_nodes": [
+        "tests/scoring_v2/test_spec_conformance.py::TestSpecPredictedScoresLand::test_predicted_score_matches[upper_cf-20b-renaissance-stellarator-3.5]"
+      ],
+      "repair_disposition": "passed",
+      "full_run_outcomes": {
+        "tests/scoring_v2/test_spec_conformance.py::TestSpecPredictedScoresLand::test_predicted_score_matches[upper_cf-20b-renaissance-stellarator-3.5]": "passed"
+      }
+    },
+    {
+      "original_node": "tests/scoring_v2/test_spec_conformance.py::TestSpecPredictedScoresLand::test_predicted_score_matches[upper_cf-21-spherical-tokamak-hts-3.5]",
+      "current_nodes": [
+        "tests/scoring_v2/test_spec_conformance.py::TestSpecPredictedScoresLand::test_predicted_score_matches[upper_cf-21-spherical-tokamak-hts-3.5]"
+      ],
+      "repair_disposition": "passed",
+      "full_run_outcomes": {
+        "tests/scoring_v2/test_spec_conformance.py::TestSpecPredictedScoresLand::test_predicted_score_matches[upper_cf-21-spherical-tokamak-hts-3.5]": "passed"
+      }
+    },
+    {
+      "original_node": "tests/scoring_v2/test_spec_conformance.py::TestSpecPredictedScoresLand::test_predicted_score_matches[upper_cf-22-projectile-icf-3.5]",
+      "current_nodes": [
+        "tests/scoring_v2/test_spec_conformance.py::TestSpecPredictedScoresLand::test_predicted_score_matches[upper_cf-22-projectile-icf-3.5]"
+      ],
+      "repair_disposition": "passed",
+      "full_run_outcomes": {
+        "tests/scoring_v2/test_spec_conformance.py::TestSpecPredictedScoresLand::test_predicted_score_matches[upper_cf-22-projectile-icf-3.5]": "passed"
+      }
+    },
+    {
+      "original_node": "tests/scoring_v2/test_spec_conformance.py::TestSpecPredictedScoresLand::test_predicted_score_matches[upper_cf-23-laser-icf-nanostructured-target-4.5]",
+      "current_nodes": [
+        "tests/scoring_v2/test_spec_conformance.py::TestSpecPredictedScoresLand::test_predicted_score_matches[upper_cf-23-laser-icf-nanostructured-target-4.5]"
+      ],
+      "repair_disposition": "passed",
+      "full_run_outcomes": {
+        "tests/scoring_v2/test_spec_conformance.py::TestSpecPredictedScoresLand::test_predicted_score_matches[upper_cf-23-laser-icf-nanostructured-target-4.5]": "passed"
+      }
+    },
+    {
+      "original_node": "tests/scoring_v2/test_spec_conformance.py::TestSpecPredictedScoresLand::test_predicted_score_matches[upper_cf-24-dense-plasma-focus-4.5]",
+      "current_nodes": [
+        "tests/scoring_v2/test_spec_conformance.py::TestSpecPredictedScoresLand::test_predicted_score_matches[upper_cf-24-dense-plasma-focus-4.5]"
+      ],
+      "repair_disposition": "passed",
+      "full_run_outcomes": {
+        "tests/scoring_v2/test_spec_conformance.py::TestSpecPredictedScoresLand::test_predicted_score_matches[upper_cf-24-dense-plasma-focus-4.5]": "passed"
+      }
+    },
+    {
+      "original_node": "tests/scoring_v2/test_spec_conformance.py::TestSpecPredictedScoresLand::test_predicted_score_matches[upper_cf-25-heavy-ion-beam-icf-3.5]",
+      "current_nodes": [
+        "tests/scoring_v2/test_spec_conformance.py::TestSpecPredictedScoresLand::test_predicted_score_matches[upper_cf-25-heavy-ion-beam-icf-3.5]"
+      ],
+      "repair_disposition": "passed",
+      "full_run_outcomes": {
+        "tests/scoring_v2/test_spec_conformance.py::TestSpecPredictedScoresLand::test_predicted_score_matches[upper_cf-25-heavy-ion-beam-icf-3.5]": "passed"
+      }
+    },
+    {
+      "original_node": "tests/scoring_v2/test_spec_conformance.py::TestSpecPredictedScoresLand::test_predicted_score_matches[upper_cf-26-laser-icf-indirect-drive-3.5]",
+      "current_nodes": [
+        "tests/scoring_v2/test_spec_conformance.py::TestSpecPredictedScoresLand::test_predicted_score_matches[upper_cf-26-laser-icf-indirect-drive-3.5]"
+      ],
+      "repair_disposition": "passed",
+      "full_run_outcomes": {
+        "tests/scoring_v2/test_spec_conformance.py::TestSpecPredictedScoresLand::test_predicted_score_matches[upper_cf-26-laser-icf-indirect-drive-3.5]": "passed"
+      }
+    },
+    {
+      "original_node": "tests/scoring_v2/test_spec_conformance.py::TestSpecPredictedScoresLand::test_predicted_score_matches[upper_cf-28-hts-tokamak-full-hts-3.5]",
+      "current_nodes": [
+        "tests/scoring_v2/test_spec_conformance.py::TestSpecPredictedScoresLand::test_predicted_score_matches[upper_cf-28-hts-tokamak-full-hts-3.5]"
+      ],
+      "repair_disposition": "passed",
+      "full_run_outcomes": {
+        "tests/scoring_v2/test_spec_conformance.py::TestSpecPredictedScoresLand::test_predicted_score_matches[upper_cf-28-hts-tokamak-full-hts-3.5]": "passed"
+      }
+    },
+    {
+      "original_node": "tests/scoring_v2/test_spec_conformance.py::TestSpecPredictedScoresLand::test_predicted_score_matches[upper_cf-29-negative-triangularity-tokamak-3.5]",
+      "current_nodes": [
+        "tests/scoring_v2/test_spec_conformance.py::TestSpecPredictedScoresLand::test_predicted_score_matches[upper_cf-29-negative-triangularity-tokamak-3.5]"
+      ],
+      "repair_disposition": "passed",
+      "full_run_outcomes": {
+        "tests/scoring_v2/test_spec_conformance.py::TestSpecPredictedScoresLand::test_predicted_score_matches[upper_cf-29-negative-triangularity-tokamak-3.5]": "passed"
+      }
+    },
+    {
+      "original_node": "tests/scoring_v2/test_spec_conformance.py::TestSpecPredictedScoresLand::test_predicted_score_matches[upper_cf-30-laser-icf-nif-commercialization-3.5]",
+      "current_nodes": [
+        "tests/scoring_v2/test_spec_conformance.py::TestSpecPredictedScoresLand::test_predicted_score_matches[upper_cf-30-laser-icf-nif-commercialization-3.5]"
+      ],
+      "repair_disposition": "passed",
+      "full_run_outcomes": {
+        "tests/scoring_v2/test_spec_conformance.py::TestSpecPredictedScoresLand::test_predicted_score_matches[upper_cf-30-laser-icf-nif-commercialization-3.5]": "passed"
+      }
+    },
+    {
+      "original_node": "tests/scoring_v2/test_spec_conformance.py::TestSpecPredictedScoresLand::test_predicted_score_matches[upper_cf-31-laser-icf-oec-architecture-3.5]",
+      "current_nodes": [
+        "tests/scoring_v2/test_spec_conformance.py::TestSpecPredictedScoresLand::test_predicted_score_matches[upper_cf-31-laser-icf-oec-architecture-3.5]"
+      ],
+      "repair_disposition": "passed",
+      "full_run_outcomes": {
+        "tests/scoring_v2/test_spec_conformance.py::TestSpecPredictedScoresLand::test_predicted_score_matches[upper_cf-31-laser-icf-oec-architecture-3.5]": "passed"
+      }
+    },
+    {
+      "original_node": "tests/scoring_v2/test_spec_conformance.py::TestSpecPredictedScoresLand::test_predicted_score_matches[upper_cf-32-laser-icf-french-national-3.0]",
+      "current_nodes": [
+        "tests/scoring_v2/test_spec_conformance.py::TestSpecPredictedScoresLand::test_predicted_score_matches[upper_cf-32-laser-icf-french-national-3.0]"
+      ],
+      "repair_disposition": "passed",
+      "full_run_outcomes": {
+        "tests/scoring_v2/test_spec_conformance.py::TestSpecPredictedScoresLand::test_predicted_score_matches[upper_cf-32-laser-icf-french-national-3.0]": "passed"
+      }
+    },
+    {
+      "original_node": "tests/scoring_v2/test_spec_conformance.py::TestSpecPredictedScoresLand::test_predicted_score_matches[upper_cf-35-polomac-magnetic-confinement-4.0]",
+      "current_nodes": [
+        "tests/scoring_v2/test_spec_conformance.py::TestSpecPredictedScoresLand::test_predicted_score_matches[upper_cf-35-polomac-magnetic-confinement-4.0]"
+      ],
+      "repair_disposition": "passed",
+      "full_run_outcomes": {
+        "tests/scoring_v2/test_spec_conformance.py::TestSpecPredictedScoresLand::test_predicted_score_matches[upper_cf-35-polomac-magnetic-confinement-4.0]": "passed"
+      }
+    },
+    {
+      "original_node": "tests/scoring_v2/test_spec_conformance.py::TestSpecPredictedScoresLand::test_predicted_score_matches[upper_cf-36-helical-coil-stellarator-4.0]",
+      "current_nodes": [
+        "tests/scoring_v2/test_spec_conformance.py::TestSpecPredictedScoresLand::test_predicted_score_matches[upper_cf-36-helical-coil-stellarator-4.0]"
+      ],
+      "repair_disposition": "passed",
+      "full_run_outcomes": {
+        "tests/scoring_v2/test_spec_conformance.py::TestSpecPredictedScoresLand::test_predicted_score_matches[upper_cf-36-helical-coil-stellarator-4.0]": "passed"
+      }
+    },
+    {
+      "original_node": "tests/scoring_v2/test_spec_conformance.py::TestSpecPredictedScoresLand::test_predicted_score_matches[upper_cf-37-magnetized-target-inertial-fusion-mtif-3.5]",
+      "current_nodes": [
+        "tests/scoring_v2/test_spec_conformance.py::TestSpecPredictedScoresLand::test_predicted_score_matches[upper_cf-37-magnetized-target-inertial-fusion-mtif-3.5]"
+      ],
+      "repair_disposition": "passed",
+      "full_run_outcomes": {
+        "tests/scoring_v2/test_spec_conformance.py::TestSpecPredictedScoresLand::test_predicted_score_matches[upper_cf-37-magnetized-target-inertial-fusion-mtif-3.5]": "passed"
+      }
+    },
+    {
+      "original_node": "tests/scoring_v2/test_spec_conformance.py::TestSpecPredictedScoresLand::test_predicted_score_matches[upper_cf-38-particle-accelerator-driven-fusion-4.0]",
+      "current_nodes": [
+        "tests/scoring_v2/test_spec_conformance.py::TestSpecPredictedScoresLand::test_predicted_score_matches[upper_cf-38-particle-accelerator-driven-fusion-4.0]"
+      ],
+      "repair_disposition": "passed",
+      "full_run_outcomes": {
+        "tests/scoring_v2/test_spec_conformance.py::TestSpecPredictedScoresLand::test_predicted_score_matches[upper_cf-38-particle-accelerator-driven-fusion-4.0]": "passed"
+      }
+    },
+    {
+      "original_node": "tests/test_current_comparison_candidate.py::test_power_account_rejects_inconsistent_retained_output[matched-heat_transport__equipment__salt_electric_MW-total_pump_electric_once]",
+      "current_nodes": [
+        "tests/test_current_comparison_candidate.py::test_power_account_rejects_inconsistent_retained_output[matched-heat_transport__equipment__salt_electric_MW-total_pump_electric_once]"
+      ],
+      "repair_disposition": "passed",
+      "full_run_outcomes": {
+        "tests/test_current_comparison_candidate.py::test_power_account_rejects_inconsistent_retained_output[matched-heat_transport__equipment__salt_electric_MW-total_pump_electric_once]": "passed"
+      }
+    },
+    {
+      "original_node": "tests/test_current_comparison_candidate.py::test_power_account_rejects_inconsistent_retained_output[matched-pb__p_net-net_electric_balance]",
+      "current_nodes": [
+        "tests/test_current_comparison_candidate.py::test_power_account_rejects_inconsistent_retained_output[matched-pb__p_net-net_electric_balance]"
+      ],
+      "repair_disposition": "passed",
+      "full_run_outcomes": {
+        "tests/test_current_comparison_candidate.py::test_power_account_rejects_inconsistent_retained_output[matched-pb__p_net-net_electric_balance]": "passed"
+      }
+    },
+    {
+      "original_node": "tests/test_current_comparison_candidate.py::test_power_account_rejects_inconsistent_retained_output[matched-pb__p_th-thermal_balance]",
+      "current_nodes": [
+        "tests/test_current_comparison_candidate.py::test_power_account_rejects_inconsistent_retained_output[matched-pb__p_th-thermal_balance]"
+      ],
+      "repair_disposition": "passed",
+      "full_run_outcomes": {
+        "tests/test_current_comparison_candidate.py::test_power_account_rejects_inconsistent_retained_output[matched-pb__p_th-thermal_balance]": "passed"
+      }
+    },
+    {
+      "original_node": "tests/test_current_comparison_candidate.py::test_manifest_keeps_formal_criteria_and_has_all_predicates",
+      "current_nodes": [
+        "tests/test_current_comparison_candidate.py::test_manifest_keeps_formal_criteria_and_has_all_predicates"
+      ],
+      "repair_disposition": "passed",
+      "full_run_outcomes": {
+        "tests/test_current_comparison_candidate.py::test_manifest_keeps_formal_criteria_and_has_all_predicates": "passed"
+      }
+    },
+    {
+      "original_node": "tests/test_current_comparison_candidate.py::test_nonfinite_native_result_has_raw_and_canonical_failure_receipts[nan]",
+      "current_nodes": [
+        "tests/test_current_comparison_candidate.py::test_nonfinite_native_result_has_raw_and_canonical_failure_receipts[nan]"
+      ],
+      "repair_disposition": "passed",
+      "full_run_outcomes": {
+        "tests/test_current_comparison_candidate.py::test_nonfinite_native_result_has_raw_and_canonical_failure_receipts[nan]": "passed"
+      }
+    },
+    {
+      "original_node": "tests/test_current_comparison_candidate.py::test_nonfinite_native_result_has_raw_and_canonical_failure_receipts[inf]",
+      "current_nodes": [
+        "tests/test_current_comparison_candidate.py::test_nonfinite_native_result_has_raw_and_canonical_failure_receipts[inf]"
+      ],
+      "repair_disposition": "passed",
+      "full_run_outcomes": {
+        "tests/test_current_comparison_candidate.py::test_nonfinite_native_result_has_raw_and_canonical_failure_receipts[inf]": "passed"
+      }
+    },
+    {
+      "original_node": "tests/test_current_comparison_candidate.py::test_nonfinite_native_result_has_raw_and_canonical_failure_receipts[-inf]",
+      "current_nodes": [
+        "tests/test_current_comparison_candidate.py::test_nonfinite_native_result_has_raw_and_canonical_failure_receipts[-inf]"
+      ],
+      "repair_disposition": "passed",
+      "full_run_outcomes": {
+        "tests/test_current_comparison_candidate.py::test_nonfinite_native_result_has_raw_and_canonical_failure_receipts[-inf]": "passed"
+      }
+    },
+    {
+      "original_node": "tests/test_current_comparison_candidate.py::test_failure_after_native_start_is_retained",
+      "current_nodes": [
+        "tests/test_current_comparison_candidate.py::test_failure_after_native_start_is_retained"
+      ],
+      "repair_disposition": "passed",
+      "full_run_outcomes": {
+        "tests/test_current_comparison_candidate.py::test_failure_after_native_start_is_retained": "passed"
+      }
+    }
+  ]
+}

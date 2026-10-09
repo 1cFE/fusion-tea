@@ -1,0 +1,254 @@
+{
+  "status": "partial_component_qualification_owner_judgment_pending",
+  "original_failures": 44,
+  "original_nodes_passing_component_checks": 42,
+  "parked_original_nodes": [
+    "tests/scoring_v2/test_modularity.py::test_all_concepts_within_tolerance",
+    "tests/scoring_v2/test_modularity.py::test_corpus_mean_drift_under_threshold"
+  ],
+  "attributions": [
+    {
+      "kind": "FAILED",
+      "node": "tests/scoring_v2/test_cost_model.py::test_dollars_dominated_subsystem_matches_design_expectation",
+      "component_outcome": "passed"
+    },
+    {
+      "kind": "FAILED",
+      "node": "tests/scoring_v2/test_modularity.py::test_v5_anchor[07-maglif-4.93-Pacific MagLIF]",
+      "component_outcome": "passed"
+    },
+    {
+      "kind": "FAILED",
+      "node": "tests/scoring_v2/test_modularity.py::test_v5_anchor[37-magnetized-target-inertial-fusion-mtif-5.0-NearStar MTIF]",
+      "component_outcome": "passed"
+    },
+    {
+      "kind": "FAILED",
+      "node": "tests/scoring_v2/test_modularity.py::test_all_concepts_within_tolerance",
+      "component_outcome": "parked"
+    },
+    {
+      "kind": "FAILED",
+      "node": "tests/scoring_v2/test_modularity.py::test_corpus_mean_drift_under_threshold",
+      "component_outcome": "parked"
+    },
+    {
+      "kind": "FAILED",
+      "node": "tests/scoring_v2/test_modularity.py::test_all_lookup_keys_resolve_for_all_concepts",
+      "component_outcome": "passed"
+    },
+    {
+      "kind": "FAILED",
+      "node": "tests/scoring_v2/test_normalization.py::test_normalization_preserves_per_concept_ordering_within_tier",
+      "component_outcome": "passed"
+    },
+    {
+      "kind": "FAILED",
+      "node": "tests/scoring_v2/test_score_explorer_build.py::test_build_emits_concepts_json",
+      "component_outcome": "passed"
+    },
+    {
+      "kind": "FAILED",
+      "node": "tests/scoring_v2/test_score_explorer_build.py::test_excluded_concept_absent_from_ui",
+      "component_outcome": "passed"
+    },
+    {
+      "kind": "FAILED",
+      "node": "tests/scoring_v2/test_score_explorer_build.py::test_all_concepts_score_all_seven_axes",
+      "component_outcome": "passed"
+    },
+    {
+      "kind": "FAILED",
+      "node": "tests/scoring_v2/test_spec_conformance.py::TestSpecPredictedScoresLand::test_predicted_score_matches[upper_cf-01-hts-compact-tokamak-3.5]",
+      "component_outcome": "passed"
+    },
+    {
+      "kind": "FAILED",
+      "node": "tests/scoring_v2/test_spec_conformance.py::TestSpecPredictedScoresLand::test_predicted_score_matches[upper_cf-02-acoustic-icf-sonofusion-3.5]",
+      "component_outcome": "passed"
+    },
+    {
+      "kind": "FAILED",
+      "node": "tests/scoring_v2/test_spec_conformance.py::TestSpecPredictedScoresLand::test_predicted_score_matches[upper_cf-03-laser-icf-liquid-jet-target-3.5]",
+      "component_outcome": "passed"
+    },
+    {
+      "kind": "FAILED",
+      "node": "tests/scoring_v2/test_spec_conformance.py::TestSpecPredictedScoresLand::test_predicted_score_matches[upper_cf-04-laser-icf-4.5]",
+      "component_outcome": "passed"
+    },
+    {
+      "kind": "FAILED",
+      "node": "tests/scoring_v2/test_spec_conformance.py::TestSpecPredictedScoresLand::test_predicted_score_matches[upper_cf-05-planar-coil-stellarator-3.5]",
+      "component_outcome": "passed"
+    },
+    {
+      "kind": "FAILED",
+      "node": "tests/scoring_v2/test_spec_conformance.py::TestSpecPredictedScoresLand::test_predicted_score_matches[upper_cf-07-maglif-3.0]",
+      "component_outcome": "passed"
+    },
+    {
+      "kind": "FAILED",
+      "node": "tests/scoring_v2/test_spec_conformance.py::TestSpecPredictedScoresLand::test_predicted_score_matches[upper_cf-08-frc-w-direct-conversion-4.5]",
+      "component_outcome": "passed"
+    },
+    {
+      "kind": "FAILED",
+      "node": "tests/scoring_v2/test_spec_conformance.py::TestSpecPredictedScoresLand::test_predicted_score_matches[upper_cf-09-qi-stellarator-hts-3.5]",
+      "component_outcome": "passed"
+    },
+    {
+      "kind": "FAILED",
+      "node": "tests/scoring_v2/test_spec_conformance.py::TestSpecPredictedScoresLand::test_predicted_score_matches[upper_cf-10-large-scale-stellarator-3.5]",
+      "component_outcome": "passed"
+    },
+    {
+      "kind": "FAILED",
+      "node": "tests/scoring_v2/test_spec_conformance.py::TestSpecPredictedScoresLand::test_predicted_score_matches[upper_cf-11-magnetic-mirror-3.5]",
+      "component_outcome": "passed"
+    },
+    {
+      "kind": "FAILED",
+      "node": "tests/scoring_v2/test_spec_conformance.py::TestSpecPredictedScoresLand::test_predicted_score_matches[upper_cf-12-levitated-dipole-3.5]",
+      "component_outcome": "passed"
+    },
+    {
+      "kind": "FAILED",
+      "node": "tests/scoring_v2/test_spec_conformance.py::TestSpecPredictedScoresLand::test_predicted_score_matches[upper_cf-13-electrostatic-hybrid-3.5]",
+      "component_outcome": "passed"
+    },
+    {
+      "kind": "FAILED",
+      "node": "tests/scoring_v2/test_spec_conformance.py::TestSpecPredictedScoresLand::test_predicted_score_matches[upper_cf-14-magnetized-target-fusion-pneumatic-compression-3.5]",
+      "component_outcome": "passed"
+    },
+    {
+      "kind": "FAILED",
+      "node": "tests/scoring_v2/test_spec_conformance.py::TestSpecPredictedScoresLand::test_predicted_score_matches[upper_cf-15-sheared-flow-stabilized-z-pinch-3.5]",
+      "component_outcome": "passed"
+    },
+    {
+      "kind": "FAILED",
+      "node": "tests/scoring_v2/test_spec_conformance.py::TestSpecPredictedScoresLand::test_predicted_score_matches[upper_cf-16-muon-catalyzed-fusion-3.5]",
+      "component_outcome": "passed"
+    },
+    {
+      "kind": "FAILED",
+      "node": "tests/scoring_v2/test_spec_conformance.py::TestSpecPredictedScoresLand::test_predicted_score_matches[upper_cf-17a-laser-icf-hybrid-drive-3.0]",
+      "component_outcome": "passed"
+    },
+    {
+      "kind": "FAILED",
+      "node": "tests/scoring_v2/test_spec_conformance.py::TestSpecPredictedScoresLand::test_predicted_score_matches[upper_cf-17b-laser-icf-fast-ignition-3.0]",
+      "component_outcome": "passed"
+    },
+    {
+      "kind": "FAILED",
+      "node": "tests/scoring_v2/test_spec_conformance.py::TestSpecPredictedScoresLand::test_predicted_score_matches[upper_cf-20a-type-one-stellarator-3.5]",
+      "component_outcome": "passed"
+    },
+    {
+      "kind": "FAILED",
+      "node": "tests/scoring_v2/test_spec_conformance.py::TestSpecPredictedScoresLand::test_predicted_score_matches[upper_cf-20b-renaissance-stellarator-3.5]",
+      "component_outcome": "passed"
+    },
+    {
+      "kind": "FAILED",
+      "node": "tests/scoring_v2/test_spec_conformance.py::TestSpecPredictedScoresLand::test_predicted_score_matches[upper_cf-21-spherical-tokamak-hts-3.5]",
+      "component_outcome": "passed"
+    },
+    {
+      "kind": "FAILED",
+      "node": "tests/scoring_v2/test_spec_conformance.py::TestSpecPredictedScoresLand::test_predicted_score_matches[upper_cf-22-projectile-icf-3.5]",
+      "component_outcome": "passed"
+    },
+    {
+      "kind": "FAILED",
+      "node": "tests/scoring_v2/test_spec_conformance.py::TestSpecPredictedScoresLand::test_predicted_score_matches[upper_cf-23-laser-icf-nanostructured-target-4.5]",
+      "component_outcome": "passed"
+    },
+    {
+      "kind": "FAILED",
+      "node": "tests/scoring_v2/test_spec_conformance.py::TestSpecPredictedScoresLand::test_predicted_score_matches[upper_cf-24-dense-plasma-focus-4.5]",
+      "component_outcome": "passed"
+    },
+    {
+      "kind": "FAILED",
+      "node": "tests/scoring_v2/test_spec_conformance.py::TestSpecPredictedScoresLand::test_predicted_score_matches[upper_cf-25-heavy-ion-beam-icf-3.5]",
+      "component_outcome": "passed"
+    },
+    {
+      "kind": "FAILED",
+      "node": "tests/scoring_v2/test_spec_conformance.py::TestSpecPredictedScoresLand::test_predicted_score_matches[upper_cf-26-laser-icf-indirect-drive-3.5]",
+      "component_outcome": "passed"
+    },
+    {
+      "kind": "FAILED",
+      "node": "tests/scoring_v2/test_spec_conformance.py::TestSpecPredictedScoresLand::test_predicted_score_matches[upper_cf-28-hts-tokamak-full-hts-3.5]",
+      "component_outcome": "passed"
+    },
+    {
+      "kind": "FAILED",
+      "node": "tests/scoring_v2/test_spec_conformance.py::TestSpecPredictedScoresLand::test_predicted_score_matches[upper_cf-29-negative-triangularity-tokamak-3.5]",
+      "component_outcome": "passed"
+    },
+    {
+      "kind": "FAILED",
+      "node": "tests/scoring_v2/test_spec_conformance.py::TestSpecPredictedScoresLand::test_predicted_score_matches[upper_cf-30-laser-icf-nif-commercialization-3.5]",
+      "component_outcome": "passed"
+    },
+    {
+      "kind": "FAILED",
+      "node": "tests/scoring_v2/test_spec_conformance.py::TestSpecPredictedScoresLand::test_predicted_score_matches[upper_cf-31-laser-icf-oec-architecture-3.5]",
+      "component_outcome": "passed"
+    },
+    {
+      "kind": "FAILED",
+      "node": "tests/scoring_v2/test_spec_conformance.py::TestSpecPredictedScoresLand::test_predicted_score_matches[upper_cf-32-laser-icf-french-national-3.0]",
+      "component_outcome": "passed"
+    },
+    {
+      "kind": "FAILED",
+      "node": "tests/scoring_v2/test_spec_conformance.py::TestSpecPredictedScoresLand::test_predicted_score_matches[upper_cf-35-polomac-magnetic-confinement-4.0]",
+      "component_outcome": "passed"
+    },
+    {
+      "kind": "FAILED",
+      "node": "tests/scoring_v2/test_spec_conformance.py::TestSpecPredictedScoresLand::test_predicted_score_matches[upper_cf-36-helical-coil-stellarator-4.0]",
+      "component_outcome": "passed"
+    },
+    {
+      "kind": "FAILED",
+      "node": "tests/scoring_v2/test_spec_conformance.py::TestSpecPredictedScoresLand::test_predicted_score_matches[upper_cf-37-magnetized-target-inertial-fusion-mtif-3.5]",
+      "component_outcome": "passed"
+    },
+    {
+      "kind": "FAILED",
+      "node": "tests/scoring_v2/test_spec_conformance.py::TestSpecPredictedScoresLand::test_predicted_score_matches[upper_cf-38-particle-accelerator-driven-fusion-4.0]",
+      "component_outcome": "passed"
+    }
+  ],
+  "artifacts": [
+    {
+      "path": "/tmp/20261008-scoring-conformance.xml",
+      "sha256": "fa53139410be309a16bd14d3915f7e0e0df63e35c208b7b49f0626852ff3dfe0",
+      "bytes": 55579
+    },
+    {
+      "path": "/tmp/20261008-scoring-build-normalization.xml",
+      "sha256": "fe222748d0d828941af6688159529a30434102e0bcb68e8f9952090c32622ffb",
+      "bytes": 1746
+    },
+    {
+      "path": "/tmp/20261008-scoring-mod-independent.xml",
+      "sha256": "4cf5092708f5b289c30c362c255a089cd0cfdf2fe04659efda5eb00e4c4c5a96",
+      "bytes": 2793
+    }
+  ],
+  "protected_paths_verified": 81,
+  "limitations": [
+    "No coherent full scoring qualification yet.",
+    "Conformance component ran before modularity retired two obsolete drift exemptions; full qualification must rerun it.",
+    "Dependent calibration target needs owner decision; no completed batch PASS or commit."
+  ]
+}

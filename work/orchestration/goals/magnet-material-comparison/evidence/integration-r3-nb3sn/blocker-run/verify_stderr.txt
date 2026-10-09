@@ -1,0 +1,1 @@
+channel off tolerance on case stellarator-materials-nb3sn-baseline-r3:c0000, channel stellarator_09_materials__nb3sn_material__magnet__conductor__acceptance_margin: store 0.0022993724333435495, oracle 0.00229937242055378, relative deviation 5.562e-09 (tolerance 1e-09); absolute error 1.279e-11 (declared tolerance 0)

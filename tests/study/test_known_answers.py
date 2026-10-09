@@ -1,15 +1,11 @@
-"""The five current axis cases, field for field, against the committed package.
+"""Exact historical cycle-migration graph cases against their pinned Git package.
 
-The expectation files in ``data/`` are bound to the semantic fingerprint they were
-derived against. If the package is regenerated they are re-derived from the new
-package, never patched to match — ``test_fixture_binding`` fails first and says so.
-
-The table below restates the fixture contract's headline facts in the test itself,
-so the frozen expectation files are not the only thing guarding the trace.
+The unchanged ledger belongs to semantic 989f6a44 at d7383342e. Generic output,
+subset and provenance tests separately exercise the live supplied-design package.
 """
 
-import json
 import hashlib
+import json
 from pathlib import Path
 
 import pytest
@@ -21,12 +17,16 @@ from tests.study.conftest import DATA_DIR, run_tool
 # `availability_direct` -- the lifecycle calendar produces availability; the lever is its
 # held-mode switch (design D5). The known answer is re-derived, its no-response claim kept.
 CASES = ["availability_direct", "interest_rate", "R", "a", "I_coil"]
-CURRENT_LEDGER_PATH=Path(__file__).resolve().parents[2]/'.project/active/aries-comparison-preparation/current-readiness/regression-evidence/cycle-migration/current.expected.json'
-CURRENT_LEDGER=json.loads(CURRENT_LEDGER_PATH.read_text())
+CURRENT_LEDGER_PATH = (
+    Path(__file__).resolve().parents[2]
+    / ".project/active/aries-comparison-preparation/current-readiness"
+    / "regression-evidence/cycle-migration/current.expected.json"
+)
+CURRENT_LEDGER = json.loads(CURRENT_LEDGER_PATH.read_text())
 
 
 # WI-059 (2026-09-15): re-derived from the completed package indicator report.
-EXPECTED_SEMANTIC_FINGERPRINT = '8ea7a4c353455698deaa1026d3d3d547d572e08c6ceb58c2bb9cfea26c0120e0'
+EXPECTED_SEMANTIC_FINGERPRINT = "8ea7a4c353455698deaa1026d3d3d547d572e08c6ceb58c2bb9cfea26c0120e0"
 
 #: axis -> (no_constraint_response, reachable constraints, reachable objectives,
 #:          modules fired, channels tainted). Read straight off the Item 1 fixture
@@ -36,118 +36,140 @@ EXPECTED_SEMANTIC_FINGERPRINT = '8ea7a4c353455698deaa1026d3d3d547d572e08c6ceb58c
 #: more channel because CAS27 is now computed in-package and declared as the
 #: `cas27` objective, and each swept attribute is one plant-level entry point.
 # WI-051: re-derived by the radius item metadata caller from the native graph.
-# WI-057 (2026-09-13, the structural decomposition re-applied onto feat/demo-maturation): re-derived on the
+# WI-057 (2026-09-13, the structural decomposition re-applied onto feat/demo-maturation): re-
+# derived on the
 # restructured package -- every count identical; only the entry-point names carry their part's path.
-# WI-058 (2026-09-14): the winding length follows the coil bore (k_coil retired, c_coil_ref bound), re-derived
-# from the indicator report at semantic 8eb332b9…; what moved per axis: I_coil: fired 86->86, tainted 171->171, constraints +[] -[], objectives +[] -[]; R: fired 89->89, tainted 181->181, constraints +[] -[], objectives +[] -[]; a: fired 82->88, tainted 160->180, constraints +[] -[], objectives +[] -[]; availability_direct: fired 6->6, tainted 18->18, constraints +[] -[], objectives +[] -[]; interest_rate: fired 9->9, tainted 22->22, constraints +[] -[], objectives +[] -[]
+# WI-058 (2026-09-14): the winding length follows the coil bore (k_coil retired, c_coil_ref bound),
+# re-derived
+# from the indicator report at semantic 8eb332b9…; what moved per axis: I_coil: fired 86->86,
+# tainted 171->171, constraints +[] -[], objectives +[] -[]; R: fired 89->89, tainted 181->181,
+# constraints +[] -[], objectives +[] -[]; a: fired 82->88, tainted 160->180, constraints +[] -[],
+# objectives +[] -[]; availability_direct: fired 6->6, tainted 18->18, constraints +[] -[],
+# objectives +[] -[]; interest_rate: fired 9->9, tainted 22->22, constraints +[] -[], objectives
+# +[] -[]
 # WI-059 (2026-09-15): re-derived from the completed package indicator report.
-FIXTURE_CONTRACT = {'I_coil': (False,
-            ['beta_ok',
-             'burn_hold_ok',
-             'cond_strain_ok',
-             'cycle_domain_ok',
-             'divertor_heat_ok',
-             'loop_capacity_ok',
-             'loop_pressure_ok',
-             'net_positive',
-             'peak_field_ok',
-             'recirc_ok',
-             'reference_conductor_current_ok',
-             'sustainment_ok',
-             'wall_load_ok',
-             'wp_fit_ok',
-             'wp_stress_ok'],
-            ['beta',
-             'cas72',
-             'fuel',
-             'lcoe',
-             'lcoe_1cfe',
-             'magnet_capital',
-             'magnet_capital_1cfe',
-             'operating_heat_coupled',
-             'operating_heat_delivered',
-             'operating_heat_wallplug',
-             'p_aux_required',
-             'tau_E',
-             'total_capital'],
-            98,
-            239),
- 'R': (False,
-       ['beta_ok',
-        'burn_hold_ok',
-        'cond_strain_ok',
-        'cycle_domain_ok',
-        'divertor_heat_ok',
-        'loop_capacity_ok',
-        'loop_pressure_ok',
-        'net_positive',
-        'peak_field_ok',
-        'recirc_ok',
-        'reference_conductor_current_ok',
-        'sustainment_ok',
-        'wall_load_ok',
-        'wp_fit_ok',
-        'wp_stress_ok'],
-       ['beta',
-        'cas27',
-        'cas72',
-        'fuel',
-        'lcoe',
-        'lcoe_1cfe',
-        'magnet_capital',
-        'magnet_capital_1cfe',
-        'operating_heat_coupled',
-        'operating_heat_delivered',
-        'operating_heat_wallplug',
-        'p_aux_required',
-        'tau_E',
-        'total_capital'],
-       102,
-       250),
- 'a': (False,
-       ['beta_ok',
-        'burn_hold_ok',
-        'cond_strain_ok',
-        'cycle_domain_ok',
-        'divertor_heat_ok',
-        'loop_capacity_ok',
-        'loop_pressure_ok',
-        'net_positive',
-        'peak_field_ok',
-        'recirc_ok',
-        'reference_conductor_current_ok',
-        'sustainment_ok',
-        'wall_load_ok',
-        'wp_fit_ok',
-        'wp_stress_ok'],
-       ['beta',
-        'cas27',
-        'cas72',
-        'fuel',
-        'lcoe',
-        'lcoe_1cfe',
-        'magnet_capital',
-        'magnet_capital_1cfe',
-        'operating_heat_coupled',
-        'operating_heat_delivered',
-        'operating_heat_wallplug',
-        'p_aux_required',
-        'tau_E',
-        'total_capital'],
-       101,
-       249),
- 'availability_direct': (True,
-                         [],
-                         ['cas72', 'fuel', 'lcoe', 'lcoe_1cfe'],
-                         6,
-                         18),
- 'interest_rate': (True, [], ['cas72', 'fuel', 'lcoe', 'lcoe_1cfe'], 9, 22)}
+FIXTURE_CONTRACT = {
+    "I_coil": (
+        False,
+        [
+            "beta_ok",
+            "burn_hold_ok",
+            "cond_strain_ok",
+            "cycle_domain_ok",
+            "divertor_heat_ok",
+            "loop_capacity_ok",
+            "loop_pressure_ok",
+            "net_positive",
+            "peak_field_ok",
+            "recirc_ok",
+            "reference_conductor_current_ok",
+            "sustainment_ok",
+            "wall_load_ok",
+            "wp_fit_ok",
+            "wp_stress_ok",
+        ],
+        [
+            "beta",
+            "cas72",
+            "fuel",
+            "lcoe",
+            "lcoe_1cfe",
+            "magnet_capital",
+            "magnet_capital_1cfe",
+            "operating_heat_coupled",
+            "operating_heat_delivered",
+            "operating_heat_wallplug",
+            "p_aux_required",
+            "tau_E",
+            "total_capital",
+        ],
+        98,
+        239,
+    ),
+    "R": (
+        False,
+        [
+            "beta_ok",
+            "burn_hold_ok",
+            "cond_strain_ok",
+            "cycle_domain_ok",
+            "divertor_heat_ok",
+            "loop_capacity_ok",
+            "loop_pressure_ok",
+            "net_positive",
+            "peak_field_ok",
+            "recirc_ok",
+            "reference_conductor_current_ok",
+            "sustainment_ok",
+            "wall_load_ok",
+            "wp_fit_ok",
+            "wp_stress_ok",
+        ],
+        [
+            "beta",
+            "cas27",
+            "cas72",
+            "fuel",
+            "lcoe",
+            "lcoe_1cfe",
+            "magnet_capital",
+            "magnet_capital_1cfe",
+            "operating_heat_coupled",
+            "operating_heat_delivered",
+            "operating_heat_wallplug",
+            "p_aux_required",
+            "tau_E",
+            "total_capital",
+        ],
+        102,
+        250,
+    ),
+    "a": (
+        False,
+        [
+            "beta_ok",
+            "burn_hold_ok",
+            "cond_strain_ok",
+            "cycle_domain_ok",
+            "divertor_heat_ok",
+            "loop_capacity_ok",
+            "loop_pressure_ok",
+            "net_positive",
+            "peak_field_ok",
+            "recirc_ok",
+            "reference_conductor_current_ok",
+            "sustainment_ok",
+            "wall_load_ok",
+            "wp_fit_ok",
+            "wp_stress_ok",
+        ],
+        [
+            "beta",
+            "cas27",
+            "cas72",
+            "fuel",
+            "lcoe",
+            "lcoe_1cfe",
+            "magnet_capital",
+            "magnet_capital_1cfe",
+            "operating_heat_coupled",
+            "operating_heat_delivered",
+            "operating_heat_wallplug",
+            "p_aux_required",
+            "tau_E",
+            "total_capital",
+        ],
+        101,
+        249,
+    ),
+    "availability_direct": (True, [], ["cas72", "fuel", "lcoe", "lcoe_1cfe"], 6, 18),
+    "interest_rate": (True, [], ["cas72", "fuel", "lcoe", "lcoe_1cfe"], 9, 22),
+}
 
 
 @pytest.fixture(scope="module")
-def report(request):
-    package = request.config.rootpath / "exploration/stellarator_e2e/pkg/stellarator_tea"
-    manifest_path = request.config.rootpath / "exploration/stellarator_e2e/studies/manifest.json"
+def report(historical_cycle_package):
+    _, package, manifest_path = historical_cycle_package
     return run_tool(package, manifest_path, DATA_DIR / "axes.known_answers.json")
 
 
@@ -155,7 +177,8 @@ def group_by_axis(doc, axis):
     return next(g for g in doc["groups"] if g["axis"] == axis)
 
 
-def test_fixture_binding(real_package_path):
+def test_fixture_binding(historical_cycle_package):
+    historical_root, real_package_path, _ = historical_cycle_package
     """Fixtures are bound to the fingerprint they were derived against (spec)."""
     live = manifest.read_semantic_fingerprint(real_package_path)
     assert live == CURRENT_LEDGER["derived_against_semantic_fingerprint"], (
@@ -163,9 +186,11 @@ def test_fixture_binding(real_package_path):
         "never patch them to match"
     )
 
-    root=Path(__file__).resolve().parents[2]
-    for path,digest in (CURRENT_LEDGER['sources_sha256'] | CURRENT_LEDGER['historical_fixture_sha256']).items():
-        assert hashlib.sha256((root/path).read_bytes()).hexdigest()==digest,path
+    root = Path(__file__).resolve().parents[2]
+    for path, digest in CURRENT_LEDGER["sources_sha256"].items():
+        assert hashlib.sha256((historical_root / path).read_bytes()).hexdigest() == digest, path
+    for path, digest in CURRENT_LEDGER["historical_fixture_sha256"].items():
+        assert hashlib.sha256((root / path).read_bytes()).hexdigest() == digest, path
 
 
 @pytest.mark.parametrize("axis", CASES)
@@ -238,13 +263,30 @@ def test_I_coil_reaches_the_field_constraints_through_calcs(report):
     # heating is the sustainment chain's alpha heating plus the coupled heating, so every
     # lever that reaches the sustainment chain reaches the computed target peak.
     assert set(reached) == {
-        "beta_ok", "peak_field_ok", "wp_stress_ok", "cond_strain_ok",
-        "sustainment_ok", "net_positive", "recirc_ok", "wall_load_ok",
-        "burn_hold_ok", "loop_pressure_ok", "loop_capacity_ok", "cycle_domain_ok",
-        "divertor_heat_ok", "wp_fit_ok", "reference_conductor_current_ok",
-        "tbr_ok", "facility_capacity_ok", "facility_outage_ok", "facility_routes_ok",
-        "facility_replacement_ready", "facility_initial_ready",
-        "matched_main_heat_direction", "matched_reheat_heat_direction", "cooling_water_heat_direction",
+        "beta_ok",
+        "peak_field_ok",
+        "wp_stress_ok",
+        "cond_strain_ok",
+        "sustainment_ok",
+        "net_positive",
+        "recirc_ok",
+        "wall_load_ok",
+        "burn_hold_ok",
+        "loop_pressure_ok",
+        "loop_capacity_ok",
+        "cycle_domain_ok",
+        "divertor_heat_ok",
+        "wp_fit_ok",
+        "reference_conductor_current_ok",
+        "tbr_ok",
+        "facility_capacity_ok",
+        "facility_outage_ok",
+        "facility_routes_ok",
+        "facility_replacement_ready",
+        "facility_initial_ready",
+        "matched_main_heat_direction",
+        "matched_reheat_heat_direction",
+        "cooling_water_heat_direction",
     }
     # The limit side of each field constraint is a bound design value; sustainment_ok
     # is the one whose limit side is itself computed (WI-039 heating chain), so it
@@ -308,46 +350,77 @@ def test_every_constraint_carries_all_three_identities(report):
             assert constraint["source_local_identity"] in constraint["constraint_id"]
 
 
-def test_current_heating_reachability(real_package_path, real_manifest_path, tmp_path):
-    """Module reachability distinguishes installed reserve from operating demand."""
+def test_historical_heating_reachability(historical_cycle_package, tmp_path):
+    _, real_package_path, real_manifest_path = historical_cycle_package
+    """Pinned cycle-migration reach distinguishes reserve from operating demand."""
     axes = tmp_path / "heating-axes.json"
     names = ["p_wallplug_heat", "eta_source_heat", "eta_couple_heat"]
-    axes.write_text(json.dumps({"schema_version": "study-axis-declaration/v1", "groups": [
-        {"axis": name, "keys": [
-            {"key": f"stellarator_09__stellaris__heating__{name}", "provenance": "fan_out"}  # WI-057 (2026-09-13): the key carries its part's path
-        ]}
-        for name in names
-    ]}))
+    axes.write_text(
+        json.dumps(
+            {
+                "schema_version": "study-axis-declaration/v1",
+                "groups": [
+                    {
+                        "axis": name,
+                        "keys": [
+                            {
+                                "key": f"stellarator_09__stellaris__heating__{name}",
+                                "provenance": "fan_out",
+                            }  # WI-057 (2026-09-13): the key carries its part's path
+                        ],
+                    }
+                    for name in names
+                ],
+            }
+        )
+    )
     doc = run_tool(real_package_path, real_manifest_path, axes)
     for name in names:
-        assert group_by_axis(doc,name)==group_by_axis(CURRENT_LEDGER,name)
+        assert group_by_axis(doc, name) == group_by_axis(CURRENT_LEDGER, name)
     reserve = group_by_axis(doc, "p_wallplug_heat")
     assert {c["source_local_identity"] for c in reserve["constraints_reachable"]} == {
-        "sustainment_ok", "divertor_heat_ok"
+        "sustainment_ok",
+        "divertor_heat_ok",
     }
-    assert reserve["trace_size"] == group_by_axis(CURRENT_LEDGER,"p_wallplug_heat")["trace_size"]
+    assert reserve["trace_size"] == group_by_axis(CURRENT_LEDGER, "p_wallplug_heat")["trace_size"]
     assert reserve["objectives_reachable"] == ["lcoe", "lcoe_1cfe", "total_capital"]
     for stage in ("source", "couple"):
         group = group_by_axis(doc, f"eta_{stage}_heat")
-        historical_reached={
-            "cycle_domain_ok", "divertor_heat_ok", "loop_capacity_ok", "loop_pressure_ok",
-            "net_positive", "recirc_ok", "sustainment_ok",
-            f"heating_{stage}_positive_ok", f"heating_{stage}_upper_ok",
+        historical_reached = {
+            "cycle_domain_ok",
+            "divertor_heat_ok",
+            "loop_capacity_ok",
+            "loop_pressure_ok",
+            "net_positive",
+            "recirc_ok",
+            "sustainment_ok",
+            f"heating_{stage}_positive_ok",
+            f"heating_{stage}_upper_ok",
         }
-        assert historical_reached <= {c["source_local_identity"] for c in group["constraints_reachable"]}
-        # WI-065: unchanged modules; the shared ledger adds eight conservatively tainted diagnostics.
-        assert group["trace_size"] == group_by_axis(CURRENT_LEDGER,f"eta_{stage}_heat")["trace_size"]
-        assert {
-            "operating_heat_coupled", "operating_heat_delivered", "operating_heat_wallplug"
-        } <= set(
-            group["objectives_reachable"]
+        assert historical_reached <= {
+            c["source_local_identity"] for c in group["constraints_reachable"]
+        }
+        # WI-065: unchanged modules; the shared ledger adds eight conservatively tainted
+        # diagnostics.
+        assert (
+            group["trace_size"] == group_by_axis(CURRENT_LEDGER, f"eta_{stage}_heat")["trace_size"]
         )
+        assert {
+            "operating_heat_coupled",
+            "operating_heat_delivered",
+            "operating_heat_wallplug",
+        } <= set(group["objectives_reachable"])
 
 
-def test_current_availability_has_structural_breeding_and_facility_paths(report):
-    group=group_by_axis(report,'availability_direct')
-    assert group['no_constraint_response'] is False
-    assert {c['source_local_identity'] for c in group['constraints_reachable']} == {
-        'tbr_ok','facility_capacity_ok','facility_outage_ok','facility_routes_ok',
-        'facility_replacement_ready','facility_initial_ready'}
+def test_historical_availability_has_structural_breeding_and_facility_paths(report):
+    group = group_by_axis(report, "availability_direct")
+    assert group["no_constraint_response"] is False
+    assert {c["source_local_identity"] for c in group["constraints_reachable"]} == {
+        "tbr_ok",
+        "facility_capacity_ok",
+        "facility_outage_ok",
+        "facility_routes_ok",
+        "facility_replacement_ready",
+        "facility_initial_ready",
+    }
     # These are conservative module paths, not numerical sensitivity or admission claims.

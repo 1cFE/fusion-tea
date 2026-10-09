@@ -1,0 +1,952 @@
+{
+  "schema_version": "study-verification-summary/v1",
+  "tool": {
+    "path": "scripts/study/verify.py",
+    "source_digest": {
+      "recipe": "tool-source-digest/v1",
+      "digest": "f733a8c2c236082aea48853c2da7e060c727bd1bb11d2515c8fce25657329831",
+      "files": [
+        {
+          "path": "scripts/study/common.py",
+          "sha256": "ae5fbca7be87d2fa1783affe4773332c9a898a265f70215aec9ad1489c8df521"
+        },
+        {
+          "path": "scripts/study/identity.py",
+          "sha256": "a6871eaaba1078a524b27c998744c6778ac6b5304d39d6eb083b9be4533dc01e"
+        },
+        {
+          "path": "scripts/study/manifest.py",
+          "sha256": "3c1bd8043b1f4ab0424ea9a77cc243e03bc10b3766e7ac634b9e93c25eb749ee"
+        },
+        {
+          "path": "scripts/study/schemas/package_identity.v1.schema.json",
+          "sha256": "d312ac300f1f639bccad3300e5c617658fe307594eaf9deadea66d6162008ad9"
+        },
+        {
+          "path": "scripts/study/schemas/verification_summary.v1.schema.json",
+          "sha256": "7afe14d745ac7241116096f0a93af35f675d3570c96e5b0e080fac427a17fc87"
+        },
+        {
+          "path": "scripts/study/verify.py",
+          "sha256": "34ee38ed9ae38f448199f0e968a13cd2448ec97098bef601995031d1c3fbc8ba"
+        }
+      ]
+    }
+  },
+  "command": [
+    "scripts/study/verify.py",
+    "--package",
+    "/home/reid/1cfe/fusion-tea/exploration/stellarator_materials/units/nb3sn/stellarator_materials_nb3sn_tea",
+    "--manifest",
+    "/home/reid/1cfe/fusion-tea/exploration/stellarator_materials/studies/20260930-magnet-material-plant-map/manifest_nb3sn.json",
+    "--identity",
+    "/home/reid/1cfe/fusion-tea/work/orchestration/goals/magnet-material-comparison/evidence/integration-r3-nb3sn/package_identity.json",
+    "--store",
+    "/home/reid/1cfe/fusion-tea/work/orchestration/goals/magnet-material-comparison/evidence/integration-r3-nb3sn/_work/stellarator-materials-nb3sn-baseline-r3.db",
+    "--out",
+    "/home/reid/1cfe/fusion-tea/work/orchestration/goals/magnet-material-comparison/evidence/integration-r3-nb3sn/verification_summary.json"
+  ],
+  "teax": {
+    "module_path": "../teax/packages/teax-simkit/simkit",
+    "revision": "unrecorded"
+  },
+  "package": {
+    "path": "exploration/stellarator_materials/units/nb3sn/stellarator_materials_nb3sn_tea",
+    "package_name": "stellarator_materials_nb3sn_tea",
+    "git_clean": true
+  },
+  "identity": {
+    "kind": "sealed",
+    "digest": "6ccbab50fa407d545fe40529f29d35680e0c153090880599a28142c06eeba482",
+    "matches_preflight": true
+  },
+  "manifest": {
+    "path": "exploration/stellarator_materials/studies/20260930-magnet-material-plant-map/manifest_nb3sn.json",
+    "schema_version": "study-package-manifest/v1",
+    "digest": "e641a9a0c62608aef2f26791a3753be962fcf9d2e00b157fa5153455671237af"
+  },
+  "oracle": {
+    "kind": "python_callable",
+    "sys_path": ".",
+    "module": "exploration.stellarator_materials.studies.20260930-magnet-material-plant-map.oracle_nb3sn",
+    "callable": "evaluate",
+    "operand_bindings_digest": "b4fdb0dec8ac59ccedd6d703d6aec6a872088297192766301c52e8320b449554"
+  },
+  "stores": [
+    {
+      "path": "work/orchestration/goals/magnet-material-comparison/evidence/integration-r3-nb3sn/_work/stellarator-materials-nb3sn-baseline-r3.db",
+      "study_id": "stellarator-materials-nb3sn-baseline-r3",
+      "compatibility": {
+        "digest": "2cdb9d472092804ac4a76cebbba83a9e77709b49e7fc961af3f90f3eb142a5d9",
+        "evidence_schema_version": "v3",
+        "executable_fingerprint": "6ccbab50fa407d545fe40529f29d35680e0c153090880599a28142c06eeba482",
+        "input_schema_version": "input-v1",
+        "model_contract_fingerprint": "8b2212e2a2baa972b52d6eee7d392c8e711b367221724a56530f75a6bd5972b7",
+        "strategy_config": "b8022ce4ed4495704c9c9e229e4497227393bc40702d64d6166a2dd6bd975bd9",
+        "strategy_identity": "prepared-list/v1",
+        "study_definition_fingerprint": "38e7d4b8b6aaf905c2b556f29f9f066fbcc52122a053dc641de469a7fc1729a9",
+        "study_id": "stellarator-materials-nb3sn-baseline-r3"
+      },
+      "cases_total": 1,
+      "cases_completed": 1,
+      "sampling": {
+        "scheme": "stratified-by-verdict-combination/v1",
+        "seed": "79e7d76d312e1c95",
+        "seed_source": "derived",
+        "sample_size_requested": 12,
+        "strata_observed": 1,
+        "sampled_rows": 1,
+        "sampled_case_ids": [
+          "stellarator-materials-nb3sn-baseline-r3:c0000"
+        ]
+      },
+      "worst_channel_rel_dev": 5.562286965502317e-09,
+      "worst_at": {
+        "case_id": "stellarator-materials-nb3sn-baseline-r3:c0000",
+        "channel": "stellarator_09_materials__nb3sn_material__magnet__conductor__acceptance_margin",
+        "value": 0.0022993724333435495
+      }
+    }
+  ],
+  "tolerance": 1e-09,
+  "channels_checked": [
+    {
+      "channel": "stellarator_09_materials__nb3sn_material__blanket__first_wall__wall_peak_calc__wall_load_peak",
+      "objective": null
+    },
+    {
+      "channel": "stellarator_09_materials__nb3sn_material__breeding_adequacy__defined_flag",
+      "objective": null
+    },
+    {
+      "channel": "stellarator_09_materials__nb3sn_material__breeding_adequacy__numerical_margin",
+      "objective": null
+    },
+    {
+      "channel": "stellarator_09_materials__nb3sn_material__buildings__layout__capacity_margin_units",
+      "objective": null
+    },
+    {
+      "channel": "stellarator_09_materials__nb3sn_material__buildings__layout__geometry_fit_margin_m",
+      "objective": null
+    },
+    {
+      "channel": "stellarator_09_materials__nb3sn_material__buildings__layout__initial_margin_days",
+      "objective": null
+    },
+    {
+      "channel": "stellarator_09_materials__nb3sn_material__buildings__layout__occupancy_area_margin_m2",
+      "objective": null
+    },
+    {
+      "channel": "stellarator_09_materials__nb3sn_material__buildings__layout__outage_margin_days",
+      "objective": null
+    },
+    {
+      "channel": "stellarator_09_materials__nb3sn_material__buildings__layout__parcel_fit_margin_m",
+      "objective": null
+    },
+    {
+      "channel": "stellarator_09_materials__nb3sn_material__buildings__layout__readiness_margin_days",
+      "objective": null
+    },
+    {
+      "channel": "stellarator_09_materials__nb3sn_material__buildings__layout__route_margin_m",
+      "objective": null
+    },
+    {
+      "channel": "stellarator_09_materials__nb3sn_material__buildings__layout__unused_material_capacity",
+      "objective": null
+    },
+    {
+      "channel": "stellarator_09_materials__nb3sn_material__cryoplant__aux_cooling__cryo_cost",
+      "objective": "cryo_capital"
+    },
+    {
+      "channel": "stellarator_09_materials__nb3sn_material__cryoplant__cold_stage_capability__evaluation_defined",
+      "objective": null
+    },
+    {
+      "channel": "stellarator_09_materials__nb3sn_material__cryoplant__cold_stage_capability__margin",
+      "objective": null
+    },
+    {
+      "channel": "stellarator_09_materials__nb3sn_material__cryoplant__direct_electric_capability__evaluation_defined",
+      "objective": null
+    },
+    {
+      "channel": "stellarator_09_materials__nb3sn_material__cryoplant__direct_electric_capability__margin",
+      "objective": null
+    },
+    {
+      "channel": "stellarator_09_materials__nb3sn_material__cryoplant__intercept_stage_capability__evaluation_defined",
+      "objective": null
+    },
+    {
+      "channel": "stellarator_09_materials__nb3sn_material__cryoplant__intercept_stage_capability__margin",
+      "objective": null
+    },
+    {
+      "channel": "stellarator_09_materials__nb3sn_material__cryoplant__refrigeration__capacity_margin",
+      "objective": null
+    },
+    {
+      "channel": "stellarator_09_materials__nb3sn_material__divertor__divheat__q_target_peak",
+      "objective": null
+    },
+    {
+      "channel": "stellarator_09_materials__nb3sn_material__electric_plant__electric_gross_capability__evaluation_defined",
+      "objective": null
+    },
+    {
+      "channel": "stellarator_09_materials__nb3sn_material__electric_plant__electric_gross_capability__margin",
+      "objective": null
+    },
+    {
+      "channel": "stellarator_09_materials__nb3sn_material__fuel_cycle__processing_cost__capacity_evaluation_defined",
+      "objective": null
+    },
+    {
+      "channel": "stellarator_09_materials__nb3sn_material__fuel_cycle__processing_cost__capacity_margin_kg_s",
+      "objective": null
+    },
+    {
+      "channel": "stellarator_09_materials__nb3sn_material__heat_rejection__cooling_water__condenser_water_gap_K",
+      "objective": null
+    },
+    {
+      "channel": "stellarator_09_materials__nb3sn_material__heat_rejection__water_electric_capability__evaluation_defined",
+      "objective": null
+    },
+    {
+      "channel": "stellarator_09_materials__nb3sn_material__heat_rejection__water_electric_capability__margin",
+      "objective": null
+    },
+    {
+      "channel": "stellarator_09_materials__nb3sn_material__heat_rejection__water_flow_capability__evaluation_defined",
+      "objective": null
+    },
+    {
+      "channel": "stellarator_09_materials__nb3sn_material__heat_rejection__water_flow_capability__margin",
+      "objective": null
+    },
+    {
+      "channel": "stellarator_09_materials__nb3sn_material__heat_rejection__water_head_capability__evaluation_defined",
+      "objective": null
+    },
+    {
+      "channel": "stellarator_09_materials__nb3sn_material__heat_rejection__water_head_capability__margin",
+      "objective": null
+    },
+    {
+      "channel": "stellarator_09_materials__nb3sn_material__heat_rejection__water_rejection_capability__evaluation_defined",
+      "objective": null
+    },
+    {
+      "channel": "stellarator_09_materials__nb3sn_material__heat_rejection__water_rejection_capability__margin",
+      "objective": null
+    },
+    {
+      "channel": "stellarator_09_materials__nb3sn_material__heat_transport__equipment__helium_represented_fill_margin_kg",
+      "objective": null
+    },
+    {
+      "channel": "stellarator_09_materials__nb3sn_material__heat_transport__equipment__ihx_capacity_defined",
+      "objective": null
+    },
+    {
+      "channel": "stellarator_09_materials__nb3sn_material__heat_transport__equipment__ihx_capacity_margin_m2",
+      "objective": null
+    },
+    {
+      "channel": "stellarator_09_materials__nb3sn_material__heat_transport__equipment__represented_fill_defined",
+      "objective": null
+    },
+    {
+      "channel": "stellarator_09_materials__nb3sn_material__heat_transport__equipment__salt_represented_fill_margin_kg",
+      "objective": null
+    },
+    {
+      "channel": "stellarator_09_materials__nb3sn_material__heat_transport__helium_electric_capability__evaluation_defined",
+      "objective": null
+    },
+    {
+      "channel": "stellarator_09_materials__nb3sn_material__heat_transport__helium_electric_capability__margin",
+      "objective": null
+    },
+    {
+      "channel": "stellarator_09_materials__nb3sn_material__heat_transport__helium_flow_capability__evaluation_defined",
+      "objective": null
+    },
+    {
+      "channel": "stellarator_09_materials__nb3sn_material__heat_transport__helium_flow_capability__margin",
+      "objective": null
+    },
+    {
+      "channel": "stellarator_09_materials__nb3sn_material__heat_transport__helium_pressure_rise_capability__evaluation_defined",
+      "objective": null
+    },
+    {
+      "channel": "stellarator_09_materials__nb3sn_material__heat_transport__helium_pressure_rise_capability__margin",
+      "objective": null
+    },
+    {
+      "channel": "stellarator_09_materials__nb3sn_material__heat_transport__helium_pumping_capability__evaluation_defined",
+      "objective": null
+    },
+    {
+      "channel": "stellarator_09_materials__nb3sn_material__heat_transport__helium_pumping_capability__margin",
+      "objective": null
+    },
+    {
+      "channel": "stellarator_09_materials__nb3sn_material__heat_transport__primary_loop__mdot_loop",
+      "objective": null
+    },
+    {
+      "channel": "stellarator_09_materials__nb3sn_material__heat_transport__primary_loop__p_loop_margin",
+      "objective": null
+    },
+    {
+      "channel": "stellarator_09_materials__nb3sn_material__heat_transport__salt_electric_capability__evaluation_defined",
+      "objective": null
+    },
+    {
+      "channel": "stellarator_09_materials__nb3sn_material__heat_transport__salt_electric_capability__margin",
+      "objective": null
+    },
+    {
+      "channel": "stellarator_09_materials__nb3sn_material__heat_transport__salt_flow_capability__evaluation_defined",
+      "objective": null
+    },
+    {
+      "channel": "stellarator_09_materials__nb3sn_material__heat_transport__salt_flow_capability__margin",
+      "objective": null
+    },
+    {
+      "channel": "stellarator_09_materials__nb3sn_material__heat_transport__salt_head_capability__evaluation_defined",
+      "objective": null
+    },
+    {
+      "channel": "stellarator_09_materials__nb3sn_material__heat_transport__salt_head_capability__margin",
+      "objective": null
+    },
+    {
+      "channel": "stellarator_09_materials__nb3sn_material__heat_transport__salt_shaft_capability__evaluation_defined",
+      "objective": null
+    },
+    {
+      "channel": "stellarator_09_materials__nb3sn_material__heat_transport__salt_shaft_capability__margin",
+      "objective": null
+    },
+    {
+      "channel": "stellarator_09_materials__nb3sn_material__heating__heat__p_coupled",
+      "objective": null
+    },
+    {
+      "channel": "stellarator_09_materials__nb3sn_material__lcoe_calc__lcoe",
+      "objective": "lcoe"
+    },
+    {
+      "channel": "stellarator_09_materials__nb3sn_material__magnet__area__cu_margin",
+      "objective": null
+    },
+    {
+      "channel": "stellarator_09_materials__nb3sn_material__magnet__area__fit_margin",
+      "objective": null
+    },
+    {
+      "channel": "stellarator_09_materials__nb3sn_material__magnet__area__steel_margin",
+      "objective": null
+    },
+    {
+      "channel": "stellarator_09_materials__nb3sn_material__magnet__cond_strain__eps_cond",
+      "objective": null
+    },
+    {
+      "channel": "stellarator_09_materials__nb3sn_material__magnet__conductor__acceptance_margin",
+      "objective": null
+    },
+    {
+      "channel": "stellarator_09_materials__nb3sn_material__magnet__conductor__supported",
+      "objective": null
+    },
+    {
+      "channel": "stellarator_09_materials__nb3sn_material__magnet__magnet_capital_rollup__capital_cost",
+      "objective": "magnet_capital"
+    },
+    {
+      "channel": "stellarator_09_materials__nb3sn_material__magnet__pack_field__ampere_floor_margin",
+      "objective": null
+    },
+    {
+      "channel": "stellarator_09_materials__nb3sn_material__magnet__peak_field_calc__B_peak",
+      "objective": null
+    },
+    {
+      "channel": "stellarator_09_materials__nb3sn_material__magnet__wp_fit__minimum_margin",
+      "objective": null
+    },
+    {
+      "channel": "stellarator_09_materials__nb3sn_material__magnet__wp_stress__sigma_wp",
+      "objective": null
+    },
+    {
+      "channel": "stellarator_09_materials__nb3sn_material__pb__p_net",
+      "objective": "p_net"
+    },
+    {
+      "channel": "stellarator_09_materials__nb3sn_material__pb__rec_frac",
+      "objective": null
+    },
+    {
+      "channel": "stellarator_09_materials__nb3sn_material__plasma__beta_calc__beta",
+      "objective": null
+    },
+    {
+      "channel": "stellarator_09_materials__nb3sn_material__plasma__sustain__p_aux_required",
+      "objective": "p_aux_required"
+    },
+    {
+      "channel": "stellarator_09_materials__nb3sn_material__power_supplies__magnet_pf_electric_capability__evaluation_defined",
+      "objective": null
+    },
+    {
+      "channel": "stellarator_09_materials__nb3sn_material__power_supplies__magnet_pf_electric_capability__margin",
+      "objective": null
+    },
+    {
+      "channel": "stellarator_09_materials__nb3sn_material__power_supplies__magnet_tf_electric_capability__evaluation_defined",
+      "objective": null
+    },
+    {
+      "channel": "stellarator_09_materials__nb3sn_material__power_supplies__magnet_tf_electric_capability__margin",
+      "objective": null
+    },
+    {
+      "channel": "stellarator_09_materials__nb3sn_material__total_capital__total_capital",
+      "objective": "total_capital"
+    },
+    {
+      "channel": "stellarator_09_materials__nb3sn_material__turbine__condensate_electric_capability__evaluation_defined",
+      "objective": null
+    },
+    {
+      "channel": "stellarator_09_materials__nb3sn_material__turbine__condensate_electric_capability__margin",
+      "objective": null
+    },
+    {
+      "channel": "stellarator_09_materials__nb3sn_material__turbine__condensate_flow_capability__evaluation_defined",
+      "objective": null
+    },
+    {
+      "channel": "stellarator_09_materials__nb3sn_material__turbine__condensate_flow_capability__margin",
+      "objective": null
+    },
+    {
+      "channel": "stellarator_09_materials__nb3sn_material__turbine__condensate_pressure_rise_capability__evaluation_defined",
+      "objective": null
+    },
+    {
+      "channel": "stellarator_09_materials__nb3sn_material__turbine__condensate_pressure_rise_capability__margin",
+      "objective": null
+    },
+    {
+      "channel": "stellarator_09_materials__nb3sn_material__turbine__condenser_rejection_capability__evaluation_defined",
+      "objective": null
+    },
+    {
+      "channel": "stellarator_09_materials__nb3sn_material__turbine__condenser_rejection_capability__margin",
+      "objective": null
+    },
+    {
+      "channel": "stellarator_09_materials__nb3sn_material__turbine__cycle__domain_product",
+      "objective": null
+    },
+    {
+      "channel": "stellarator_09_materials__nb3sn_material__turbine__feedwater_electric_capability__evaluation_defined",
+      "objective": null
+    },
+    {
+      "channel": "stellarator_09_materials__nb3sn_material__turbine__feedwater_electric_capability__margin",
+      "objective": null
+    },
+    {
+      "channel": "stellarator_09_materials__nb3sn_material__turbine__feedwater_flow_capability__evaluation_defined",
+      "objective": null
+    },
+    {
+      "channel": "stellarator_09_materials__nb3sn_material__turbine__feedwater_flow_capability__margin",
+      "objective": null
+    },
+    {
+      "channel": "stellarator_09_materials__nb3sn_material__turbine__feedwater_pressure_rise_capability__evaluation_defined",
+      "objective": null
+    },
+    {
+      "channel": "stellarator_09_materials__nb3sn_material__turbine__feedwater_pressure_rise_capability__margin",
+      "objective": null
+    },
+    {
+      "channel": "stellarator_09_materials__nb3sn_material__turbine__hp_flow_capability__evaluation_defined",
+      "objective": null
+    },
+    {
+      "channel": "stellarator_09_materials__nb3sn_material__turbine__hp_flow_capability__margin",
+      "objective": null
+    },
+    {
+      "channel": "stellarator_09_materials__nb3sn_material__turbine__hp_shaft_capability__evaluation_defined",
+      "objective": null
+    },
+    {
+      "channel": "stellarator_09_materials__nb3sn_material__turbine__hp_shaft_capability__margin",
+      "objective": null
+    },
+    {
+      "channel": "stellarator_09_materials__nb3sn_material__turbine__lp_flow_capability__evaluation_defined",
+      "objective": null
+    },
+    {
+      "channel": "stellarator_09_materials__nb3sn_material__turbine__lp_flow_capability__margin",
+      "objective": null
+    },
+    {
+      "channel": "stellarator_09_materials__nb3sn_material__turbine__lp_shaft_capability__evaluation_defined",
+      "objective": null
+    },
+    {
+      "channel": "stellarator_09_materials__nb3sn_material__turbine__lp_shaft_capability__margin",
+      "objective": null
+    },
+    {
+      "channel": "stellarator_09_materials__nb3sn_material__turbine__main_UA_capability__evaluation_defined",
+      "objective": null
+    },
+    {
+      "channel": "stellarator_09_materials__nb3sn_material__turbine__main_UA_capability__margin",
+      "objective": null
+    },
+    {
+      "channel": "stellarator_09_materials__nb3sn_material__turbine__matched_cycle__main_min_gap_K",
+      "objective": null
+    },
+    {
+      "channel": "stellarator_09_materials__nb3sn_material__turbine__matched_cycle__reheat_min_gap_K",
+      "objective": null
+    },
+    {
+      "channel": "stellarator_09_materials__nb3sn_material__turbine__reheat_UA_capability__evaluation_defined",
+      "objective": null
+    },
+    {
+      "channel": "stellarator_09_materials__nb3sn_material__turbine__reheat_UA_capability__margin",
+      "objective": null
+    },
+    {
+      "channel": "stellarator_09_materials__nb3sn_material__turbine__turbine_gross_capability__evaluation_defined",
+      "objective": null
+    },
+    {
+      "channel": "stellarator_09_materials__nb3sn_material__turbine__turbine_gross_capability__margin",
+      "objective": null
+    }
+  ],
+  "verdicts_rederived": true,
+  "constraints_rederived": [
+    {
+      "constraint_id": "stellarator_09_materials__nb3sn_material__beta_ok__a6d1355f00db8834",
+      "source_local_identity": "beta_ok",
+      "operands_resolved": 2
+    },
+    {
+      "constraint_id": "stellarator_09_materials__nb3sn_material__burn_hold_ok__8a46a7e0aeda985a",
+      "source_local_identity": "burn_hold_ok",
+      "operands_resolved": 1
+    },
+    {
+      "constraint_id": "stellarator_09_materials__nb3sn_material__cold_stage_capacity_ok__53d0507e047820a1",
+      "source_local_identity": "cold_stage_capacity_ok",
+      "operands_resolved": 2
+    },
+    {
+      "constraint_id": "stellarator_09_materials__nb3sn_material__cond_strain_ok__404dca1f50a13e3a",
+      "source_local_identity": "cond_strain_ok",
+      "operands_resolved": 2
+    },
+    {
+      "constraint_id": "stellarator_09_materials__nb3sn_material__condensate_electric_capacity_ok__886bd4436560bb81",
+      "source_local_identity": "condensate_electric_capacity_ok",
+      "operands_resolved": 2
+    },
+    {
+      "constraint_id": "stellarator_09_materials__nb3sn_material__condensate_flow_capacity_ok__ced096a46a13bff0",
+      "source_local_identity": "condensate_flow_capacity_ok",
+      "operands_resolved": 2
+    },
+    {
+      "constraint_id": "stellarator_09_materials__nb3sn_material__condensate_pressure_rise_capacity_ok__4758ab1d486197ab",
+      "source_local_identity": "condensate_pressure_rise_capacity_ok",
+      "operands_resolved": 2
+    },
+    {
+      "constraint_id": "stellarator_09_materials__nb3sn_material__condenser_rejection_capacity_ok__27ac304fc5982908",
+      "source_local_identity": "condenser_rejection_capacity_ok",
+      "operands_resolved": 2
+    },
+    {
+      "constraint_id": "stellarator_09_materials__nb3sn_material__cooling_water_heat_direction__96754d6cc5733ef5",
+      "source_local_identity": "cooling_water_heat_direction",
+      "operands_resolved": 2
+    },
+    {
+      "constraint_id": "stellarator_09_materials__nb3sn_material__cryoplant__capacity_ok__8830dacf5e39e904",
+      "source_local_identity": "capacity_ok",
+      "operands_resolved": 1
+    },
+    {
+      "constraint_id": "stellarator_09_materials__nb3sn_material__cycle_domain_ok__76acde2a26a78109",
+      "source_local_identity": "cycle_domain_ok",
+      "operands_resolved": 1
+    },
+    {
+      "constraint_id": "stellarator_09_materials__nb3sn_material__direct_electric_capacity_ok__a285e66b19ed2cb4",
+      "source_local_identity": "direct_electric_capacity_ok",
+      "operands_resolved": 2
+    },
+    {
+      "constraint_id": "stellarator_09_materials__nb3sn_material__divertor_heat_ok__84770e9a36dc1b57",
+      "source_local_identity": "divertor_heat_ok",
+      "operands_resolved": 2
+    },
+    {
+      "constraint_id": "stellarator_09_materials__nb3sn_material__electric_gross_capacity_ok__488a485d1eb1e88b",
+      "source_local_identity": "electric_gross_capacity_ok",
+      "operands_resolved": 2
+    },
+    {
+      "constraint_id": "stellarator_09_materials__nb3sn_material__facility_capacity_ok__6d4fb7d42a36d0a7",
+      "source_local_identity": "facility_capacity_ok",
+      "operands_resolved": 1
+    },
+    {
+      "constraint_id": "stellarator_09_materials__nb3sn_material__facility_geometry_ok__14b78dfe909c8501",
+      "source_local_identity": "facility_geometry_ok",
+      "operands_resolved": 1
+    },
+    {
+      "constraint_id": "stellarator_09_materials__nb3sn_material__facility_initial_ready__bd8b5a0e4ec512f7",
+      "source_local_identity": "facility_initial_ready",
+      "operands_resolved": 1
+    },
+    {
+      "constraint_id": "stellarator_09_materials__nb3sn_material__facility_material_capacity_ok__c7de34bf2e881cc4",
+      "source_local_identity": "facility_material_capacity_ok",
+      "operands_resolved": 1
+    },
+    {
+      "constraint_id": "stellarator_09_materials__nb3sn_material__facility_occupancy_ok__e81ea8f8cf26823a",
+      "source_local_identity": "facility_occupancy_ok",
+      "operands_resolved": 1
+    },
+    {
+      "constraint_id": "stellarator_09_materials__nb3sn_material__facility_outage_ok__93bfd834822ee642",
+      "source_local_identity": "facility_outage_ok",
+      "operands_resolved": 1
+    },
+    {
+      "constraint_id": "stellarator_09_materials__nb3sn_material__facility_parcel_ok__99f0ef2cd6538d03",
+      "source_local_identity": "facility_parcel_ok",
+      "operands_resolved": 1
+    },
+    {
+      "constraint_id": "stellarator_09_materials__nb3sn_material__facility_replacement_ready__7aa76b338808935e",
+      "source_local_identity": "facility_replacement_ready",
+      "operands_resolved": 1
+    },
+    {
+      "constraint_id": "stellarator_09_materials__nb3sn_material__facility_routes_ok__50ce1d1c00491ff5",
+      "source_local_identity": "facility_routes_ok",
+      "operands_resolved": 1
+    },
+    {
+      "constraint_id": "stellarator_09_materials__nb3sn_material__feedwater_electric_capacity_ok__c45a8ca67324291d",
+      "source_local_identity": "feedwater_electric_capacity_ok",
+      "operands_resolved": 2
+    },
+    {
+      "constraint_id": "stellarator_09_materials__nb3sn_material__feedwater_flow_capacity_ok__3bcdd6d04c7a0abb",
+      "source_local_identity": "feedwater_flow_capacity_ok",
+      "operands_resolved": 2
+    },
+    {
+      "constraint_id": "stellarator_09_materials__nb3sn_material__feedwater_pressure_rise_capacity_ok__92e4f80e79613b88",
+      "source_local_identity": "feedwater_pressure_rise_capacity_ok",
+      "operands_resolved": 2
+    },
+    {
+      "constraint_id": "stellarator_09_materials__nb3sn_material__fuel_processing_capacity_ok__d36667b777c42fe9",
+      "source_local_identity": "fuel_processing_capacity_ok",
+      "operands_resolved": 2
+    },
+    {
+      "constraint_id": "stellarator_09_materials__nb3sn_material__heating_couple_positive_ok__31dbd874e3b68e88",
+      "source_local_identity": "heating_couple_positive_ok",
+      "operands_resolved": 1
+    },
+    {
+      "constraint_id": "stellarator_09_materials__nb3sn_material__heating_couple_upper_ok__0e4c29c53a56780e",
+      "source_local_identity": "heating_couple_upper_ok",
+      "operands_resolved": 1
+    },
+    {
+      "constraint_id": "stellarator_09_materials__nb3sn_material__heating_source_positive_ok__d489a4b936f894ba",
+      "source_local_identity": "heating_source_positive_ok",
+      "operands_resolved": 1
+    },
+    {
+      "constraint_id": "stellarator_09_materials__nb3sn_material__heating_source_upper_ok__91d002eb84ef7479",
+      "source_local_identity": "heating_source_upper_ok",
+      "operands_resolved": 1
+    },
+    {
+      "constraint_id": "stellarator_09_materials__nb3sn_material__helium_electric_capacity_ok__b6ae0d7d280eacb4",
+      "source_local_identity": "helium_electric_capacity_ok",
+      "operands_resolved": 2
+    },
+    {
+      "constraint_id": "stellarator_09_materials__nb3sn_material__helium_flow_capacity_ok__631fba08153122f2",
+      "source_local_identity": "helium_flow_capacity_ok",
+      "operands_resolved": 2
+    },
+    {
+      "constraint_id": "stellarator_09_materials__nb3sn_material__helium_pressure_rise_capacity_ok__4bbd03d1c0fdffdc",
+      "source_local_identity": "helium_pressure_rise_capacity_ok",
+      "operands_resolved": 2
+    },
+    {
+      "constraint_id": "stellarator_09_materials__nb3sn_material__helium_pumping_capacity_ok__e41cbf588edbe7d8",
+      "source_local_identity": "helium_pumping_capacity_ok",
+      "operands_resolved": 2
+    },
+    {
+      "constraint_id": "stellarator_09_materials__nb3sn_material__hp_flow_capacity_ok__cc7e78dbd3c706de",
+      "source_local_identity": "hp_flow_capacity_ok",
+      "operands_resolved": 2
+    },
+    {
+      "constraint_id": "stellarator_09_materials__nb3sn_material__hp_shaft_capacity_ok__06729372362a4c6b",
+      "source_local_identity": "hp_shaft_capacity_ok",
+      "operands_resolved": 2
+    },
+    {
+      "constraint_id": "stellarator_09_materials__nb3sn_material__ihx_capacity_ok__e4869509b6443c3b",
+      "source_local_identity": "ihx_capacity_ok",
+      "operands_resolved": 2
+    },
+    {
+      "constraint_id": "stellarator_09_materials__nb3sn_material__intercept_stage_capacity_ok__94f24b6c7d86d868",
+      "source_local_identity": "intercept_stage_capacity_ok",
+      "operands_resolved": 2
+    },
+    {
+      "constraint_id": "stellarator_09_materials__nb3sn_material__loop_capacity_ok__a12ef69878182648",
+      "source_local_identity": "loop_capacity_ok",
+      "operands_resolved": 2
+    },
+    {
+      "constraint_id": "stellarator_09_materials__nb3sn_material__loop_pressure_ok__f97fa1dc432c78ba",
+      "source_local_identity": "loop_pressure_ok",
+      "operands_resolved": 1
+    },
+    {
+      "constraint_id": "stellarator_09_materials__nb3sn_material__lp_flow_capacity_ok__b9357da3012ec632",
+      "source_local_identity": "lp_flow_capacity_ok",
+      "operands_resolved": 2
+    },
+    {
+      "constraint_id": "stellarator_09_materials__nb3sn_material__lp_shaft_capacity_ok__ef6a20387b2fc647",
+      "source_local_identity": "lp_shaft_capacity_ok",
+      "operands_resolved": 2
+    },
+    {
+      "constraint_id": "stellarator_09_materials__nb3sn_material__magnet__acceptance_ok__0f682bc3436c0794",
+      "source_local_identity": "acceptance_ok",
+      "operands_resolved": 2
+    },
+    {
+      "constraint_id": "stellarator_09_materials__nb3sn_material__magnet__ampere_floor_ok__bbe387e1eb85f9b9",
+      "source_local_identity": "ampere_floor_ok",
+      "operands_resolved": 1
+    },
+    {
+      "constraint_id": "stellarator_09_materials__nb3sn_material__magnet__copper_ok__be9121bc3fcdea7a",
+      "source_local_identity": "copper_ok",
+      "operands_resolved": 1
+    },
+    {
+      "constraint_id": "stellarator_09_materials__nb3sn_material__magnet__pack_area_ok__51632f8f2a7b1d5f",
+      "source_local_identity": "pack_area_ok",
+      "operands_resolved": 1
+    },
+    {
+      "constraint_id": "stellarator_09_materials__nb3sn_material__magnet__steel_ok__3f894fc95501d96d",
+      "source_local_identity": "steel_ok",
+      "operands_resolved": 1
+    },
+    {
+      "constraint_id": "stellarator_09_materials__nb3sn_material__magnet_pf_electric_capacity_ok__ca95b633e7cc10d5",
+      "source_local_identity": "magnet_pf_electric_capacity_ok",
+      "operands_resolved": 2
+    },
+    {
+      "constraint_id": "stellarator_09_materials__nb3sn_material__magnet_tf_electric_capacity_ok__e99855ae6bf1b46e",
+      "source_local_identity": "magnet_tf_electric_capacity_ok",
+      "operands_resolved": 2
+    },
+    {
+      "constraint_id": "stellarator_09_materials__nb3sn_material__main_UA_capacity_ok__5ee8c284f5da46ad",
+      "source_local_identity": "main_UA_capacity_ok",
+      "operands_resolved": 2
+    },
+    {
+      "constraint_id": "stellarator_09_materials__nb3sn_material__matched_main_heat_direction__67f41575de96bd94",
+      "source_local_identity": "matched_main_heat_direction",
+      "operands_resolved": 2
+    },
+    {
+      "constraint_id": "stellarator_09_materials__nb3sn_material__matched_reheat_heat_direction__9cff90d247be59e3",
+      "source_local_identity": "matched_reheat_heat_direction",
+      "operands_resolved": 2
+    },
+    {
+      "constraint_id": "stellarator_09_materials__nb3sn_material__net_positive__2ff2061dd70a24f7",
+      "source_local_identity": "net_positive",
+      "operands_resolved": 1
+    },
+    {
+      "constraint_id": "stellarator_09_materials__nb3sn_material__peak_field_ok__1fcd44510d5ceb9a",
+      "source_local_identity": "peak_field_ok",
+      "operands_resolved": 2
+    },
+    {
+      "constraint_id": "stellarator_09_materials__nb3sn_material__recirc_ok__097dfc7574999504",
+      "source_local_identity": "recirc_ok",
+      "operands_resolved": 2
+    },
+    {
+      "constraint_id": "stellarator_09_materials__nb3sn_material__reference_conductor_current_ok__ed9bbbfb7399171f",
+      "source_local_identity": "reference_conductor_current_ok",
+      "operands_resolved": 1
+    },
+    {
+      "constraint_id": "stellarator_09_materials__nb3sn_material__reheat_UA_capacity_ok__3832be39603086f5",
+      "source_local_identity": "reheat_UA_capacity_ok",
+      "operands_resolved": 2
+    },
+    {
+      "constraint_id": "stellarator_09_materials__nb3sn_material__represented_coolant_fill_ok__81ed94010b513177",
+      "source_local_identity": "represented_coolant_fill_ok",
+      "operands_resolved": 3
+    },
+    {
+      "constraint_id": "stellarator_09_materials__nb3sn_material__salt_electric_capacity_ok__320f302447d67a70",
+      "source_local_identity": "salt_electric_capacity_ok",
+      "operands_resolved": 2
+    },
+    {
+      "constraint_id": "stellarator_09_materials__nb3sn_material__salt_flow_capacity_ok__090e097c99199295",
+      "source_local_identity": "salt_flow_capacity_ok",
+      "operands_resolved": 2
+    },
+    {
+      "constraint_id": "stellarator_09_materials__nb3sn_material__salt_head_capacity_ok__a3f15f8c47fee4d0",
+      "source_local_identity": "salt_head_capacity_ok",
+      "operands_resolved": 2
+    },
+    {
+      "constraint_id": "stellarator_09_materials__nb3sn_material__salt_shaft_capacity_ok__316c1c5c7f51a07c",
+      "source_local_identity": "salt_shaft_capacity_ok",
+      "operands_resolved": 2
+    },
+    {
+      "constraint_id": "stellarator_09_materials__nb3sn_material__sustainment_ok__1a778604648c352e",
+      "source_local_identity": "sustainment_ok",
+      "operands_resolved": 2
+    },
+    {
+      "constraint_id": "stellarator_09_materials__nb3sn_material__tbr_ok__d57174176b5d2862",
+      "source_local_identity": "tbr_ok",
+      "operands_resolved": 2
+    },
+    {
+      "constraint_id": "stellarator_09_materials__nb3sn_material__turbine_gross_capacity_ok__946403aa70c1c824",
+      "source_local_identity": "turbine_gross_capacity_ok",
+      "operands_resolved": 2
+    },
+    {
+      "constraint_id": "stellarator_09_materials__nb3sn_material__wall_load_ok__41289e190845d753",
+      "source_local_identity": "wall_load_ok",
+      "operands_resolved": 2
+    },
+    {
+      "constraint_id": "stellarator_09_materials__nb3sn_material__water_electric_capacity_ok__d2e2ee4a515ad778",
+      "source_local_identity": "water_electric_capacity_ok",
+      "operands_resolved": 2
+    },
+    {
+      "constraint_id": "stellarator_09_materials__nb3sn_material__water_flow_capacity_ok__71de9e2671863dbc",
+      "source_local_identity": "water_flow_capacity_ok",
+      "operands_resolved": 2
+    },
+    {
+      "constraint_id": "stellarator_09_materials__nb3sn_material__water_head_capacity_ok__148d2392c7e3b09e",
+      "source_local_identity": "water_head_capacity_ok",
+      "operands_resolved": 2
+    },
+    {
+      "constraint_id": "stellarator_09_materials__nb3sn_material__water_rejection_capacity_ok__f150ed41745d4a0f",
+      "source_local_identity": "water_rejection_capacity_ok",
+      "operands_resolved": 2
+    },
+    {
+      "constraint_id": "stellarator_09_materials__nb3sn_material__wp_fit_ok__11c66596aad579df",
+      "source_local_identity": "wp_fit_ok",
+      "operands_resolved": 1
+    },
+    {
+      "constraint_id": "stellarator_09_materials__nb3sn_material__wp_stress_ok__c61cade8f669c8f2",
+      "source_local_identity": "wp_stress_ok",
+      "operands_resolved": 2
+    }
+  ],
+  "verdict_mismatches": [],
+  "not_independently_verified": [],
+  "worst_channel_rel_dev": 5.562286965502317e-09,
+  "outcome": "pass",
+  "absolute_tolerances": [
+    {
+      "channel": "stellarator_09_materials__nb3sn_material__magnet__conductor__acceptance_margin",
+      "value": 1e-09,
+      "units": "K (temperature rule: T_cs - T_supply - 0.7 K - 1.5 K)",
+      "basis": "plant-contract.md r5a section 9: every recorded channel compared at 1e-9 relative or 1e-9 absolute per unit of the channel, whichever is looser (Round 1's clause, restored after the Nb3Sn seam refused at gate 8); the offer policy sizes this margin at allowance, where a relative test alone measures the package's root tolerance or rounding, not disagreement"
+    },
+    {
+      "channel": "stellarator_09_materials__nb3sn_material__magnet__area__fit_margin",
+      "value": 1e-09,
+      "units": "mm^2 per turn",
+      "basis": "plant-contract.md r5a section 9: every recorded channel compared at 1e-9 relative or 1e-9 absolute per unit of the channel, whichever is looser (Round 1's clause, restored after the Nb3Sn seam refused at gate 8); the offer policy sizes this margin at allowance, where a relative test alone measures the package's root tolerance or rounding, not disagreement"
+    },
+    {
+      "channel": "stellarator_09_materials__nb3sn_material__magnet__area__cu_margin",
+      "value": 1e-09,
+      "units": "mm^2 per turn",
+      "basis": "plant-contract.md r5a section 9: every recorded channel compared at 1e-9 relative or 1e-9 absolute per unit of the channel, whichever is looser (Round 1's clause, restored after the Nb3Sn seam refused at gate 8); the offer policy sizes this margin at allowance, where a relative test alone measures the package's root tolerance or rounding, not disagreement"
+    },
+    {
+      "channel": "stellarator_09_materials__nb3sn_material__magnet__area__steel_margin",
+      "value": 1e-09,
+      "units": "mm^2 per turn",
+      "basis": "plant-contract.md r5a section 9: every recorded channel compared at 1e-9 relative or 1e-9 absolute per unit of the channel, whichever is looser (Round 1's clause, restored after the Nb3Sn seam refused at gate 8); the offer policy sizes this margin at allowance, where a relative test alone measures the package's root tolerance or rounding, not disagreement"
+    }
+  ]
+}

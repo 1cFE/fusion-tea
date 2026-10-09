@@ -1,0 +1,706 @@
+{
+  "date": "2026-10-07",
+  "commit": "8efe17e05ee0c45c55c3600ccbd534eacaea706b",
+  "exit_code": 1,
+  "passed": 5717,
+  "failed": 148,
+  "errors": 24,
+  "skipped": 58,
+  "xfailed": 1,
+  "warnings": 660,
+  "duration_seconds": 7377.55,
+  "license_expired_occurrences": 0,
+  "credential_source": "/home/reid/1cfe/fusion-tea/.env",
+  "log": "/tmp/20261007-pre-pr-full-tests-corrected.log",
+  "log_sha256": "6c7e2afa43eb810e33fb860bc358d03ba37578183ff142b05950523c5ce26435",
+  "failures": [
+    {
+      "kind": "FAILED",
+      "node": "tests/models/test_mfe_financial_rate_limits.py::test_current_regeneration_refuses_nonfresh_without_mutation[visible]"
+    },
+    {
+      "kind": "FAILED",
+      "node": "tests/models/test_mfe_financial_rate_limits.py::test_current_regeneration_refuses_nonfresh_without_mutation[hidden]"
+    },
+    {
+      "kind": "FAILED",
+      "node": "tests/models/test_mfe_major_radius.py::test_binding_documentation_and_source_preservation"
+    },
+    {
+      "kind": "FAILED",
+      "node": "tests/models/test_mfe_major_radius.py::test_current_contract_edges_and_fresh_package_agreement"
+    },
+    {
+      "kind": "FAILED",
+      "node": "tests/scoring_v2/test_cost_model.py::test_dollars_dominated_subsystem_matches_design_expectation"
+    },
+    {
+      "kind": "FAILED",
+      "node": "tests/scoring_v2/test_modularity.py::test_v5_anchor[07-maglif-4.93-Pacific MagLIF]"
+    },
+    {
+      "kind": "FAILED",
+      "node": "tests/scoring_v2/test_modularity.py::test_v5_anchor[37-magnetized-target-inertial-fusion-mtif-5.0-NearStar MTIF]"
+    },
+    {
+      "kind": "FAILED",
+      "node": "tests/scoring_v2/test_modularity.py::test_all_concepts_within_tolerance"
+    },
+    {
+      "kind": "FAILED",
+      "node": "tests/scoring_v2/test_modularity.py::test_corpus_mean_drift_under_threshold"
+    },
+    {
+      "kind": "FAILED",
+      "node": "tests/scoring_v2/test_modularity.py::test_all_lookup_keys_resolve_for_all_concepts"
+    },
+    {
+      "kind": "FAILED",
+      "node": "tests/scoring_v2/test_normalization.py::test_normalization_preserves_per_concept_ordering_within_tier"
+    },
+    {
+      "kind": "FAILED",
+      "node": "tests/scoring_v2/test_score_explorer_build.py::test_build_emits_concepts_json"
+    },
+    {
+      "kind": "FAILED",
+      "node": "tests/scoring_v2/test_score_explorer_build.py::test_excluded_concept_absent_from_ui"
+    },
+    {
+      "kind": "FAILED",
+      "node": "tests/scoring_v2/test_score_explorer_build.py::test_all_concepts_score_all_seven_axes"
+    },
+    {
+      "kind": "FAILED",
+      "node": "tests/scoring_v2/test_spec_conformance.py::TestSpecPredictedScoresLand::test_predicted_score_matches[upper_cf-01-hts-compact-tokamak-3.5]"
+    },
+    {
+      "kind": "FAILED",
+      "node": "tests/scoring_v2/test_spec_conformance.py::TestSpecPredictedScoresLand::test_predicted_score_matches[upper_cf-02-acoustic-icf-sonofusion-3.5]"
+    },
+    {
+      "kind": "FAILED",
+      "node": "tests/scoring_v2/test_spec_conformance.py::TestSpecPredictedScoresLand::test_predicted_score_matches[upper_cf-03-laser-icf-liquid-jet-target-3.5]"
+    },
+    {
+      "kind": "FAILED",
+      "node": "tests/scoring_v2/test_spec_conformance.py::TestSpecPredictedScoresLand::test_predicted_score_matches[upper_cf-04-laser-icf-4.5]"
+    },
+    {
+      "kind": "FAILED",
+      "node": "tests/scoring_v2/test_spec_conformance.py::TestSpecPredictedScoresLand::test_predicted_score_matches[upper_cf-05-planar-coil-stellarator-3.5]"
+    },
+    {
+      "kind": "FAILED",
+      "node": "tests/scoring_v2/test_spec_conformance.py::TestSpecPredictedScoresLand::test_predicted_score_matches[upper_cf-07-maglif-3.0]"
+    },
+    {
+      "kind": "FAILED",
+      "node": "tests/scoring_v2/test_spec_conformance.py::TestSpecPredictedScoresLand::test_predicted_score_matches[upper_cf-08-frc-w-direct-conversion-4.5]"
+    },
+    {
+      "kind": "FAILED",
+      "node": "tests/scoring_v2/test_spec_conformance.py::TestSpecPredictedScoresLand::test_predicted_score_matches[upper_cf-09-qi-stellarator-hts-3.5]"
+    },
+    {
+      "kind": "FAILED",
+      "node": "tests/scoring_v2/test_spec_conformance.py::TestSpecPredictedScoresLand::test_predicted_score_matches[upper_cf-10-large-scale-stellarator-3.5]"
+    },
+    {
+      "kind": "FAILED",
+      "node": "tests/scoring_v2/test_spec_conformance.py::TestSpecPredictedScoresLand::test_predicted_score_matches[upper_cf-11-magnetic-mirror-3.5]"
+    },
+    {
+      "kind": "FAILED",
+      "node": "tests/scoring_v2/test_spec_conformance.py::TestSpecPredictedScoresLand::test_predicted_score_matches[upper_cf-12-levitated-dipole-3.5]"
+    },
+    {
+      "kind": "FAILED",
+      "node": "tests/scoring_v2/test_spec_conformance.py::TestSpecPredictedScoresLand::test_predicted_score_matches[upper_cf-13-electrostatic-hybrid-3.5]"
+    },
+    {
+      "kind": "FAILED",
+      "node": "tests/scoring_v2/test_spec_conformance.py::TestSpecPredictedScoresLand::test_predicted_score_matches[upper_cf-14-magnetized-target-fusion-pneumatic-compression-3.5]"
+    },
+    {
+      "kind": "FAILED",
+      "node": "tests/scoring_v2/test_spec_conformance.py::TestSpecPredictedScoresLand::test_predicted_score_matches[upper_cf-15-sheared-flow-stabilized-z-pinch-3.5]"
+    },
+    {
+      "kind": "FAILED",
+      "node": "tests/scoring_v2/test_spec_conformance.py::TestSpecPredictedScoresLand::test_predicted_score_matches[upper_cf-16-muon-catalyzed-fusion-3.5]"
+    },
+    {
+      "kind": "FAILED",
+      "node": "tests/scoring_v2/test_spec_conformance.py::TestSpecPredictedScoresLand::test_predicted_score_matches[upper_cf-17a-laser-icf-hybrid-drive-3.0]"
+    },
+    {
+      "kind": "FAILED",
+      "node": "tests/scoring_v2/test_spec_conformance.py::TestSpecPredictedScoresLand::test_predicted_score_matches[upper_cf-17b-laser-icf-fast-ignition-3.0]"
+    },
+    {
+      "kind": "FAILED",
+      "node": "tests/scoring_v2/test_spec_conformance.py::TestSpecPredictedScoresLand::test_predicted_score_matches[upper_cf-20a-type-one-stellarator-3.5]"
+    },
+    {
+      "kind": "FAILED",
+      "node": "tests/scoring_v2/test_spec_conformance.py::TestSpecPredictedScoresLand::test_predicted_score_matches[upper_cf-20b-renaissance-stellarator-3.5]"
+    },
+    {
+      "kind": "FAILED",
+      "node": "tests/scoring_v2/test_spec_conformance.py::TestSpecPredictedScoresLand::test_predicted_score_matches[upper_cf-21-spherical-tokamak-hts-3.5]"
+    },
+    {
+      "kind": "FAILED",
+      "node": "tests/scoring_v2/test_spec_conformance.py::TestSpecPredictedScoresLand::test_predicted_score_matches[upper_cf-22-projectile-icf-3.5]"
+    },
+    {
+      "kind": "FAILED",
+      "node": "tests/scoring_v2/test_spec_conformance.py::TestSpecPredictedScoresLand::test_predicted_score_matches[upper_cf-23-laser-icf-nanostructured-target-4.5]"
+    },
+    {
+      "kind": "FAILED",
+      "node": "tests/scoring_v2/test_spec_conformance.py::TestSpecPredictedScoresLand::test_predicted_score_matches[upper_cf-24-dense-plasma-focus-4.5]"
+    },
+    {
+      "kind": "FAILED",
+      "node": "tests/scoring_v2/test_spec_conformance.py::TestSpecPredictedScoresLand::test_predicted_score_matches[upper_cf-25-heavy-ion-beam-icf-3.5]"
+    },
+    {
+      "kind": "FAILED",
+      "node": "tests/scoring_v2/test_spec_conformance.py::TestSpecPredictedScoresLand::test_predicted_score_matches[upper_cf-26-laser-icf-indirect-drive-3.5]"
+    },
+    {
+      "kind": "FAILED",
+      "node": "tests/scoring_v2/test_spec_conformance.py::TestSpecPredictedScoresLand::test_predicted_score_matches[upper_cf-28-hts-tokamak-full-hts-3.5]"
+    },
+    {
+      "kind": "FAILED",
+      "node": "tests/scoring_v2/test_spec_conformance.py::TestSpecPredictedScoresLand::test_predicted_score_matches[upper_cf-29-negative-triangularity-tokamak-3.5]"
+    },
+    {
+      "kind": "FAILED",
+      "node": "tests/scoring_v2/test_spec_conformance.py::TestSpecPredictedScoresLand::test_predicted_score_matches[upper_cf-30-laser-icf-nif-commercialization-3.5]"
+    },
+    {
+      "kind": "FAILED",
+      "node": "tests/scoring_v2/test_spec_conformance.py::TestSpecPredictedScoresLand::test_predicted_score_matches[upper_cf-31-laser-icf-oec-architecture-3.5]"
+    },
+    {
+      "kind": "FAILED",
+      "node": "tests/scoring_v2/test_spec_conformance.py::TestSpecPredictedScoresLand::test_predicted_score_matches[upper_cf-32-laser-icf-french-national-3.0]"
+    },
+    {
+      "kind": "FAILED",
+      "node": "tests/scoring_v2/test_spec_conformance.py::TestSpecPredictedScoresLand::test_predicted_score_matches[upper_cf-35-polomac-magnetic-confinement-4.0]"
+    },
+    {
+      "kind": "FAILED",
+      "node": "tests/scoring_v2/test_spec_conformance.py::TestSpecPredictedScoresLand::test_predicted_score_matches[upper_cf-36-helical-coil-stellarator-4.0]"
+    },
+    {
+      "kind": "FAILED",
+      "node": "tests/scoring_v2/test_spec_conformance.py::TestSpecPredictedScoresLand::test_predicted_score_matches[upper_cf-37-magnetized-target-inertial-fusion-mtif-3.5]"
+    },
+    {
+      "kind": "FAILED",
+      "node": "tests/scoring_v2/test_spec_conformance.py::TestSpecPredictedScoresLand::test_predicted_score_matches[upper_cf-38-particle-accelerator-driven-fusion-4.0]"
+    },
+    {
+      "kind": "FAILED",
+      "node": "tests/study/test_domain_consumers.py::test_valid_outputs_exactly_preserved_and_physical_identities[row0]"
+    },
+    {
+      "kind": "FAILED",
+      "node": "tests/study/test_domain_consumers.py::test_valid_outputs_exactly_preserved_and_physical_identities[row1]"
+    },
+    {
+      "kind": "FAILED",
+      "node": "tests/study/test_domain_consumers.py::test_valid_outputs_exactly_preserved_and_physical_identities[row3]"
+    },
+    {
+      "kind": "FAILED",
+      "node": "tests/study/test_financial_consumers.py::test_current_rate_route_and_coverage"
+    },
+    {
+      "kind": "FAILED",
+      "node": "tests/study/test_integrate_preconditions.py::test_simkit_probe_refuses_without_the_teax_root"
+    },
+    {
+      "kind": "FAILED",
+      "node": "tests/study/test_known_answers.py::test_fixture_binding - AssertionErr..."
+    },
+    {
+      "kind": "FAILED",
+      "node": "tests/study/test_known_answers.py::test_current_heating_reachability"
+    },
+    {
+      "kind": "FAILED",
+      "node": "tests/study/test_major_radius.py::test_current_radius_controls_match_frozen_model_and_independent_oracle"
+    },
+    {
+      "kind": "FAILED",
+      "node": "tests/study/test_mechanical_failures.py::test_fails_closed[missing_declared_key]"
+    },
+    {
+      "kind": "FAILED",
+      "node": "tests/study/test_mechanical_failures.py::test_fails_closed[key_names_produced_channel]"
+    },
+    {
+      "kind": "FAILED",
+      "node": "tests/study/test_mechanical_failures.py::test_fails_closed[unclassifiable_key]"
+    },
+    {
+      "kind": "FAILED",
+      "node": "tests/study/test_mechanical_failures.py::test_the_absent_key_and_the_computed_quantity_say_different_things"
+    },
+    {
+      "kind": "FAILED",
+      "node": "tests/study/test_mechanical_failures.py::test_the_computed_quantity_message_names_the_producing_module"
+    },
+    {
+      "kind": "FAILED",
+      "node": "tests/study/test_native_publication.py::test_native_publication_preserves_values_and_case_identity[20260911-model-owned-radius]"
+    },
+    {
+      "kind": "FAILED",
+      "node": "tests/study/test_native_publication.py::test_native_publication_refuses_before_replacing_evidence[absent-20260911-model-owned-radius]"
+    },
+    {
+      "kind": "FAILED",
+      "node": "tests/study/test_native_publication.py::test_native_publication_refuses_before_replacing_evidence[null-20260911-model-owned-radius]"
+    },
+    {
+      "kind": "FAILED",
+      "node": "tests/study/test_native_publication.py::test_native_publication_refuses_before_replacing_evidence[nan-20260911-model-owned-radius]"
+    },
+    {
+      "kind": "FAILED",
+      "node": "tests/study/test_operand_bindings.py::test_every_constraint_operand_resolves"
+    },
+    {
+      "kind": "FAILED",
+      "node": "tests/study/test_operand_bindings.py::test_the_shim_reproduces_the_pinned_headline"
+    },
+    {
+      "kind": "FAILED",
+      "node": "tests/study/test_output_contract.py::test_fingerprint_read_set_is_the_three_legs"
+    },
+    {
+      "kind": "FAILED",
+      "node": "tests/study/test_output_contract.py::test_byte_determinism_across_working_directories"
+    },
+    {
+      "kind": "FAILED",
+      "node": "tests/study/test_output_contract.py::test_two_runs_from_the_same_directory_are_byte_identical"
+    },
+    {
+      "kind": "FAILED",
+      "node": "tests/study/test_output_contract.py::test_the_real_output_validates_against_its_schema"
+    },
+    {
+      "kind": "FAILED",
+      "node": "tests/study/test_output_contract.py::test_not_derivable_is_byte_equal"
+    },
+    {
+      "kind": "FAILED",
+      "node": "tests/study/test_output_contract.py::test_constraint_completeness - As..."
+    },
+    {
+      "kind": "FAILED",
+      "node": "tests/study/test_output_contract.py::test_bounds_is_authoritative_and_axis_varying"
+    },
+    {
+      "kind": "FAILED",
+      "node": "tests/study/test_output_contract.py::test_lists_are_sorted_by_a_stated_key"
+    },
+    {
+      "kind": "FAILED",
+      "node": "tests/study/test_output_contract.py::test_the_report_carries_its_tool_source_digest"
+    },
+    {
+      "kind": "FAILED",
+      "node": "tests/study/test_output_contract.py::test_the_report_carries_the_three_package_fingerprints"
+    },
+    {
+      "kind": "FAILED",
+      "node": "tests/study/test_output_contract.py::test_the_report_carries_no_timestamp"
+    },
+    {
+      "kind": "FAILED",
+      "node": "tests/study/test_primary_loop_consumers.py::test_valid_full_oracle_outputs_and_heat_accounting[row0]"
+    },
+    {
+      "kind": "FAILED",
+      "node": "tests/study/test_primary_loop_consumers.py::test_valid_full_oracle_outputs_and_heat_accounting[row1]"
+    },
+    {
+      "kind": "FAILED",
+      "node": "tests/study/test_primary_loop_consumers.py::test_valid_full_oracle_outputs_and_heat_accounting[row2]"
+    },
+    {
+      "kind": "FAILED",
+      "node": "tests/study/test_primary_loop_consumers.py::test_valid_full_oracle_outputs_and_heat_accounting[row3]"
+    },
+    {
+      "kind": "FAILED",
+      "node": "tests/study/test_primary_loop_consumers.py::test_adapter_coverage_remains_exact"
+    },
+    {
+      "kind": "FAILED",
+      "node": "tests/study/test_primary_loop_consumers.py::test_current_native_primary_route_agrees_with_independent_oracle"
+    },
+    {
+      "kind": "FAILED",
+      "node": "tests/study/test_provenance.py::test_every_declared_key_carries_its_provenance"
+    },
+    {
+      "kind": "FAILED",
+      "node": "tests/study/test_provenance.py::test_provenance_round_trips_from_the_declaration"
+    },
+    {
+      "kind": "FAILED",
+      "node": "tests/study/test_provenance.py::test_the_tie_key_is_marked_and_the_others_are_not"
+    },
+    {
+      "kind": "FAILED",
+      "node": "tests/study/test_provenance.py::test_a_tie_key_traces_identically_to_a_fan_out_key"
+    },
+    {
+      "kind": "FAILED",
+      "node": "tests/study/test_provenance.py::test_entry_type_is_reported_per_declared_key"
+    },
+    {
+      "kind": "FAILED",
+      "node": "tests/study/test_read_set_coverage.py::test_a_renamed_inputs_file_is_followed_not_guessed"
+    },
+    {
+      "kind": "FAILED",
+      "node": "tests/study/test_subset_flag.py::test_a_full_run_covers_the_whole_declaration"
+    },
+    {
+      "kind": "FAILED",
+      "node": "tests/study/test_subset_flag.py::test_a_group_run_is_visibly_narrower"
+    },
+    {
+      "kind": "FAILED",
+      "node": "tests/study/test_subset_flag.py::test_several_groups_can_be_selected"
+    },
+    {
+      "kind": "FAILED",
+      "node": "tests/study/test_subset_flag.py::test_a_subset_group_is_byte_identical_to_its_full_run_counterpart"
+    },
+    {
+      "kind": "FAILED",
+      "node": "tests/study/test_subset_flag.py::test_the_axis_declaration_digest_matches_the_file_bytes"
+    },
+    {
+      "kind": "FAILED",
+      "node": "tests/study/test_valid_empty.py::test_a_group_with_no_constraint_reach_exits_zero"
+    },
+    {
+      "kind": "FAILED",
+      "node": "tests/study/test_valid_empty.py::test_the_empty_result_still_carries_the_whole_catalog"
+    },
+    {
+      "kind": "FAILED",
+      "node": "tests/study/test_valid_empty.py::test_no_constraint_response_is_emitted_even_when_false"
+    },
+    {
+      "kind": "FAILED",
+      "node": "tests/study/test_valid_empty.py::test_the_document_goes_to_stdout_and_the_summary_to_stderr"
+    },
+    {
+      "kind": "FAILED",
+      "node": "tests/study/test_verify.py::test_every_catalog_constraint_is_rederived_with_its_operand_count"
+    },
+    {
+      "kind": "FAILED",
+      "node": "tests/study/test_verify.py::test_stored_operating_controls_preserve_procurement_and_signed_capacity"
+    },
+    {
+      "kind": "FAILED",
+      "node": "tests/study/test_warnings.py::test_advisory_never_changes_the_trace - ..."
+    },
+    {
+      "kind": "FAILED",
+      "node": "tests/study/test_warnings.py::test_the_tie_candidate_names_the_key_and_says_it_was_not_added"
+    },
+    {
+      "kind": "FAILED",
+      "node": "tests/study/test_warnings.py::test_a_declared_tie_earns_no_candidate_warning"
+    },
+    {
+      "kind": "FAILED",
+      "node": "tests/study/test_warnings.py::test_suffix_siblings_land_in_their_own_named_field"
+    },
+    {
+      "kind": "FAILED",
+      "node": "tests/study/test_warnings.py::test_suffix_siblings_never_join_the_traced_set"
+    },
+    {
+      "kind": "FAILED",
+      "node": "tests/study/test_warnings.py::test_the_declared_tie_is_not_a_suffix_sibling"
+    },
+    {
+      "kind": "FAILED",
+      "node": "tests/study/test_warnings.py::test_a_key_in_two_groups_earns_a_document_warning"
+    },
+    {
+      "kind": "FAILED",
+      "node": "tests/study/test_warnings.py::test_provenance_drift_warns_on_both_recorded_fingerprints"
+    },
+    {
+      "kind": "FAILED",
+      "node": "tests/study/test_winding_consumers.py::test_invalid_public_oracle_inputs_are_deliberate[overrides0-I_coil must be finite and nonnegative]"
+    },
+    {
+      "kind": "FAILED",
+      "node": "tests/study/test_winding_consumers.py::test_invalid_public_oracle_inputs_are_deliberate[overrides1-I_coil must be finite and nonnegative]"
+    },
+    {
+      "kind": "FAILED",
+      "node": "tests/study/test_winding_consumers.py::test_invalid_public_oracle_inputs_are_deliberate[overrides2-I_coil must be finite and nonnegative]"
+    },
+    {
+      "kind": "FAILED",
+      "node": "tests/study/test_winding_consumers.py::test_invalid_public_oracle_inputs_are_deliberate[overrides3-I_coil must be finite and nonnegative]"
+    },
+    {
+      "kind": "FAILED",
+      "node": "tests/study/test_winding_consumers.py::test_invalid_public_oracle_inputs_are_deliberate[overrides4-I_coil must be finite and nonnegative]"
+    },
+    {
+      "kind": "FAILED",
+      "node": "tests/study/test_winding_consumers.py::test_invalid_public_oracle_inputs_are_deliberate[overrides5-j_wp must be finite and positive]"
+    },
+    {
+      "kind": "FAILED",
+      "node": "tests/study/test_winding_consumers.py::test_invalid_public_oracle_inputs_are_deliberate[overrides6-j_wp must be finite and positive]"
+    },
+    {
+      "kind": "FAILED",
+      "node": "tests/study/test_winding_consumers.py::test_invalid_public_oracle_inputs_are_deliberate[overrides7-j_wp must be finite and positive]"
+    },
+    {
+      "kind": "FAILED",
+      "node": "tests/study/test_winding_consumers.py::test_invalid_public_oracle_inputs_are_deliberate[overrides8-j_wp must be finite and positive]"
+    },
+    {
+      "kind": "FAILED",
+      "node": "tests/study/test_winding_consumers.py::test_invalid_public_oracle_inputs_are_deliberate[overrides9-j_wp must be finite and positive]"
+    },
+    {
+      "kind": "FAILED",
+      "node": "tests/study/test_winding_consumers.py::test_invalid_public_oracle_inputs_are_deliberate[overrides10-oracle current sizing: invalid loading]"
+    },
+    {
+      "kind": "FAILED",
+      "node": "tests/study/test_winding_consumers.py::test_local_sizing_invalid_magnitudes[overrides0-I_coil must be finite and nonnegative]"
+    },
+    {
+      "kind": "FAILED",
+      "node": "tests/study/test_winding_consumers.py::test_local_sizing_invalid_magnitudes[overrides2-I_coil must be finite and nonnegative]"
+    },
+    {
+      "kind": "FAILED",
+      "node": "tests/study/test_winding_consumers.py::test_local_sizing_invalid_magnitudes[overrides3-I_coil must be finite and nonnegative]"
+    },
+    {
+      "kind": "FAILED",
+      "node": "tests/study/test_winding_consumers.py::test_local_sizing_invalid_magnitudes[overrides4-I_coil must be finite and nonnegative]"
+    },
+    {
+      "kind": "FAILED",
+      "node": "tests/study/test_winding_consumers.py::test_local_sizing_invalid_magnitudes[overrides5-j_wp must be finite and positive]"
+    },
+    {
+      "kind": "FAILED",
+      "node": "tests/study/test_winding_consumers.py::test_local_sizing_invalid_magnitudes[overrides6-j_wp must be finite and positive]"
+    },
+    {
+      "kind": "FAILED",
+      "node": "tests/study/test_winding_consumers.py::test_local_sizing_invalid_magnitudes[overrides7-j_wp must be finite and positive]"
+    },
+    {
+      "kind": "FAILED",
+      "node": "tests/study/test_winding_consumers.py::test_local_sizing_invalid_magnitudes[overrides8-j_wp must be finite and positive]"
+    },
+    {
+      "kind": "FAILED",
+      "node": "tests/study/test_winding_consumers.py::test_local_sizing_invalid_magnitudes[overrides9-j_wp must be finite and positive]"
+    },
+    {
+      "kind": "FAILED",
+      "node": "tests/study/test_winding_consumers.py::test_valid_full_oracle_outputs_and_stress_units_preserved[row0]"
+    },
+    {
+      "kind": "FAILED",
+      "node": "tests/study/test_winding_consumers.py::test_valid_full_oracle_outputs_and_stress_units_preserved[row1]"
+    },
+    {
+      "kind": "FAILED",
+      "node": "tests/study/test_winding_consumers.py::test_valid_full_oracle_outputs_and_stress_units_preserved[row2]"
+    },
+    {
+      "kind": "FAILED",
+      "node": "tests/study/test_winding_consumers.py::test_adapter_coverage_remains_exact"
+    },
+    {
+      "kind": "FAILED",
+      "node": "tests/study/test_winding_consumers.py::test_current_native_winding_route_agrees_with_independent_oracle"
+    },
+    {
+      "kind": "FAILED",
+      "node": "tests/test_codegen_teax_acceptance.py::test_live_and_snapshot_packages_are_byte_identical[primary]"
+    },
+    {
+      "kind": "FAILED",
+      "node": "tests/test_codegen_teax_acceptance.py::test_typed_handwritten_quotient_survives_supported_regeneration[primary-False]"
+    },
+    {
+      "kind": "FAILED",
+      "node": "tests/test_codegen_teax_acceptance.py::test_typed_handwritten_quotient_survives_supported_regeneration[primary-True]"
+    },
+    {
+      "kind": "FAILED",
+      "node": "tests/test_codegen_teax_acceptance.py::test_live_and_snapshot_packages_are_byte_identical[exploration]"
+    },
+    {
+      "kind": "FAILED",
+      "node": "tests/test_codegen_teax_acceptance.py::test_typed_handwritten_quotient_survives_supported_regeneration[exploration-False]"
+    },
+    {
+      "kind": "FAILED",
+      "node": "tests/test_codegen_teax_acceptance.py::test_typed_handwritten_quotient_survives_supported_regeneration[exploration-True]"
+    },
+    {
+      "kind": "FAILED",
+      "node": "tests/test_current_comparison_candidate.py::test_power_account_rejects_inconsistent_retained_output[matched-heat_transport__equipment__salt_electric_MW-total_pump_electric_once]"
+    },
+    {
+      "kind": "FAILED",
+      "node": "tests/test_current_comparison_candidate.py::test_power_account_rejects_inconsistent_retained_output[matched-pb__p_net-net_electric_balance]"
+    },
+    {
+      "kind": "FAILED",
+      "node": "tests/test_current_comparison_candidate.py::test_power_account_rejects_inconsistent_retained_output[matched-pb__p_th-thermal_balance]"
+    },
+    {
+      "kind": "FAILED",
+      "node": "tests/test_current_comparison_candidate.py::test_manifest_keeps_formal_criteria_and_has_all_predicates"
+    },
+    {
+      "kind": "FAILED",
+      "node": "tests/test_current_comparison_candidate.py::test_nonfinite_native_result_has_raw_and_canonical_failure_receipts[nan]"
+    },
+    {
+      "kind": "FAILED",
+      "node": "tests/test_current_comparison_candidate.py::test_nonfinite_native_result_has_raw_and_canonical_failure_receipts[inf]"
+    },
+    {
+      "kind": "FAILED",
+      "node": "tests/test_current_comparison_candidate.py::test_nonfinite_native_result_has_raw_and_canonical_failure_receipts[-inf]"
+    },
+    {
+      "kind": "FAILED",
+      "node": "tests/test_current_comparison_candidate.py::test_failure_after_native_start_is_retained"
+    },
+    {
+      "kind": "ERROR",
+      "node": "tests/study/test_known_answers.py::test_known_answer[availability_direct]"
+    },
+    {
+      "kind": "ERROR",
+      "node": "tests/study/test_known_answers.py::test_known_answer[interest_rate] - A..."
+    },
+    {
+      "kind": "ERROR",
+      "node": "tests/study/test_known_answers.py::test_known_answer[R] - AssertionErro..."
+    },
+    {
+      "kind": "ERROR",
+      "node": "tests/study/test_known_answers.py::test_known_answer[a] - AssertionErro..."
+    },
+    {
+      "kind": "ERROR",
+      "node": "tests/study/test_known_answers.py::test_known_answer[I_coil] - Assertio..."
+    },
+    {
+      "kind": "ERROR",
+      "node": "tests/study/test_known_answers.py::test_matches_the_item_1_fixture_contract[availability_direct]"
+    },
+    {
+      "kind": "ERROR",
+      "node": "tests/study/test_known_answers.py::test_matches_the_item_1_fixture_contract[interest_rate]"
+    },
+    {
+      "kind": "ERROR",
+      "node": "tests/study/test_known_answers.py::test_matches_the_item_1_fixture_contract[R]"
+    },
+    {
+      "kind": "ERROR",
+      "node": "tests/study/test_known_answers.py::test_matches_the_item_1_fixture_contract[a]"
+    },
+    {
+      "kind": "ERROR",
+      "node": "tests/study/test_known_answers.py::test_matches_the_item_1_fixture_contract[I_coil]"
+    },
+    {
+      "kind": "ERROR",
+      "node": "tests/study/test_known_answers.py::test_availability_direct_reaches_no_constraint"
+    },
+    {
+      "kind": "ERROR",
+      "node": "tests/study/test_known_answers.py::test_I_coil_reaches_the_field_constraints_through_calcs"
+    },
+    {
+      "kind": "ERROR",
+      "node": "tests/study/test_known_answers.py::test_r_reaches_net_positive_through_a_computed_operand"
+    },
+    {
+      "kind": "ERROR",
+      "node": "tests/study/test_known_answers.py::test_model_owned_radius_reaches_magnet_and_plasma"
+    },
+    {
+      "kind": "ERROR",
+      "node": "tests/study/test_known_answers.py::test_every_constraint_carries_all_three_identities"
+    },
+    {
+      "kind": "ERROR",
+      "node": "tests/study/test_known_answers.py::test_current_availability_has_structural_breeding_and_facility_paths"
+    },
+    {
+      "kind": "ERROR",
+      "node": "tests/study/test_preflight_gates.py::test_all_six_checks_pass_on_the_real_package"
+    },
+    {
+      "kind": "ERROR",
+      "node": "tests/study/test_preflight_gates.py::test_the_results_document_validates_against_its_schema"
+    },
+    {
+      "kind": "ERROR",
+      "node": "tests/study/test_preflight_gates.py::test_the_document_carries_a_digest_for_every_input_it_read"
+    },
+    {
+      "kind": "ERROR",
+      "node": "tests/study/test_preflight_gates.py::test_the_six_results_map_onto_record_section_9s_five_rows"
+    },
+    {
+      "kind": "ERROR",
+      "node": "tests/study/test_preflight_gates.py::test_the_tool_reports_its_own_revision_as_a_named_recipe_over_a_named_file_list"
+    },
+    {
+      "kind": "ERROR",
+      "node": "tests/study/test_preflight_gates.py::test_the_sibling_scan_is_advisory_and_can_never_fail"
+    },
+    {
+      "kind": "ERROR",
+      "node": "tests/study/test_preflight_gates.py::test_the_identity_gate_reports_the_recomputed_digest"
+    },
+    {
+      "kind": "ERROR",
+      "node": "tests/study/test_single_point_gate.py::test_green_single_point_command_exits_zero"
+    }
+  ]
+}

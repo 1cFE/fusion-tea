@@ -1,0 +1,129 @@
+{
+ "recorded_designs": 885,
+ "checks": {
+  "IHX count rule": {
+   "pass": 885,
+   "fail": 0
+  },
+  "MR-7 generous passes acceptance_ok": {
+   "pass": 22,
+   "fail": 0
+  },
+  "MR-7 insufficient fails acceptance_ok": {
+   "pass": 22,
+   "fail": 0
+  },
+  "cold rating from list": {
+   "pass": 885,
+   "fail": 0
+  },
+  "cooling hall follows IHX count": {
+   "pass": 885,
+   "fail": 0
+  },
+  "cooling spare positions": {
+   "pass": 5310,
+   "fail": 0
+  },
+  "equal-duty pair shares turns and current": {
+   "pass": 217,
+   "fail": 0
+  },
+  "evaluated": {
+   "pass": 885,
+   "fail": 0
+  },
+  "heating rule": {
+   "pass": 885,
+   "fail": 0
+  },
+  "intercept rating from list": {
+   "pass": 885,
+   "fail": 0
+  },
+  "magnet sized to its checks": {
+   "pass": 885,
+   "fail": 0
+  },
+  "matched power within 0.5 %": {
+   "pass": 341,
+   "fail": 0
+  },
+  "offered state": {
+   "pass": 6195,
+   "fail": 0
+  },
+  "own-sized B_peak within 0.1 T of target": {
+   "pass": 660,
+   "fail": 0
+  },
+  "power class (r5a clause)": {
+   "pass": 19470,
+   "fail": 0
+  },
+  "power class bit-identical (information)": {
+   "pass": 18636,
+   "fail": 834
+  },
+  "power-short below matched power": {
+   "pass": 544,
+   "fail": 0
+  },
+  "purchase cost at exponent 0.7": {
+   "pass": 3540,
+   "fail": 0
+  },
+  "purchased mass": {
+   "pass": 1770,
+   "fail": 0
+  },
+  "reproduces B_peak (r5a clause)": {
+   "pass": 885,
+   "fail": 0
+  },
+  "reproduces B_peak within 0.1 T": {
+   "pass": 885,
+   "fail": 0
+  },
+  "reproduces beta (r5a clause)": {
+   "pass": 885,
+   "fail": 0
+  },
+  "reproduces p_aux_required (r5a clause)": {
+   "pass": 885,
+   "fail": 0
+  },
+  "reproduces p_fus (r5a clause)": {
+   "pass": 885,
+   "fail": 0
+  },
+  "reproduces p_fus within 0.5 %": {
+   "pass": 885,
+   "fail": 0
+  },
+  "reproduces recorded channel (r5a clause)": {
+   "pass": 18585,
+   "fail": 0
+  },
+  "reproduces violated-verdict list": {
+   "pass": 885,
+   "fail": 0
+  },
+  "screened rating at 1.05 x demand": {
+   "pass": 24780,
+   "fail": 0
+  },
+  "structure-mass rule": {
+   "pass": 885,
+   "fail": 0
+  }
+ },
+ "worst": {
+  "p_fus_rel": 0.0,
+  "p_aux_abs": 0.0,
+  "B_peak_abs": 0.0
+ },
+ "failures": [],
+ "outcome": "pass",
+ "policy_sha256": "4757dc3606a0381cad24b1536671ed0e72066d0fc8f1a9cbe583478ba263e20e"
+}

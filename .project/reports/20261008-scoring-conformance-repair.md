@@ -1,0 +1,25 @@
+# Scoring conformance stage repair — 2026-10-08
+
+[INHERITED: 20261008-scoring-repair.md] Repair the 34 recorded upper-capacity-factor prediction failures without changing the explorer API, deployment, served IDs, published data, scoring formulas, weights, features or prediction YAML. Ownership is limited to `tests/scoring_v2/test_spec_conformance.py` and this report. Updated `CLAUDE.md` and Concept Explorer README §9 were read; their owner edits remain untouched.
+
+## Cause and evidence
+
+The test compared raw formula predictions with corpus-normalized CSV outputs. Commit `298b7cc548ffebb4315dff5b8d1e36421be76640` (June 13) added normalization between raw per-concept scoring and composite calculation. Its commit record explicitly says upper-capacity-factor calibration should continue to use raw scores, while CSV contains normalized scores. The existing `test_upper_cf.py` calibration helper already follows that distinction. The prediction YAML's `upper_cf` block retains the independent spec predictions. Its modularity block was separately migrated to post-normalized predictions on June 17; the owner-authorized retirement below excludes those obsolete historical parameters from current conformance.
+
+The repaired fixture evaluates only the upper-capacity-factor raw stage through the current embedding evaluator and axis scorer, using temporary feature copies, temporary weights and the current schema. It compares those computed raw values to the unchanged independently derived predictions with the unchanged 0.55 tolerance and pre-existing known-drift handling. It does not copy current outputs into a reference fixture and does not use stored diagnostic values as a substitute for executing the current formula. All remaining prediction axes keep their existing comparison stage.
+
+A separate normalized-stage assertion checks the full concept-ID set, finite/non-null score presence, configured floor and score range, declared mean/variance targets within their existing configured tolerance, monotonic ordering and equal normalized values within equal raw tiers. It also requires normalization to actually change this corpus. These checks use independent arithmetic on freshly generated temporary CSV values and the declared normalization contract, not a copied normalized score table or the production normalization helper.
+
+Capacity-factor predictions and tolerances remain unchanged, and no new skip is introduced. Any remaining raw prediction conflict will be surfaced rather than waived. CLI outputs are confined to pytest temporary feature and score directories.
+
+## Verification
+
+Focused full-module run: **197 passed, 44 pre-existing known-drift skips in 359.09 seconds**, using `uv run --no-sync`; output `/tmp/20261008-scoring-conformance.log`, JUnit `/tmp/20261008-scoring-conformance.xml`. All 34 original failed node identities pass unchanged; attribution `/tmp/20261008-scoring-conformance-original-node-attribution.json`. Upper CF has 38 passed predictions and the two pre-existing known-drift skips; the separate normalized-stage contract also passes. Ruff lint/format and `git diff --check` pass. AST receipt `/tmp/20261008-scoring-conformance-ast.json` proves the independent YAML reader, prediction expansion and original comparison assertion are unchanged. Parent full scoring qualification, protected-byte verification and independent review remain. This result predates the owner-authorized modularity retirement below; it is not a claim about the final post-retirement module.
+
+## Owner-authorized obsolete calibration retirement
+
+[INHERITED: 20261008-scoring-repair.md, Calibration disposition] The owner authorized clearing old useless tests. The coordinator adopted retirement of the obsolete normalized modularity comparisons while retaining current arithmetic, lookup coverage, full-corpus normalization and determinism. The conformance expansion now excludes only modularity in addition to the already excluded deterministic data-availability axis. No historical replay or refreshed normalized fixture is introduced.
+
+Exactly 40 modularity prediction parameters are intentionally retired: 37 previously passing nodes and three previously skipped old drift nominations in the focused component receipt. They are recorded as retired, not newly passing. The modularity drift import/export is removed because its owning test module also retires that obsolete bookkeeping. Prediction YAML and all production/API/data inputs remain unchanged. All other independent prediction parameters retain their values and comparison tolerances; all 34 original upper-capacity-factor failure identities and the normalized-upper-CF invariant remain. AST receipt `/tmp/20261008-scoring-conformance-retirement.json` verifies the original comparison assertion, YAML reader and normalized-upper-CF assertion remain exact and records every retired node.
+
+Only formatting and static checks are rerun for this bounded retirement; parent final full scoring qualification will cover the frozen source. The earlier 197-pass/44-skip component result remains historical evidence from before retirement.

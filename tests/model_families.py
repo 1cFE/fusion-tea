@@ -80,8 +80,10 @@ MFE = Family(
         "analyses/mfe_cooling_accounts.sysml",
         "analyses/mfe_cooling_equipment.sysml",
         "analyses/mfe_primary_loop.sysml",  # WI-045 (2026-09-08): the representative helium circuit
-        "analyses/mfe_lifecycle.sysml",  # WI-046 (2026-09-08): the lifecycle calendar, handwritten stage
-        "analyses/mfe_fuel_cycle.sysml",  # WI-047 (2026-09-08): the tritium flows and the required breeding ratio
+        # WI-046 (2026-09-08): the lifecycle calendar, handwritten stage
+        "analyses/mfe_lifecycle.sysml",
+        # WI-047 (2026-09-08): the tritium flows and the required breeding ratio
+        "analyses/mfe_fuel_cycle.sysml",
         "analyses/mfe_tritium_breeding.sysml",  # WI-066: computed breeding and conditional adequacy
         "analyses/mfe_divertor_heat.sysml",  # WI-047 (2026-09-08): the divertor surface-heat ledger
         "analyses/mfe_vacuum.sysml",  # WI-047 (2026-09-08): the exhaust gas load
@@ -92,7 +94,8 @@ MFE = Family(
         "structure/mfe_plasma.sysml",  # WI-057 (2026-09-13): the plasma as a part
         "structure/mfe_magnet_parts.sysml",  # WI-057: coil, winding pack, casing
         "structure/mfe_radial_build_parts.sysml",  # WI-057: the first wall
-        "structure/mfe_plant_systems.sysml",  # WI-057: heat transport, cryoplant, fuel cycle, vacuum pumping
+        # WI-057: heat transport, cryoplant, fuel cycle, vacuum pumping
+        "structure/mfe_plant_systems.sysml",
         "designs/generic_mfe/mfe_plant.sysml",
         "designs/generic_mfe/mfe_subsystems.sysml",
         "designs/stellarator_09/stellarator_plant.sysml",
@@ -169,7 +172,8 @@ SOURCE_COLLECTIONS: dict[str, tuple[str, ...]] = {
         "analyses/mfe_account_costs.sysml",
         "designs/aries_cs_transfer/source_budget.sysml",
     ),
-    # WI-093: cross-plant assemblies from existing definitions; source: exploration/combinations/build.py staging list.
+    # WI-093: cross-plant assemblies from existing definitions; source:
+    # exploration/combinations/build.py staging list.
     "combinations": (
         "structure/mfe_interfaces.sysml",
         "structure/mfe_plasma.sysml",
@@ -190,7 +194,8 @@ SOURCE_COLLECTIONS: dict[str, tuple[str, ...]] = {
         "designs/combinations/combinations_lumped_fit.sysml",
         "designs/combinations/combinations_plasma_chain.sysml",
     ),
-    # WI-094 (goal design-study-parameters): the costed loop-Brayton assembly; source: exploration/costed_loop_brayton/build.py staging list.
+    # WI-094 (goal design-study-parameters): the costed loop-Brayton assembly; source:
+    # exploration/costed_loop_brayton/build.py staging list.
     "costed_loop_brayton": (
         "analyses/mfe_primary_loop.sysml",
         "analyses/mfe_viability.sysml",
@@ -222,7 +227,7 @@ def canonical_path(logical: str) -> Path:
 def logical_path(canonical: Path, root: Path = CANONICAL) -> str:
     relative = canonical.relative_to(root).as_posix()
     if relative.startswith(LIBRARY_PREFIX):
-        return relative[len(LIBRARY_PREFIX):]
+        return relative[len(LIBRARY_PREFIX) :]
     return relative
 
 
@@ -261,29 +266,44 @@ def assert_canonical_ownership(root: Path = CANONICAL) -> None:
         "missing": sorted(owned - actual),
     }
 
+
 # WI-096 additive matched-conversion generation unit; existing collections unchanged.
 SOURCE_COLLECTIONS["component_alternatives"] = (
-    'analyses/mfe_primary_loop.sysml',
-    'analyses/mfe_viability.sysml',
-    'analyses/integrated_heat_electricity.sysml',
-    'analyses/ideal_gas_brayton_components.sysml',
-    'analyses/integrated_equipment_costs.sysml',
-    'structure/integrated_equipment_parts.sysml',
-    'foundation/costed_component.sysml',
-    'analyses/mfe_account_costs.sysml',
-    'analyses/mfe_lcoe_dcf.sysml',
-    'analyses/loop_return_control.sysml',
-    'analyses/mfe_matched_steam_cycle.sysml',
-    'analyses/cooling_equipment_selected_pumps.sysml',
-    'analyses/component_alternatives_thermal.sysml',
-    'designs/component_alternatives/plant.sysml',
+    "analyses/mfe_primary_loop.sysml",
+    "analyses/mfe_viability.sysml",
+    "analyses/integrated_heat_electricity.sysml",
+    "analyses/ideal_gas_brayton_components.sysml",
+    "analyses/integrated_equipment_costs.sysml",
+    "structure/integrated_equipment_parts.sysml",
+    "foundation/costed_component.sysml",
+    "analyses/mfe_account_costs.sysml",
+    "analyses/mfe_lcoe_dcf.sysml",
+    "analyses/loop_return_control.sysml",
+    "analyses/mfe_matched_steam_cycle.sysml",
+    "analyses/cooling_equipment_selected_pumps.sysml",
+    "analyses/component_alternatives_thermal.sysml",
+    "designs/component_alternatives/plant.sysml",
 )
 
 # WI-098 isolated conditional whole-plant comparison.
-SOURCE_COLLECTIONS["whole_plant_conversion"] = tuple(p for p in SOURCE_COLLECTIONS["component_alternatives"] if not p.startswith("designs/")) + ("analyses/mfe_fuel_cycle.sysml", "analyses/whole_plant_conversion_accounts.sysml", "designs/whole_plant_conversion/plant.sysml")
+SOURCE_COLLECTIONS["whole_plant_conversion"] = tuple(
+    p for p in SOURCE_COLLECTIONS["component_alternatives"] if not p.startswith("designs/")
+) + (
+    "analyses/mfe_fuel_cycle.sysml",
+    "analyses/whole_plant_conversion_accounts.sysml",
+    "designs/whole_plant_conversion/plant.sysml",
+)
 
 # WI-099 isolated matched-duty magnet conductor alternatives (goal magnet-material-comparison).
 SOURCE_COLLECTIONS["magnet_materials"] = (
-    'analyses/magnet_conductor_alternatives.sysml',
-    'designs/magnet_materials/magnet_subsystem.sysml',
+    "analyses/magnet_conductor_alternatives.sysml",
+    "designs/magnet_materials/magnet_subsystem.sysml",
+)
+
+# WI-100 derived stellarator material packages (goal magnet-material-comparison).
+# The build stages the MFE twin (equal to these canonical files) and Round 1's conductor library.
+# The variants library and materials design live in exploration/stellarator_materials/models/,
+# outside models/.
+SOURCE_COLLECTIONS["stellarator_materials"] = MFE.owned + (
+    "analyses/magnet_conductor_alternatives.sysml",
 )

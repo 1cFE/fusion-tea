@@ -189,9 +189,7 @@ def read_pipeline(path: Path) -> dict[str, Module]:
             name=name,
             module_type=_scalar_string(body["module_type"], path, f"{key_path}.module_type"),
             inputs=(
-                _read_ports(body["inputs"], path, f"{key_path}.inputs")
-                if "inputs" in body
-                else {}
+                _read_ports(body["inputs"], path, f"{key_path}.inputs") if "inputs" in body else {}
             ),
             outputs=(
                 _read_ports(body["outputs"], path, f"{key_path}.outputs")
@@ -204,9 +202,7 @@ def read_pipeline(path: Path) -> dict[str, Module]:
     return modules
 
 
-def _sole_module_of_type(
-    modules: dict[str, Module], module_type: str, path: Path
-) -> Module:
+def _sole_module_of_type(modules: dict[str, Module], module_type: str, path: Path) -> Module:
     found = sorted(m.name for m in modules.values() if m.module_type == module_type)
     if len(found) != 1:
         raise IndicatorError(
@@ -368,9 +364,7 @@ def _read_input_keys(path: Path) -> list[str]:
     return list(data)
 
 
-def reachable_channels(
-    declared: set[str], graph: PackageGraph
-) -> tuple[set[str], set[str]]:
+def reachable_channels(declared: set[str], graph: PackageGraph) -> tuple[set[str], set[str]]:
     """Conservative forward closure (R10).
 
     A module fires if any declared key or any tainted channel is among its inputs,
@@ -452,7 +446,8 @@ def predicate_operands(entry: dict) -> tuple[str, list[dict]]:
 
     Literal operands exist only here — they appear in no YAML and no input file.
     Feature/literal leaves inside binary products, comparisons and conjunctions are
-    traversed in occurrence order. Other nested expressions raise; no numerical response is inferred.
+    traversed in occurrence order. Other nested expressions raise; no numerical
+    response is inferred.
     """
     cid = entry["constraint_id"]
     try:
@@ -476,7 +471,9 @@ def operand_leaves(cid: str, operand: dict) -> list[dict]:
         return [{"kind": kind, "value": operand["literal"]["value"]}]
     if kind == "operator":
         if operand.get("operator") not in {"*", "and", "<", "<=", ">", ">=", "==", "!="}:
-            raise IndicatorError(f"constraint {cid}: unsupported nested operator {operand.get('operator')!r}")
+            raise IndicatorError(
+                f"constraint {cid}: unsupported nested operator {operand.get('operator')!r}"
+            )
         children = operand.get("operands", [])
         if len(children) != 2:
             raise IndicatorError(f"constraint {cid}: nested operator requires exactly two operands")
@@ -613,9 +610,23 @@ def _constraint_entry(
 ) -> dict:
     """One constraint under one axis. The same shape serves bounds and both partitions."""
     cid = entry["constraint_id"]
-    module = graph.modules.get(cid)
+    # The published evaluation channel is the stable join. Module identifiers may
+    # normalize spelling differently from the catalog (for example, UA -> ua).
+    channel = entry.get("evaluation_channel")
+    if "evaluation_channel" in entry and (not isinstance(channel, str) or not channel):
+        raise IndicatorError(f"constraint {cid!r}: evaluation_channel must be a nonempty string")
+    producer = graph.producer.get(channel) if channel is not None else cid
+    module = graph.modules.get(producer)
     if module is None:
         raise IndicatorError(f"constraint {cid!r} has no matching module in the pipeline")
+    if channel is not None and not any(
+        port.ref == channel and port.type == "ConstraintEvaluation"
+        for port in module.outputs.values()
+    ):
+        raise IndicatorError(
+            f"constraint {cid!r}: evaluation channel {channel!r} is not a "
+            f"ConstraintEvaluation output of module {module.name!r}"
+        )
     operator, operands = predicate_operands(entry)
 
     detail = []
@@ -637,7 +648,7 @@ def _constraint_entry(
                 f"constraint {cid}: predicate operand {name!r} has no matching input port on "
                 f"module {cid!r}"
             )
-        where = _where(module.file, port.line, f"modules.{cid}.inputs.{name}")
+        where = _where(module.file, port.line, f"modules.{module.name}.inputs.{name}")
         kind, value = classify_ref(port.ref, graph.entry_groups, where)
         operand_class = "bound" if kind == "bound" else "computed"
         reached = (value in declared) if kind == "bound" else (value in tainted)
@@ -823,8 +834,7 @@ def build_report(
     contract = read_model_contract(package_root)
 
     objective_catalog = [
-        {"name": obj["name"], "channel": obj["channel"]}
-        for obj in loaded.data["objective_catalog"]
+        {"name": obj["name"], "channel": obj["channel"]} for obj in loaded.data["objective_catalog"]
     ]
     objective_catalog.sort(key=lambda obj: obj["name"])
     _assert_objective_channels_exist(objective_catalog, graph)

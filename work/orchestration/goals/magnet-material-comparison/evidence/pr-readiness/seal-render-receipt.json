@@ -1,0 +1,1208 @@
+{
+  "snapshot_sha256": "d494d0e92768ff6ed2498c32f9d24fc1cee9e8562cf863e269f92a01eed46de7",
+  "checks": [
+    {
+      "path": "exploration/stellarator_materials/studies/cases.json",
+      "expected": "f07133acdd561610287ff9dea01f641bf48b1562ec417254c85484ea8645e583",
+      "actual": "f07133acdd561610287ff9dea01f641bf48b1562ec417254c85484ea8645e583",
+      "tracked": false,
+      "match": true
+    },
+    {
+      "path": "exploration/stellarator_materials/studies/20260930-magnet-material-plant-map/results/_work/stellarator-materials-reference-baseline-r3.db",
+      "expected": "7f7112be899262898d7656457c98f4f9bff65919c9ce497c4fe6ab264008402d",
+      "actual": "7f7112be899262898d7656457c98f4f9bff65919c9ce497c4fe6ab264008402d",
+      "tracked": false,
+      "match": true
+    },
+    {
+      "path": "exploration/stellarator_materials/studies/20260930-magnet-material-plant-map/results/native/rebco/20260930-magnet-material-plant-map-rebco.db",
+      "expected": "6926a6b09a7c49821b5601010a9ebcbc356926d53ddf22886cfcc620a4199047",
+      "actual": "6926a6b09a7c49821b5601010a9ebcbc356926d53ddf22886cfcc620a4199047",
+      "tracked": false,
+      "match": true
+    },
+    {
+      "path": "exploration/stellarator_materials/studies/20260930-magnet-material-plant-map/results/_work/stellarator-materials-rebco-baseline-r3.db",
+      "expected": "1c37f327474b1bdb3eb455da307103586137e8057ca70ddafa7c3b23fa653f3c",
+      "actual": "1c37f327474b1bdb3eb455da307103586137e8057ca70ddafa7c3b23fa653f3c",
+      "tracked": false,
+      "match": true
+    },
+    {
+      "path": "exploration/stellarator_materials/studies/20260930-magnet-material-plant-map/results/native/breakeven/20260930-magnet-material-plant-map-breakeven.db",
+      "expected": "fddd8cc53343d9ceac4b0045241b86ded6747db1d8e855abe41e2a638834865c",
+      "actual": "fddd8cc53343d9ceac4b0045241b86ded6747db1d8e855abe41e2a638834865c",
+      "tracked": false,
+      "match": true
+    },
+    {
+      "path": "exploration/stellarator_materials/studies/20260930-magnet-material-plant-map/results/native/nb3sn/20260930-magnet-material-plant-map-nb3sn.db",
+      "expected": "272c634fcfcedeb793ea329a27c7d15c982a084448b3cdede351bdc659db0379",
+      "actual": "272c634fcfcedeb793ea329a27c7d15c982a084448b3cdede351bdc659db0379",
+      "tracked": false,
+      "match": true
+    },
+    {
+      "path": "exploration/stellarator_materials/studies/20260930-magnet-material-plant-map/results/_work/stellarator-materials-nb3sn-baseline-r3.db",
+      "expected": "20c104b475068abd5ecebd9fe2673ea0e006676695a731b70224cda269c398d3",
+      "actual": "20c104b475068abd5ecebd9fe2673ea0e006676695a731b70224cda269c398d3",
+      "tracked": false,
+      "match": true
+    },
+    {
+      "path": "exploration/stellarator_materials/studies/20260930-magnet-material-plant-map/results/_work/tolerance-diagnostic-rebco.db",
+      "expected": "86a7afb5ed226970380a07a0b5e392d58be114c3110cd37b1aa151c486f7752c",
+      "actual": "86a7afb5ed226970380a07a0b5e392d58be114c3110cd37b1aa151c486f7752c",
+      "tracked": false,
+      "match": true
+    },
+    {
+      "path": "exploration/stellarator_materials/studies/20260930-magnet-material-plant-map/results/_work/tolerance-diagnostic-nb3sn.db",
+      "expected": "01f5cbc176810f18c5dc139c9fc322fa31fbb8d3f2b6900912fbeabcb9e8ceed",
+      "actual": "01f5cbc176810f18c5dc139c9fc322fa31fbb8d3f2b6900912fbeabcb9e8ceed",
+      "tracked": false,
+      "match": true
+    },
+    {
+      "path": "exploration/stellarator_materials/units/reference/stellarator_materials_reference_tea/contracts/model_contract.json",
+      "expected": "d10d209b3117a03d433887a8d949451ecc4788c920e9682ceea01ac2d8eb768b",
+      "actual": "d10d209b3117a03d433887a8d949451ecc4788c920e9682ceea01ac2d8eb768b",
+      "tracked": true,
+      "match": true
+    },
+    {
+      "path": "exploration/stellarator_materials/units/reference/stellarator_materials_reference_tea/inputs/mfe_account_costs_params.json",
+      "expected": "29d6eb7e561ef20137d854643fc80a7713ae7810ca9609c9f199419fbac1a017",
+      "actual": "29d6eb7e561ef20137d854643fc80a7713ae7810ca9609c9f199419fbac1a017",
+      "tracked": true,
+      "match": true
+    },
+    {
+      "path": "exploration/stellarator_materials/units/reference/stellarator_materials_reference_tea/inputs/mfe_cryo_plant_params.json",
+      "expected": "7b009726b59885f0ee1b5b11febea1afd7dc26e42755689e0e3a74383247e65f",
+      "actual": "7b009726b59885f0ee1b5b11febea1afd7dc26e42755689e0e3a74383247e65f",
+      "tracked": true,
+      "match": true
+    },
+    {
+      "path": "exploration/stellarator_materials/units/reference/stellarator_materials_reference_tea/inputs/mfe_fuel_cycle_params.json",
+      "expected": "d4cb30bd5e71239fd0bbf7fb0de26244ca8340548065b5a7efcaf37e574a7009",
+      "actual": "d4cb30bd5e71239fd0bbf7fb0de26244ca8340548065b5a7efcaf37e574a7009",
+      "tracked": true,
+      "match": true
+    },
+    {
+      "path": "exploration/stellarator_materials/units/reference/stellarator_materials_reference_tea/inputs/mfe_magnet_cost_params.json",
+      "expected": "6f1d9f7be63cad7b70fa2ce49ad6deb969e1c0eb09d867e2c7eaf1037ce33cee",
+      "actual": "6f1d9f7be63cad7b70fa2ce49ad6deb969e1c0eb09d867e2c7eaf1037ce33cee",
+      "tracked": true,
+      "match": true
+    },
+    {
+      "path": "exploration/stellarator_materials/units/reference/stellarator_materials_reference_tea/inputs/mfe_magnet_field_params.json",
+      "expected": "3ddee962745fd715c173906c9fc82345507b23fe5c2341e10e132ed48fea3bb6",
+      "actual": "3ddee962745fd715c173906c9fc82345507b23fe5c2341e10e132ed48fea3bb6",
+      "tracked": true,
+      "match": true
+    },
+    {
+      "path": "exploration/stellarator_materials/units/reference/stellarator_materials_reference_tea/inputs/mfe_magnet_parts_params.json",
+      "expected": "af2bb9bcf381bb8851b1cddd621a76f29e1021ef2abe682c05ec56d14f1374f1",
+      "actual": "af2bb9bcf381bb8851b1cddd621a76f29e1021ef2abe682c05ec56d14f1374f1",
+      "tracked": true,
+      "match": true
+    },
+    {
+      "path": "exploration/stellarator_materials/units/reference/stellarator_materials_reference_tea/inputs/mfe_plant_params.json",
+      "expected": "ff041fec8a149e6c789ca1bd5cf0cc1c6f55c6d96da3f96179f9541131b94814",
+      "actual": "ff041fec8a149e6c789ca1bd5cf0cc1c6f55c6d96da3f96179f9541131b94814",
+      "tracked": true,
+      "match": true
+    },
+    {
+      "path": "exploration/stellarator_materials/units/reference/stellarator_materials_reference_tea/inputs/mfe_plant_systems_params.json",
+      "expected": "bda8499c1bdeef2ca69717598d7d423471dc999f3c25f5f79564d071da903983",
+      "actual": "bda8499c1bdeef2ca69717598d7d423471dc999f3c25f5f79564d071da903983",
+      "tracked": true,
+      "match": true
+    },
+    {
+      "path": "exploration/stellarator_materials/units/reference/stellarator_materials_reference_tea/inputs/mfe_plasma_scaling_params.json",
+      "expected": "7651898e02c098f30ab10b4a19b1b471d627f9b674c06651607bca5a36576e86",
+      "actual": "7651898e02c098f30ab10b4a19b1b471d627f9b674c06651607bca5a36576e86",
+      "tracked": true,
+      "match": true
+    },
+    {
+      "path": "exploration/stellarator_materials/units/reference/stellarator_materials_reference_tea/inputs/mfe_plasma_sustainment_params.json",
+      "expected": "da8b1efe9eb1b21f71e42e95eb4fef19ca3d8503d2ac2ebd0dce74df6e0676dc",
+      "actual": "da8b1efe9eb1b21f71e42e95eb4fef19ca3d8503d2ac2ebd0dce74df6e0676dc",
+      "tracked": true,
+      "match": true
+    },
+    {
+      "path": "exploration/stellarator_materials/units/reference/stellarator_materials_reference_tea/inputs/mfe_power_core_params.json",
+      "expected": "619deeba228f6a42ed5fc10c1265cd6d7d458f5dc42a24bceda39fb0ec18faec",
+      "actual": "619deeba228f6a42ed5fc10c1265cd6d7d458f5dc42a24bceda39fb0ec18faec",
+      "tracked": true,
+      "match": true
+    },
+    {
+      "path": "exploration/stellarator_materials/units/reference/stellarator_materials_reference_tea/inputs/mfe_vacuum_params.json",
+      "expected": "07e515e8cae3939c558172fb9579ecaf4e6397b499ecbaf14de76ade79db3240",
+      "actual": "07e515e8cae3939c558172fb9579ecaf4e6397b499ecbaf14de76ade79db3240",
+      "tracked": true,
+      "match": true
+    },
+    {
+      "path": "exploration/stellarator_materials/units/reference/stellarator_materials_reference_tea/inputs/mfe_viability_params.json",
+      "expected": "d7d1c32dd9a18a7d4b44d043f33584e69f1e09bbf33fa3a1d3f5981e4a4ad348",
+      "actual": "d7d1c32dd9a18a7d4b44d043f33584e69f1e09bbf33fa3a1d3f5981e4a4ad348",
+      "tracked": true,
+      "match": true
+    },
+    {
+      "path": "exploration/stellarator_materials/units/reference/stellarator_materials_reference_tea/inputs/stellarator_plant_params.json",
+      "expected": "05a721522ec8f920543fd9461f96a9b9e61663eb4f541c4144c39802add4782a",
+      "actual": "05a721522ec8f920543fd9461f96a9b9e61663eb4f541c4144c39802add4782a",
+      "tracked": true,
+      "match": true
+    },
+    {
+      "path": "exploration/stellarator_materials/units/reference/stellarator_materials_reference_tea/pipelines/pipeline.yaml",
+      "expected": "6fa4a42e87e53eb5bffb6241496756bba7a4cf287a41b90632e607e5d243eb6d",
+      "actual": "6fa4a42e87e53eb5bffb6241496756bba7a4cf287a41b90632e607e5d243eb6d",
+      "tracked": true,
+      "match": true
+    },
+    {
+      "path": "exploration/stellarator_materials/studies/20260930-magnet-material-plant-map/manifest_reference.json",
+      "expected": "fca63b44aab9a7409ea2b5fddeba34e0494a41623840ddeed231e6207614be1f",
+      "actual": "fca63b44aab9a7409ea2b5fddeba34e0494a41623840ddeed231e6207614be1f",
+      "tracked": true,
+      "match": true
+    },
+    {
+      "path": "exploration/stellarator_materials/studies/reference/manifest.json",
+      "expected": "df0640bb9aabdb7dd95e9c90b31271d90c23c099f7d6e1c3bb15fce0b96a3ee3",
+      "actual": "df0640bb9aabdb7dd95e9c90b31271d90c23c099f7d6e1c3bb15fce0b96a3ee3",
+      "tracked": true,
+      "match": true
+    },
+    {
+      "path": "exploration/stellarator_materials/oracle_glue.py",
+      "expected": "8ae8c750dab321235417929ab2f9c2d86ddf66fa645e526589af96303b59a786",
+      "actual": "8ae8c750dab321235417929ab2f9c2d86ddf66fa645e526589af96303b59a786",
+      "tracked": true,
+      "match": true
+    },
+    {
+      "path": "exploration/stellarator_materials/oracle-reuse.json",
+      "expected": "3e512d6a6aafcb5db6d31b9f2bfe648ea1e90f1d6cf20d5b859ce0339184fff0",
+      "actual": "3e512d6a6aafcb5db6d31b9f2bfe648ea1e90f1d6cf20d5b859ce0339184fff0",
+      "tracked": true,
+      "match": true
+    },
+    {
+      "path": "exploration/magnet_materials/oracle.py",
+      "expected": "9458e118880bade56b215943146277c4f81525c33adcfbc54c13dfbc9e31cab9",
+      "actual": "9458e118880bade56b215943146277c4f81525c33adcfbc54c13dfbc9e31cab9",
+      "tracked": true,
+      "match": true
+    },
+    {
+      "path": "exploration/stellarator_e2e/verify_stellaris.py",
+      "expected": "24e7b004c8e1e93d1430ce820f0a20184a145692e153d5aeacd791d6b185b0dd",
+      "actual": "24e7b004c8e1e93d1430ce820f0a20184a145692e153d5aeacd791d6b185b0dd",
+      "tracked": true,
+      "match": true
+    },
+    {
+      "path": "exploration/stellarator_e2e/studies/oracle_entry.py",
+      "expected": "7315722ad9edae4774abf2881f0158792dccf2445ec63772ba6b49fc5edb5129",
+      "actual": "7315722ad9edae4774abf2881f0158792dccf2445ec63772ba6b49fc5edb5129",
+      "tracked": true,
+      "match": true
+    },
+    {
+      "path": "exploration/stellarator_materials/studies/20260930-magnet-material-plant-map/oracle_entry.py",
+      "expected": "dfdfdc5c7416f18d4b7f273c810341dd20b9ddca863f627b72bcd999f6ea2069",
+      "actual": "dfdfdc5c7416f18d4b7f273c810341dd20b9ddca863f627b72bcd999f6ea2069",
+      "tracked": true,
+      "match": true
+    },
+    {
+      "path": "exploration/stellarator_materials/studies/20260930-magnet-material-plant-map/oracle_reference.py",
+      "expected": "40ac32429040074d05d73f5c3b0bfc209129d745c9f7f91c335a1c53796e5f78",
+      "actual": "40ac32429040074d05d73f5c3b0bfc209129d745c9f7f91c335a1c53796e5f78",
+      "tracked": true,
+      "match": true
+    },
+    {
+      "path": "exploration/stellarator_materials/studies/20260930-magnet-material-plant-map/oracle_rebco.py",
+      "expected": "348a2f87018af2bca510c7864eb3d0b25df9e301179618dde5b49908a25699f4",
+      "actual": "348a2f87018af2bca510c7864eb3d0b25df9e301179618dde5b49908a25699f4",
+      "tracked": true,
+      "match": true
+    },
+    {
+      "path": "exploration/stellarator_materials/studies/20260930-magnet-material-plant-map/oracle_nb3sn.py",
+      "expected": "f3ba7c9f0199a801343bf6ebb725bb18c85de3b58c84ef392962352d618e8bd5",
+      "actual": "f3ba7c9f0199a801343bf6ebb725bb18c85de3b58c84ef392962352d618e8bd5",
+      "tracked": true,
+      "match": true
+    },
+    {
+      "path": "exploration/stellarator_materials/studies/20260930-magnet-material-plant-map/results/verify_stock_reference.json",
+      "expected": "b18394056978b74af44a2ce62f9d62f9f55e8bc7626bdc9243fad23778c99b84",
+      "actual": "b18394056978b74af44a2ce62f9d62f9f55e8bc7626bdc9243fad23778c99b84",
+      "tracked": true,
+      "match": true
+    },
+    {
+      "path": "exploration/stellarator_materials/studies/20260930-magnet-material-plant-map/indicators_reference.json",
+      "expected": "fbc978bdf0a5e3887080759c6b08d3ab25eeb6c9c40b83e87078d8be1d7419ed",
+      "actual": "fbc978bdf0a5e3887080759c6b08d3ab25eeb6c9c40b83e87078d8be1d7419ed",
+      "tracked": true,
+      "match": true
+    },
+    {
+      "path": "exploration/stellarator_materials/studies/20260930-magnet-material-plant-map/axes_reference.json",
+      "expected": "364cbda4b0e013cc8e1948e9072ff401264f76335a7098d73b72c2eaf8fd5b1d",
+      "actual": "364cbda4b0e013cc8e1948e9072ff401264f76335a7098d73b72c2eaf8fd5b1d",
+      "tracked": true,
+      "match": true
+    },
+    {
+      "path": "exploration/stellarator_materials/studies/20260930-magnet-material-plant-map/run_indicators.py",
+      "expected": "7c3225cb7d63eb03c425740cb0bb448e23e22f8ebe248b3e6c6f4ebeda0d6108",
+      "actual": "7c3225cb7d63eb03c425740cb0bb448e23e22f8ebe248b3e6c6f4ebeda0d6108",
+      "tracked": true,
+      "match": true
+    },
+    {
+      "path": "exploration/stellarator_materials/studies/20260930-magnet-material-plant-map/results/baseline_result_reference.json",
+      "expected": "71eade5fdb044e84a3cb66a830971760e463a2df61470cd8bab9c9c50c187700",
+      "actual": "71eade5fdb044e84a3cb66a830971760e463a2df61470cd8bab9c9c50c187700",
+      "tracked": true,
+      "match": true
+    },
+    {
+      "path": "exploration/stellarator_materials/studies/20260930-magnet-material-plant-map/results/breakeven_verification.json",
+      "expected": "c8bf592b6e256e44ae8c80e683f005cf1e4d23de5d9fceb8d82e0170fd84d30f",
+      "actual": "c8bf592b6e256e44ae8c80e683f005cf1e4d23de5d9fceb8d82e0170fd84d30f",
+      "tracked": true,
+      "match": true
+    },
+    {
+      "path": "exploration/stellarator_materials/studies/20260930-magnet-material-plant-map/results/cases.csv",
+      "expected": "f5ddeb13032f3aa2a9de8231962fbbc5064547b7778a1de31d010f13a784e9f1",
+      "actual": "f5ddeb13032f3aa2a9de8231962fbbc5064547b7778a1de31d010f13a784e9f1",
+      "tracked": true,
+      "match": true
+    },
+    {
+      "path": "exploration/stellarator_materials/studies/20260930-magnet-material-plant-map/results/oracle_scan.json",
+      "expected": "2c76a874034e8d3dc88263153718a7fd7d87b6aa7a18410056a87484a65ac26c",
+      "actual": "2c76a874034e8d3dc88263153718a7fd7d87b6aa7a18410056a87484a65ac26c",
+      "tracked": false,
+      "match": true
+    },
+    {
+      "path": "exploration/stellarator_materials/studies/20260930-magnet-material-plant-map/results/oracle_scan_summary.json",
+      "expected": "2096e228003dd0ba5ed3305c581d371c7f6979c17979491902124880d701f783",
+      "actual": "2096e228003dd0ba5ed3305c581d371c7f6979c17979491902124880d701f783",
+      "tracked": true,
+      "match": true
+    },
+    {
+      "path": "exploration/stellarator_materials/studies/20260930-magnet-material-plant-map/results/oracle_verification.json",
+      "expected": "19bb6062d6aab3d0a69aa7d9d69e085365e4852f29e0be223f03c35fe18ddd44",
+      "actual": "19bb6062d6aab3d0a69aa7d9d69e085365e4852f29e0be223f03c35fe18ddd44",
+      "tracked": false,
+      "match": true
+    },
+    {
+      "path": "exploration/stellarator_materials/studies/20260930-magnet-material-plant-map/results/package_identity_reference.json",
+      "expected": "d28ba136116a10b28b9dc6b2a9c4cdffac4559cd9cc044f104266034b0e90ec8",
+      "actual": "d28ba136116a10b28b9dc6b2a9c4cdffac4559cd9cc044f104266034b0e90ec8",
+      "tracked": true,
+      "match": true
+    },
+    {
+      "path": "exploration/stellarator_materials/studies/20260930-magnet-material-plant-map/results/policy_acceptance.json",
+      "expected": "4076d9a04fb642f6beb16041140a02ba8098727b5d70a7090738b9888a167d7e",
+      "actual": "4076d9a04fb642f6beb16041140a02ba8098727b5d70a7090738b9888a167d7e",
+      "tracked": true,
+      "match": true
+    },
+    {
+      "path": "exploration/stellarator_materials/studies/20260930-magnet-material-plant-map/results/preflight_results_reference.json",
+      "expected": "31978d9771029a4c450bf5e83364fd404b60c4962057d118a7d423edf01cecd2",
+      "actual": "31978d9771029a4c450bf5e83364fd404b60c4962057d118a7d423edf01cecd2",
+      "tracked": true,
+      "match": true
+    },
+    {
+      "path": "exploration/stellarator_materials/studies/20260930-magnet-material-plant-map/results/summary.json",
+      "expected": "b0d95cc09e75e9e368fa35c324dce28125c099861d3385356864dc171e1f41f5",
+      "actual": "b0d95cc09e75e9e368fa35c324dce28125c099861d3385356864dc171e1f41f5",
+      "tracked": true,
+      "match": true
+    },
+    {
+      "path": "exploration/stellarator_materials/studies/20260930-magnet-material-plant-map/results/tolerance_diagnostic.json",
+      "expected": "d12790edcdf83a4cb5d6770046b84705845bbb0b40f5181d572b651c7e35d3c3",
+      "actual": "d12790edcdf83a4cb5d6770046b84705845bbb0b40f5181d572b651c7e35d3c3",
+      "tracked": true,
+      "match": true
+    },
+    {
+      "path": "exploration/stellarator_materials/studies/20260930-magnet-material-plant-map/results/verification_baselines.json",
+      "expected": "04e8d370b033ba8ec60fb0225dbf8da271b1218a894a144e4717873a81d92c85",
+      "actual": "04e8d370b033ba8ec60fb0225dbf8da271b1218a894a144e4717873a81d92c85",
+      "tracked": true,
+      "match": true
+    },
+    {
+      "path": "exploration/stellarator_materials/studies/20260930-magnet-material-plant-map/results/verification_summary.json",
+      "expected": "4bcad5940cb2261190d0df07e6e92bee79b20e73911d96173db1c54e405902bc",
+      "actual": "4bcad5940cb2261190d0df07e6e92bee79b20e73911d96173db1c54e405902bc",
+      "tracked": true,
+      "match": true
+    },
+    {
+      "path": "exploration/stellarator_materials/units/rebco/stellarator_materials_rebco_tea/contracts/model_contract.json",
+      "expected": "1026d88fe8b762469b045ba89435ed7bbd31d6fa35ef84711e81c8cff4ef179a",
+      "actual": "1026d88fe8b762469b045ba89435ed7bbd31d6fa35ef84711e81c8cff4ef179a",
+      "tracked": true,
+      "match": true
+    },
+    {
+      "path": "exploration/stellarator_materials/units/rebco/stellarator_materials_rebco_tea/inputs/magnet_conductor_alternatives_params.json",
+      "expected": "954f21709b077b61aed84f97d5cdd61c73e9fd22926494f1f85d46c490d84788",
+      "actual": "954f21709b077b61aed84f97d5cdd61c73e9fd22926494f1f85d46c490d84788",
+      "tracked": true,
+      "match": true
+    },
+    {
+      "path": "exploration/stellarator_materials/units/rebco/stellarator_materials_rebco_tea/inputs/magnet_material_variants_params.json",
+      "expected": "f43b7e619d8fdcb2078951de830d19e568294e7658dc9b18aeb5b6ea6acc8269",
+      "actual": "f43b7e619d8fdcb2078951de830d19e568294e7658dc9b18aeb5b6ea6acc8269",
+      "tracked": true,
+      "match": true
+    },
+    {
+      "path": "exploration/stellarator_materials/units/rebco/stellarator_materials_rebco_tea/inputs/mfe_account_costs_params.json",
+      "expected": "a1839b4248d2f9f92166dd2927baaece8a7836c2ebadf6a8e0deea6afaa09b31",
+      "actual": "a1839b4248d2f9f92166dd2927baaece8a7836c2ebadf6a8e0deea6afaa09b31",
+      "tracked": true,
+      "match": true
+    },
+    {
+      "path": "exploration/stellarator_materials/units/rebco/stellarator_materials_rebco_tea/inputs/mfe_cryo_plant_params.json",
+      "expected": "d0616fb884068838fdd0b1294c8b10b3e05f2f4300f2af07f429c749dbd1d957",
+      "actual": "d0616fb884068838fdd0b1294c8b10b3e05f2f4300f2af07f429c749dbd1d957",
+      "tracked": true,
+      "match": true
+    },
+    {
+      "path": "exploration/stellarator_materials/units/rebco/stellarator_materials_rebco_tea/inputs/mfe_fuel_cycle_params.json",
+      "expected": "6863a32102201608778cb18b60601668194e5644f9590e36f0fb3cb57dccce8d",
+      "actual": "6863a32102201608778cb18b60601668194e5644f9590e36f0fb3cb57dccce8d",
+      "tracked": true,
+      "match": true
+    },
+    {
+      "path": "exploration/stellarator_materials/units/rebco/stellarator_materials_rebco_tea/inputs/mfe_magnet_cost_params.json",
+      "expected": "cd43aa8ad1cb9c972a7545a940dab6860a1fb124b398e5ae4e49021e652ad76e",
+      "actual": "cd43aa8ad1cb9c972a7545a940dab6860a1fb124b398e5ae4e49021e652ad76e",
+      "tracked": true,
+      "match": true
+    },
+    {
+      "path": "exploration/stellarator_materials/units/rebco/stellarator_materials_rebco_tea/inputs/mfe_magnet_field_params.json",
+      "expected": "cf3e248f77cc43f2b36affa5441226b4d8b5c00d9c07eed80e36648c7d33d02b",
+      "actual": "cf3e248f77cc43f2b36affa5441226b4d8b5c00d9c07eed80e36648c7d33d02b",
+      "tracked": true,
+      "match": true
+    },
+    {
+      "path": "exploration/stellarator_materials/units/rebco/stellarator_materials_rebco_tea/inputs/mfe_magnet_parts_params.json",
+      "expected": "32df2633e07eb95350f84fa6146c0fc10e29b54e23cdd65e868a438adb6ffb77",
+      "actual": "32df2633e07eb95350f84fa6146c0fc10e29b54e23cdd65e868a438adb6ffb77",
+      "tracked": true,
+      "match": true
+    },
+    {
+      "path": "exploration/stellarator_materials/units/rebco/stellarator_materials_rebco_tea/inputs/mfe_plant_params.json",
+      "expected": "afa603427b7383ef9b24f45a39a112cc7f67eb964ae458373ab649681b2c7c17",
+      "actual": "afa603427b7383ef9b24f45a39a112cc7f67eb964ae458373ab649681b2c7c17",
+      "tracked": true,
+      "match": true
+    },
+    {
+      "path": "exploration/stellarator_materials/units/rebco/stellarator_materials_rebco_tea/inputs/mfe_plant_systems_params.json",
+      "expected": "afbe86c127542386497a7776e02de4d7d4fd81624a53f451b20afa742d4e96a7",
+      "actual": "afbe86c127542386497a7776e02de4d7d4fd81624a53f451b20afa742d4e96a7",
+      "tracked": true,
+      "match": true
+    },
+    {
+      "path": "exploration/stellarator_materials/units/rebco/stellarator_materials_rebco_tea/inputs/mfe_plasma_scaling_params.json",
+      "expected": "b87c9998fb8dc9f9f354beba48afefde3e505996c5cb73bdf59cb9949010567d",
+      "actual": "b87c9998fb8dc9f9f354beba48afefde3e505996c5cb73bdf59cb9949010567d",
+      "tracked": true,
+      "match": true
+    },
+    {
+      "path": "exploration/stellarator_materials/units/rebco/stellarator_materials_rebco_tea/inputs/mfe_plasma_sustainment_params.json",
+      "expected": "2afc3f497c94cf838265df68324dd7aee383b69df9685eda530821350346dd69",
+      "actual": "2afc3f497c94cf838265df68324dd7aee383b69df9685eda530821350346dd69",
+      "tracked": true,
+      "match": true
+    },
+    {
+      "path": "exploration/stellarator_materials/units/rebco/stellarator_materials_rebco_tea/inputs/mfe_vacuum_params.json",
+      "expected": "c600d508b4e86fd2b1ec63568a38ca08ef7ccd1a1821e02870841bd88812269c",
+      "actual": "c600d508b4e86fd2b1ec63568a38ca08ef7ccd1a1821e02870841bd88812269c",
+      "tracked": true,
+      "match": true
+    },
+    {
+      "path": "exploration/stellarator_materials/units/rebco/stellarator_materials_rebco_tea/inputs/mfe_viability_params.json",
+      "expected": "d34f2af1ecb825fca27fd770824a9cd14c794f42025255fc769d335703607153",
+      "actual": "d34f2af1ecb825fca27fd770824a9cd14c794f42025255fc769d335703607153",
+      "tracked": true,
+      "match": true
+    },
+    {
+      "path": "exploration/stellarator_materials/units/rebco/stellarator_materials_rebco_tea/inputs/rebco_material_params.json",
+      "expected": "80ce3dae4b930a291ba0dde81589df760b63b07efdfcea9f064079c4edc9f77b",
+      "actual": "80ce3dae4b930a291ba0dde81589df760b63b07efdfcea9f064079c4edc9f77b",
+      "tracked": true,
+      "match": true
+    },
+    {
+      "path": "exploration/stellarator_materials/units/rebco/stellarator_materials_rebco_tea/pipelines/pipeline.yaml",
+      "expected": "6dc7f65f557240a00310b78a49b274253692d223e8ba4b1d25d5d61a3e36fa19",
+      "actual": "6dc7f65f557240a00310b78a49b274253692d223e8ba4b1d25d5d61a3e36fa19",
+      "tracked": true,
+      "match": true
+    },
+    {
+      "path": "exploration/stellarator_materials/studies/20260930-magnet-material-plant-map/manifest_rebco.json",
+      "expected": "1128273ddf180eb8dcdf5825dee33f0daaf5f2e5ae3cbb8d1827654f4db86948",
+      "actual": "1128273ddf180eb8dcdf5825dee33f0daaf5f2e5ae3cbb8d1827654f4db86948",
+      "tracked": true,
+      "match": true
+    },
+    {
+      "path": "exploration/stellarator_materials/studies/rebco/manifest.json",
+      "expected": "2b202fb51731c8652c9744ad44d319b2c54fb81dc035cd31c5d8542332ae75f8",
+      "actual": "2b202fb51731c8652c9744ad44d319b2c54fb81dc035cd31c5d8542332ae75f8",
+      "tracked": true,
+      "match": true
+    },
+    {
+      "path": "exploration/stellarator_materials/studies/20260930-magnet-material-plant-map/results/verify_stock_rebco.json",
+      "expected": "91d6dc1b84ee3beb86493f653aea3cf6e79e9892d4d4e31b414f33d826cd5384",
+      "actual": "91d6dc1b84ee3beb86493f653aea3cf6e79e9892d4d4e31b414f33d826cd5384",
+      "tracked": true,
+      "match": true
+    },
+    {
+      "path": "exploration/stellarator_materials/studies/20260930-magnet-material-plant-map/indicators_rebco.json",
+      "expected": "a89f7b5d6c8eb49fda96537d73d8ccc26519dde00633774878871ba777aad7e1",
+      "actual": "a89f7b5d6c8eb49fda96537d73d8ccc26519dde00633774878871ba777aad7e1",
+      "tracked": true,
+      "match": true
+    },
+    {
+      "path": "exploration/stellarator_materials/studies/20260930-magnet-material-plant-map/axes_rebco.json",
+      "expected": "7c220bf90e9291ff38d0f867f332a8973e4ff1c5d629000c7f3bb4fdfb186ddb",
+      "actual": "7c220bf90e9291ff38d0f867f332a8973e4ff1c5d629000c7f3bb4fdfb186ddb",
+      "tracked": true,
+      "match": true
+    },
+    {
+      "path": "exploration/stellarator_materials/studies/20260930-magnet-material-plant-map/results/baseline_result_rebco.json",
+      "expected": "a18f2601dae53c5b175917b75ab5ee2d77dd4ee5b3771453a9df034083bc55de",
+      "actual": "a18f2601dae53c5b175917b75ab5ee2d77dd4ee5b3771453a9df034083bc55de",
+      "tracked": true,
+      "match": true
+    },
+    {
+      "path": "exploration/stellarator_materials/studies/20260930-magnet-material-plant-map/results/cases_rebco.json",
+      "expected": "c59ca66abcf69bdbf7352deaee832fdbd8e22456001defbc16eb21a2f45e7c0f",
+      "actual": "c59ca66abcf69bdbf7352deaee832fdbd8e22456001defbc16eb21a2f45e7c0f",
+      "tracked": false,
+      "match": true
+    },
+    {
+      "path": "exploration/stellarator_materials/studies/20260930-magnet-material-plant-map/results/constraint_catalog_rebco.json",
+      "expected": "b2057acadb78fffaad85b9fbe5bacc35e4016de7018fb52eed0e9d896719ea83",
+      "actual": "b2057acadb78fffaad85b9fbe5bacc35e4016de7018fb52eed0e9d896719ea83",
+      "tracked": true,
+      "match": true
+    },
+    {
+      "path": "exploration/stellarator_materials/studies/20260930-magnet-material-plant-map/results/execution-context_rebco.json",
+      "expected": "cc3b74cf93a9640172a1c776f9163e0c133ea370a088ead6f636991a7513c5ce",
+      "actual": "cc3b74cf93a9640172a1c776f9163e0c133ea370a088ead6f636991a7513c5ce",
+      "tracked": true,
+      "match": true
+    },
+    {
+      "path": "exploration/stellarator_materials/studies/20260930-magnet-material-plant-map/results/integration_return_used_rebco.json",
+      "expected": "24a2b5d3a07c832d1a5e8bfed3fde808dc8b322809f377e0897c1d5f8410bdbb",
+      "actual": "24a2b5d3a07c832d1a5e8bfed3fde808dc8b322809f377e0897c1d5f8410bdbb",
+      "tracked": true,
+      "match": true
+    },
+    {
+      "path": "exploration/stellarator_materials/studies/20260930-magnet-material-plant-map/results/package_identity_rebco.json",
+      "expected": "85f72b18fd213f331e608ec73e3901c013e9f498d2b78a12825332ff7f179a6b",
+      "actual": "85f72b18fd213f331e608ec73e3901c013e9f498d2b78a12825332ff7f179a6b",
+      "tracked": true,
+      "match": true
+    },
+    {
+      "path": "exploration/stellarator_materials/studies/20260930-magnet-material-plant-map/results/preflight_results_rebco.json",
+      "expected": "b76025a29e73667adbe02de7790b5fa7fd8faf496b01cf6da28932352309bd7f",
+      "actual": "b76025a29e73667adbe02de7790b5fa7fd8faf496b01cf6da28932352309bd7f",
+      "tracked": true,
+      "match": true
+    },
+    {
+      "path": "exploration/stellarator_materials/studies/20260930-magnet-material-plant-map/results/native/rebco/artifacts",
+      "expected": "8038a31c24ac3eb5118245da8f07ab88e47c48b89cd0e5284768a863592212b8",
+      "actual": "8038a31c24ac3eb5118245da8f07ab88e47c48b89cd0e5284768a863592212b8",
+      "tracked": false,
+      "match": true
+    },
+    {
+      "path": "exploration/stellarator_materials/units/nb3sn/stellarator_materials_nb3sn_tea/contracts/model_contract.json",
+      "expected": "c85703f9412a5adffeea49782bfd607f3527b25803fe72f828b8b4d7d520c377",
+      "actual": "c85703f9412a5adffeea49782bfd607f3527b25803fe72f828b8b4d7d520c377",
+      "tracked": true,
+      "match": true
+    },
+    {
+      "path": "exploration/stellarator_materials/units/nb3sn/stellarator_materials_nb3sn_tea/inputs/magnet_conductor_alternatives_params.json",
+      "expected": "88411dca0965116e20629be8c9e939c3f0445bc18833489b9f1ab08a785e87de",
+      "actual": "88411dca0965116e20629be8c9e939c3f0445bc18833489b9f1ab08a785e87de",
+      "tracked": true,
+      "match": true
+    },
+    {
+      "path": "exploration/stellarator_materials/units/nb3sn/stellarator_materials_nb3sn_tea/inputs/magnet_material_variants_params.json",
+      "expected": "1391d96c2af180d4ae69f856ccc4b5c3ec790f166b43a14076f491d806f1800d",
+      "actual": "1391d96c2af180d4ae69f856ccc4b5c3ec790f166b43a14076f491d806f1800d",
+      "tracked": true,
+      "match": true
+    },
+    {
+      "path": "exploration/stellarator_materials/units/nb3sn/stellarator_materials_nb3sn_tea/inputs/mfe_account_costs_params.json",
+      "expected": "9d33e655242660d560af431aedc7ce252b9010710460f5a2384751b7e8b21745",
+      "actual": "9d33e655242660d560af431aedc7ce252b9010710460f5a2384751b7e8b21745",
+      "tracked": true,
+      "match": true
+    },
+    {
+      "path": "exploration/stellarator_materials/units/nb3sn/stellarator_materials_nb3sn_tea/inputs/mfe_cryo_plant_params.json",
+      "expected": "d2873ec4e2e8c46c4e5ea7dedce8274b74c7a2e9f2bc0836c97b155945bb736b",
+      "actual": "d2873ec4e2e8c46c4e5ea7dedce8274b74c7a2e9f2bc0836c97b155945bb736b",
+      "tracked": true,
+      "match": true
+    },
+    {
+      "path": "exploration/stellarator_materials/units/nb3sn/stellarator_materials_nb3sn_tea/inputs/mfe_fuel_cycle_params.json",
+      "expected": "c0a759f0f47dec502f85c5f728f24d2a1d0494c8dec6b7207ebfd0d64dcd053a",
+      "actual": "c0a759f0f47dec502f85c5f728f24d2a1d0494c8dec6b7207ebfd0d64dcd053a",
+      "tracked": true,
+      "match": true
+    },
+    {
+      "path": "exploration/stellarator_materials/units/nb3sn/stellarator_materials_nb3sn_tea/inputs/mfe_magnet_cost_params.json",
+      "expected": "ebc8d23a4986dce83a30417388dd467e47a33747365a1f766812921a5cfbe460",
+      "actual": "ebc8d23a4986dce83a30417388dd467e47a33747365a1f766812921a5cfbe460",
+      "tracked": true,
+      "match": true
+    },
+    {
+      "path": "exploration/stellarator_materials/units/nb3sn/stellarator_materials_nb3sn_tea/inputs/mfe_magnet_field_params.json",
+      "expected": "69d64c13b307f8bcff11d952c163899ebf6b1613160f3fdb9871100d4a3c0a8f",
+      "actual": "69d64c13b307f8bcff11d952c163899ebf6b1613160f3fdb9871100d4a3c0a8f",
+      "tracked": true,
+      "match": true
+    },
+    {
+      "path": "exploration/stellarator_materials/units/nb3sn/stellarator_materials_nb3sn_tea/inputs/mfe_magnet_parts_params.json",
+      "expected": "8d3f2fd4645503247b121b2fb05ec5ba8d6418e37a9ddcbb3d322dd44522df50",
+      "actual": "8d3f2fd4645503247b121b2fb05ec5ba8d6418e37a9ddcbb3d322dd44522df50",
+      "tracked": true,
+      "match": true
+    },
+    {
+      "path": "exploration/stellarator_materials/units/nb3sn/stellarator_materials_nb3sn_tea/inputs/mfe_plant_params.json",
+      "expected": "9d4e6dfcabb1c279ef79b67a0aae49698bd73b87a0dbd0385222701271a4ad87",
+      "actual": "9d4e6dfcabb1c279ef79b67a0aae49698bd73b87a0dbd0385222701271a4ad87",
+      "tracked": true,
+      "match": true
+    },
+    {
+      "path": "exploration/stellarator_materials/units/nb3sn/stellarator_materials_nb3sn_tea/inputs/mfe_plant_systems_params.json",
+      "expected": "72ef3a0d7f16e4f67905dba546dba5e599b36fd258a342ad1f29821e7630b7fd",
+      "actual": "72ef3a0d7f16e4f67905dba546dba5e599b36fd258a342ad1f29821e7630b7fd",
+      "tracked": true,
+      "match": true
+    },
+    {
+      "path": "exploration/stellarator_materials/units/nb3sn/stellarator_materials_nb3sn_tea/inputs/mfe_plasma_scaling_params.json",
+      "expected": "04ee369d45e93eb69452db3b42f48463137146793cc9954cce054075f9432688",
+      "actual": "04ee369d45e93eb69452db3b42f48463137146793cc9954cce054075f9432688",
+      "tracked": true,
+      "match": true
+    },
+    {
+      "path": "exploration/stellarator_materials/units/nb3sn/stellarator_materials_nb3sn_tea/inputs/mfe_plasma_sustainment_params.json",
+      "expected": "9ed67a320d60269a6a95cd41904fbc32d1ead29e3459f6a8912c0bb8dcfe137c",
+      "actual": "9ed67a320d60269a6a95cd41904fbc32d1ead29e3459f6a8912c0bb8dcfe137c",
+      "tracked": true,
+      "match": true
+    },
+    {
+      "path": "exploration/stellarator_materials/units/nb3sn/stellarator_materials_nb3sn_tea/inputs/mfe_vacuum_params.json",
+      "expected": "7e471b61e973de47290676f52170b17e6347d757cc2f9758da88ae7226bd47f6",
+      "actual": "7e471b61e973de47290676f52170b17e6347d757cc2f9758da88ae7226bd47f6",
+      "tracked": true,
+      "match": true
+    },
+    {
+      "path": "exploration/stellarator_materials/units/nb3sn/stellarator_materials_nb3sn_tea/inputs/mfe_viability_params.json",
+      "expected": "99d4d30c9950e4f5693795bf65eb7612420c6a38f36bdeabc96680eb0198efb4",
+      "actual": "99d4d30c9950e4f5693795bf65eb7612420c6a38f36bdeabc96680eb0198efb4",
+      "tracked": true,
+      "match": true
+    },
+    {
+      "path": "exploration/stellarator_materials/units/nb3sn/stellarator_materials_nb3sn_tea/inputs/nb3sn_material_params.json",
+      "expected": "136cc06ff2746e75f07a7f22a477f25983fde926261a55578a1f4c5911cdc049",
+      "actual": "136cc06ff2746e75f07a7f22a477f25983fde926261a55578a1f4c5911cdc049",
+      "tracked": true,
+      "match": true
+    },
+    {
+      "path": "exploration/stellarator_materials/units/nb3sn/stellarator_materials_nb3sn_tea/pipelines/pipeline.yaml",
+      "expected": "fd88f55e1e755706788944fb4674d92d4be8f150116e0ce9cf519538a8d7c504",
+      "actual": "fd88f55e1e755706788944fb4674d92d4be8f150116e0ce9cf519538a8d7c504",
+      "tracked": true,
+      "match": true
+    },
+    {
+      "path": "exploration/stellarator_materials/studies/20260930-magnet-material-plant-map/manifest_nb3sn.json",
+      "expected": "e641a9a0c62608aef2f26791a3753be962fcf9d2e00b157fa5153455671237af",
+      "actual": "e641a9a0c62608aef2f26791a3753be962fcf9d2e00b157fa5153455671237af",
+      "tracked": true,
+      "match": true
+    },
+    {
+      "path": "exploration/stellarator_materials/studies/20260930-magnet-material-plant-map/results/verify_stock_nb3sn.json",
+      "expected": "3870ea100255ed964e9079a88eb568109a4c26034a7590b3ccdc26444d5f3b4c",
+      "actual": "3870ea100255ed964e9079a88eb568109a4c26034a7590b3ccdc26444d5f3b4c",
+      "tracked": true,
+      "match": true
+    },
+    {
+      "path": "exploration/stellarator_materials/studies/20260930-magnet-material-plant-map/indicators_nb3sn.json",
+      "expected": "1f15239f489fb1d1f6a3702f4fa53f98f873e1bfd15d92892dfcfe5442ca06a6",
+      "actual": "1f15239f489fb1d1f6a3702f4fa53f98f873e1bfd15d92892dfcfe5442ca06a6",
+      "tracked": true,
+      "match": true
+    },
+    {
+      "path": "exploration/stellarator_materials/studies/20260930-magnet-material-plant-map/axes_nb3sn.json",
+      "expected": "dbcd1ded6ca42341ae67b521e6a5a833c701d22665f55738aab40d372cc187ad",
+      "actual": "dbcd1ded6ca42341ae67b521e6a5a833c701d22665f55738aab40d372cc187ad",
+      "tracked": true,
+      "match": true
+    },
+    {
+      "path": "exploration/stellarator_materials/studies/20260930-magnet-material-plant-map/results/baseline_result_nb3sn.json",
+      "expected": "c11e2dcd39752fdb7570598c4c20c44420b19917d0fc75af99b4c098690be914",
+      "actual": "c11e2dcd39752fdb7570598c4c20c44420b19917d0fc75af99b4c098690be914",
+      "tracked": true,
+      "match": true
+    },
+    {
+      "path": "exploration/stellarator_materials/studies/20260930-magnet-material-plant-map/results/cases_nb3sn.json",
+      "expected": "de7f90d6faf88d22a706188affa908dd0cb3c33f9559eea1a57083e158aabc33",
+      "actual": "de7f90d6faf88d22a706188affa908dd0cb3c33f9559eea1a57083e158aabc33",
+      "tracked": false,
+      "match": true
+    },
+    {
+      "path": "exploration/stellarator_materials/studies/20260930-magnet-material-plant-map/results/constraint_catalog_nb3sn.json",
+      "expected": "128c8c117f4f6d36bc1ff8fa07896868b3f3037336038046196f5244644e8a81",
+      "actual": "128c8c117f4f6d36bc1ff8fa07896868b3f3037336038046196f5244644e8a81",
+      "tracked": true,
+      "match": true
+    },
+    {
+      "path": "exploration/stellarator_materials/studies/20260930-magnet-material-plant-map/results/execution-context_nb3sn.json",
+      "expected": "4d886098f7266076252b5a3e2ea3cb902aeb8e6e75973f81e84b5214d35045d1",
+      "actual": "4d886098f7266076252b5a3e2ea3cb902aeb8e6e75973f81e84b5214d35045d1",
+      "tracked": true,
+      "match": true
+    },
+    {
+      "path": "exploration/stellarator_materials/studies/20260930-magnet-material-plant-map/results/integration_return_used_nb3sn.json",
+      "expected": "324e0dcc922d5c34817b447b462f221e7281b54d5395206e6e43cdd2f98ed656",
+      "actual": "324e0dcc922d5c34817b447b462f221e7281b54d5395206e6e43cdd2f98ed656",
+      "tracked": true,
+      "match": true
+    },
+    {
+      "path": "exploration/stellarator_materials/studies/20260930-magnet-material-plant-map/results/package_identity_nb3sn.json",
+      "expected": "c28ae8e0abac96c590d2c845d26071957c5dc75c10e977d1b8ed4e007997eda8",
+      "actual": "c28ae8e0abac96c590d2c845d26071957c5dc75c10e977d1b8ed4e007997eda8",
+      "tracked": true,
+      "match": true
+    },
+    {
+      "path": "exploration/stellarator_materials/studies/20260930-magnet-material-plant-map/results/preflight_results_nb3sn.json",
+      "expected": "7728d92499786930564b21da6492a498114ad30224b8ede93112c4595b1b5ce3",
+      "actual": "7728d92499786930564b21da6492a498114ad30224b8ede93112c4595b1b5ce3",
+      "tracked": true,
+      "match": true
+    },
+    {
+      "path": "exploration/stellarator_materials/studies/20260930-magnet-material-plant-map/results/native/nb3sn/artifacts",
+      "expected": "a665a329426f413bdbffbc447599ac45570b9bf6176735d3f1ff0b7868d2e468",
+      "actual": "a665a329426f413bdbffbc447599ac45570b9bf6176735d3f1ff0b7868d2e468",
+      "tracked": false,
+      "match": true
+    },
+    {
+      "path": "scripts/study/indicators.py",
+      "expected": "10fca70d72cb71d573ebf8782b69acc7e9e6157a7cd7300a667ca1ce693f5c87",
+      "actual": "10fca70d72cb71d573ebf8782b69acc7e9e6157a7cd7300a667ca1ce693f5c87",
+      "tracked": true,
+      "match": true
+    },
+    {
+      "path": "scripts/study/preflight.py",
+      "expected": "86acedcd1b5c35a658c692b5a6631f2f2e0e96ccd05d1e11c65143fa55688472",
+      "actual": "86acedcd1b5c35a658c692b5a6631f2f2e0e96ccd05d1e11c65143fa55688472",
+      "tracked": true,
+      "match": true
+    },
+    {
+      "path": "scripts/study/verify.py",
+      "expected": "34ee38ed9ae38f448199f0e968a13cd2448ec97098bef601995031d1c3fbc8ba",
+      "actual": "34ee38ed9ae38f448199f0e968a13cd2448ec97098bef601995031d1c3fbc8ba",
+      "tracked": true,
+      "match": true
+    },
+    {
+      "path": "scripts/integrate.py",
+      "expected": "6dd5ab46530f9dc1e259af2ca8aa62e95304ba97b29615b8963d6c04773cdc2f",
+      "actual": "6dd5ab46530f9dc1e259af2ca8aa62e95304ba97b29615b8963d6c04773cdc2f",
+      "tracked": true,
+      "match": true
+    },
+    {
+      "path": "exploration/stellarator_materials/studies/study_route.py",
+      "expected": "eef7c6558901e35b1eaa83e612e30cb4614ca1679e9f9c83e8947a53eb7621f1",
+      "actual": "eef7c6558901e35b1eaa83e612e30cb4614ca1679e9f9c83e8947a53eb7621f1",
+      "tracked": true,
+      "match": true
+    },
+    {
+      "path": "exploration/stellarator_materials/studies/interface_data.py",
+      "expected": "3df0b576cec2f589d7e271f71d25f333a4ce6f2eeee37a830ac77e7fa599eddb",
+      "actual": "3df0b576cec2f589d7e271f71d25f333a4ce6f2eeee37a830ac77e7fa599eddb",
+      "tracked": true,
+      "match": true
+    },
+    {
+      "path": "exploration/stellarator_materials/studies/20260930-magnet-material-plant-map/record_common.py",
+      "expected": "f64735a8e1d912fd5168adc9d80c140bcd4872f4ec5e0e03a1c3d34e549cef19",
+      "actual": "f64735a8e1d912fd5168adc9d80c140bcd4872f4ec5e0e03a1c3d34e549cef19",
+      "tracked": true,
+      "match": true
+    },
+    {
+      "path": "exploration/stellarator_materials/studies/20260930-magnet-material-plant-map/declare_axes.py",
+      "expected": "75b968b6ff2e38170ef246e0acdc6fd93ae321772f4e1d236a6134ce03d5947c",
+      "actual": "75b968b6ff2e38170ef246e0acdc6fd93ae321772f4e1d236a6134ce03d5947c",
+      "tracked": true,
+      "match": true
+    },
+    {
+      "path": "exploration/stellarator_materials/studies/20260930-magnet-material-plant-map/write_manifests.py",
+      "expected": "6eeae38501eb38cb314ab8f75af1e20a1cc7f72605595426cc1b7722525b2e89",
+      "actual": "6eeae38501eb38cb314ab8f75af1e20a1cc7f72605595426cc1b7722525b2e89",
+      "tracked": true,
+      "match": true
+    },
+    {
+      "path": "exploration/stellarator_materials/studies/20260930-magnet-material-plant-map/run_baseline.py",
+      "expected": "90b25cd46663d9125555d62689261a82fa28a60c7e066a0fa9aeff40bf41c14b",
+      "actual": "90b25cd46663d9125555d62689261a82fa28a60c7e066a0fa9aeff40bf41c14b",
+      "tracked": true,
+      "match": true
+    },
+    {
+      "path": "exploration/stellarator_materials/studies/20260930-magnet-material-plant-map/route_entry.py",
+      "expected": "e496926587ad6043d48dacdfdf2b80f0fcc9ddcf47f8d0bf3b58ce8e25ab64d1",
+      "actual": "e496926587ad6043d48dacdfdf2b80f0fcc9ddcf47f8d0bf3b58ce8e25ab64d1",
+      "tracked": true,
+      "match": true
+    },
+    {
+      "path": "exploration/stellarator_materials/studies/20260930-magnet-material-plant-map/statuses.py",
+      "expected": "b2ef5169aa928ef83bc443f8d73b314a7b78e22cdf6919e82ca2d59cd05e9f09",
+      "actual": "b2ef5169aa928ef83bc443f8d73b314a7b78e22cdf6919e82ca2d59cd05e9f09",
+      "tracked": true,
+      "match": true
+    },
+    {
+      "path": "exploration/stellarator_materials/studies/20260930-magnet-material-plant-map/oracle_scan.py",
+      "expected": "eec1cc424b519ee6f63f68f456bfd5bf1cfd7645abe1c2bc62a765b23f96bb7e",
+      "actual": "eec1cc424b519ee6f63f68f456bfd5bf1cfd7645abe1c2bc62a765b23f96bb7e",
+      "tracked": true,
+      "match": true
+    },
+    {
+      "path": "exploration/stellarator_materials/studies/20260930-magnet-material-plant-map/diagnose_tolerance.py",
+      "expected": "e28d7ceffc03b411937e0eb37cfc71260c0eead5798950068a15e146ce8c3e94",
+      "actual": "e28d7ceffc03b411937e0eb37cfc71260c0eead5798950068a15e146ce8c3e94",
+      "tracked": true,
+      "match": true
+    },
+    {
+      "path": "exploration/stellarator_materials/studies/20260930-magnet-material-plant-map/execute_study.py",
+      "expected": "837496c38af767e54b9bf60a5a6a6947bf3c82ccf82cc4f9a8efb2cf6cf332d3",
+      "actual": "837496c38af767e54b9bf60a5a6a6947bf3c82ccf82cc4f9a8efb2cf6cf332d3",
+      "tracked": true,
+      "match": true
+    },
+    {
+      "path": "exploration/stellarator_materials/studies/20260930-magnet-material-plant-map/verify_all.py",
+      "expected": "3347c7145fbbb6ca713b2869b2f126c7401186eabd7ca962b5a6d196b1433f73",
+      "actual": "3347c7145fbbb6ca713b2869b2f126c7401186eabd7ca962b5a6d196b1433f73",
+      "tracked": true,
+      "match": true
+    },
+    {
+      "path": "exploration/stellarator_materials/studies/20260930-magnet-material-plant-map/policy_acceptance.py",
+      "expected": "364fa6d9304cd1fa15a7505267649b3cb4b325ca6cb5ad7104e05be6b79b8f02",
+      "actual": "364fa6d9304cd1fa15a7505267649b3cb4b325ca6cb5ad7104e05be6b79b8f02",
+      "tracked": true,
+      "match": true
+    },
+    {
+      "path": "exploration/stellarator_materials/studies/20260930-magnet-material-plant-map/summarize.py",
+      "expected": "5f120a318545787d066626672bb85ebf9544502b46cb5bdba30d9bdf6ecfa0a2",
+      "actual": "5f120a318545787d066626672bb85ebf9544502b46cb5bdba30d9bdf6ecfa0a2",
+      "tracked": true,
+      "match": true
+    },
+    {
+      "path": "exploration/stellarator_materials/studies/20260930-magnet-material-plant-map/breakeven_verify.py",
+      "expected": "c63b25fd87cd5f6b4a2a6484d3bc438b903e38ad903a838fbf25b134367e6d3b",
+      "actual": "c63b25fd87cd5f6b4a2a6484d3bc438b903e38ad903a838fbf25b134367e6d3b",
+      "tracked": true,
+      "match": true
+    },
+    {
+      "path": "exploration/stellarator_materials/studies/20260930-magnet-material-plant-map/build_snapshot.py",
+      "expected": "c7e5166132570a6ed14ba1d0b32124e52aa8fd08d64363ec1cf70ee2f4fb2066",
+      "actual": "c7e5166132570a6ed14ba1d0b32124e52aa8fd08d64363ec1cf70ee2f4fb2066",
+      "tracked": true,
+      "match": true
+    }
+  ],
+  "package_identities": [
+    {
+      "unit": "reference",
+      "package": "exploration/stellarator_materials/units/reference/stellarator_materials_reference_tea",
+      "pin": {
+        "recipe": "indicator-input-fingerprint/v1",
+        "digest": "4229205b12ed80f3da3430bf075efc79364c88ce5bec768e785e9c1db4a859fc",
+        "files": [
+          {
+            "path": "contracts/model_contract.json",
+            "sha256": "d10d209b3117a03d433887a8d949451ecc4788c920e9682ceea01ac2d8eb768b"
+          },
+          {
+            "path": "inputs/mfe_account_costs_params.json",
+            "sha256": "29d6eb7e561ef20137d854643fc80a7713ae7810ca9609c9f199419fbac1a017"
+          },
+          {
+            "path": "inputs/mfe_cryo_plant_params.json",
+            "sha256": "7b009726b59885f0ee1b5b11febea1afd7dc26e42755689e0e3a74383247e65f"
+          },
+          {
+            "path": "inputs/mfe_fuel_cycle_params.json",
+            "sha256": "d4cb30bd5e71239fd0bbf7fb0de26244ca8340548065b5a7efcaf37e574a7009"
+          },
+          {
+            "path": "inputs/mfe_magnet_cost_params.json",
+            "sha256": "6f1d9f7be63cad7b70fa2ce49ad6deb969e1c0eb09d867e2c7eaf1037ce33cee"
+          },
+          {
+            "path": "inputs/mfe_magnet_field_params.json",
+            "sha256": "3ddee962745fd715c173906c9fc82345507b23fe5c2341e10e132ed48fea3bb6"
+          },
+          {
+            "path": "inputs/mfe_magnet_parts_params.json",
+            "sha256": "af2bb9bcf381bb8851b1cddd621a76f29e1021ef2abe682c05ec56d14f1374f1"
+          },
+          {
+            "path": "inputs/mfe_plant_params.json",
+            "sha256": "ff041fec8a149e6c789ca1bd5cf0cc1c6f55c6d96da3f96179f9541131b94814"
+          },
+          {
+            "path": "inputs/mfe_plant_systems_params.json",
+            "sha256": "bda8499c1bdeef2ca69717598d7d423471dc999f3c25f5f79564d071da903983"
+          },
+          {
+            "path": "inputs/mfe_plasma_scaling_params.json",
+            "sha256": "7651898e02c098f30ab10b4a19b1b471d627f9b674c06651607bca5a36576e86"
+          },
+          {
+            "path": "inputs/mfe_plasma_sustainment_params.json",
+            "sha256": "da8b1efe9eb1b21f71e42e95eb4fef19ca3d8503d2ac2ebd0dce74df6e0676dc"
+          },
+          {
+            "path": "inputs/mfe_power_core_params.json",
+            "sha256": "619deeba228f6a42ed5fc10c1265cd6d7d458f5dc42a24bceda39fb0ec18faec"
+          },
+          {
+            "path": "inputs/mfe_vacuum_params.json",
+            "sha256": "07e515e8cae3939c558172fb9579ecaf4e6397b499ecbaf14de76ade79db3240"
+          },
+          {
+            "path": "inputs/mfe_viability_params.json",
+            "sha256": "d7d1c32dd9a18a7d4b44d043f33584e69f1e09bbf33fa3a1d3f5981e4a4ad348"
+          },
+          {
+            "path": "inputs/stellarator_plant_params.json",
+            "sha256": "05a721522ec8f920543fd9461f96a9b9e61663eb4f541c4144c39802add4782a"
+          },
+          {
+            "path": "pipelines/pipeline.yaml",
+            "sha256": "6fa4a42e87e53eb5bffb6241496756bba7a4cf287a41b90632e607e5d243eb6d"
+          }
+        ]
+      },
+      "semantic": "a2b225a5eb30edfd8d23fe99f127169bbb45b80b5feca563f30fc7d6f4db7a9a",
+      "executable": "86648d368246011bc881accdee635c14fca656d5042031dfce7fb498052a1c2a"
+    },
+    {
+      "unit": "rebco",
+      "package": "exploration/stellarator_materials/units/rebco/stellarator_materials_rebco_tea",
+      "pin": {
+        "recipe": "indicator-input-fingerprint/v1",
+        "digest": "f3884b47541a2122a44572759b6df9122869ad12212fbe383c228f3fcc5c6e75",
+        "files": [
+          {
+            "path": "contracts/model_contract.json",
+            "sha256": "1026d88fe8b762469b045ba89435ed7bbd31d6fa35ef84711e81c8cff4ef179a"
+          },
+          {
+            "path": "inputs/magnet_conductor_alternatives_params.json",
+            "sha256": "954f21709b077b61aed84f97d5cdd61c73e9fd22926494f1f85d46c490d84788"
+          },
+          {
+            "path": "inputs/magnet_material_variants_params.json",
+            "sha256": "f43b7e619d8fdcb2078951de830d19e568294e7658dc9b18aeb5b6ea6acc8269"
+          },
+          {
+            "path": "inputs/mfe_account_costs_params.json",
+            "sha256": "a1839b4248d2f9f92166dd2927baaece8a7836c2ebadf6a8e0deea6afaa09b31"
+          },
+          {
+            "path": "inputs/mfe_cryo_plant_params.json",
+            "sha256": "d0616fb884068838fdd0b1294c8b10b3e05f2f4300f2af07f429c749dbd1d957"
+          },
+          {
+            "path": "inputs/mfe_fuel_cycle_params.json",
+            "sha256": "6863a32102201608778cb18b60601668194e5644f9590e36f0fb3cb57dccce8d"
+          },
+          {
+            "path": "inputs/mfe_magnet_cost_params.json",
+            "sha256": "cd43aa8ad1cb9c972a7545a940dab6860a1fb124b398e5ae4e49021e652ad76e"
+          },
+          {
+            "path": "inputs/mfe_magnet_field_params.json",
+            "sha256": "cf3e248f77cc43f2b36affa5441226b4d8b5c00d9c07eed80e36648c7d33d02b"
+          },
+          {
+            "path": "inputs/mfe_magnet_parts_params.json",
+            "sha256": "32df2633e07eb95350f84fa6146c0fc10e29b54e23cdd65e868a438adb6ffb77"
+          },
+          {
+            "path": "inputs/mfe_plant_params.json",
+            "sha256": "afa603427b7383ef9b24f45a39a112cc7f67eb964ae458373ab649681b2c7c17"
+          },
+          {
+            "path": "inputs/mfe_plant_systems_params.json",
+            "sha256": "afbe86c127542386497a7776e02de4d7d4fd81624a53f451b20afa742d4e96a7"
+          },
+          {
+            "path": "inputs/mfe_plasma_scaling_params.json",
+            "sha256": "b87c9998fb8dc9f9f354beba48afefde3e505996c5cb73bdf59cb9949010567d"
+          },
+          {
+            "path": "inputs/mfe_plasma_sustainment_params.json",
+            "sha256": "2afc3f497c94cf838265df68324dd7aee383b69df9685eda530821350346dd69"
+          },
+          {
+            "path": "inputs/mfe_vacuum_params.json",
+            "sha256": "c600d508b4e86fd2b1ec63568a38ca08ef7ccd1a1821e02870841bd88812269c"
+          },
+          {
+            "path": "inputs/mfe_viability_params.json",
+            "sha256": "d34f2af1ecb825fca27fd770824a9cd14c794f42025255fc769d335703607153"
+          },
+          {
+            "path": "inputs/rebco_material_params.json",
+            "sha256": "80ce3dae4b930a291ba0dde81589df760b63b07efdfcea9f064079c4edc9f77b"
+          },
+          {
+            "path": "pipelines/pipeline.yaml",
+            "sha256": "6dc7f65f557240a00310b78a49b274253692d223e8ba4b1d25d5d61a3e36fa19"
+          }
+        ]
+      },
+      "semantic": "6b920b065e17ff3baca4b92d177bffa235647bddd9a7fc8ddb16535fd4e0ae7e",
+      "executable": "f441442c116ed0bdb1cd438ccfd282146b312b20db928039da61b59719624fe6"
+    },
+    {
+      "unit": "nb3sn",
+      "package": "exploration/stellarator_materials/units/nb3sn/stellarator_materials_nb3sn_tea",
+      "pin": {
+        "recipe": "indicator-input-fingerprint/v1",
+        "digest": "804bc4d45e7e5c7ad019906c2fe5c542dff8aa87bee69e7eeff2e66b04cb8f99",
+        "files": [
+          {
+            "path": "contracts/model_contract.json",
+            "sha256": "c85703f9412a5adffeea49782bfd607f3527b25803fe72f828b8b4d7d520c377"
+          },
+          {
+            "path": "inputs/magnet_conductor_alternatives_params.json",
+            "sha256": "88411dca0965116e20629be8c9e939c3f0445bc18833489b9f1ab08a785e87de"
+          },
+          {
+            "path": "inputs/magnet_material_variants_params.json",
+            "sha256": "1391d96c2af180d4ae69f856ccc4b5c3ec790f166b43a14076f491d806f1800d"
+          },
+          {
+            "path": "inputs/mfe_account_costs_params.json",
+            "sha256": "9d33e655242660d560af431aedc7ce252b9010710460f5a2384751b7e8b21745"
+          },
+          {
+            "path": "inputs/mfe_cryo_plant_params.json",
+            "sha256": "d2873ec4e2e8c46c4e5ea7dedce8274b74c7a2e9f2bc0836c97b155945bb736b"
+          },
+          {
+            "path": "inputs/mfe_fuel_cycle_params.json",
+            "sha256": "c0a759f0f47dec502f85c5f728f24d2a1d0494c8dec6b7207ebfd0d64dcd053a"
+          },
+          {
+            "path": "inputs/mfe_magnet_cost_params.json",
+            "sha256": "ebc8d23a4986dce83a30417388dd467e47a33747365a1f766812921a5cfbe460"
+          },
+          {
+            "path": "inputs/mfe_magnet_field_params.json",
+            "sha256": "69d64c13b307f8bcff11d952c163899ebf6b1613160f3fdb9871100d4a3c0a8f"
+          },
+          {
+            "path": "inputs/mfe_magnet_parts_params.json",
+            "sha256": "8d3f2fd4645503247b121b2fb05ec5ba8d6418e37a9ddcbb3d322dd44522df50"
+          },
+          {
+            "path": "inputs/mfe_plant_params.json",
+            "sha256": "9d4e6dfcabb1c279ef79b67a0aae49698bd73b87a0dbd0385222701271a4ad87"
+          },
+          {
+            "path": "inputs/mfe_plant_systems_params.json",
+            "sha256": "72ef3a0d7f16e4f67905dba546dba5e599b36fd258a342ad1f29821e7630b7fd"
+          },
+          {
+            "path": "inputs/mfe_plasma_scaling_params.json",
+            "sha256": "04ee369d45e93eb69452db3b42f48463137146793cc9954cce054075f9432688"
+          },
+          {
+            "path": "inputs/mfe_plasma_sustainment_params.json",
+            "sha256": "9ed67a320d60269a6a95cd41904fbc32d1ead29e3459f6a8912c0bb8dcfe137c"
+          },
+          {
+            "path": "inputs/mfe_vacuum_params.json",
+            "sha256": "7e471b61e973de47290676f52170b17e6347d757cc2f9758da88ae7226bd47f6"
+          },
+          {
+            "path": "inputs/mfe_viability_params.json",
+            "sha256": "99d4d30c9950e4f5693795bf65eb7612420c6a38f36bdeabc96680eb0198efb4"
+          },
+          {
+            "path": "inputs/nb3sn_material_params.json",
+            "sha256": "136cc06ff2746e75f07a7f22a477f25983fde926261a55578a1f4c5911cdc049"
+          },
+          {
+            "path": "pipelines/pipeline.yaml",
+            "sha256": "fd88f55e1e755706788944fb4674d92d4be8f150116e0ce9cf519538a8d7c504"
+          }
+        ]
+      },
+      "semantic": "8b2212e2a2baa972b52d6eee7d392c8e711b367221724a56530f75a6bd5972b7",
+      "executable": "6ccbab50fa407d545fe40529f29d35680e0c153090880599a28142c06eeba482"
+    }
+  ],
+  "renderer": {
+    "temporary_path": "/tmp/magnet-report-pr-qyn19kyl",
+    "before": {
+      "map.csv": "d1a538e1aafd9caef968c9d5a1e9093a44e34d016d0f599e9bae7e62e7a3bdb9",
+      "assumption-map.png": "e5c11be4c0e0c0ad039f6f5d193f5d0821dff9666f59b22057e0ceb9139747a8",
+      "interactions.csv": "b04f7afc1d6f1056d8c48abe90eab1bd246f8e687ef1eec7d2566413cc68b374",
+      "assumption-map.svg": "e295b7cc895d6779937058d34b07e77e4ea1edc799038f8b267ab283fcfa3bb9",
+      "field-size-interactions.png": "5685c5de6d1fa867c057f4651f947b923d5b9b9025e003bd1576de5440faaab2",
+      "lcoe-decomposition.svg": "e31268ad6d8a7a76c5249ae9721dc0c9b76fdae7231ba98d6a12fadbfe518190",
+      "decomposition.csv": "1a03ab94eaaef588b04c809c2485098cd28136038d98311f43347a9357162db1",
+      "provenance.json": "f705ac03edeb6b28b6172d643eed8b44b67906ea0f3078bea7da88530c5e62ee",
+      "lcoe-decomposition.png": "53d184e659bfce3540493c14e0ff3228b2691fe009ba66699b55012a1e41518b",
+      "field-size-interactions.svg": "ad3295c6fb6832f5fda8dca4c882a35243aed379b9d3f62ee447577bd83084c5"
+    },
+    "rebuilt": {
+      "map.csv": "d1a538e1aafd9caef968c9d5a1e9093a44e34d016d0f599e9bae7e62e7a3bdb9",
+      "assumption-map.png": "e5c11be4c0e0c0ad039f6f5d193f5d0821dff9666f59b22057e0ceb9139747a8",
+      "interactions.csv": "b04f7afc1d6f1056d8c48abe90eab1bd246f8e687ef1eec7d2566413cc68b374",
+      "assumption-map.svg": "e295b7cc895d6779937058d34b07e77e4ea1edc799038f8b267ab283fcfa3bb9",
+      "field-size-interactions.png": "5685c5de6d1fa867c057f4651f947b923d5b9b9025e003bd1576de5440faaab2",
+      "lcoe-decomposition.svg": "e31268ad6d8a7a76c5249ae9721dc0c9b76fdae7231ba98d6a12fadbfe518190",
+      "decomposition.csv": "1a03ab94eaaef588b04c809c2485098cd28136038d98311f43347a9357162db1",
+      "provenance.json": "f705ac03edeb6b28b6172d643eed8b44b67906ea0f3078bea7da88530c5e62ee",
+      "lcoe-decomposition.png": "53d184e659bfce3540493c14e0ff3228b2691fe009ba66699b55012a1e41518b",
+      "field-size-interactions.svg": "ad3295c6fb6832f5fda8dca4c882a35243aed379b9d3f62ee447577bd83084c5"
+    },
+    "original_after": {
+      "map.csv": "d1a538e1aafd9caef968c9d5a1e9093a44e34d016d0f599e9bae7e62e7a3bdb9",
+      "assumption-map.png": "e5c11be4c0e0c0ad039f6f5d193f5d0821dff9666f59b22057e0ceb9139747a8",
+      "interactions.csv": "b04f7afc1d6f1056d8c48abe90eab1bd246f8e687ef1eec7d2566413cc68b374",
+      "assumption-map.svg": "e295b7cc895d6779937058d34b07e77e4ea1edc799038f8b267ab283fcfa3bb9",
+      "field-size-interactions.png": "5685c5de6d1fa867c057f4651f947b923d5b9b9025e003bd1576de5440faaab2",
+      "lcoe-decomposition.svg": "e31268ad6d8a7a76c5249ae9721dc0c9b76fdae7231ba98d6a12fadbfe518190",
+      "decomposition.csv": "1a03ab94eaaef588b04c809c2485098cd28136038d98311f43347a9357162db1",
+      "provenance.json": "f705ac03edeb6b28b6172d643eed8b44b67906ea0f3078bea7da88530c5e62ee",
+      "lcoe-decomposition.png": "53d184e659bfce3540493c14e0ff3228b2691fe009ba66699b55012a1e41518b",
+      "field-size-interactions.svg": "ad3295c6fb6832f5fda8dca4c882a35243aed379b9d3f62ee447577bd83084c5"
+    },
+    "all_exact": true
+  },
+  "outcome": "pass"
+}

@@ -1,0 +1,137 @@
+{
+ "seed": 20260930,
+ "rule": "oracle_entry.agree: |d| <= 1e-9 |oracle|, or |d| <= 1e-12 absolute",
+ "units": {
+  "rebco": {
+   "sampled": 42,
+   "states": {
+    "completed": 41,
+    "execution_failed": 1,
+    "oracle refused (both)": 1
+   },
+   "channels_failing": {},
+   "worst": {},
+   "clause_counts": {
+    "relative": 58237,
+    "absolute-floor": 106
+   },
+   "verdict_mismatches": [],
+   "T_cs": null,
+   "sample": [
+    "arm-1-rebco-24.9T-R15-a1.5-reference-common-P",
+    "anchored-1.4-rebco-12T-R15-a1.5-reference-cpi_2021_2026",
+    "anchored-1.4-rebco-12T-R18-a1.8-reference-none",
+    "anchored-1.8-rebco-22T-R12.7-a1.3-reference-price_10",
+    "anchored-1-rebco-22T-R10-a1-reference-price_30",
+    "arm-1.8-rebco-12T-R15-a1.5-reference-common-P+price_30",
+    "arm-1.4-rebco-10T-R11-a1.1-reference-cpi_2021_2026",
+    "arm-1.8-rebco-10T-R11-a1.1-reference-none",
+    "arm-1.4-rebco-18T-R15-a1.5-reference-price_10",
+    "arm-1-rebco-10T-R12.7-a1.3-reference-price_30",
+    "helias-1-rebco-10T-R22-a2.2-reference-cpi_2021_2026",
+    "helias-1.4-rebco-18T-R22-a1.8-reference-k_link_0.95+price_30",
+    "helias-1.4-rebco-20T-R10-a1-reference-none",
+    "helias-1.8-rebco-22T-R10-a1-reference-price_10",
+    "helias-1.8-rebco-12T-R22-a1.8-reference-price_30",
+    "helias-1.8-rebco-12T-R22-a2.2-reference-turn_current_86kA+price_10",
+    "anchored-1.8-rebco-20T-R12.7-a1.3-reference-none",
+    "arm-1.8-rebco-12T-R15-a1.5-reference-common-P",
+    "arm-1.4-rebco-24.9T-R18-a1.8-reference-none",
+    "helias-1.4-rebco-18T-R18-a1.8-reference-k_link_0.95",
+    "helias-1.4-rebco-18T-R10-a1-reference-none",
+    "helias-1.4-rebco-18T-R10-a1-reference-turn_current_86kA",
+    "anchored-1.8-rebco-18T-R22-a2.2-reference-cpi_2021_2026",
+    "anchored-1.8-rebco-18T-R11-a1.1-reference-none",
+    "anchored-1.4-rebco-20T-R18-a1.8-reference-price_10",
+    "anchored-1-rebco-20T-R18-a1.8-reference-price_30",
+    "arm-1.8-rebco-12T-R15-a1.5-companion-common-P",
+    "arm-1.8-rebco-11T-R12.7-a1.3-reference-cpi_2021_2026",
+    "arm-1-rebco-24.9T-R18-a1.8-reference-none",
+    "arm-1.8-rebco-12T-R22-a1.8-reference-price_10",
+    "arm-1-rebco-22T-R22-a2.2-reference-price_30",
+    "helias-1.4-rebco-18T-R15-a1.5-reference-cpi_2021_2026",
+    "helias-1-rebco-20T-R12.7-a1.3-reference-k_link_0.95",
+    "helias-1.8-rebco-12T-R12.7-a1.3-reference-m_support_x0.5",
+    "helias-1.8-rebco-12T-R12.7-a1.3-reference-m_support_x2",
+    "helias-1.8-rebco-20T-R12.7-a1.3-reference-none",
+    "helias-1.8-rebco-22T-R11-a1.1-reference-price_10",
+    "helias-1-rebco-20T-R18-a1.8-reference-price_30",
+    "helias-1.8-rebco-12T-R12.7-a1.3-reference-purchase_exp_0.5",
+    "helias-1.8-rebco-12T-R12.7-a1.3-reference-purchase_exp_1.0",
+    "helias-1.8-rebco-12T-R12.7-a1.3-reference-turn_current_86kA+price_10",
+    "helias-1.8-rebco-24.9T-R22-a1.8-reference-none"
+   ]
+  },
+  "nb3sn": {
+   "sampled": 33,
+   "states": {
+    "completed": 33
+   },
+   "channels_failing": {
+    "magnet__conductor__acceptance_margin": 31,
+    "magnet__conductor__temp_rule_margin": 31
+   },
+   "worst": {
+    "magnet__conductor__acceptance_margin": {
+     "case_id": "anchored-1.8-nb3sn-10T-R15-a1.5-reference-cpi_2021_2026",
+     "package": 0.0030797171546614877,
+     "oracle": 0.0030797171122740608,
+     "relative": 1.3763415715305726e-08,
+     "absolute": 4.2387426901768777e-11
+    },
+    "magnet__conductor__temp_rule_margin": {
+     "case_id": "anchored-1.8-nb3sn-10T-R15-a1.5-reference-cpi_2021_2026",
+     "package": 0.0030797171546614877,
+     "oracle": 0.0030797171122740608,
+     "relative": 1.3763415715305726e-08,
+     "absolute": 4.2387426901768777e-11
+    }
+   },
+   "clause_counts": {
+    "relative": 46767,
+    "absolute-floor": 97,
+    "none": 62
+   },
+   "verdict_mismatches": [],
+   "T_cs": {
+    "max_relative": 6.323574937287114e-12,
+    "max_absolute_K": 4.2387426901768777e-11
+   },
+   "sample": [
+    "helias-1-nb3sn-13T-R22-a2.2-reference-turn_current_86kA",
+    "anchored-1.8-nb3sn-10T-R15-a1.5-reference-cpi_2021_2026",
+    "anchored-1.4-nb3sn-11T-R10-a1-reference-nb3sn_price_13.5",
+    "anchored-1-nb3sn-12T-R18-a1.8-reference-nb3sn_price_5.4",
+    "anchored-1-nb3sn-12T-R11-a1.1-reference-none",
+    "anchored-1-nb3sn-13T-R10-a1-reference-strain_-0.6",
+    "arm-1.4-nb3sn-10T-R18-a1.8-reference-cpi_2021_2026",
+    "arm-1-nb3sn-10T-R12.7-a1.3-reference-none",
+    "helias-1.4-nb3sn-12T-R12.7-a1.3-reference-cpi_2021_2026",
+    "helias-1.8-nb3sn-12T-R11-a1.1-reference-k_link_0.95",
+    "helias-1.8-nb3sn-13T-R10-a1-reference-none",
+    "helias-1.8-nb3sn-12T-R10-a1-reference-turn_current_86kA",
+    "anchored-1.8-nb3sn-13T-R22-a1.8-reference-none",
+    "anchored-1.8-nb3sn-13T-R22-a1.8-reference-strain_-0.6",
+    "arm-1.4-nb3sn-13T-R10-a1-reference-none",
+    "helias-1.8-nb3sn-11T-R22-a2.2-reference-k_link_0.95",
+    "helias-1.8-nb3sn-11T-R18-a1.8-reference-none",
+    "helias-1.8-nb3sn-11T-R22-a2.2-reference-turn_current_86kA",
+    "anchored-1.8-nb3sn-11T-R18-a1.8-reference-cpi_2021_2026",
+    "anchored-1.8-nb3sn-11T-R22-a2.2-reference-nb3sn_price_13.5",
+    "anchored-1.4-nb3sn-13T-R22-a2.2-reference-nb3sn_price_5.4",
+    "anchored-1.4-nb3sn-12T-R22-a2.2-reference-none",
+    "anchored-1.4-nb3sn-13T-R22-a1.8-reference-strain_-0.6",
+    "arm-1.8-nb3sn-10T-R22-a1.8-reference-cpi_2021_2026",
+    "arm-1.8-nb3sn-13T-R12.7-a1.3-companion-none",
+    "helias-1.4-nb3sn-12T-R22-a2.2-reference-cpi_2021_2026",
+    "helias-1.8-nb3sn-12T-R15-a1.5-reference-k_link_0.95",
+    "helias-1.8-nb3sn-11T-R18-a1.8-companion-m_support_x0.5",
+    "helias-1.8-nb3sn-11T-R18-a1.8-companion-m_support_x2",
+    "helias-1.4-nb3sn-13T-R22-a1.8-reference-none",
+    "helias-1.8-nb3sn-11T-R18-a1.8-companion-purchase_exp_0.5",
+    "helias-1.8-nb3sn-11T-R18-a1.8-companion-purchase_exp_1.0",
+    "helias-1.8-nb3sn-12T-R22-a2.2-reference-turn_current_86kA"
+   ]
+  }
+ }
+}

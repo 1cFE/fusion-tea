@@ -1,0 +1,26 @@
+{
+  "numeric_count": 1353,
+  "missing": [],
+  "added": [
+    "stellarator_09__stellaris__magnet__conductor_current__evaluation_defined"
+  ],
+  "added_values": {
+    "stellarator_09__stellaris__magnet__conductor_current__evaluation_defined": 1.0
+  },
+  "unequal": {},
+  "verdict_unequal": {},
+  "declared_delta_ok": true,
+  "constraint_ids_equal": true,
+  "headline": [
+    "violated",
+    "violated"
+  ],
+  "entry_key_delta": {
+    "stellarator_09__stellaris__magnet__coil__arm_slope": 0.0,
+    "stellarator_09__stellaris__magnet__coil__arm_x_ref": 0.0,
+    "stellarator_09__stellaris__magnet__rebco_law_enabled": 1.0
+  },
+  "executable_fingerprint": "86648d368246011bc881accdee635c14fca656d5042031dfce7fb498052a1c2a",
+  "store": "work/active/WI-100_stellarator-material-variants/build/regression/_work/wi100-reference-regression.db",
+  "bit_for_bit": true
+}

@@ -1,0 +1,27 @@
+{
+ "study_id": "20260930-magnet-material-plant-map-rebco",
+ "unit": "rebco",
+ "command": [
+  "execute_study.py",
+  "--unit",
+  "rebco",
+  "--integration-return",
+  "work/orchestration/goals/magnet-material-comparison/evidence/integration-r3-rebco/integration_return.json"
+ ],
+ "repo_commit": "97fabad313934e9d06f6c9a131f54cdfa09bb2e7",
+ "integration_return": "work/orchestration/goals/magnet-material-comparison/evidence/integration-r3-rebco/integration_return.json",
+ "integration_class": "CANDIDATE",
+ "executable_fingerprint": "f441442c116ed0bdb1cd438ccfd282146b312b20db928039da61b59719624fe6",
+ "semantic_fingerprint": "6b920b065e17ff3baca4b92d177bffa235647bddd9a7fc8ddb16535fd4e0ae7e",
+ "pin": "f3884b47541a2122a44572759b6df9122869ad12212fbe383c228f3fcc5c6e75",
+ "manifest_sha256": "1128273ddf180eb8dcdf5825dee33f0daaf5f2e5ae3cbb8d1827654f4db86948",
+ "store": "exploration/stellarator_materials/studies/20260930-magnet-material-plant-map/results/native/rebco/20260930-magnet-material-plant-map-rebco.db",
+ "elapsed_seconds": 3423.5,
+ "declared_cases": 2115,
+ "stored_cases": 2115,
+ "completed": 2111,
+ "execution_failed": 4,
+ "other_states": [],
+ "route": "exploration/stellarator_materials/studies/study_route.py:run_points (stock StudyRunner + PreparedListStrategy)",
+ "proposal_mapping": "Nb3Sn magnet__eps_min dropped after checking it equals the package constant (oracle_scan.proposal)"
+}

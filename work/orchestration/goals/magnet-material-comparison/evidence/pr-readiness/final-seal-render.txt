@@ -1,0 +1,1 @@
+{"outcome": "pass", "hash_checks": 132, "tracked": 117, "local_or_aggregate": 15, "renderer_outputs": 10}

@@ -520,32 +520,32 @@ standalone:
   name: Matched Conversion Subsystems
   scale: standard
   priority: P1
-  status: backlog
-  completed: null
+  status: completed
+  completed: '2026-10-06'
 - id: WI-097
   name: exchanger thermal requirements
   scale: standard
   priority: P1
-  status: backlog
-  completed: null
+  status: completed
+  completed: '2026-10-06'
 - id: WI-098
   name: Whole Plant Conversion Comparison
   scale: standard
   priority: P0
-  status: backlog
-  completed: null
+  status: completed
+  completed: '2026-10-06'
 - id: WI-099
   name: Magnet conductor alternatives at matched duty
   scale: standard
   priority: P1
-  status: backlog
-  completed: null
+  status: completed
+  completed: '2026-10-06'
 - id: WI-100
   name: Plant-level conductor material variants on the Stellaris plant
   scale: standard
   priority: P1
-  status: backlog
-  completed: null
+  status: completed
+  completed: '2026-10-06'
 ---
 
 # Project Backlog
@@ -672,8 +672,8 @@ standalone:
 | WI-093 | Combination assemblies from existing definitions | standard | P1 | completed | Completed 2026-09-26 |
 | WI-094 | Costed loop-Brayton assembly | standard | P1 | completed | Completed 2026-09-26 |
 | WI-095 | Loop return control | standard | P1 | completed | Completed 2026-09-26 |
-| WI-096 | Matched Conversion Subsystems | standard | P1 | backlog |  |
-| WI-097 | exchanger thermal requirements | standard | P1 | backlog |  |
-| WI-098 | Whole Plant Conversion Comparison | standard | P0 | backlog |  |
-| WI-099 | Magnet conductor alternatives at matched duty | standard | P1 | backlog |  |
-| WI-100 | Plant-level conductor material variants on the Stellaris plant | standard | P1 | backlog |  |
+| WI-096 | Matched Conversion Subsystems | standard | P1 | completed | Completed 2026-10-06 |
+| WI-097 | exchanger thermal requirements | standard | P1 | completed | Completed 2026-10-06 |
+| WI-098 | Whole Plant Conversion Comparison | standard | P0 | completed | Completed 2026-10-06 |
+| WI-099 | Magnet conductor alternatives at matched duty | standard | P1 | completed | Completed 2026-10-06 |
+| WI-100 | Plant-level conductor material variants on the Stellaris plant | standard | P1 | completed | Completed 2026-10-06 |

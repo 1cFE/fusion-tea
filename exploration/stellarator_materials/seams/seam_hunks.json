@@ -1,0 +1,127 @@
+{
+ "note": "WI-100 staged-copy seam hunks (design section 1.3, option Y). Each old string must occur exactly once in the staged stellarator_e2e twin copy of `file` (twin layout), is replaced by new, and reversing the whole set in reverse order must reproduce the source bytes. contingent hunks apply only if probe P1 requires H6.",
+ "design": "work/active/WI-100_stellarator-material-variants/design.md",
+ "hunks": [
+  {
+   "id": "H1a",
+   "file": "analyses/mfe_conductor_current.sysml",
+   "old": "        in attribute allow_field_extrapolation : Real;\n        out attribute parallel_tapes_set : Real;\n",
+   "new": "        in attribute allow_field_extrapolation : Real;\n        in attribute enabled : Real default 1.0;\n        out attribute parallel_tapes_set : Real;\n",
+   "why": "gate input appended after the last formal, so positional bindings keep their prefix; bound to rebco_law_enabled (H2b)"
+  },
+  {
+   "id": "H1b",
+   "file": "analyses/mfe_conductor_current.sysml",
+   "old": "        out attribute field_extrapolated : Real;\n    }\n    calc def 'Current Driven Pack Sizing' {\n",
+   "new": "        out attribute field_extrapolated : Real;\n        out attribute evaluation_defined : Real;\n    }\n    calc def 'Current Driven Pack Sizing' {\n",
+   "why": "new output appended last; 1.0 whenever the law evaluates (B1)"
+  },
+  {
+   "id": "H1c",
+   "file": "analyses/mfe_conductor_current.sysml",
+   "old": "No temperature law or local angle/strain model is implied.\n",
+   "new": "No temperature law or local angle/strain model is implied.\n        Gate (WI-100 design section 2.1): enabled selects the law. At 1 the equations, domain refusals and outputs are unchanged and evaluation_defined is 1; at 0 every output, evaluation_defined included, is 0.0, returned before any domain check; any other value is refused (WI-080 gating pattern, mfe_viability.sysml:106-118).\n",
+   "why": "documentation only"
+  },
+  {
+   "id": "H2a",
+   "file": "cost_structure/mfe_power_core.sysml",
+   "old": "        attribute legacy_casing_fraction : Real default 1.0;\n",
+   "new": "        attribute legacy_casing_fraction : Real default 1.0;\n        // WI-100 gate on the plant REBCO law (design section 2.1): 1 evaluates it unchanged; a material variant redefines 0.\n        attribute rebco_law_enabled : Real default 1.0;\n",
+   "why": "new attribute whose default 1.0 is the identity of the gate"
+  },
+  {
+   "id": "H2b",
+   "file": "cost_structure/mfe_power_core.sysml",
+   "old": "            in allow_field_extrapolation = winding_pack.allow_field_extrapolation;\n        }\n",
+   "new": "            in allow_field_extrapolation = winding_pack.allow_field_extrapolation;\n            in enabled = rebco_law_enabled;\n        }\n",
+   "why": "binds the appended gate formal; at 1 body B1 runs the unchanged arithmetic"
+  },
+  {
+   "id": "H2c",
+   "file": "cost_structure/mfe_power_core.sysml",
+   "old": "            in a_coil_ref_in = coil.a_coil_ref;\n        }\n",
+   "new": "            in a_coil_ref_in = coil.a_coil_ref;\n            in wp_side_in = winding_pack.wp_side;\n            in arm_slope_in = coil.arm_slope;\n            in arm_x_ref_in = coil.arm_x_ref;\n        }\n",
+   "why": "binds the appended arm-slot formals; slope 0 is the identity (H3, H4, B2)"
+  },
+  {
+   "id": "H3",
+   "file": "structure/mfe_magnet_parts.sysml",
+   "old": "        attribute a_coil_ref : Real;\n        attribute coil_t : Real default 0.30;\n",
+   "new": "        attribute a_coil_ref : Real;\n        // WI-100 pack-size arm slot (plant contract r4 section 3.2): slope of the peak/axis ratio per unit R/sqrt(A_wp); 0 disables the arm\n        attribute arm_slope : Real default 0.0;\n        // WI-100 arm anchor in R/sqrt(A_wp); neutral 0.0 in the library (MR-3); inactive at slope 0 for any finite anchor\n        attribute arm_x_ref : Real default 0.0;\n        attribute coil_t : Real default 0.30;\n",
+   "why": "slope 0 disables the arm for any finite arm_x_ref; neutral library defaults (D6)"
+  },
+  {
+   "id": "H4a",
+   "file": "analyses/mfe_plasma_scaling.sysml",
+   "old": "        in attribute a_coil_ref_in : Real;\n",
+   "new": "        in attribute a_coil_ref_in : Real;\n        // WI-100 pack-size arm slot (design section 2.2): pack side [m], arm slope [1], arm anchor R/wp_side [1]\n        in attribute wp_side_in : Real default 1.0;\n        in attribute arm_slope_in : Real default 0.0;\n        in attribute arm_x_ref_in : Real default 0.0;\n",
+   "why": "appended after the last formal; arm term 0.0*(x - x0) leaves peak_ratio exact for finite x"
+  },
+  {
+   "id": "H4b",
+   "file": "analyses/mfe_plasma_scaling.sysml",
+   "old": "        R a1(C) / sqrt(A_wp) is NOT carried: a1(C) is unprinted and the corpus\n        offers no second anchor to separate it from a0(C) (WI-044 design D2).\n",
+   "new": "        R a1(C) / sqrt(A_wp) is carried only through the optional arm slot, off by\n        default: a1(C) is unprinted and the corpus offers no second anchor to\n        separate it from a0(C) (WI-044 design D2). Arm slot (WI-100 design\n        section 2.2; plant contract r4 section 3.2): x = R / wp_side for a square\n        pack (sqrt(A_wp) = wp_side); ratio_eff = peak_ratio + arm_slope * (x - arm_x_ref);\n        B_peak = (B_axis * ratio_eff) * bore_norm. At arm_slope = 0 the result equals\n        the constant-ratio form bit for bit for any finite arm_x_ref. Arm domain:\n        finite arm inputs, wp_side > 0 and ratio_eff > 0, refused after the two\n        clearance checks.\n",
+   "why": "documentation only"
+  },
+  {
+   "id": "H5a",
+   "file": "structure/mfe_plant_systems.sysml",
+   "old": "        attribute cold_load_W_required : Real = cold_load_W_demand_conversion.demand;\n",
+   "new": "        attribute cold_load_W_required : Real default cold_load_W_demand_conversion.demand;\n",
+   "why": "= to default has no numeric effect (WI-057 D5); cold-stage demand seam"
+  },
+  {
+   "id": "H5b",
+   "file": "structure/mfe_plant_systems.sysml",
+   "old": "        attribute cold_stage_capacity_ok : Boolean = cold_stage_capability.capacity_ok;\n",
+   "new": "        attribute cold_stage_capacity_ok : Boolean = cold_stage_capability.capacity_ok;\n        // WI-100 intercept demand seams (design section 2.3): defaults are today's producers\n        attribute intercept_load_W_required : Real default inventory.q_inventory_shield;\n        attribute intercept_demand_available : Boolean default inventory_enabled;\n",
+   "why": "new seams whose defaults are the producers the screen reads today"
+  },
+  {
+   "id": "H5c",
+   "file": "structure/mfe_plant_systems.sysml",
+   "old": "            in demand_in = inventory.q_inventory_shield;\n",
+   "new": "            in demand_in = intercept_load_W_required;\n",
+   "why": "re-pointed read resolves to the same channel at the default"
+  },
+  {
+   "id": "H5d",
+   "file": "structure/mfe_plant_systems.sysml",
+   "old": "            in demand_available_in = inventory_enabled;\n",
+   "new": "            in demand_available_in = intercept_demand_available;\n",
+   "why": "re-pointed read resolves to the same channel at the default"
+  },
+  {
+   "id": "H5e",
+   "file": "structure/mfe_plant_systems.sysml",
+   "old": "        attribute p_elec : Real = refrigeration_sum.total;\n",
+   "new": "        attribute p_elec : Real default refrigeration_sum.total;\n",
+   "why": "= to default has no numeric effect (WI-057 D5); refrigeration electricity seam"
+  },
+  {
+   "id": "H5f",
+   "file": "structure/mfe_plant_systems.sysml",
+   "old": "        attribute p_drive : Real = inventory.p_drive;\n",
+   "new": "        attribute p_drive : Real default inventory.p_drive;\n",
+   "why": "= to default has no numeric effect (WI-057 D5); lead/joint drive seam"
+  }
+ ],
+ "contingent": [
+  {
+   "id": "H6a",
+   "file": "cost_structure/mfe_power_core.sysml",
+   "old": "        attribute winding_cost : Real default winding_procurement.cost;\n",
+   "new": "        attribute winding_cost : Real default winding_procurement.cost;\n        // WI-100 contingent seam H6 (design section 1.3): the rollup reads this name bare\n        attribute winding_account : Real default winding_procurement.cost;\n",
+   "why": "contingent on probe P1: bare-read seam for the rollup"
+  },
+  {
+   "id": "H6b",
+   "file": "cost_structure/mfe_power_core.sysml",
+   "old": "            in winding_cost = 'Magnet System'::winding_cost;\n",
+   "new": "            in winding_cost = winding_account;\n",
+   "why": "contingent on probe P1: same producer at the default"
+  }
+ ]
+}

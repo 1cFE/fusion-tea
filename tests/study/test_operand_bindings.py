@@ -12,17 +12,18 @@ them as data and fails closed on anything unresolved.
 This test proves the publication is possible and correct against the real contract,
 before anything consumes it. It resolves all eight constraints — no sampling.
 """
-from tests.models.current_mfe_regressions import WI062_PARAMETERS, WI063_PARAMETERS, WI064_PARAMETERS, CURRENT_PREDICATES, CURRENT_PARAMETERS, FACILITY_PREDICATES
-
-from tests.models.current_mfe_regressions import WI060_PARAMETERS, WI059_PARAMETERS, WI059_CHANNELS, WI059_NATIVE_ONLY_PARAMETERS, WI059_NATIVE_ONLY_VALUES
-
-from tests.models.current_mfe_regressions import WI061_PARAMETERS, WI061_MAPPED_PARAMETERS, WI061_CHANNELS
 
 import json
 import sys
 from pathlib import Path
 
 import pytest
+
+from tests.models.current_mfe_regressions import (
+    CURRENT_PARAMETERS,
+    CURRENT_PREDICATES,
+    FACILITY_PREDICATES,
+)
 
 REPO_ROOT = Path(__file__).resolve().parents[2]
 STUDIES = REPO_ROOT / "exploration" / "stellarator_e2e" / "studies"
@@ -95,13 +96,15 @@ def package_inputs(package_path):
 
 def test_every_constraint_operand_resolves(real_package_path, oracle_entry):
     entries = catalog_entries(real_package_path)
-    assert {entry['constraint_id'] for entry in entries} == CURRENT_PREDICATES
+    assert {entry["constraint_id"] for entry in entries} == CURRENT_PREDICATES
     bindings = oracle_entry.operand_bindings()
     channels = oracle_entry.evaluate(BASELINE_POINT)
     inputs = package_inputs(real_package_path)
 
     assert set(bindings) == {entry["constraint_id"] for entry in entries}
-    assert set(inputs) == CURRENT_PARAMETERS  # WI-040 adds seventeen inputs; WI-038 adds two references.
+    assert (
+        set(inputs) == CURRENT_PARAMETERS
+    )  # WI-040 adds seventeen inputs; WI-038 adds two references.
     resolved = 0
     for entry in entries:
         cid = entry["constraint_id"]
@@ -118,7 +121,9 @@ def test_every_constraint_operand_resolves(real_package_path, oracle_entry):
                 f"a package {binding['kind']}"
             )
             resolved += 1
-    assert resolved == 41  # Original 35 plus two bound operands in each of three WI-073 predicates.
+    assert (
+        resolved == 116
+    )  # Full current catalog, including supplied equipment capability predicates.
     for cid in FACILITY_PREDICATES:
         assert len(bindings[cid]) == 1
 
@@ -150,9 +155,10 @@ def test_the_bindings_are_a_copy_a_caller_cannot_corrupt(oracle_entry):
 
 
 def test_the_shim_reproduces_the_pinned_headline(oracle_entry):
-    from tests.models.current_mfe_regressions import POST_WI065_REPLAY
-    lcoe = oracle_entry.evaluate(BASELINE_POINT | POST_WI065_REPLAY)["stellarator_09__stellaris__lcoe_calc__lcoe"]
-    assert abs(lcoe - PINNED_LCOE) / PINNED_LCOE < 1e-9, lcoe
+    manifest = json.loads((STUDIES / "manifest.json").read_text())
+    headline = manifest["baseline"]["headline"]
+    lcoe = oracle_entry.evaluate(manifest["baseline"]["point"])[headline["channel"]]
+    assert abs(lcoe - headline["value"]) / headline["value"] < 1e-9, lcoe
 
 
 def test_an_undeclared_entry_key_fails_closed_naming_the_key(oracle_entry):
@@ -189,16 +195,26 @@ def test_scalar_efficiency_domains_use_current_input_bindings(
     from scripts.study.verify import derive_verdict
 
     entries = catalog_entries(real_package_path)
-    point = {f"stellarator_09__stellaris__heating__eta_{stage}_heat": value}  # WI-057 (2026-09-13): the key carries its part's path
+    point = {
+        f"stellarator_09__stellaris__heating__eta_{stage}_heat": value
+    }  # WI-057 (2026-09-13): the key carries its part's path
     for entry in entries:
         name = entry["source_local_identity"]
         if name.startswith(f"heating_{stage}_"):
             expected = value > 0 if "positive" in name else value <= 1
-            assert derive_verdict(entry["constraint_id"], entry, oracle_entry.operand_bindings(),
-                                  point, package_inputs(real_package_path), {}) == (expected, 1)
+            assert derive_verdict(
+                entry["constraint_id"],
+                entry,
+                oracle_entry.operand_bindings(),
+                point,
+                package_inputs(real_package_path),
+                {},
+            ) == (expected, 1)
 
 
 @pytest.mark.parametrize("stage", ["source", "couple"])
 def test_zero_efficiency_fails_in_the_independent_oracle(oracle_entry, stage):
     with pytest.raises(ZeroDivisionError):
-        oracle_entry.evaluate({f"stellarator_09__stellaris__heating__eta_{stage}_heat": 0})  # WI-057 (2026-09-13): the key carries its part's path
+        oracle_entry.evaluate(
+            {f"stellarator_09__stellaris__heating__eta_{stage}_heat": 0}
+        )  # WI-057 (2026-09-13): the key carries its part's path

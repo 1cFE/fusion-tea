@@ -1,0 +1,10 @@
+{
+ "unit": "rebco",
+ "shim": "run_indicators.py",
+ "shim_sha256": "74d879137f51505888d5a65612b056b5086bbe35b9c09327f781475fbd892ac3",
+ "stock_tool_sha256": "10fca70d72cb71d573ebf8782b69acc7e9e6157a7cd7300a667ca1ce693f5c87",
+ "aliases": {
+  "stellarator_09_materials__rebco_material__main_UA_capacity_ok__c2196a4dedc17d72": "stellarator_09_materials__rebco_material__main_ua_capacity_ok__c2196a4dedc17d72",
+  "stellarator_09_materials__rebco_material__reheat_UA_capacity_ok__a8194f424b087b57": "stellarator_09_materials__rebco_material__reheat_ua_capacity_ok__a8194f424b087b57"
+ }
+}

@@ -1,0 +1,9 @@
+{
+  "scope": "first two declared cases per material; current-runtime smoke replay, not full fresh replay",
+  "case_count": 4,
+  "scalar_comparisons": 5690,
+  "verification_sha256": "dc70ae12a48e605273c2ea1b90d62d4f5fc1a7ad9ff81b0ff5e9afff0c5a6d2b",
+  "outcome": "pass",
+  "runtime": "uv run --no-sync; existing editable agentic-mbse retained; original oracle scan and supplied case list read locally",
+  "warnings": "Numeric 0/1 bool serialization warnings retained; no input/output changes"
+}

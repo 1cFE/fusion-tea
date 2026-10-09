@@ -4,43 +4,55 @@ The UI is tested manually (vanilla React, no test harness configured);
 this only verifies the data-generation Python script produces a well-
 formed JSON shape that the UI can consume.
 """
+
 from __future__ import annotations
 
+import csv
 import json
-import subprocess
 import sys
 from pathlib import Path
 
 import pytest
 
 REPO_ROOT = Path(__file__).resolve().parents[2]
-BUILD_SCRIPT = REPO_ROOT / "tools" / "score_explorer" / "build.py"
 DATA_DIR = REPO_ROOT / "tools" / "score_explorer" / "data"
 
 AXES = (
-    "modularity", "supply_chain", "plant_complexity", "customization",
-    "upper_cf", "technical_feasibility", "data_availability",
+    "modularity",
+    "supply_chain",
+    "plant_complexity",
+    "customization",
+    "upper_cf",
+    "technical_feasibility",
+    "data_availability",
 )
 
 
+@pytest.fixture(autouse=True)
+def isolated_build(tmp_path, monkeypatch):
+    """Execute the shipped builder against retained inputs, writing only to tmp."""
+    from tools.score_explorer import build
+
+    output = tmp_path / "data"
+    monkeypatch.setattr(build, "OUT_DIR", output)
+    monkeypatch.setattr(build, "REPO_ROOT", tmp_path)
+    monkeypatch.setattr(sys.modules[__name__], "DATA_DIR", output)
+
+
 def _run_build() -> None:
-    """Run build.py with the live scoring_v2 data — it reads the committed
-    scores/table.csv and features/, no isolation needed."""
-    result = subprocess.run(
-        [sys.executable, str(BUILD_SCRIPT)],
-        cwd=REPO_ROOT, capture_output=True, text=True,
-    )
-    if result.returncode != 0:
-        raise AssertionError(
-            f"build.py failed (rc={result.returncode})\n"
-            f"stdout:\n{result.stdout}\nstderr:\n{result.stderr}"
-        )
+    from tools.score_explorer import build
+
+    assert build.main() == 0
 
 
-# The scoring framework scores 40 concepts; the UI hides
-# build.EXCLUDED_FROM_UI (currently just 30-laser-icf-nif-commercialization,
-# redundant with 26-laser-icf-indirect-drive — both Inertia Enterprises).
-EXPECTED_UI_CONCEPTS = 40 - 1
+# The retained 40-concept corpus contains two of the three documented UI
+# exclusions. Concept 30 is the surviving Inertia entry, replacing concept 26.
+EXPECTED_EXCLUSIONS = {
+    "26-laser-icf-indirect-drive",
+    "34-compact-spherical-tokamak-india",
+    "38-particle-accelerator-driven-fusion",
+}
+EXPECTED_UI_CONCEPTS = 38
 
 
 def test_build_emits_concepts_json():
@@ -50,6 +62,10 @@ def test_build_emits_concepts_json():
     data = json.loads(path.read_text(encoding="utf-8"))
     assert isinstance(data, list)
     assert len(data) == EXPECTED_UI_CONCEPTS
+    with (REPO_ROOT / "exploration/scoring_v2/scores/table.csv").open() as stream:
+        scored_ids = {row["concept_id"] for row in csv.DictReader(stream)}
+    assert len(scored_ids) == 40
+    assert {row["concept_id"] for row in data} == scored_ids - EXPECTED_EXCLUSIONS
 
 
 def test_excluded_concept_absent_from_ui():
@@ -58,22 +74,31 @@ def test_excluded_concept_absent_from_ui():
     _run_build()
     data = json.loads((DATA_DIR / "concepts.json").read_text(encoding="utf-8"))
     ids = {c["concept_id"] for c in data}
-    assert "30-laser-icf-nif-commercialization" not in ids
+    from tools.score_explorer import build
+
+    assert build.EXCLUDED_FROM_UI == EXPECTED_EXCLUSIONS
+    assert not ids & EXPECTED_EXCLUSIONS
+    assert "30-laser-icf-nif-commercialization" in ids
 
 
 def test_concepts_have_all_required_fields():
     _run_build()
     data = json.loads((DATA_DIR / "concepts.json").read_text(encoding="utf-8"))
     for c in data:
-        for required in ("concept_id", "name", "scores", "composite",
-                         "composite_axes_included", "evidence",
-                         "features", "diagnostics"):
+        for required in (
+            "concept_id",
+            "name",
+            "scores",
+            "composite",
+            "composite_axes_included",
+            "evidence",
+            "features",
+            "diagnostics",
+        ):
             assert required in c, f"{c.get('concept_id')}: missing {required}"
         # All seven axes appear in scores (some may be null)
         for axis in AXES:
-            assert axis in c["scores"], (
-                f"{c['concept_id']}: scores.{axis} missing"
-            )
+            assert axis in c["scores"], f"{c['concept_id']}: scores.{axis} missing"
         # composite_axes_included is a JSON list (possibly empty)
         assert isinstance(c["composite_axes_included"], list)
 
@@ -96,8 +121,13 @@ def test_modularity_sub_tables_in_weights_json():
     _run_build()
     weights = json.loads((DATA_DIR / "weights.json").read_text(encoding="utf-8"))
     mod = next(a for a in weights["axes"] if a["name"] == "modularity")
-    for table in ("mvs_lookup", "vessel_lookup", "magnet_driver_lookup",
-                  "blanket_lookup", "unit_count_brackets"):
+    for table in (
+        "mvs_lookup",
+        "vessel_lookup",
+        "magnet_driver_lookup",
+        "blanket_lookup",
+        "unit_count_brackets",
+    ):
         assert table in mod["sub_tables"], f"modularity.{table} missing"
 
 
@@ -110,12 +140,9 @@ def test_all_concepts_score_all_seven_axes():
     assert len(data) == EXPECTED_UI_CONCEPTS
     for c in data:
         for axis in AXES:
-            assert c["scores"][axis] is not None, (
-                f"{c['concept_id']}: {axis} is null"
-            )
+            assert c["scores"][axis] is not None, f"{c['concept_id']}: {axis} is null"
         assert set(c["composite_axes_included"]) == set(AXES), (
-            f"{c['concept_id']}: composite_axes_included = "
-            f"{c['composite_axes_included']}"
+            f"{c['concept_id']}: composite_axes_included = {c['composite_axes_included']}"
         )
         assert c["composite"] is not None, f"{c['concept_id']}: composite null"
 

@@ -15,7 +15,7 @@ import pytest
 
 REPO_ROOT = Path(__file__).resolve().parents[2]
 PREFLIGHT = REPO_ROOT / "scripts" / "study" / "preflight.py"
-DECLARATION = REPO_ROOT / "tests" / "study" / "data" / "axes.known_answers.json"
+DECLARATION = REPO_ROOT / "exploration/stellarator_e2e/studies/axes.supplied_design.json"
 MANIFEST = REPO_ROOT / "exploration" / "stellarator_e2e" / "studies" / "manifest.json"
 PACKAGE = REPO_ROOT / "exploration" / "stellarator_e2e" / "pkg" / "stellarator_tea"
 
@@ -47,23 +47,39 @@ def executed_baseline(stock_route_run):
 def run_preflight(*argv, expect=None):
     done = subprocess.run(
         [sys.executable, str(PREFLIGHT), *argv],
-        capture_output=True, text=True, cwd=str(REPO_ROOT),
+        capture_output=True,
+        text=True,
+        cwd=str(REPO_ROOT),
     )
     if expect is not None:
         assert done.returncode == expect, f"exit {done.returncode}\n{done.stderr}"
     return done
 
 
-def gates_argv(out_dir, *, package=PACKAGE, manifest=MANIFEST, groups=DECLARATION,
-               identity=None, baseline=None, results=None):
+def gates_argv(
+    out_dir,
+    *,
+    package=PACKAGE,
+    manifest=MANIFEST,
+    groups=DECLARATION,
+    identity=None,
+    baseline=None,
+    results=None,
+):
     return [
         "gates",
-        "--package", str(package),
-        "--manifest", str(manifest),
-        "--groups", str(groups),
-        "--identity", str(identity),
-        "--baseline-result", str(baseline),
-        "--out", str(results or out_dir / "preflight_results.json"),
+        "--package",
+        str(package),
+        "--manifest",
+        str(manifest),
+        "--groups",
+        str(groups),
+        "--identity",
+        str(identity),
+        "--baseline-result",
+        str(baseline),
+        "--out",
+        str(results or out_dir / "preflight_results.json"),
     ]
 
 
@@ -71,10 +87,12 @@ def gates_argv(out_dir, *, package=PACKAGE, manifest=MANIFEST, groups=DECLARATIO
 def gates_document(executed_baseline, tmp_path):
     results = tmp_path / "preflight_results.json"
     done = run_preflight(
-        *gates_argv(tmp_path,
-                    identity=executed_baseline / "package_identity.json",
-                    baseline=executed_baseline / "baseline_result.json",
-                    results=results),
+        *gates_argv(
+            tmp_path,
+            identity=executed_baseline / "package_identity.json",
+            baseline=executed_baseline / "baseline_result.json",
+            results=results,
+        ),
         expect=0,
     )
     return json.loads(results.read_text()), done
@@ -95,7 +113,10 @@ def test_the_results_document_validates_against_its_schema(gates_document, load_
 def test_the_document_carries_a_digest_for_every_input_it_read(gates_document):
     document, _ = gates_document
     assert set(document["input_digests"]) == {
-        "manifest", "axis_declaration", "identity_document", "baseline_result"
+        "manifest",
+        "axis_declaration",
+        "identity_document",
+        "baseline_result",
     }
     assert all(len(d) == 64 for d in document["input_digests"].values())
     assert all(not Path(p).is_absolute() for p in document["inputs"].values())
@@ -110,9 +131,7 @@ def test_the_six_results_map_onto_record_section_9s_five_rows(gates_document):
     assert len(shared) == 2 and all(g["detail"] for g in shared)
 
 
-def test_the_tool_reports_its_own_revision_as_a_named_recipe_over_a_named_file_list(
-    gates_document
-):
+def test_the_tool_reports_its_own_revision_as_a_named_recipe_over_a_named_file_list(gates_document):
     document, _ = gates_document
     digest = document["tool"]["source_digest"]
     assert digest["recipe"] == "tool-source-digest/v1"
@@ -128,9 +147,9 @@ def test_the_sibling_scan_is_advisory_and_can_never_fail(gates_document):
 
 def test_the_identity_gate_reports_the_recomputed_digest(gates_document, executed_baseline):
     document, _ = gates_document
-    declared = json.loads(
-        (executed_baseline / "package_identity.json").read_text()
-    )["identity"]["digest"]
+    declared = json.loads((executed_baseline / "package_identity.json").read_text())["identity"][
+        "digest"
+    ]
     gate = next(g for g in document["gates"] if g["gate"] == "identity")
     assert declared in gate["detail"]
 
