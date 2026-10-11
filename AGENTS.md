@@ -5,3 +5,9 @@ Read `.agentic-mbse/codex.md` for assistant-specific tools and `modeling_project
 Read `CLAUDE.md` for the existing project instructions, including the coding/modeling ownership boundary, source quarantine, and Python environment rules. Read `.project/CURRENT_WORK.md` before non-trivial work. Local goal and study skills in `.agents/skills/` point to the canonical `.claude/skills/` bundles; apply the Codex adapter to their tool names.
 
 For this test worktree, read `.project/codex-test-setup.md` before running Python or modeling commands.
+
+## Worktree setup, moved from `.agentic-mbse/codex.md:11` and `modeling_project/MODELING_GUIDE.md:276`
+
+For this worktree, use `.agentic-mbse/patterns/` for the installed modeling pattern references named by skills and the guide. These instruction assets are separate from the pinned runtime. Use `.codex-test/run` for toolkit/Python commands as documented in `.project/codex-test-setup.md`.
+
+Pattern references such as `[patterns/plant-idiom.md]` name files in this worktree's `.agentic-mbse/patterns/` directory. Read that installed copy for workflow guidance; it is versioned separately from the pinned executable runtime. The installation record is `.project/workflow-installation-20260913.md`.
