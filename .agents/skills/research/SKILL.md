@@ -1,23 +1,14 @@
 ---
 name: research
 description: Explore authority sources and capture approved domain insights into the knowledge base
-allowed-tools:
-- Read
-- Grep
-- Glob
-- Bash
-- Agent
-- Write
-- Edit
-- AskUserQuestion
-- WebSearch
-- WebFetch
+allowed-tools: [Read, Grep, Glob, Bash, Agent, Write, Edit, AskUserQuestion, WebSearch, WebFetch]
 user-invocable: true
+metadata:
+  kind: workflow
 ---
 
 Before executing this skill, read `.agentic-mbse/claude.md` in Claude Code or `.agentic-mbse/codex.md` in Codex. Resolve supporting paths from this skill’s installed directory; keep generated outputs in the project or a temporary directory. Read referenced skills from `.agents/skills/<name>/SKILL.md` when their guidance is needed.
 
-Supporting skills: `source-traceability`. Read their installed guidance when relevant.
 
 # Research Command
 
@@ -90,6 +81,8 @@ On approval, call:
 agentic-mbse pm approve-research <file> --insights '<structured JSON of approved DI-XXX entries>'
 ```
 The script moves the file from `pending/` to `approved/`, assigns DI-XXX IDs, formats entries, and appends them to `knowledge/KNOWLEDGE.md`. Report the assigned IDs to the user.
+
+If the user approves the report with no accepted insights (every candidate skipped, or none proposed), still make the call, with `--insights '[]'`. The file moves to `approved/` and no DI-XXX entries are created, so tell the user that instead of reporting IDs.
 
 If the user rejects the report, the file stays in `pending/` (or delete if requested).
 

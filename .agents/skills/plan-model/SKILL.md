@@ -1,21 +1,14 @@
 ---
 name: plan-model
 description: Create phased implementation plan for SysMLv2 models with validation checkpoints
-allowed-tools:
-- Read
-- Grep
-- Glob
-- Bash
-- Agent
-- Write
-- Edit
-- AskUserQuestion
+allowed-tools: [Read, Grep, Glob, Bash, Agent, Write, Edit, AskUserQuestion]
 user-invocable: true
+metadata:
+  kind: workflow
 ---
 
 Before executing this skill, read `.agentic-mbse/claude.md` in Claude Code or `.agentic-mbse/codex.md` in Codex. Resolve supporting paths from this skill’s installed directory; keep generated outputs in the project or a temporary directory. Read referenced skills from `.agents/skills/<name>/SKILL.md` when their guidance is needed.
 
-Supporting skills: `model-validation`, `sysml-conventions`, `project-structure`. Read their installed guidance when relevant.
 
 # Plan Model
 

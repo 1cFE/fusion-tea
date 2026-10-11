@@ -1,13 +1,19 @@
 ---
 name: requirements-tracking
-description: 'Use when asking about "requirement", "PR-XXX", "MR-XXX", "project rule", "modeling rule", "compliance", "enforcement", "promote requirement", "REQUIREMENTS.md", "two-tier", "MR-XXX to PR-XXX", "EARS format", "validation method", "design review", or when deciding how to write, enforce, or promote modeling requirements. Provides the two-tier requirements structure, PR-XXX format, and promotion path.
-
-  '
+description: >
+  Use when asking about "requirement", "PR-XXX", "MR-XXX", "project rule", "modeling rule",
+  "compliance", "enforcement", "promote requirement", "REQUIREMENTS.md", "two-tier",
+  "MR-XXX to PR-XXX", "EARS format", "validation method", "design review",
+  or when deciding how to write, enforce, or promote modeling requirements.
+  Provides the two-tier requirements structure, PR-XXX format, and promotion path.
 allowed-tools: Read, Grep, Glob
 user-invocable: false
+metadata:
+  kind: supporting
 ---
 
 Before executing this skill, read `.agentic-mbse/claude.md` in Claude Code or `.agentic-mbse/codex.md` in Codex. Resolve supporting paths from this skill’s installed directory; keep generated outputs in the project or a temporary directory. Read referenced skills from `.agents/skills/<name>/SKILL.md` when their guidance is needed.
+
 
 # Requirements Tracking
 

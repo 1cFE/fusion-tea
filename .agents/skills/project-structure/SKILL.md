@@ -1,13 +1,20 @@
 ---
 name: project-structure
-description: 'Use when asking about "project structure", "where does this go", "library vs designs", "file organization", "directory", "EXPOSE pattern", "project files", "4-directory model", "knowledge directory", "modeling_project", "work directory", "data directory", "OVERVIEW.md", "ARCHITECTURE.md", "REQUIREMENTS.md", "BACKLOG.md", or when deciding where to place new files or model elements. Provides the 4-directory information architecture and model file organization rules.
-
-  '
+description: >
+  Use when asking about "project structure", "where does this go", "library vs designs",
+  "file organization", "directory", "EXPOSE pattern", "project files", "4-directory model",
+  "knowledge directory", "modeling_project", "work directory", "data directory",
+  "OVERVIEW.md", "ARCHITECTURE.md", "REQUIREMENTS.md", "BACKLOG.md",
+  or when deciding where to place new files or model elements.
+  Provides the 4-directory information architecture and model file organization rules.
 allowed-tools: Read, Grep, Glob
 user-invocable: false
+metadata:
+  kind: supporting
 ---
 
 Before executing this skill, read `.agentic-mbse/claude.md` in Claude Code or `.agentic-mbse/codex.md` in Codex. Resolve supporting paths from this skill’s installed directory; keep generated outputs in the project or a temporary directory. Read referenced skills from `.agents/skills/<name>/SKILL.md` when their guidance is needed.
+
 
 # Project Structure
 

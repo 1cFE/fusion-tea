@@ -1,13 +1,21 @@
 ---
 name: toolkit-awareness
-description: 'This skill should be used when the user asks about "validation", "validate models", "run checks", "quality checks", "codegen readiness", "TEA pipeline", "how to validate", "run the pipeline", "toolkit", "available commands", "what tools do we have", "PM operations", "project management", "agentic-mbse pm", "agentic-mbse status", "project files", "directory structure", or when answering questions about project workflow, build steps, or CI processes. Ensures Claude uses the actual installed toolchain instead of guessing commands.
-
-  '
+description: >
+  This skill should be used when the user asks about "validation", "validate models",
+  "run checks", "quality checks", "codegen readiness", "TEA pipeline", "how to validate",
+  "run the pipeline", "toolkit", "available commands", "what tools do we have",
+  "PM operations", "project management", "agentic-mbse pm", "agentic-mbse status",
+  "project files", "directory structure",
+  or when answering questions about project workflow, build steps, or CI processes.
+  Ensures Claude uses the actual installed toolchain instead of guessing commands.
 allowed-tools: Read, Grep, Glob
 user-invocable: false
+metadata:
+  kind: supporting
 ---
 
 Before executing this skill, read `.agentic-mbse/claude.md` in Claude Code or `.agentic-mbse/codex.md` in Codex. Resolve supporting paths from this skill’s installed directory; keep generated outputs in the project or a temporary directory. Read referenced skills from `.agents/skills/<name>/SKILL.md` when their guidance is needed.
+
 
 # Toolkit Awareness
 
@@ -35,7 +43,7 @@ Never guess or fabricate CLI commands, validation steps, or workflow processes. 
    - Slash commands available in Claude Code
    - Project setup and environment requirements
 
-2. **Read `CLAUDE.md`** at the project root. This documents:
+2. **Read the current assistant’s project instructions (`CLAUDE.md` or `AGENTS.md`)** at the project root. This documents:
    - Python environment rules (`uv` requirement)
    - MBSE workflow steps
    - Domain sources and how to reference them
@@ -84,7 +92,7 @@ All PM operations are atomic (mutations succeed fully or not at all) or tolerant
 | Operation | Description |
 |-----------|-------------|
 | `close-item <name>` | Archive completed work item from active to completed |
-| `approve-research <file> --insights '<json>'` | Approve pending research and register domain insights |
+| `approve-research <file> --insights '<json>'` | Approve pending research and register any accepted domain insights (`'[]'` approves with none) |
 | `trace-element --element <name> --file <path> ...` | Record model element traceability to matrix |
 | `promote-requirement --requirement <text> --source <ID>` | Promote per-item requirement to project-wide PR-XXX |
 | `register-decision --title <text> --decision <text> --rationale <text>` | Record architectural decision as AD-XXX |
@@ -143,7 +151,7 @@ Key project files in the 4-directory architecture:
 
 ### Python Environment
 
-All Python commands require `uv run` prefix. This is a hard rule documented in `CLAUDE.md`. See `references/python-environment.md` for details.
+All Python commands require `uv run` prefix. This is a hard rule documented in the current assistant’s project instructions (`CLAUDE.md` or `AGENTS.md`). See `references/python-environment.md` for details.
 
 ## Anti-Patterns to Avoid
 

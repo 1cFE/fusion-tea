@@ -273,7 +273,13 @@ syside check models/library/file.sysml
 <!-- SKILL: moves to sysml-conventions -->
 ## Pattern Documentation Index
 
-Pattern references such as `[patterns/plant-idiom.md]` name files in this worktree's `.agentic-mbse/patterns/` directory. Read that installed copy for workflow guidance; it is versioned separately from the pinned executable runtime. The installation record is `.project/workflow-installation-20260913.md`.
+Pattern references such as `[patterns/plant-idiom.md]` name files under the installed toolkit's pattern directory, not the target project's directories. Locate it with the installed environment:
+
+```bash
+uv run python -c 'from agentic_mbse.cli import get_docs_dir; print(get_docs_dir() / "patterns")'
+```
+
+Read the named file under the returned directory. This resolver works for source and packaged installations. Consult the current assistant adapter in `.agentic-mbse/` for external-document access; access alone does not load the reference.
 
 | Pattern Doc | Covers |
 |-------------|--------|
