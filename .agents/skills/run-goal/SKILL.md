@@ -9,15 +9,20 @@ description: >
   this goal do next", "resume the goal run", "review this round", "check these
   dispositions", "close the round", "the goal trail says", any request to work under
   work/orchestration/goals/.
-allowed-tools: Bash, Read, Write, Edit, Glob, Grep, Agent
+allowed-tools: [Bash, Read, Write, Edit, Glob, Grep, Agent]
 user-invocable: true
+metadata:
+  kind: workflow
 ---
+
+Before executing this skill, read `.agentic-mbse/claude.md` in Claude Code or `.agentic-mbse/codex.md` in Codex. Resolve supporting paths from this skill’s installed directory; keep generated outputs in the project or a temporary directory. Read referenced skills from `.agents/skills/<name>/SKILL.md` when their guidance is needed.
+
 
 # Run Goal
 
 A goal is a grounded question pursued in rounds. A round is one agent's bounded attempt at one strategy, running bounded tasks through the native workflows and ending in a written result. Review depth follows the concrete risk triggers in `GOAL_RUNBOOK.md` § Review scope and evidence reuse.
 
-This file names the roles, picks the mode, and gives dispatch guidance. The procedure lives in `work/orchestration/GOAL_RUNBOOK.md`; the decisions behind it live in `.project/adr/`. A human operator and an agent follow the same runbook.
+This file names the roles, picks the mode, and gives dispatch guidance. The procedure lives in `work/orchestration/GOAL_RUNBOOK.md`; the decisions behind it live in the goal-layer decision record (`GOAL_RUNBOOK.md` § The decisions behind this). A human operator and an agent follow the same runbook.
 
 ## Three roles
 
@@ -46,21 +51,21 @@ To tell whether a round is open, read `trail.md`'s headings — `GOAL_RUNBOOK.md
 
 ## Dispatch patterns
 
-Follow the runbook’s task parallelism and freshness rules. In Codex, read `.agentic-mbse/codex.md` for the tool mapping and `.project/codex-test-setup.md` for this worktree’s runtime commands.
+Follow the runbook’s task parallelism and freshness rules.
 
 ### Model changes
 
-Read `modeling_project/REQUIREMENTS.md`, including MR-7, before grounding or dispatching a model-changing goal. Follow the MR-7 checks in `GOAL_RUNBOOK.md` and `MODELING_PROCESS.md`; carry the requirement and intended design choices into worker/reviewer briefs. Automatic sizing and changes to which quantities are chosen or calculated require explicit design reasoning and applicable review, even when pursuing an already approved depth target.
+Read `modeling_project/REQUIREMENTS.md` and the design-choice pattern (`GOAL_RUNBOOK.md` § Grounding a goal says where it is) before grounding or dispatching a model-changing goal. Follow the design-choice steps in `GOAL_RUNBOOK.md` and `MODELING_PROCESS.md`; carry the applicable requirements and intended design choices into worker/reviewer briefs. Automatic sizing and changes to which quantities are chosen or calculated require explicit design reasoning and applicable review, even when pursuing an already approved quality target.
 
-For a single work item, follow `modeling_project/MODELING_PROCESS.md`. Read only the stage instructions needed for the current task: `.claude/commands/<stage>.md` in Claude Code or `.agents/skills/<stage>/SKILL.md` in Codex. Any stage can be brief or skipped when its responsibility is already satisfied or does not apply; cite that evidence or reason in the native record. Keep native PM metadata and applicable executable validation, using the project’s prescribed launcher (`.codex-test/run` in this test worktree; otherwise `uv run`). Review triggers are in the runbook.
+For a single work item, follow `modeling_project/MODELING_PROCESS.md`. Read only the stage instructions needed for the current task: the stage's installed skill. Any stage can be brief or skipped when its responsibility is already satisfied or does not apply; cite that evidence or reason in the native record. Keep native PM metadata and applicable executable validation, using the project’s prescribed launcher (`uv run` unless the project names another). Review triggers are in the runbook.
 
 The main agent may execute directly or delegate bounded work. For eligible parallel tasks, use fresh workers with self-contained briefs: Claude Code `Agent` with `subagent_type: "general-purpose"`; Codex `spawn_agent` with `fork_turns: "none"`. Supply the exact task, entry files/sections, original evidence, shared interfaces, file ownership, and expected return. Workers preserve each other’s edits. The round agent owns the trail and integrates sequentially after workers return. Deposit briefs under `evidence/`; do not load the whole goal or all stages into each worker.
 
 ### Research
 
-Start with internal sources: `knowledge/SOURCE_INDEX.md` (registered sources), `knowledge/KNOWLEDGE.md` (domain insights), and `knowledge/research/` (prior research). Use `docs/research_seam_operator_guide.md` for the full protocol.
+Start with internal sources: `knowledge/SOURCE_INDEX.md` (registered sources), `knowledge/KNOWLEDGE.md` (domain insights), and `knowledge/research/` (prior research). Use the research procedure the project's instructions name; otherwise `/research` and `/manage-sources`.
 
-When external sources are needed, form request files (`knowledge/research/requests/REQ-*.json`) and execute directly or delegate independent requests to fresh agents carrying `.claude/commands/research-acquire.md`: Claude Code `Agent` with `subagent_type: "general-purpose"`; Codex `spawn_agent` with `fork_turns: "none"`. Use `scripts/research_seam.py` for run bookkeeping and `scripts/source_registry.py register` for ingestion. A delegated brief names the exact question, entry sources, original evidence, and return budget; deposit it at `evidence/`. Every researcher applies the clean-room screen (`knowledge/holdout/aries-cs/PROTOCOL.md`) before any fetch. The main agent remains free to use research skills itself.
+When external sources are needed, execute the research procedure directly or delegate independent requests to fresh agents: Claude Code `Agent` with `subagent_type: "general-purpose"`; Codex `spawn_agent` with `fork_turns: "none"`. A delegated brief names the exact question, entry sources, original evidence, and return budget; deposit it at `evidence/`. Apply any source-quarantine rule the project states before any fetch. The main agent remains free to use research skills itself.
 
 ### Fresh critics
 
@@ -70,4 +75,4 @@ When a risk trigger or reserved gate requires independent review, spawn a fresh 
 
 - **`work/orchestration/GOAL_RUNBOOK.md`** — the procedure, stage by stage. Read the section for your mode before writing anything.
 - **`work/orchestration/goal-templates/`** — the three copyable files.
-- **`.project/adr/`** — why the layer is shaped this way. Records 001–007, indexed in `INDEX.md`.
+- **The goal-layer decision record** (`GOAL_RUNBOOK.md` § The decisions behind this) — why the layer is shaped this way. Records 001–007.
