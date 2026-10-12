@@ -14,7 +14,7 @@ This is the human-facing engineering story of the goal. It summarizes cited reco
 - **Round 1:** The team tried to solve plasma temperature from steady-state power balance. The calculation showed that the reference design does not have a stable, feasible burn point inside the modeled limits, so this was not a workable model architecture.
 - **Round 2:** Density and temperature remained design choices. The model now uses ISS04, an empirical stellarator energy-confinement scaling, to calculate the heating power needed to sustain each choice. It rejects points that need more plasma-coupled heating than the plant has installed.
 - **Measured outcome:** No point in the 154-point field-density grid was feasible with 50 MW delivered to the plasma. At 110 MW, a narrow feasible region appeared between the minimum field needed for confinement and the maximum field allowed by the conductor.
-- **Grade outcome:** The frozen Row-1 physics score moved from 2 to its target of 3. The reviewed basis is in [the goal close](../orchestration/goals/operating-point-closure/trail.md#goal-close--2026-09-02) and [the fresh re-grade](../../.project/active/demo-depth-rubric/grading-r1-regrade.md).
+- **Grade outcome:** The frozen Row-1 physics score moved from 2 to its target of 3. The reviewed basis is in [the goal close](../orchestration/goals/operating-point-closure/trail.md#goal-close--2026-09-02) and [the fresh re-grade](../../.project/completed/20261011_demo-depth-rubric/grading-r1-regrade.md).
 
 ## Starting point and motivation
 
@@ -22,7 +22,7 @@ This is the human-facing engineering story of the goal. It summarizes cited reco
 
 The plasma model already calculated fusion power, beta, neutron wall loading, and peak magnetic field from machine geometry and prescribed plasma profiles. This was enough to compare the consequences of different assumed plasma states.
 
-That capability earned Row 1 a physics score of 2. The initial grade and the target are recorded in [grading.md](../../.project/active/demo-depth-rubric/grading.md) and the frozen [rubric.md](../../.project/active/demo-depth-rubric/rubric.md).
+That capability earned Row 1 a physics score of 2. The initial grade and the target are recorded in [grading.md](../../.project/completed/20261011_demo-depth-rubric/grading.md) and the frozen [rubric.md](../../.project/completed/20261011_demo-depth-rubric/rubric.md).
 
 ### What the model could not do
 
@@ -149,7 +149,7 @@ Several limits remain explicit:
 - Several internal sustainment quantities were exported only by the independent checking calculation, not directly from the generated model.
 - The study record needed an addendum to correct prose errors that did not change the numerical result.
 
-These limits are recorded in [the round-2 review](../orchestration/goals/operating-point-closure/evidence/round2_review.md) and the fresh grader's evidence-integrity notes in [grading-r1-regrade.md](../../.project/active/demo-depth-rubric/grading-r1-regrade.md).
+These limits are recorded in [the round-2 review](../orchestration/goals/operating-point-closure/evidence/round2_review.md) and the fresh grader's evidence-integrity notes in [grading-r1-regrade.md](../../.project/completed/20261011_demo-depth-rubric/grading-r1-regrade.md).
 
 ## Evidence and visual index
 
@@ -158,5 +158,5 @@ These limits are recorded in [the round-2 review](../orchestration/goals/operati
 | Before-and-after causal graph | The shift from prescribed plasma quantities to a confinement-linked sustainment constraint | [WI-037 design](../completed/20260902_WI-037_operating-point-closure/design.md), [plasma-sustainment model](../../models/library/analyses/mfe_plasma_sustainment.sysml) |
 | Solved-temperature failure sketch | Why the first strategy closed as a useful negative rather than becoming implementation | [prototype notes](../orchestration/goals/operating-point-closure/evidence/T-002_prototype/NOTES.md), [round-1 review](../orchestration/goals/operating-point-closure/evidence/round1_review.md) |
 | Field-density constraint map at 50 and 110 MW | Empty space at 50 MW and the narrow feasible band at 110 MW | [points.csv](../../exploration/stellarator_e2e/studies/20260901-sustainment-fence/results/points.csv), [study synthesis](../../exploration/stellarator_e2e/studies/20260901-sustainment-fence/synthesis.md) |
-| Grade card | Frozen-rubric movement from R1.P 2 to 3 | [initial grading](../../.project/active/demo-depth-rubric/grading.md), [fresh re-grade](../../.project/active/demo-depth-rubric/grading-r1-regrade.md) |
+| Grade card | Frozen-rubric movement from R1.P 2 to 3 | [initial grading](../../.project/completed/20261011_demo-depth-rubric/grading.md), [fresh re-grade](../../.project/completed/20261011_demo-depth-rubric/grading-r1-regrade.md) |
 | Follow-on decisions | How the measured constraint conflict produced conductor and heating work | [goal close](../orchestration/goals/operating-point-closure/trail.md#goal-close--2026-09-02), [study findings](../../exploration/stellarator_e2e/studies/20260901-sustainment-fence/record.md#15-findings) |
