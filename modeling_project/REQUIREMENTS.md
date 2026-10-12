@@ -88,23 +88,11 @@ The project SHOULD define documented modeling patterns — templates, convention
 
 **Authority:** [OWNER-VERBATIM, 2026-09-20] “As soon as you start introducing ‘sizing’, then you are basically pre-defining which design parameters are ‘free’ and which are ‘derived’. this is explicitly what we wanted to avoid.” [OWNER] Requested implementation of enforcement across goal and modeling agents. The application and enforcement below are [AGENT] interpretations ratified by that implementation request, not additional owner-originated requirements. Source: `.project/completed/20261011_modeling-intent-enforcement/spec.md`.
 
-The model MUST distinguish physical relationships and performance limits from policies that choose a design. A calculation or binding MUST NOT silently remove a design choice by setting installed equipment, inventory or capacity from required performance. Which quantities a particular analysis specifies and which it solves for MUST be explicit in that analysis's contract, with their authority recorded. An existing calculation direction, reference design or depth target is not authority to fix that choice for every use of the component.
+This project MUST apply agentic-mbse's design-choice pattern, which this entry does not restate: `design-choices.md` in the installed toolkit's pattern directory (`uv run python -c 'from agentic_mbse.cli import get_docs_dir; print(get_docs_dir() / "patterns")'`; `modeling_project/MODELING_GUIDE.md` § Pattern Documentation Index). The pattern states the rule, the evidence to record and the acceptance tests; its review trigger is `modeling_project/MODELING_PROCESS.md` § Process Selection. MR-7 records only this project's application:
 
-**Application:**
-
-- Keep physical demand, installed design/capacity and any suggested design separate. Evaluate the supplied design; report insufficient capacity or fit instead of automatically enlarging it. An explicitly authorized sizing/search study may propose choices, but its policy must be separately identifiable and its selected design evaluable without rerunning that policy.
-- A numerical routine may have directional inputs and outputs. Document how that direction relates to the supported analysis and the available design choices; implementation convenience does not authorize hiding a design-selection rule inside a physical component. This requirement does not prescribe an acausal solver or make every mathematically related quantity independently specifiable at once.
-- Ordinary physical balances, geometry identities and operating-point calculations are not automatically violations. Explain their selected independent quantities and assumptions. In particular, calculating required flow is not evidence of installed pump capacity, and calculating required area is not permission to bind it to installed exchanger area.
-- Report empirical validity separately from physical adequacy. An unsupported conductor field or temperature is a conductor-performance-model limitation. It is neither a failed physical constraint nor permission to extrapolate silently. Invalid/unsupported evaluation must not be reported as a pass.
-- A supplied equipment choice must remain the basis of its represented inventory and cost. A demand-scaled cost proxy must disclose the assumed demand-matched equipment and missing installed-capacity evaluation; it must not be presented as a fully evaluated chosen design.
-
-**Required evidence, proportional to the affected model:** In the existing spec/design or goal record, list the affected quantities, units, physical relationships, current/proposed roles (chosen, calculated, requirement, installed capacity, policy-selected), the binding location, and authority for any role change. A small change can use a short paragraph; multiple changed choices need a table. A parameter disappearing from the public interface or becoming a calculated binding must be called out explicitly. Defaults, mode switches and multipliers must not conceal automatic adequacy.
-
-**Enforcement:** Goal grounding and each affected strategy/task carry MR-7 as an invariant. Model design review inspects the actual equations and bindings, including downstream part attributes and cost consumers. A changed design-variable assignment or automatic selection policy triggers the independent design review required by `MODELING_PROCESS.md`. Existing code and prior passing depth grades do not waive this check.
-
-**Acceptance:** For each repaired or introduced capacity/fit relationship, use the supported execution route to exercise an insufficient and a sufficient supplied design within the performance model's domain. Verify that the selected design is unchanged, the constraint changes meaningfully, and inventory/cost follow the selected design. Where the intended interface permits varying demand while holding hardware fixed, test that separately. An unsupported-domain case must remain explicitly unsupported, with no manufactured success. For operating-point closures or cost proxies where those tests do not apply, document the reason and check their stated assumptions instead. A review must record MR-7 compliant, violated or unverified for the affected scope with evidence; unknown compliance cannot count as completed remediation.
-
-**Examples:** `capacity = required_flow * margin`, bound as installed capacity, is an automatic design-selection rule even if `margin` is exposed. `required_area` compared with independently selected installed area preserves the distinction. `volume = area * length` is a geometry identity, not an automatic adequacy rule. Replacing one hidden fixed choice with another does not resolve the architectural issue.
+- **Invariant.** Goal grounding and each affected strategy and task carry MR-7 as an invariant (`work/orchestration/GOAL_RUNBOOK.md` § Grounding a goal).
+- **Conductor models.** An unsupported conductor field or temperature is a conductor-performance-model limitation (`design-choices.md`, rule 6).
+- **Depth work.** A depth target or a prior passing depth grade is not authority to fix a design choice and does not waive the review. Prospective depth assessments also follow `.project/completed/20261011_demo-depth-rubric/application-policy.md`; historical rubric bytes and grades remain unchanged.
 
 ---
 
@@ -162,4 +150,4 @@ Each phase of the process MUST produce committed artifacts. Knowledge transforms
 
 ---
 
-**Last Updated**: 2026-09-20 (MR-7)
+**Last Updated**: 2026-10-11 (MR-7 cites the shipped design-choice pattern)

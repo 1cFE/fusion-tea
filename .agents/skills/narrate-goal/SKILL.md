@@ -2,9 +2,14 @@
 name: narrate-goal
 description: >
   Create a concise, evidence-linked narrative snapshot of an orchestration goal for human readers. Use when asked to narrate, summarize, explain, or capture the engineering story of a goal at a milestone. The output is optional presentation material outside the goal contract, never goal state or review.
-allowed-tools: Bash, Read, Write, Edit, Glob, Grep
+allowed-tools: [Bash, Read, Write, Edit, Glob, Grep]
 user-invocable: true
+metadata:
+  kind: workflow
 ---
+
+Before executing this skill, read `.agentic-mbse/claude.md` in Claude Code or `.agentic-mbse/codex.md` in Codex. Resolve supporting paths from this skill’s installed directory; keep generated outputs in the project or a temporary directory. Read referenced skills from `.agents/skills/<name>/SKILL.md` when their guidance is needed.
+
 
 # Narrate Goal
 
@@ -74,6 +79,6 @@ Keep topic-specific H3 headings free to state the actual conclusions. When a req
 Before reporting completion:
 
 1. Confirm the target did not exist before this invocation and that no file outside the one new snapshot changed.
-2. Run `uv run pytest tests/orchestration/test_goal_contract.py -q`. Fix failures caused by the new narrative. If an unrelated contract failure remains, stop and report it without editing outside this skill's boundary.
+2. Run `uv run pytest tests/orchestration/test_narrative_links.py -q`. Fix failures caused by the new narrative. If an unrelated contract failure remains, stop and report it without editing outside this skill's boundary.
 3. Recheck the line count, paragraph ceiling, heading order, purposeful visual, closure metadata, authority warning, and local links.
 4. Report the output path, the cutoff and whether it is provisional, and the validation result.

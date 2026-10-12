@@ -14,8 +14,6 @@ Optional stages: `/research`, `/spec-model`, `/design-model`, `/review-model`, `
 
 ## Process Selection
 
-For changes to design variables, equipment/capacity bindings, sizing, operating-point closure or demand-based costing, apply [REQUIREMENTS.md MR-7](REQUIREMENTS.md#mr-7-preserve-design-choices-separate-evaluation-from-design-selection) before selecting a process. This applies to direct edits and inherited patterns as well as new work. Stage compression does not waive its evidence or review obligations.
-
 Before editing, record the intended behavior, affected definitions and consumers, source basis, and selected checks/reviews in the existing work record. A few sentences suffice. Search references and inspect inherited definitions and bindings; a local edit can affect other instances. Unknown impact calls for a bounded dependency investigation before choosing the final scope.
 
 | Evidence about the change | Required response |
@@ -23,6 +21,7 @@ Before editing, record the intended behavior, affected definitions and consumers
 | Existing pattern and source interpretation; affected consumers known; expected behavior directly checkable | Main agent edits and verifies. No independent review required. |
 | New or reinterpreted source value, equation, unit conversion, physical assumption, or domain of applicability | Focused independent source/math review using original evidence, units, assumptions, and off-reference behavior. Resolve source interpretation before relying on it. |
 | New modeling pattern or changed ownership, specialization, public interface, or binding semantics | Focused independent design review before dependent implementation; check surrounding producer/consumer interfaces and the applicable pattern. |
+| Changed design-variable role (a quantity moves between chosen and calculated, or a design choice leaves the public interface), new or changed automatic sizing or selection policy, or installed capacity, equipment, or inventory bound to computed demand | Focused independent design review before dependent implementation. Inspect the actual equations, bindings, and downstream consumers, including costs, against the design-choice pattern (`design-choices.md`; see Technical Patterns). |
 | Shared definition or calculation changes | Identify affected instances and test relevant consumer behavior, including preserved behavior. Shared use alone does not require a full audit. |
 | Coupled changes across model families/subsystems, architectural restructuring, or material uncertainty remaining after focused checks | Substantive independent design/integration assessment. Inspect interacting assumptions and coverage; use `/review-model` or `/audit-models` for the unresolved scope. |
 | Mechanical correction to already reviewed work | Recheck the diff and affected evidence. Reuse the reviewer when review is needed; no new full audit by default. |
@@ -30,8 +29,6 @@ Before editing, record the intended behavior, affected definitions and consumers
 Combine related review questions in one independent session when the evidence overlaps. A completed source/design review does not automatically require a second completion audit. Complex work needs positive independent assessment of its consequential design choices and integrated behavior; one continuing reviewer can cover both. Report unverified behavior explicitly instead of declaring completion on a missing check.
 
 ## Artifact Contracts
-
-For MR-7 work, the spec identifies the design choices the consumer must retain. The design records the affected variable roles, physical relationships, selection policies, authority and actual binding paths. The implementation preserves those choices through generated/native execution and downstream costs. Review checks those bindings rather than inferring compliance from names such as `required`, `selected` or `sizing_mode`. Acceptance includes MR-7's applicable insufficient/sufficient design tests and explicit validity limits. Carry the MR-7 evidence into the handoff; do not call a repair complete on depth scores or baseline reproduction alone. Prospective depth assessments also follow `.project/completed/20261011_demo-depth-rubric/application-policy.md`; historical rubric bytes and grades remain unchanged.
 
 Preserve native PM registration and required `spec.md` frontmatter for tracked items. Keep the intended outcome, supported use, source authority, acceptance conditions, decisions, and verification results in that record or linked existing evidence. `/spec-model` captures missing requirements; `/design-model` resolves design uncertainty; `/plan-model` supplies a checklist when sequencing or interruption recovery needs it. A short change can use one record. Larger work can use separate `design.md` and `plan.md` documents. Cite decisions instead of restating them.
 
@@ -60,14 +57,14 @@ For a changed system claim, preserve an inspectable path through the relevant re
 
 ## Architecture & Design
 
-- **Own quantities and responsibilities.** Give shared physical quantities identifiable owners and bind consumers to those owners. Distinguish quantities with different meanings, such as installed capacity and operating demand. Trace relevant functions and exchanges to the components that perform them.
+- **Own quantities and responsibilities.** Give shared physical quantities identifiable owners and bind consumers to those owners. Distinguish quantities with different meanings, such as installed capacity and operating demand, and do not set installed capacity, equipment, or inventory from required performance; see `design-choices.md` (Technical Patterns below). Trace relevant functions and exchanges to the components that perform them.
 - **Design across dependencies.** Inspect affected producers, consumers, inherited definitions, and assemblies. A public-input change or expanded supported use requires checking assumptions inherited from the narrower use. Aggregate from modeled component occurrences where the result claims to represent that structure.
 - **Separate reusable logic from configuration.** Discover existing library definitions before adding new ones. Keep reusable definitions in the library and concept-specific assemblies, values, and wiring in designs. Apply the calculation placement and binding rules below.
 - **Make execution dependencies explicit.** Keep imports and calculation dependencies acyclic where required by the execution route. Physical feedback loops still belong in the system description; explain how the analysis solves or approximates them. Probe unfamiliar constructs through the intended execution route, since parsing establishes only syntax support.
 
 ## Technical Patterns: Read at the Point of Use
 
-Read the relevant section of `MODELING_GUIDE.md` and its detailed pattern reference before designing or changing the corresponding construct. Detailed references live in `.agentic-mbse/patterns/`; the guide provides navigation. These summaries preserve the failure-derived rules without duplicating their full examples.
+Read the relevant section of `MODELING_GUIDE.md` and its detailed pattern reference before designing or changing the corresponding construct. Detailed references live in the toolkit's `docs/patterns/` directory; the guide provides navigation. These summaries preserve the failure-derived rules without duplicating their full examples.
 
 | When changing | Rule to preserve | Detailed reference |
 |---|---|---|
@@ -76,6 +73,7 @@ Read the relevant section of `MODELING_GUIDE.md` and its detailed pattern refere
 | Cross-file interfaces | Expose a calculation result as a producer attribute; consumers bind that interface instead of reaching into the producer's calculation internals. Use explicit, private imports by default. | `expose-pattern.md`, `cross-file-binding.md` |
 | Assignments, defaults, or specialization | Choose operators for the intended binding and override semantics. | `semantic-operators.md` |
 | Functions, interfaces, or constraints | Relate functions to components and exchanges to interfaces; distinguish declared constraints from checks actually evaluated by the supported tools. | `mbse-concepts.md`, `constraints.md` |
+| Design variables, equipment or capacity bindings, sizing, operating-point closure, or demand-based costs | Evaluate the supplied design and report insufficiency; do not set installed equipment, inventory, or capacity from required performance. State which quantities each analysis specifies and which it solves for, with their authority. | `design-choices.md` |
 
 Research reads the four-view framework when investigating system modeling and captures the source-supported relationships and gaps. Design applies the architecture principles and selects relevant technical references. Implementation reads those references before authoring the constructs. Audit checks the affected relationships and failure modes against actual model and execution evidence. Reuse already loaded, current guidance within a continuing context.
 
