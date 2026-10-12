@@ -12,7 +12,7 @@
  },
  "unframed": [
   {
-   "sha": "5dd9cbd0",
+   "sha": "47c1cc87",
    "slug": "stellaris-reference-reconciliation",
    "reason": "Its only model change is source-attribution comments, so there is nothing to show. Owner decision 2026-09-20.",
    "attribution": [
@@ -293,10 +293,10 @@
     "641c1051",
     "75bb4824",
     "708dddef",
-    "3d9711e2",
-    "4ca1f299",
-    "747a8a35",
-    "b413838c"
+    "08d4bb8c",
+    "914eea89",
+    "fbe72c22",
+    "bf493eda"
    ],
    "question": "Can the current IFE and MFE models resolve all 20 audit findings with independently checked corrections, while making every remaining source, engineering, and comparison limitation explicit and enforceable within each model's supported use?",
    "question_grade": null,
@@ -365,7 +365,7 @@
    "title": "Restructure the model into nested physical parts without changing its numbers",
    "closed": null,
    "shas": [
-    "82ae3958"
+    "d6d8e28a"
    ],
    "question": "Can the Stellaris model be restructured so its SysML reads as the machine it represents — subsystems decomposed into the physical parts the source describes, the energy topology declared as ports and connections, every attribute living on the part it belongs to — such that the generated package computes the same LCOE and the same verdicts, the model renders as a hierarchy rather than a flat list, and a subsystem definition can be swapped for a trade study without editing the calcs?",
    "question_grade": "AGENT",
@@ -391,10 +391,10 @@
    "title": "Price the winding pack and conductor so magnet results can move off the reference design",
    "closed": "2026-09-14",
    "shas": [
-    "173ac157",
-    "9e942fac",
-    "0e3bf944",
-    "48417c9e"
+    "07af9489",
+    "1bad2a3c",
+    "3fa685b4",
+    "38500b35"
    ],
    "question": "Within a documented geometry and conductor-technology range, do magnet sizing, operating limits, and component costs respond consistently enough to support a defensible design-point transfer?",
    "question_grade": "OWNER-VERBATIM",
@@ -436,8 +436,8 @@
    "title": "Make winding length, cooling load and support structure follow the coil the model builds",
    "closed": "2026-09-15",
    "shas": [
-    "6e8eafa2",
-    "295751fa"
+    "c0382bcb",
+    "8498f753"
    ],
    "question": "Does the magnet's winding length, cold load and structure follow the coil the model builds — the bore the radial build sets, the leads and shield a 20 K coil set needs, the whole support structure the source's mass shape describes — and once they do, does the machine the model favours change: what does a fatter plasma now cost at the magnet, where does the cheapest feasible machine sit, and how much of the plant's recirculating power is the cryoplant?",
    "question_grade": null,
@@ -469,7 +469,7 @@
    "title": "Price conductor tape by its physical length",
    "closed": null,
    "shas": [
-    "cf3002f6"
+    "b5606241"
    ],
    "question": "How can conductor procurement cost follow one traceable physical tape inventory consistently when geometry, current, reference winding-pack current density or selected conductor envelope changes?",
    "question_grade": "OWNER",
@@ -500,7 +500,7 @@
    "title": "Check that the winding pack fits inside its casing",
    "closed": null,
    "shas": [
-    "ece3a7ed"
+    "e5f8b0cd"
    ],
    "question": "Can an explicitly defined, independently based casing interior accommodate the calculated winding-pack envelope, insulation and assembly clearances, and how does adding that geometric screen change sampled feasibility and the cheapest feasible choice?",
    "question_grade": null,
@@ -526,7 +526,7 @@
    "title": "Estimate conductor critical current and operating margin",
    "closed": null,
    "shas": [
-    "09178a90"
+    "590de51e"
    ],
    "question": "Can an admissible explicit tape-to-cable performance basis establish estimated conductor critical current, operating fraction and allowable-fraction margin for the modeled inventory?",
    "question_grade": null,
@@ -552,7 +552,7 @@
    "title": "Account for what the magnet manufacturing charges cover",
    "closed": null,
    "shas": [
-    "19e47125"
+    "d1a2d135"
    ],
    "question": "What do the modeled magnet procurement and manufacturing charges cover, which overlaps can be demonstrated and removed, and which missing costs can be estimated or made explicit using admissible evidence and current conductor/pack geometry?",
    "question_grade": "OWNER",
@@ -578,7 +578,7 @@
    "title": "Size the magnet tape inventory from the required current",
    "closed": null,
    "shas": [
-    "a8589d6b"
+    "c206db2f"
    ],
    "question": "Can a magnet carry the required current at the selected operating margin, fit inside an explicitly allocated casing, and satisfy the existing plant constraints under one consistent set of construction and performance assumptions?",
    "question_grade": "OWNER-VERBATIM",
@@ -604,7 +604,7 @@
    "title": "Trace divertor heat from plasma exhaust to peak load",
    "closed": null,
    "shas": [
-    "48b65159"
+    "3589d848"
    ],
    "question": "Can the represented stellarator divertor peak heat load be traced consistently from plasma exhaust through deposition, geometry and spatial concentration, and what does that establish at the joint magnet-sizing rejection cases?",
    "question_grade": "OWNER",
@@ -630,7 +630,7 @@
    "title": "Calculate tritium breeding from the blanket",
    "closed": "2026-09-18",
    "shas": [
-    "d2e29237"
+    "656e8f21"
    ],
    "question": "Can we calculate tritium production from the modeled blanket configuration, verify that calculation, and make insufficient breeding constrain the design?",
    "question_grade": "OWNER-VERBATIM",
@@ -656,7 +656,7 @@
    "title": "Installed cooling equipment costs",
    "closed": "2026-09-18",
    "shas": [
-    "c6906cbe"
+    "6295b215"
    ],
    "question": "Can we size and separately cost the cooling system’s pumps, piping and heat exchangers from the plant’s calculated heat-removal requirements, including installation and appropriate lifecycle costs?",
    "question_grade": "OWNER-VERBATIM",
@@ -682,7 +682,7 @@
    "title": "Buildings sized from equipment and maintenance needs",
    "closed": "2026-09-19",
    "shas": [
-    "f1e70c48"
+    "688d0b0e"
    ],
    "question": "Can we derive the size and cost of plant buildings and maintenance facilities from the equipment they contain and the maintenance work they must support?",
    "question_grade": "OWNER-VERBATIM",
@@ -708,7 +708,7 @@
    "title": "Fuel inventory, startup stock and processing throughput",
    "closed": "2026-09-19",
    "shas": [
-    "956444b5"
+    "1a535f63"
    ],
    "question": "Can we calculate the tritium held throughout the fuel system, the stock needed to start operation, and the processing throughput from explicit operating and fuel-system assumptions?",
    "question_grade": "OWNER-VERBATIM",
@@ -734,7 +734,7 @@
    "title": "Fuel-processing cost that follows throughput",
    "closed": "2026-09-19",
    "shas": [
-    "2a50d3ec"
+    "a11187e1"
    ],
    "question": "Can we make the cost of the fuel-processing plant follow its calculated processing demand, using applicable cost sources and explicit equipment boundaries?",
    "question_grade": "OWNER",
@@ -760,7 +760,7 @@
    "title": "Cost-estimate maturity and uncertainty",
    "closed": "2026-09-19",
    "shas": [
-    "fe720553"
+    "d772a111"
    ],
    "question": "Can we state how well developed the plant cost estimate is, expose the functional accounts where cost is concentrated, and quantify the uncertainty that the available evidence supports?",
    "question_grade": "OWNER",
@@ -786,7 +786,7 @@
    "title": "Getting the current model ready for comparison",
    "closed": "2026-09-20",
    "shas": [
-    "3093d167"
+    "d7383342"
    ],
    "question": "Can we prepare a reproducible comparison package using the model that meets all 23 depth targets, with a justified cooling-to-electricity calculation and no unexplained validation failures affecting the comparison?",
    "question_grade": "OWNER-VERBATIM",
@@ -813,8 +813,8 @@
    "title": "Keeping supplied design choices through evaluation",
    "closed": "2026-09-20",
    "shas": [
-    "b11567eb",
-    "fce78841"
+    "a6a41433",
+    "d3341b38"
    ],
    "question": "Can the stellarator model and shared dependencies evaluate and cost supplied designs without silently selecting different hardware, while preserving supported physical relationships and validity limits?",
    "question_grade": null,
@@ -851,7 +851,7 @@
    "title": "How far the repaired model can be evaluated",
    "closed": "2026-09-20",
    "shas": [
-    "ba29c9ac"
+    "309ff40e"
    ],
    "question": "How far can the repaired stellarator model evaluate the intended design space, with verified file-read identity coverage and a compatible comparison adapter?",
    "question_grade": "OWNER",
