@@ -1,21 +1,14 @@
 ---
 name: spec-model
 description: Define modeling requirements and success criteria for SysMLv2 model enhancements
-allowed-tools:
-- Read
-- Grep
-- Glob
-- Bash
-- Agent
-- Write
-- Edit
-- AskUserQuestion
+allowed-tools: [Read, Grep, Glob, Bash, Agent, Write, Edit, AskUserQuestion]
 user-invocable: true
+metadata:
+  kind: workflow
 ---
 
 Before executing this skill, read `.agentic-mbse/claude.md` in Claude Code or `.agentic-mbse/codex.md` in Codex. Resolve supporting paths from this skill’s installed directory; keep generated outputs in the project or a temporary directory. Read referenced skills from `.agents/skills/<name>/SKILL.md` when their guidance is needed.
 
-Supporting skills: `project-structure`, `source-traceability`, `model-validation`, `requirements-tracking`. Read their installed guidance when relevant.
 
 # Spec Model
 
