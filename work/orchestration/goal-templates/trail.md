@@ -80,3 +80,8 @@ The review never resumes the closed round.
 - **Kind:** `interruption | limit | cap | owner gate | handoff | external mutation`. `handoff` is an agent that reached a gate needing a fresh session it cannot start (`GOAL_RUNBOOK.md` § What "fresh" means).
 - **What is true on disk:** the native state, read as truth.
 - **What the owner must see:** the decision or the unresolved item.
+
+## Goal close — YYYY-MM-DD
+
+- **Ruling:** the owner's close ruling, quoted or cited.
+- **Disposition:** closed on § Answered when, or closed by redirect, and why.

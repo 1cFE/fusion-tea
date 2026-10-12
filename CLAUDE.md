@@ -4,6 +4,16 @@
 
 Before planning or changing model equations, parameter roles, equipment/capacity bindings or demand-based costs, read [MR-7](modeling_project/REQUIREMENTS.md#mr-7-preserve-design-choices-separate-evaluation-from-design-selection) and apply its evidence and review checks through `modeling_project/MODELING_PROCESS.md`. Goal agents carry the same requirement through `work/orchestration/GOAL_RUNBOOK.md`. Existing sizing code and passing depth scores do not authorize a fixed design-variable assignment. This pointer is shared by Claude and Codex through `AGENTS.md`; the requirement itself has one authoritative home.
 
+## Goal layer in this repository
+
+`run-goal`, `narrate-goal`, `work/orchestration/GOAL_RUNBOOK.md` and its templates are installed by agentic-mbse and name the research, integration and study procedures generally. Here they are:
+
+- **Research:** `/research-acquire` (`.claude/commands/research-acquire.md`) drives search and triage. Form request files at `knowledge/research/requests/REQ-*.json`; `scripts/research_seam.py` keeps run bookkeeping and `scripts/source_registry.py register` ingests. Protocol: `docs/research_seam_operator_guide.md`. Every researcher applies the clean-room screen (`knowledge/holdout/aries-cs/PROTOCOL.md`) before any fetch.
+- **Integration:** `scripts/integrate.py` (`.project/adr/0009-integration-is-a-fixed-point-proof.md`); guide `docs/integration_seam_operator_guide.md`.
+- **Studies:** `.claude/skills/run-study/runbook.md` and `modeling_project/STUDY_POLICY.md`. Discovery logs are `exploration/<pkg>/studies/DISCOVERY_LOG.md`; `tests/study/test_records.py::test_findings_join_the_discovery_log` checks the join.
+- **Decision records:** this repository's goal-layer ADRs stay in `.project/adr/` and govern it; installed targets use agentic-mbse's dated snapshot.
+- **Launcher:** in the Codex test worktree use `.codex-test/run` (`AGENTS.md`); otherwise `uv run`.
+
 ## Project Overview
 
 **Project**: Fusion TEA (Techno-Economic Analysis)
