@@ -97,7 +97,7 @@ Revisions to a grounded goal are rare and are written as dated amendments, never
 
 ## Opening and closing a round
 
-Before a strategy changes a design quantity's role, record its MR-7 justification and affected binding/consumer paths. Treat an automatic sizing policy or removal of a design choice as a modeling/interface decision, not routine arithmetic. Existing authorized choices can proceed; a premise conflict or an unresolved material owner choice stops only dependent work. Depth-target attainment and numerical regression success cannot substitute for the MR-7 assessment. For prospective depth work, also read `.project/active/demo-depth-rubric/application-policy.md`.
+Before a strategy changes a design quantity's role, record its MR-7 justification and affected binding/consumer paths. Treat an automatic sizing policy or removal of a design choice as a modeling/interface decision, not routine arithmetic. Existing authorized choices can proceed; a premise conflict or an unresolved material owner choice stops only dependent work. Depth-target attainment and numerical regression success cannot substitute for the MR-7 assessment. For prospective depth work, also read `.project/completed/20261011_demo-depth-rubric/application-policy.md`.
 
 **Do:** open a round by writing one strategy revision. Then run tasks under it until the round closes.
 

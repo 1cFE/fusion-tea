@@ -7,7 +7,7 @@ Append-only.
 Note: the lens subagent could not read `~/.claude/scripts/product-lens.md` (permission denied), so the block format below is its best reconstruction of product-lens spec §3, not a copy.
 
 - **Work:** `.project/active/model-viz-structural-view/spec.md`
-- **Sources:** `.project/product/INDEX.md` (entry 0001 not relevant), `.project/concepts/model-viz.md`, `.project/concepts/model-viz-design.md` § Goals, `.project/active/model-viz/spec.md` § Non-Goals, `.project/active/model-viz-structural-view/briefs/spec.md`, `src/model_viz/README.md`, `proof_of_concept/README.md`, `proof_of_concept/extraction/types.py`
+- **Sources:** `.project/product/INDEX.md` (entry 0001 not relevant), `.project/concepts/model-viz.md`, `.project/concepts/model-viz-design.md` § Goals, `.project/completed/20261011_model-viz/spec.md` § Non-Goals, `.project/active/model-viz-structural-view/briefs/spec.md`, `src/model_viz/README.md`, `proof_of_concept/README.md`, `proof_of_concept/extraction/types.py`
 - **Verdict:** PASS. No blocking finding. No owner item contradicted.
 - **Epic:** none (standalone item).
 

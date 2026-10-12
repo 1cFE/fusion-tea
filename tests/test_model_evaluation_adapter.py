@@ -7,7 +7,7 @@ from concurrent.futures import ThreadPoolExecutor
 import pytest
 
 ROOT = Path(__file__).resolve().parents[1]
-DIRECTORY = ROOT / '.project/active/model-evaluation-comparison-adapter/v1'
+DIRECTORY = ROOT / '.project/completed/20261011_model-evaluation-comparison-adapter/v1'
 spec = importlib.util.spec_from_file_location('evaluation_adapter', DIRECTORY / 'adapter.py')
 adapter = importlib.util.module_from_spec(spec)
 spec.loader.exec_module(adapter)

@@ -71,7 +71,7 @@ def test_exact_input_contract():
     coverage = json.loads(
         (
             ROOT
-            / ".project/active/mfe-major-radius-study-package/implementation/contract-coverage.json"
+            / ".project/completed/20261011_mfe-major-radius-study-package/implementation/contract-coverage.json"
         ).read_text()
     )
     entering = renamed_keys(coverage["entering_mapping"])
@@ -153,7 +153,7 @@ def test_current_invalid_radius_is_retained_as_execution_failure(
     json.loads(
         (
             ROOT
-            / ".project/active/mfe-major-radius-study-package/implementation/contract-coverage.json"
+            / ".project/completed/20261011_mfe-major-radius-study-package/implementation/contract-coverage.json"
         ).read_text()
     )["unmapped_native_inputs"],
     ids=lambda k: renamed(k),

@@ -1,6 +1,6 @@
 # Study Parameterization & Constraint Policy
 
-**Status**: Ratified whole — [OWNER] 2026-08-21 (RUN-STUDY Item 6 Align, `.project/active/run-study-first-consumer/align.md` § 1); moved here from `.project/active/demo-study-parameterization-policy/policy.md` the same day. Sections 9–10 added at ratification.
+**Status**: Ratified whole — [OWNER] 2026-08-21 (RUN-STUDY Item 6 Align, `.project/completed/20261011_run-study-first-consumer/align.md` § 1); moved here from `.project/active/demo-study-parameterization-policy/policy.md` the same day. Sections 9–10 added at ratification.
 **Created**: 2026-08-02
 **Consumers**: the `run-study` skill (`.claude/skills/run-study/SKILL.md`, `runbook.md`) cites this file as its rulebook; every study record cites it by this path. Written for the stellarator MBSE demo (`.project/concepts/stellarator-mbse-demo.md`, criteria 5–6; that epic is on hold) and binding on any study run through the skill.
 

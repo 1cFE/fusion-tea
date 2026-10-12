@@ -10,7 +10,7 @@ the run record, and computing the return class from the receipts
     uv run python scripts/research_seam.py log <run-dir> --candidate URL --triage keeper
     uv run python scripts/research_seam.py close <run-dir> --adequacy exhausted
 
-Design: `.project/active/goal-research-seam/design.md` (D8, D9, D13).
+Design: `.project/completed/20260827_goal-research-seam/design.md` (D8, D9, D13).
 """
 
 import argparse

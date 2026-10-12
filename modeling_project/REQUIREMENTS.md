@@ -86,7 +86,7 @@ The project SHOULD define documented modeling patterns — templates, convention
 
 ### MR-7: Preserve Design Choices; Separate Evaluation from Design Selection
 
-**Authority:** [OWNER-VERBATIM, 2026-09-20] “As soon as you start introducing ‘sizing’, then you are basically pre-defining which design parameters are ‘free’ and which are ‘derived’. this is explicitly what we wanted to avoid.” [OWNER] Requested implementation of enforcement across goal and modeling agents. The application and enforcement below are [AGENT] interpretations ratified by that implementation request, not additional owner-originated requirements. Source: `.project/active/modeling-intent-enforcement/spec.md`.
+**Authority:** [OWNER-VERBATIM, 2026-09-20] “As soon as you start introducing ‘sizing’, then you are basically pre-defining which design parameters are ‘free’ and which are ‘derived’. this is explicitly what we wanted to avoid.” [OWNER] Requested implementation of enforcement across goal and modeling agents. The application and enforcement below are [AGENT] interpretations ratified by that implementation request, not additional owner-originated requirements. Source: `.project/completed/20261011_modeling-intent-enforcement/spec.md`.
 
 The model MUST distinguish physical relationships and performance limits from policies that choose a design. A calculation or binding MUST NOT silently remove a design choice by setting installed equipment, inventory or capacity from required performance. Which quantities a particular analysis specifies and which it solves for MUST be explicit in that analysis's contract, with their authority recorded. An existing calculation direction, reference design or depth target is not authority to fix that choice for every use of the component.
 

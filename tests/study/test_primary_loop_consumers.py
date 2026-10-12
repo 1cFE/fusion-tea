@@ -49,7 +49,7 @@ import oracle_entry as oracle
 
 BEFORE = json.loads(
     (
-        ROOT / ".project/active/primary-loop-current-consumers/implementation/oracle-before.json"
+        ROOT / ".project/completed/20261011_primary-loop-current-consumers/implementation/oracle-before.json"
     ).read_text()
 )
 INVALID = [

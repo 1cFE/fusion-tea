@@ -1,6 +1,6 @@
 """The regenerated stellarator package on the stock teax route.
 
-stellarator-model-migration Phase 2 (`.project/active/stellarator-model-migration/plan.md`).
+stellarator-model-migration Phase 2 (`.project/completed/20260821_stellarator-model-migration/plan.md`).
 The package is sealed at runtime contract ``2.0.0`` by the pinned codegen; stock teax's
 ``ProvisionalPackageLoader`` must accept it with ``strict=True``, its study identity must be
 the sealed executable fingerprint itself (design D3, invariant I5), and the five values the

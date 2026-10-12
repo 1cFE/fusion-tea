@@ -102,7 +102,7 @@ What it shows:
 - The doc comment, the recorded `source_file:source_line`, and the start of that file's SHA-256 from the snapshot.
 - A producer input whose calc is not in the snapshot, marked unresolved in the consumer's panel. No arrow is drawn for it.
 
-What it does not show: verbatim SysML source, any Python, attribute or constraint nodes, or paths longer than one hop. See `.project/active/model-viz/spec.md` § Non-Goals.
+What it does not show: verbatim SysML source, any Python, attribute or constraint nodes, or paths longer than one hop. See `.project/completed/20261011_model-viz/spec.md` § Non-Goals.
 
 ## Files
 
@@ -119,7 +119,7 @@ What it does not show: verbatim SysML source, any Python, attribute or constrain
 - `viewer2/` — the v2 page: one picture of parts and calcs together, with reach and tracing. It loads v1's `model.js`, `formula.js`, `view.js`, `structure.js`, `panel.js` and `part_panel.js` from `../viewer/js/` rather than copying them.
 - `export.py` — stdlib script that writes one self-contained HTML file for one or more snapshots, from either viewer.
 
-The pure files never touch the page or Cytoscape. The design is `.project/active/model-viz/design.md`; the structure view's is `.project/active/model-viz-structural-view/design.md`.
+The pure files never touch the page or Cytoscape. The design is `.project/completed/20261011_model-viz/design.md`; the structure view's is `.project/active/model-viz-structural-view/design.md`.
 
 v2 composes v1's `panel.js` and `part_panel.js` DOM rather than re-rendering it, so their `data-*` hooks are a contract between the two viewers: `tests/model_viz_v2/test_panels_v2.py` checks it differentially against v1's own page, and changing a hook breaks v2.
 
