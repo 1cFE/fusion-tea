@@ -43,7 +43,7 @@ The model held plasma-coupled heating power as an input. It also held one combin
 
 This arithmetic produced a total electrical draw, but it did not distinguish the electricity bought by the plant, the output rating of the heating source, and the fraction of that output deposited in the plasma. Those quantities drive different physical constraints and different costs.
 
-That representation earned Row 4 physics a score of 1 against a target of 2. The grader's exact objection is in [grading.md](../../.project/active/demo-depth-rubric/grading.md), cell R4.P.
+That representation earned Row 4 physics a score of 1 against a target of 2. The grader's exact objection is in [grading.md](../../.project/completed/20261011_demo-depth-rubric/grading.md), cell R4.P.
 
 The goal therefore has two parts. Round 1 makes the heating chain explicit and measurable. A later round must replace the inconsistent wall check with a like-for-like calculation.
 
@@ -220,9 +220,9 @@ The pre-execution critique that forced this distinction is [T-004_precritique.md
 
 ## Outcome and follow-on issues
 
-Round 1 closed on 2026-09-04 with its intent met. A fresh grader scored the heating half at its target: physics 2 because the chain is computed, stated, and independently checked; cost 2 because heating capital still follows delivered power at the sourced rate ([fresh re-grade](../../.project/active/demo-depth-rubric/grading-r4-regrade.md)).
+Round 1 closed on 2026-09-04 with its intent met. A fresh grader scored the heating half at its target: physics 2 because the chain is computed, stated, and independently checked; cost 2 because heating capital still follows delivered power at the sourced rate ([fresh re-grade](../../.project/completed/20261011_demo-depth-rubric/grading-r4-regrade.md)).
 
-The 1.00 coupling fraction remains an optimistic assumption, so the feasibility results use the most generous coupling ([fresh re-grade](../../.project/active/demo-depth-rubric/grading-r4-regrade.md)).
+The 1.00 coupling fraction remains an optimistic assumption, so the feasibility results use the most generous coupling ([fresh re-grade](../../.project/completed/20261011_demo-depth-rubric/grading-r4-regrade.md)).
 
 Round 2's first task is complete but has not yet passed a fresh round review. It disproved the assumption that the 2.87 basis could be established, then showed the wall fence does not need it: the source's 4.05 peak can calibrate the model directly, with the external papers retained as bounds ([source-basis reading](../orchestration/goals/wall-and-heating/evidence/round2_T-001_source_basis.md)).
 
