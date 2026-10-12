@@ -2,6 +2,33 @@
 
 Historical record of completed work.
 
+**Deleted item folders.** The 2026-10-11 cleanup deleted every `completed/` entry that no live file cites, so many links below point at folders that are no longer at HEAD. They are in git history. Find the deleting commit with `git log --diff-filter=D --format='%h %cs' -1 -- .project/completed/<name>`, then restore with `git checkout <sha>^ -- .project/completed/<name>`.
+
+---
+
+## [2026-10-11] - `.project` cleanup: September items archived, unreferenced history deleted
+
+**Type**: Housekeeping
+**Duration**: 1 session (2026-10-11)
+
+### Summary
+
+[OWNER] Asked to archive closed or deprecated items, then delete completed material no longer needed. Archived 29 items from `active/` and two epics from `backlog/` as `20261011_*`. Then deleted 118 `completed/` entries that no live file cites. "Live" means code, tests, CI, CLAUDE.md, `modeling_project/`, `models/`, `docs/`, skills, open BACKLOG rows, ADRs, the product ledger and CURRENT_WORK. Entries those files cite were kept.
+
+**Epics archived** ([AGENT] recommendation, selected by owner 2026-10-11):
+- Stellarator MBSE Demo: criteria 1–3 were met inside the epic. It was on hold from 2026-08-19, and its remaining arc (ARIES comparison, studies, public write-up) ran through goals and `docs/exploratory-modeling/` instead.
+- Run-Study Capability: Items 1–5 complete and the skill in daily use since August. Item 6's close (Phases 1–3 certified 2026-08-23) and the Item 7 end-to-end explainer were never finished. `run-study-first-consumer` is kept because ADR 0010 and `STUDY_POLICY.md` cite its `align.md`.
+
+**Closed items archived:** `ife-native-study-package`, `ife-zero-discount-study-package`, `mfe-operating-heating-study-package`, `model-viz`, `study-indicator-multiplication` and `study-verifier-multiplication` (each certified by independent audit); `model-documentation-current-receipt` (verified); `modeling-intent-enforcement` (instruction review PASS; MR-7 cites its spec); `study-residual-tolerance` (numerical review PASS); `model-evaluation-read-coverage` (all ten integration gates pass); `model-evaluation-comparison-adapter` (released 2026-09-20; its own implementation review was still pending at release); `plant-closure-validation`, `aries-model-ownership`, `stellaris-reference-oracle-mapping`, `harness-right-size`, `workspace-cleanup`, `write-up`.
+
+**Archived without independent audit** ([OWNER] 2026-10-11): `mfe-domain-study-package`, `mfe-financial-study-package`, `mfe-major-radius-study-package`, `primary-loop-current-consumers`, `winding-pack-current-consumers`, `goal-narrative-snapshots`, `model-viz-evolution`. Each shipped on `main` and was consumed by goals the owner closed. The full pre-PR suite passed with them on 2026-10-08, but their audits never ran.
+
+**Epic items archived with their epics:** `demo-depth-rubric`, where `application-policy.md` is still the rule that `MODELING_PROCESS.md` and `GOAL_RUNBOOK.md` cite, so the folder is kept; `study-evidence-contract-completion` (draft spec, never implemented); `run-study-first-consumer`; `run-study-e2e-explainer` (spec approved 2026-08-23, never built).
+
+**Deprecated by owner:** `loop-dry-run-symmetry` (spec only, 2026-04).
+
+**Left in `active/`:** `aries-comparison-preparation` is closed, but models (MR-4 source citations), seven tests, the public write-up and sealed packages cite files inside it, so it stays at its path. `run-analysis-cli-step-semantics`, `model-viz-structural-view` and `traceability-system` are parked, not deprecated.
+
 ---
 
 ## [2026-10-09] - Explorer API contract gate
