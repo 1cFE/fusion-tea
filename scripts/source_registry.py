@@ -20,7 +20,7 @@ expected-absent and reports it if it ever reappears:
 
     uv run python scripts/source_registry.py retire --slug <slug> --reason "..."
 
-Design: `.project/active/goal-research-seam/design.md` (D1–D14); retirement was
+Design: `.project/completed/20260827_goal-research-seam/design.md` (D1–D14); retirement was
 added under goal magnet-material-comparison Round 2 (brief T-010, R1–R5).
 """
 

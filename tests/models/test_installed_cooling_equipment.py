@@ -140,7 +140,7 @@ def test_primary_controls_reach_current_native_comparison(runtime, tmp_path, con
     # This is a new evaluation, not a replay of retired magnet/facility selection.
     import oracle_entry
     import study_route
-    historical = json.loads((ROOT/'.project/active/primary-loop-current-consumers/implementation/oracle-before.json').read_text())['controls'][control_index]
+    historical = json.loads((ROOT/'.project/completed/20261011_primary-loop-current-consumers/implementation/oracle-before.json').read_text())['controls'][control_index]
     inverse = {v:k for k,v in oracle_entry.ENTRY_KEY_TO_ORACLE_INPUT.items()}
     point = {inverse[k]:v for k,v in historical['overrides'].items()}
     # These controls explicitly exercise direct/legacy primary closure; disable

@@ -16,7 +16,7 @@ The model viewer at `src/model_viz/viewer/` shows how numbers are computed: calc
 - **The calc graph's Occurrence mode is not a substitute.** It draws only occurrences that hold a calc or sit above one, and it does not list a part's attributes. On the fixture, 3 of the 23 parts own no calcs (`magnet/casing`, `magnet/coil`, `magnet/winding_pack`) and are absent from that mode. Attributes appear only as parameter inputs inside a calc's panel, never under the part that owns them.
 - **The data is already loaded.** The snapshot the calc graph reads also carries the occurrence tree and every attribute scoped to each occurrence. Nothing extra has to be parsed.
 
-This item finishes v1 of the model visualization concept. Concept Success Criterion 4 and User Story US-4 were deferred out of the calc-graph item (`.project/active/model-viz/spec.md` § Non-Goals) and land here. `[OWNER]` (concept § User Stories, US-4): "I can switch between the structural view (part containment) and the calc DAG view in the same tool, so that I can see both how numbers are organized and how they are computed."
+This item finishes v1 of the model visualization concept. Concept Success Criterion 4 and User Story US-4 were deferred out of the calc-graph item (`.project/completed/20261011_model-viz/spec.md` § Non-Goals) and land here. `[OWNER]` (concept § User Stories, US-4): "I can switch between the structural view (part containment) and the calc DAG view in the same tool, so that I can see both how numbers are organized and how they are computed."
 
 ### Premise corrections found while probing (surfaced, not resolved silently)
 
@@ -70,7 +70,7 @@ Every criterion is observable in a real browser and checkable from pytest throug
 - **[NEED]** A modeler can switch between the structural view (part containment) and the calc graph view in the same tool. (Concept US-4; Success Criterion 4: the structural view "is served alongside the calc DAG view".)
 - **[NEED]** The code lives at `src/model_viz/`, and the structural view becomes part of it rather than staying in `proof_of_concept/`. (Concept § Next-Stage Handoff: "Code lives at `src/model_viz/`. The existing structural view migrates in.")
 - **[NEED]** The structural view shows how the model is organized: the part containment tree. (Concept § Owner's Words, the owner's question quoted in Problem; US-4 "structural view (part containment)".)
-- **[INHERITED: concept § Next-Stage Handoff; `.project/active/model-viz/spec.md` § Known Requirements]** Calcs drawn inside subsystem containers stay an architecture capability of the calc graph (its Occurrence grouping mode), not a feature of the structural view. This item does not change it.
+- **[INHERITED: concept § Next-Stage Handoff; `.project/completed/20261011_model-viz/spec.md` § Known Requirements]** Calcs drawn inside subsystem containers stay an architecture capability of the calc graph (its Occurrence grouping mode), not a feature of the structural view. This item does not change it.
 
 **Decisions this item rests on** (agent-grade, from the orchestrator's brief `.project/active/model-viz-structural-view/briefs/spec.md`)
 
@@ -104,7 +104,7 @@ Every criterion is observable in a real browser and checkable from pytest throug
 - **Constraint nodes, attribute nodes in either graph, and model editing.** The viewer stays read-only; attributes appear in the part panel only. (Concept § Non-Goals, agent-grade.)
 - **A server or a syside path.** Out of scope because the snapshot carries the tree (Known Requirements, first decision).
 - **Recording type names or units upstream.** Getting codegen to emit a part's direct type name or attribute units would let the panel show them. It is out of scope because this item reads the snapshot as it is. This leaves the new view showing less than the POC did (the POC showed a type name), so it is pending the orchestrator's confirmation of Premise correction 1 and should be registered as a follow-on if confirmed.
-- **Static image export and double-click zoom** from the POC are not carried. Export stays out of scope as in v1 (`.project/active/model-viz/spec.md` § Non-Goals).
+- **Static image export and double-click zoom** from the POC are not carried. Export stays out of scope as in v1 (`.project/completed/20261011_model-viz/spec.md` § Non-Goals).
 
 ## Open Questions / Deferred to design
 
@@ -125,7 +125,7 @@ Every criterion is observable in a real browser and checkable from pytest throug
 - **Brief:** `.project/active/model-viz-structural-view/briefs/spec.md`
 - **Concept:** `.project/concepts/model-viz.md` (Success Criterion 4, US-4)
 - **Concept design:** `.project/concepts/model-viz-design.md` (§ Goals, § Switching to the structural view)
-- **v1 calc-graph item (closed; the deferral record and the architecture this builds on):** `.project/active/model-viz/spec.md` § Non-Goals, `.project/active/model-viz/design.md`
+- **v1 calc-graph item (closed; the deferral record and the architecture this builds on):** `.project/completed/20261011_model-viz/spec.md` § Non-Goals, `.project/completed/20261011_model-viz/design.md`
 - **Follow-on this item delivers:** `.project/backlog/BACKLOG.md` § Flagged — don't lose, "Structural view migration into `src/model_viz/`"
 - **Existing viewer:** `src/model_viz/README.md`, `src/model_viz/viewer/`, `tests/model_viz/`
 - **Reference, not migrated:** `proof_of_concept/README.md`, `proof_of_concept/extraction/types.py`

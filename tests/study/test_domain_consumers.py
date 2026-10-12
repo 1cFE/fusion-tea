@@ -41,7 +41,7 @@ ROOT = Path(__file__).resolve().parents[2]
 sys.path.insert(0, str(ROOT / "exploration/stellarator_e2e/studies"))
 import oracle_entry as oracle
 
-EVIDENCE = ROOT / ".project/active/mfe-domain-study-package/implementation/oracle-before.json"
+EVIDENCE = ROOT / ".project/completed/20261011_mfe-domain-study-package/implementation/oracle-before.json"
 BEFORE = json.loads(EVIDENCE.read_text())
 COIL_RADIUS = BEFORE["controls"][0]["outputs"]["r_coil_centre"]
 # WI-058 (2026-09-14): the winding length follows the coil bore, c_coil = c_coil_ref *

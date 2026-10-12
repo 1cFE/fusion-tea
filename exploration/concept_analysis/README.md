@@ -858,6 +858,6 @@ Default caps: 5 searches, 3 extractions per concept per pass. Control via
 
 ### Design Documents
 
-- Spec: `.project/active/autonomous-source-acquisition/spec_v2.md`
-- Design: `.project/active/autonomous-source-acquisition/design.md`
-- Plan: `.project/active/autonomous-source-acquisition/plan.md`
+- Spec: `.project/completed/20260405_autonomous-source-acquisition/spec_v2.md`
+- Design: `.project/completed/20260405_autonomous-source-acquisition/design.md`
+- Plan: `.project/completed/20260405_autonomous-source-acquisition/plan.md`
