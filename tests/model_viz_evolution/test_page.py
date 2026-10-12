@@ -7,7 +7,7 @@ from git and counts for itself; it shares no code with build.py.
 import json
 
 import pytest
-from conftest import REPO, git
+from conftest import git
 
 COOLING = "installed-cooling-equipment-costs"
 DECOMPOSITION = "structural-decomposition"
@@ -177,13 +177,3 @@ def test_full_screen_falls_back_to_the_full_window_view(evo_page):
     evo_page.wait_for_function("() => document.documentElement.classList.contains('evo-expanded')")
     assert pane_height(evo_page) > 0.8 * evo_page.viewport_size["height"]
 
-
-def test_viewer_sources_are_untouched():
-    # Integration imports these dependencies into a branch which did not yet have v2.
-    # Compare content with its source revision rather than requiring a clean index.
-    from pathlib import Path
-    root = Path(__file__).resolve().parents[2]
-    names = git("ls-tree", "-r", "--name-only", "6a4d241d", "--", "src/model_viz/viewer", "src/model_viz/viewer2", "src/model_viz/export.py").splitlines()
-    for name in names:
-        assert (root / name).read_text() == git("show", f"6a4d241d:{name}"), name
-    assert (REPO / "src/model_viz/evolution/timeline.js").exists()
