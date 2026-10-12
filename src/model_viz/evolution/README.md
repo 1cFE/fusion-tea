@@ -35,7 +35,9 @@ The viewer reads one file, `exploration/stellarator_e2e/stellarator.snapshot.jso
 
 The build refuses, and writes nothing, when the manifest and git disagree: a version between the baseline and the last frame that no frame lists, a listed commit that is not a snapshot version, or versions out of order. An unlisted version's changes would otherwise land silently in the next goal's list.
 
-A version that is deliberately not a frame goes under `unframed` with its reason. There is one: `5dd9cbd0` (stellaris-reference-reconciliation), whose only model change is source-attribution comments.
+A version that is deliberately not a frame goes under `unframed` with its reason. There is one: `47c1cc87` (stellaris-reference-reconciliation), whose only model change is source-attribution comments.
+
+The commits the build reads (`baseline.sha`, each frame's `shas`, `unframed[].sha`) are `main`'s IDs, so the build works in any clone. Each `attribution` entry and the `notes` quote the goal records, which were written before the 2026-09-27 history rewrite and use the old IDs; `.project/reports/2026-09-27-history-rewrite.commit-map.txt` maps each old ID to its `main` twin.
 
 ## How changes are found
 
