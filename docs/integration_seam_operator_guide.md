@@ -129,6 +129,10 @@ uv run --env-file ~/1cfe/agentic-mbse/.env --env-file .venv/integration.env \
 
 - **Temporary files.** Study import aliases also use temporary directories and are removed at normal process exit.
 
+## The gate numbers in fusion-tea
+
+Adds to the general guide's "The ten gates, in order". The numbers in its first column are the step numbers of fusion-tea's integration-seam requirements: step 1 splits into two producers, 1a and 1b, so ten rows carry nine step numbers.
+
 ## Open rows fusion-tea tracks against the seam
 
 - Gate 1b has no producer anywhere; the gap is filed.
