@@ -36,6 +36,9 @@ dev = ["mypy>=1.10", "ruff>=0.4", "types-pyyaml"]
 agentic-mbse = { git = "https://github.com/1cFE/agentic-mbse.git", rev = "ac5fb1adfab0bc10e0010211275269f9f82d8e99" }
 sysml-codegen = { git = "https://github.com/1cFE/sysml-codegen.git", rev = "8a758e9240707b58fe32a509c3b509941ca4fa01" }
 
+[tool.agentic-mbse.research]
+holdout-guard = "scripts/holdout_guard.py"
+
 [tool.ruff]
 line-length = 100
 target-version = "py312"
