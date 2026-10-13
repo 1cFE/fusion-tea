@@ -457,6 +457,7 @@
 
 <h1 id="part-3-the-full-harness">Part 3: The full harness</h1>
 <p>Supports <a href="https://1cf.energy/exploratory-modeling/">the main post</a>. Part 2, <a href="part-2-model-execution.html">executing the trade studies on a SysML v2 plant model</a>, covers evaluating one version of the model; this part covers everything around it.</p>
+<p><em>Note, 13 October 2026: the research tooling below now ships with agentic-mbse. <code>scripts/source_registry.py</code> and <code>scripts/research_seam.py</code> became the <code>agentic-mbse research</code> command, and <code>/research-acquire</code> is now a skill that <code>agentic-mbse init</code> installs.</em></p>
 <section>
 <h2 id="1-the-problem-engineering-work-that-has-to-build-on-itself"><span class="num">1</span>The problem: engineering work that has to build on itself</h2>
 <p>We want an AI to do engineering work the way a small team does it over weeks: research a system, model it, run studies against the model, find what is wrong, fix it, and go around again. Part 2 showed how a study evaluates one version of the model. <mark class="skim">This part is about the rest of the loop: how the model gets its numbers, how it changes, and how anyone can tell whether a change was right.</mark></p>
