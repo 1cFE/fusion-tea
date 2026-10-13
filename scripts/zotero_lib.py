@@ -2,129 +2,42 @@
 
 Functions return values or raise exceptions instead of calling sys.exit(),
 making them suitable for both single-item and batch processing.
+
+Registry paths, the manifest and the index belong to the installed
+`agentic_mbse.research` package; this module keeps only Zotero views of them.
 """
 
 import hashlib
-import json
 import os
-import re
-from dataclasses import dataclass
-from datetime import date
 from pathlib import Path
 from typing import NamedTuple
 
+from agentic_mbse.research import default_paths, load_manifest_rows
 from dotenv import load_dotenv
 from pyzotero import zotero
 
 GROUP_ID = 5428393
 RAW_DIR = Path("knowledge/raw")
 SOURCES_DIR = Path("knowledge/sources")
-SOURCE_INDEX_PATH = Path("knowledge/SOURCE_INDEX.md")
-MANIFEST_PATH = Path("knowledge/MANIFEST.jsonl")
-STAGING_DIR = Path("knowledge/.staging")
-LOCK_PATH = Path("knowledge/.registry.lock")
-BASELINE_PATH = Path("knowledge/.registry_baseline.json")
-RETIRED_PATH = Path("knowledge/RETIRED.jsonl")
-
-
-@dataclass(frozen=True)
-class RegistryPaths:
-    """Every path the registry writes or reads, so callers can point at a temp tree.
-
-    The module constants above stay the production values; `default_paths()`
-    wraps them. Nothing in the seam reads the constants directly.
-    """
-
-    raw: Path
-    sources: Path
-    index: Path
-    manifest: Path
-    staging: Path
-    lock: Path
-    baseline: Path
-    retired: Path
-
-    @classmethod
-    def under(cls, knowledge_dir: Path) -> "RegistryPaths":
-        return cls(
-            raw=knowledge_dir / "raw",
-            sources=knowledge_dir / "sources",
-            index=knowledge_dir / "SOURCE_INDEX.md",
-            manifest=knowledge_dir / "MANIFEST.jsonl",
-            staging=knowledge_dir / ".staging",
-            lock=knowledge_dir / ".registry.lock",
-            baseline=knowledge_dir / ".registry_baseline.json",
-            retired=knowledge_dir / "RETIRED.jsonl",
-        )
-
-
-def default_paths() -> RegistryPaths:
-    """The repository's own registry paths."""
-    return RegistryPaths(
-        raw=RAW_DIR,
-        sources=SOURCES_DIR,
-        index=SOURCE_INDEX_PATH,
-        manifest=MANIFEST_PATH,
-        staging=STAGING_DIR,
-        lock=LOCK_PATH,
-        baseline=BASELINE_PATH,
-        retired=RETIRED_PATH,
-    )
 
 
 def load_manifest() -> dict[str, dict]:
     """Load Zotero-sourced rows as {zotero_key: entry_dict}.
 
-    Non-Zotero rows (URL and local-PDF sources registered through the seam)
-    carry no `zotero_key` and are skipped — this view is the Zotero library
-    diff, not the whole registry. Use `load_manifest_rows` for that.
+    Non-Zotero rows (URL and local-PDF sources) carry no `zotero_key` and are
+    skipped: this view is the Zotero library diff, not the whole registry. Use
+    `agentic_mbse.research.load_manifest_rows` for that.
     """
-    return {row["zotero_key"]: row for row in _manifest_lines() if "zotero_key" in row}
+    return {
+        row["zotero_key"]: row
+        for row in load_manifest_rows(default_paths())
+        if "zotero_key" in row
+    }
 
 
 def manifest_keys() -> set[str]:
     """Return set of Zotero keys present in the manifest. Non-Zotero rows are skipped."""
     return set(load_manifest())
-
-
-def _manifest_lines() -> list[dict]:
-    if not MANIFEST_PATH.exists():
-        return []
-    return [
-        json.loads(line)
-        for line in MANIFEST_PATH.read_text().splitlines()
-        if line.strip()
-    ]
-
-
-def load_manifest_rows(paths: RegistryPaths) -> list[dict]:
-    """Every manifest row, in file order, Zotero and non-Zotero alike."""
-    if not paths.manifest.exists():
-        return []
-    return [
-        json.loads(line)
-        for line in paths.manifest.read_text().splitlines()
-        if line.strip()
-    ]
-
-
-def truncate_manifest(byte_len: int, paths: RegistryPaths) -> None:
-    """Cut the manifest back to a previously recorded length (rollback rung)."""
-    with open(paths.manifest, "r+b") as f:
-        f.truncate(byte_len)
-
-
-def append_manifest_entry(zotero_key: str, slug: str, title: str) -> None:
-    """Append a single entry to MANIFEST.jsonl."""
-    entry = {
-        "zotero_key": zotero_key,
-        "slug": slug,
-        "title": title,
-        "date_extracted": date.today().isoformat(),
-    }
-    with open(MANIFEST_PATH, "a") as f:
-        f.write(json.dumps(entry) + "\n")
-        f.flush()
 
 
 def load_api_key() -> str:
@@ -275,20 +188,3 @@ def tag_extracted(zot, item_key: str) -> bool:
     """Tag a Zotero item as 'extracted'. Convenience wrapper around add_tag."""
     return add_tag(zot, item_key, "extracted")
 
-
-def slugify(title: str, max_len: int = 60) -> str:
-    """Convert title to filesystem-safe slug.
-    Lowercase, spaces/non-alnum to underscores, collapse runs, strip edges.
-    Truncates at word boundaries to avoid mid-word breaks."""
-    slug = title.lower()
-    slug = re.sub(r"[^a-z0-9]+", "_", slug)
-    slug = re.sub(r"_+", "_", slug)
-    slug = slug.strip("_")
-    if len(slug) <= max_len:
-        return slug
-    # Truncate at last underscore before max_len to avoid mid-word break
-    truncated = slug[:max_len]
-    last_sep = truncated.rfind("_")
-    if last_sep > max_len // 2:
-        return truncated[:last_sep]
-    return truncated
