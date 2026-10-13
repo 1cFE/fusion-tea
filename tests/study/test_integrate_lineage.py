@@ -26,7 +26,7 @@ def test_wrong_expected_fingerprint_refuses_at_gate_9(integration_workspace, tmp
 
     blocker = document["blocker"]
     assert blocker["gate"] == "lineage"
-    assert blocker["producer"] == "scripts/integrate.py"
+    assert blocker["producer"] == "sysml_codegen/study/integrate.py"
     assert blocker["scope"] == "request"
     assert blocker["mode"] == "refused"
     assert blocker["condition"] == "lineage-mismatch"

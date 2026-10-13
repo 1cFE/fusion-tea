@@ -13,7 +13,7 @@ ROOT = Path(__file__).resolve().parents[1]
 # The 2026-10-11 native skill distribution (agentic-mbse #18) deliberately advances the project pin.
 # WHEEL_HASHES below still identify the retained historical integration wheels.
 A_FINAL = "d42c8b9b4b04fcd7c71b069ffb9cc1166e884617"
-C_PROD = "8a758e9240707b58fe32a509c3b509941ca4fa01"
+C_PROD = "b5663c07e987a892e27d21e68cec40d0656574ee"
 COSTINGFE = "02543850089be175ea7c28b92a8b2a4184e1637e"
 URLS = {
     "agentic-mbse": "https://github.com/1cFE/agentic-mbse.git",

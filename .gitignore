@@ -21,7 +21,6 @@ wheels/
 .claude/skills/*
 !.claude/skills/browser-inspect/
 !.claude/skills/concept-research-navigation/
-!.claude/skills/run-study/
 .claude/hooks/
 modeling_project/MODELING_GUIDE.md
 modeling_project/MODELING_PROCESS.md

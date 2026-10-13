@@ -136,7 +136,7 @@ def test_the_tool_reports_its_own_revision_as_a_named_recipe_over_a_named_file_l
     digest = document["tool"]["source_digest"]
     assert digest["recipe"] == "tool-source-digest/v1"
     assert [f["path"] for f in digest["files"]] == sorted(f["path"] for f in digest["files"])
-    assert "scripts/study/preflight.py" in [f["path"] for f in digest["files"]]
+    assert "sysml_codegen/study/preflight.py" in [f["path"] for f in digest["files"]]
 
 
 def test_the_sibling_scan_is_advisory_and_can_never_fail(gates_document):

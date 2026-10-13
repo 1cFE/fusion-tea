@@ -20,6 +20,7 @@ from pathlib import Path
 import pytest
 
 from scripts import integrate
+from sysml_codegen.study.declarations import load_declaration
 
 REPO_ROOT = Path(__file__).resolve().parents[2]
 REAL_PACKAGE = REPO_ROOT / "exploration" / "stellarator_e2e" / "pkg" / "stellarator_tea"
@@ -91,7 +92,9 @@ def full_env() -> dict[str, str]:
     return dict(os.environ)
 
 
-@pytest.mark.parametrize("missing", integrate.REQUIRED_ENV)
+@pytest.mark.parametrize(
+    "missing", integrate.REQUIRED_ENV + load_declaration(REPO_ROOT).environment
+)
 def test_each_env_var_unset_refuses_at_gate_zero(tmp_path, full_env, missing):
     env = {name: value for name, value in full_env.items() if name != missing}
     done = run_seam_raw(request_argv(tmp_path / "out"), env)
@@ -143,9 +146,9 @@ def test_audited_work_must_carry_its_commit(tmp_path):
 def test_the_return_document_is_complete_on_every_exit_path(tmp_path):
     document = run_seam(drop_flag(request_argv(tmp_path / "out"), "--groups"), tmp_path / "out")
     assert document["schema_version"] == "integration-seam-return/v1"
-    assert document["tool"]["path"] == "scripts/integrate.py"
+    assert document["tool"]["path"] == "sysml_codegen/study/integrate.py"
     assert document["tool"]["source_digest"]["recipe"] == "tool-source-digest/v1"
-    assert document["command"][0] == "scripts/integrate.py"
+    assert document["command"][0] == "sysml_codegen/study/integrate.py"
     assert document["candidate"] is None
     assert document["exit_code"] == 1
     assert set(document["toolchain"]) == {
@@ -164,7 +167,7 @@ def test_the_condition_slug_set_is_closed():
     with pytest.raises(ValueError, match="closed set"):
         integrate.SeamBlocker(
             gate="preconditions",
-            producer="scripts/integrate.py",
+            producer="sysml_codegen/study/integrate.py",
             scope="request",
             mode="could_not_run",
             condition="not-a-real-slug",
@@ -198,8 +201,8 @@ def test_simkit_probe_agrees_with_the_verify_subprocess(full_env):
 
 
 def test_simkit_probe_refuses_without_the_teax_root(monkeypatch):
-    """Absence requires removing both the explicit checkout and inherited import paths."""
-    monkeypatch.delenv("STOP_PARSER_TEAX_ROOT", raising=False)
+    """Absence requires removing both the explicit simkit root and inherited import paths."""
+    monkeypatch.delenv("TEAX_SIMKIT_PATH", raising=False)
     monkeypatch.delenv("PYTHONPATH", raising=False)
     env = integrate.seam_env()
     assert integrate.simkit_module_path(env) is None
@@ -208,9 +211,9 @@ def test_simkit_probe_refuses_without_the_teax_root(monkeypatch):
 
 def test_simkit_probe_finds_inherited_path_without_explicit_teax_root(full_env, monkeypatch):
     """The probe reports imports the producer can perform, including inherited ones."""
-    teax_root = full_env["STOP_PARSER_TEAX_ROOT"]
-    monkeypatch.delenv("STOP_PARSER_TEAX_ROOT", raising=False)
-    monkeypatch.setenv("PYTHONPATH", str(Path(teax_root) / integrate.TEAX_SIMKIT_SUBPATH))
+    simkit_root = full_env["TEAX_SIMKIT_PATH"]
+    monkeypatch.delenv("TEAX_SIMKIT_PATH", raising=False)
+    monkeypatch.setenv("PYTHONPATH", simkit_root)
     env = integrate.seam_env()
     assert integrate.simkit_module_path(env) is not None
     assert independently_can_import_simkit(env) is True

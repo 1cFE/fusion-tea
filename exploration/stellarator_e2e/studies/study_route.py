@@ -61,7 +61,7 @@ REPO_ROOT = E2E.parent.parent
 if str(REPO_ROOT) not in sys.path:
     sys.path.insert(0, str(REPO_ROOT))
 
-from scripts.study import common, identity  # noqa: E402
+from sysml_codegen.study import common, identity  # noqa: E402
 
 PACKAGE_NAME = "stellarator_tea"
 PACKAGE_DIR = E2E / "generated"

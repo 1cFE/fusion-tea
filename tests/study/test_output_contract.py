@@ -17,6 +17,7 @@ import jsonschema
 import pytest
 
 from scripts.study import manifest
+from sysml_codegen.study import roots
 from tests.study.conftest import (
     KNOWN_ANSWER_DECLARATION,
     REAL_MANIFEST,
@@ -174,17 +175,17 @@ def test_manifest_load_reports_the_digest_of_its_own_bytes(real_manifest_path):
     assert loaded.digest == hashlib.sha256(real_manifest_path.read_bytes()).hexdigest()
 
 
-def test_tool_source_digest_recomputes(repo_root):
+def test_tool_source_digest_recomputes():
     """M5: the digest is over an explicitly named file list, under its own recipe id."""
     computed = manifest.tool_source_digest()
     assert computed["recipe"] == "tool-source-digest/v1"
     lines = ["tool-source-digest/v1"] + [
-        f"{rel} {hashlib.sha256((repo_root / rel).read_bytes()).hexdigest()}"
+        f"{rel} {hashlib.sha256((roots.TOOL_HOME / rel).read_bytes()).hexdigest()}"
         for rel in sorted(manifest.TOOL_SOURCE_FILES)
     ]
     expected = hashlib.sha256(("\n".join(lines) + "\n").encode("utf-8")).hexdigest()
     assert computed["digest"] == expected
-    assert any(p.startswith("scripts/study/schemas/") for p in manifest.TOOL_SOURCE_FILES)
+    assert any(p.startswith("sysml_codegen/study/schemas/") for p in manifest.TOOL_SOURCE_FILES)
 
 
 def test_schema_files_carry_the_two_load_bearing_descriptions(load_schema):
@@ -314,7 +315,7 @@ def test_the_report_carries_its_tool_source_digest():
     carries per-file digests so a record's tool revision names what it covered
     (Item 4 coordination, orchestrator 2026-08-20)."""
     tool = _report()["tool"]
-    assert tool["path"] == "scripts/study/indicators.py"
+    assert tool["path"] == "sysml_codegen/study/indicators.py"
     assert tool["source_digest"] == manifest.tool_source_digest()
     assert set(tool["source_digest"]) == {"recipe", "digest", "files"}
     assert all(set(f) == {"path", "sha256"} for f in tool["source_digest"]["files"])

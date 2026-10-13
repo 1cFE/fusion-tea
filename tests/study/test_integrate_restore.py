@@ -93,7 +93,7 @@ def test_moved_paths_are_cited_repo_relative(integration_workspace):
 def test_no_mtime_is_read_anywhere_in_the_seam():
     """95 of 153 files move mtime on a byte-identical regeneration; a detector built on
     that reports a false positive on every re-run."""
-    source = (REPO_ROOT / "scripts" / "integrate.py").read_text()
+    source = Path(integrate.__file__).read_text()
     assert "st_mtime" not in source
     assert "getmtime" not in source
 
@@ -107,7 +107,7 @@ def test_run_retains_external_backup_and_recovery_pointer(integration_workspace,
     request = SimpleNamespace(package=package, out_dir=out)
     monkeypatch.setattr(integrate, 'build_request', lambda args: request)
     monkeypatch.setattr(integrate, 'seam_env', lambda: {})
-    monkeypatch.setattr(integrate, 'assert_environment', lambda env: None)
+    monkeypatch.setattr(integrate, 'assert_environment', lambda env, declaration: None)
     monkeypatch.setattr(integrate, 'assert_package_clean', lambda request, env: None)
 
     def sequence(request, env, state, results):
@@ -122,7 +122,7 @@ def test_run_retains_external_backup_and_recovery_pointer(integration_workspace,
     monkeypatch.setattr(integrate, 'run_sequence', sequence)
     monkeypatch.setattr(integrate, 'build_candidate', lambda request, state: {})
     monkeypatch.setattr(integrate, 'build_return', lambda **kwargs: {'exit_code': 2 if kwargs['blocker'] else 0})
-    document, _ = integrate.run(SimpleNamespace(out_dir=str(out)), [])
+    document, _ = integrate.run(SimpleNamespace(package=[str(package)], out_dir=str(out)), [])
     assert document['exit_code'] == 0
     backup = Path(json.loads((out / 'backup-location.json').read_text())['backup'])
     assert (backup / CONTRACT).is_file()
