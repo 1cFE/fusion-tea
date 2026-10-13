@@ -34,7 +34,7 @@ dev = ["mypy>=1.10", "ruff>=0.4", "types-pyyaml"]
 [tool.uv.sources]
 1costingfe = { git = "https://github.com/1cFE/1costingfe.git", rev = "02543850089be175ea7c28b92a8b2a4184e1637e" }
 agentic-mbse = { git = "https://github.com/1cFE/agentic-mbse.git", rev = "d42c8b9b4b04fcd7c71b069ffb9cc1166e884617" }
-sysml-codegen = { git = "https://github.com/1cFE/sysml-codegen.git", rev = "8a758e9240707b58fe32a509c3b509941ca4fa01" }
+sysml-codegen = { git = "https://github.com/1cFE/sysml-codegen.git", rev = "4dfe275f9d90aa2f07824f48349f373df151ef03" }
 
 [tool.agentic-mbse.research]
 holdout-guard = "scripts/holdout_guard.py"
@@ -59,3 +59,14 @@ markers = ["slow: long-running integration tests", "codegen_available: requires 
 # binds the top-level name `tests` and hides our namespace-package tests/ tree.
 testpaths = ["tests"]
 norecursedirs = ["archive", "exploration", "generated", "proof_of_concept", ".venv", "_work"]
+
+[tool.sysml-codegen.integrate]
+environment = ["STOP_PARSER_WHEEL_TARGET", "STOP_PARSER_AGENTIC_WHEEL", "STOP_PARSER_CODEGEN_WHEEL", "STOP_PARSER_COSTINGFE_WHEEL", "STOP_PARSER_TEAX_ROOT"]
+backup-prefix = "fusion-tea-integration-backup-"
+record-distributions = { costingfe = "1costingfe" }
+[tool.sysml-codegen.integrate.gates.pinned-packages]
+target = "tests/test_dependency_provenance.py"
+checked = "the pinned package revisions and installed wheel artifacts"
+[tool.sysml-codegen.integrate.gates.model-family-spine]
+target = "tests/models/test_model_family_spines.py"
+checked = "the canonical tree, the family twins and the tracked census"

@@ -213,6 +213,7 @@ def test_local_export_preserves_all_complete_values_including_zero(local_study, 
 
 def _command(monkeypatch, stock_simkit_path):
     monkeypatch.setenv("STOP_PARSER_TEAX_ROOT", str(stock_simkit_path.parents[1]))
+    monkeypatch.setenv("TEAX_SIMKIT_PATH", str(stock_simkit_path))
     return importlib.import_module(
         "exploration.stellarator_e2e.study.run_design_search"
     )

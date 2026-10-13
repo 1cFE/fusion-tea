@@ -45,7 +45,7 @@ REPO_ROOT = PACKAGE_ROOT.parents[1]
 if str(REPO_ROOT) not in sys.path:
     sys.path.insert(0, str(REPO_ROOT))
 
-from scripts.study import common, identity  # noqa: E402
+from sysml_codegen.study import common, identity  # noqa: E402
 
 INTERFACE_MODULE = "exploration.stellarator_materials.studies.interface_data"
 BASELINE_RESULT_SCHEMA_VERSION = "study-baseline-result/v1"

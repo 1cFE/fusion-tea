@@ -3,7 +3,7 @@ from __future__ import annotations
 import json
 import math
 from pathlib import Path
-from scripts.study import common, identity
+from sysml_codegen.study import common, identity
 from exploration.ife_e2e.eligibility import price_eligible
 from exploration.ife_e2e.studies.oracle_entry import ENTRY_KEYS
 

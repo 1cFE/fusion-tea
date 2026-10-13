@@ -39,6 +39,8 @@ import json
 import os
 from pathlib import Path
 
+from sysml_codegen.study.census import by_entry_type as _by_entry_type
+
 import pytest
 import yaml
 from sysml_codegen.cli import GenerationConfig, run_codegen
@@ -173,13 +175,6 @@ def _entry_sources(output: Path) -> dict[tuple[str, str], float]:
 
 def _contract(output: Path) -> dict:
     return json.loads((output / "contracts" / "model_contract.json").read_text())
-
-
-def _by_entry_type(output: Path) -> dict[str, set[str]]:
-    by_type: dict[str, set[str]] = {}
-    for parameter in _contract(output)["parameters"]:
-        by_type.setdefault(parameter["entry_type"], set()).add(parameter["qualified_name"])
-    return by_type
 
 
 def _consumers_of(output: Path, source: tuple[str, str]) -> set[tuple[str, str]]:

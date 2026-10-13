@@ -22,6 +22,7 @@ RUNNER = REPO_ROOT / "exploration" / "stellarator_e2e" / "run_stellaris_single.p
 
 def _runner(monkeypatch, stock_simkit_path):
     monkeypatch.setenv("STOP_PARSER_TEAX_ROOT", str(stock_simkit_path.parents[1]))
+    monkeypatch.setenv("TEAX_SIMKIT_PATH", str(stock_simkit_path))
     return importlib.import_module("exploration.stellarator_e2e.run_stellaris_single")
 
 
@@ -48,6 +49,7 @@ def test_command_status_covers_each_accumulated_gate_family(
 def historical_cli_result(stock_simkit_path, tmp_path):
     env = dict(os.environ)
     env["STOP_PARSER_TEAX_ROOT"] = str(stock_simkit_path.parents[1])
+    env["TEAX_SIMKIT_PATH"] = str(stock_simkit_path)
     done = subprocess.run(
         [sys.executable, str(RUNNER)],
         cwd=REPO_ROOT,

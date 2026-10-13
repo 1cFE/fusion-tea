@@ -11,8 +11,10 @@ list that says which sources the digest covers.
 import json
 import re
 
+from tests.study.conftest import SCHEMA_DIR
+
 TEMPLATE = ".claude/skills/run-study/record-template.md"
-SCHEMA = "scripts/study/schemas/verification_summary.v1.schema.json"
+SCHEMA = SCHEMA_DIR / "verification_summary.v1.schema.json"
 
 
 def _source_digest_blocks(text: str) -> list[str]:
@@ -39,6 +41,6 @@ def test_template_shows_the_emitted_digest_shape_in_both_places(repo_root):
 
 
 def test_emitted_schema_requires_files(repo_root):
-    schema = json.loads((repo_root / SCHEMA).read_text())
+    schema = json.loads(SCHEMA.read_text())
     digest = json.dumps(schema)
     assert '"required": ["recipe", "digest", "files"]' in digest

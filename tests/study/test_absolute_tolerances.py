@@ -8,6 +8,7 @@ import jsonschema
 import pytest
 
 from scripts.study import manifest, verify
+from tests.study.conftest import SCHEMA_DIR
 
 ROOT = Path(__file__).resolve().parents[2]
 DECLARATION = {'channel': 'residual', 'value': 1e-7, 'units': 'MW',
@@ -69,7 +70,7 @@ def test_native_manifest_and_schema_accept_explicit_declaration():
     doc = document()
     doc['absolute_tolerances'] = [copy.deepcopy(DECLARATION)]
     manifest.validate(doc)
-    schema = json.loads((ROOT / 'scripts/study/schemas/study_package_manifest.v1.schema.json').read_text())
+    schema = json.loads((SCHEMA_DIR / 'study_package_manifest.v1.schema.json').read_text())
     jsonschema.validate(doc, schema)
     manifest.validate(document())  # Old manifests remain valid.
 
