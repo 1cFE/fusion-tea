@@ -53,7 +53,7 @@ def test_a_failed_write_leaves_nothing(tmp_path):
 
 def test_the_tool_source_digest_carries_its_file_list(repo_root):
     """One recipe id must not silently mean two things across three tools."""
-    files = ("scripts/study/common.py", "scripts/study/identity.py")
+    files = ("sysml_codegen/study/common.py", "sysml_codegen/study/identity.py")
     computed = common.tool_source_digest(files)
     assert computed["recipe"] == "tool-source-digest/v1"
     assert [f["path"] for f in computed["files"]] == list(files)
@@ -64,15 +64,15 @@ def test_the_tool_source_digest_shape_matches_item_3s(repo_root):
     from scripts.study import manifest as manifest_mod
 
     theirs = manifest_mod.tool_source_digest()
-    mine = common.tool_source_digest(("scripts/study/common.py",))
+    mine = common.tool_source_digest(("sysml_codegen/study/common.py",))
     assert set(theirs) == set(mine)
     assert set(theirs["files"][0]) == set(mine["files"][0])
 
 
 def test_a_missing_tool_source_file_fails_naming_it():
     with pytest.raises(common.ToolError) as exc:
-        common.tool_source_digest(("scripts/study/no_such_tool.py",))
-    assert "scripts/study/no_such_tool.py" in str(exc.value)
+        common.tool_source_digest(("sysml_codegen/study/no_such_tool.py",))
+    assert "sysml_codegen/study/no_such_tool.py" in str(exc.value)
 
 
 def test_read_json_names_the_file_and_what_it_wanted(tmp_path):

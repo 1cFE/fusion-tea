@@ -6,6 +6,7 @@ from pathlib import Path
 import jsonschema
 import pytest
 from scripts.study import indicators as tool, manifest
+from tests.study.conftest import SCHEMA_DIR
 
 ROOT = Path(__file__).resolve().parents[2]
 PACKAGE = ROOT / "exploration/ife_e2e/generated"
@@ -77,7 +78,7 @@ def test_actual_ife_report_preserves_schema_and_conservative_classification(tmp_
     ]}))
     declaration = tool.read_axis_declaration(path)
     report = tool.build_report(PACKAGE, manifest.load(STUDIES / "manifest.json"), declaration, [])
-    jsonschema.validate(report, json.loads((ROOT / "scripts/study/schemas/indicators.v1.schema.json").read_text()))
+    jsonschema.validate(report, json.loads((SCHEMA_DIR / "indicators.v1.schema.json").read_text()))
     assert len(report["groups"]) == 2
     assert report["axis_declaration"]["subset"] is False
     assert {g["axis"] for g in report["groups"]} == {"beam_energy_mj", "frequency"}

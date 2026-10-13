@@ -1,0 +1,12 @@
+{
+  "version": 2,
+  "files": {
+    ".agents/skills/run-study/SKILL.md": "1707a04eaae854d49ac0ad62f3916a644797372998e27caefaa38b557d471b75",
+    ".agents/skills/run-study/annex-template.md": "767d753d9294798873cad7a3cdf06a7e590ae2b745d39d85c4a604c9040aa6ee",
+    ".agents/skills/run-study/integration-guide.md": "923ae5cc26058730eddcad5be9797c7ca6cf6fb2b743063f9fb21ed04d697736",
+    ".agents/skills/run-study/record-template.md": "c763f258a6759fd7567a46d4f2ca61309cbf955608c56df8b534e5a0d2c58523",
+    ".agents/skills/run-study/runbook.md": "c30771f1ebfeb1c978cb85d7792a1eb3ab77e4483eea2aee4bc2055c96b92c6b",
+    ".claude/skills/run-study": "link:../../.agents/skills/run-study",
+    ".claude/commands/teax-completion.md": "081cb22abba35b319437154c27b88274ca21821a3fcf9ac304ed9098ab5df96d"
+  }
+}

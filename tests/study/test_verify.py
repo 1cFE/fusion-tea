@@ -231,7 +231,7 @@ def test_cas27_is_compared_and_nothing_is_undisclosed(summary):
 
 
 def test_the_command_carries_no_absolute_paths(summary):
-    assert summary["command"][0] == "scripts/study/verify.py"
+    assert summary["command"][0] == "sysml_codegen/study/verify.py"
     for path_field in (
         summary["package"]["path"],
         summary["manifest"]["path"],

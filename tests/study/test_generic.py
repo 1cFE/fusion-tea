@@ -4,6 +4,8 @@ The tool names no package, no key prefix, and no adapter. The manifest holds no
 logic. This is the grep that keeps the two apart.
 """
 
+import importlib.resources
+
 import pytest
 
 TOOL_MODULES = [
@@ -59,7 +61,8 @@ def test_the_tool_modules_exist_and_no_init(repo_root):
 def test_the_schema_files_are_the_committed_contract(repo_root):
     """Item 3's three schemas must exist; Item 4 adds its own to the same directory,
     so this is a subset assertion, not an exact listing."""
-    found = sorted(p.name for p in (repo_root / "scripts" / "study" / "schemas").glob("*.json"))
+    schemas = importlib.resources.files("sysml_codegen.study") / "schemas"
+    found = sorted(p.name for p in schemas.iterdir() if p.name.endswith(".json"))
     assert {
         "axis_declaration.v1.schema.json",
         "indicators.v1.schema.json",

@@ -5,6 +5,7 @@ these tests. Anything that mutates a package goes through the ``package_copy``
 factory (added in Phase 4), which copies into ``tmp_path``.
 """
 
+import importlib.resources
 import io
 import itertools
 import json
@@ -24,7 +25,8 @@ from scripts import integrate
 REPO_ROOT = Path(__file__).resolve().parents[2]
 REAL_PACKAGE = REPO_ROOT / "exploration" / "stellarator_e2e" / "pkg" / "stellarator_tea"
 REAL_MANIFEST = REPO_ROOT / "exploration" / "stellarator_e2e" / "studies" / "manifest.json"
-SCHEMA_DIR = REPO_ROOT / "scripts" / "study" / "schemas"
+#: The schemas ship inside the installed study package (design DD1).
+SCHEMA_DIR = importlib.resources.files("sysml_codegen.study") / "schemas"
 DATA_DIR = Path(__file__).parent / "data"
 
 
@@ -244,6 +246,20 @@ def real_copy(package_copy):
 
 TEAX_ROOT_ENV = "STOP_PARSER_TEAX_ROOT"
 TEAX_SIMKIT_SUBPATH = "packages/teax-simkit"
+
+
+@pytest.fixture(scope="session", autouse=True)
+def _teax_simkit_path():
+    """The installed study tools find teax only through ``TEAX_SIMKIT_PATH``, a simkit root.
+
+    Derived here from ``STOP_PARSER_TEAX_ROOT`` for the whole suite, so the teax tree the
+    tools and read coverage declare is the one the fixtures below put on ``sys.path``.
+    """
+    root = os.environ.get(TEAX_ROOT_ENV)
+    with pytest.MonkeyPatch.context() as patch:
+        if root:
+            patch.setenv("TEAX_SIMKIT_PATH", str(Path(root) / TEAX_SIMKIT_SUBPATH))
+        yield
 
 
 def _unavailable_teax(reason: str):

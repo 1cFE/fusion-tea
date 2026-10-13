@@ -14,7 +14,7 @@ import json
 import math
 from pathlib import Path
 
-from scripts.study import common, identity
+from sysml_codegen.study import common, identity
 
 HERE = Path(__file__).resolve().parent
 E2E = HERE.parent

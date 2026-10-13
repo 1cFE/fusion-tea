@@ -53,7 +53,7 @@ def test_wrong_expected_teax_revision_refuses_gate_1b(integration_workspace, tmp
 
     blocker = document["blocker"]
     assert blocker["gate"] == "teax-revision"
-    assert blocker["producer"] == "scripts/integrate.py"
+    assert blocker["producer"] == "sysml_codegen/study/integrate.py"
     assert blocker["scope"] == "request"
     assert blocker["mode"] == "refused"
     assert blocker["condition"] == "toolchain-drift"
@@ -163,7 +163,7 @@ def test_doctored_census_refuses_gate_4(integration_workspace, tmp_path):
 
     blocker = document["blocker"]
     assert blocker["gate"] == "census-snapshot"
-    assert blocker["producer"] == "tests/models/test_model_family_spines.py::_by_entry_type"
+    assert blocker["producer"] == "sysml_codegen/study/census.py::by_entry_type"
     assert blocker["scope"] == "request"
     assert blocker["mode"] == "refused"
     assert blocker["condition"] == "census-stale"
@@ -221,7 +221,7 @@ def test_doctored_pin_refuses_gate_6(integration_workspace, tmp_path):
 
     blocker = document["blocker"]
     assert blocker["gate"] == "manifest"
-    assert blocker["producer"] == "scripts/study/manifest.py"
+    assert blocker["producer"] == "sysml_codegen/study/manifest.py"
     assert blocker["mode"] == "refused"
     assert blocker["condition"] == "manifest-stale"
     assert "indicator-input fingerprint mismatch" in blocker["detail"]
@@ -243,7 +243,7 @@ def test_drifted_recorded_provenance_refuses_gate_7(integration_workspace, tmp_p
 
     blocker = document["blocker"]
     assert blocker["gate"] == "preflight"
-    assert blocker["producer"] == "scripts/study/preflight.py"
+    assert blocker["producer"] == "sysml_codegen/study/preflight.py"
     assert blocker["mode"] == "refused"
     assert blocker["condition"] == "preflight-refused"
     assert "manifest_currency" in blocker["detail"]

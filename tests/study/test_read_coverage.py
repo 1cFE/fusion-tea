@@ -11,10 +11,18 @@ import pytest
 
 from scripts import integrate
 from scripts.study import read_coverage as coverage
+from sysml_codegen.study import roots
 
 
 @pytest.fixture
 def observed_route(tmp_path):
+    """A probe route over a one-file package; ``tmp_path`` is its project.
+
+    The package sits in no git work tree, so the driver runs with
+    ``SYSML_CODEGEN_PROJECT_ROOT`` naming the project, as the seam hands it to every
+    producer: without a root, ``run_route`` refuses before observing. ``env`` builds that
+    environment for the tests that go through ``integrate.execute_baseline``.
+    """
     package = tmp_path / "package"
     (package / "contracts").mkdir(parents=True)
     value = package / "value.json"
@@ -39,16 +47,19 @@ def observed_route(tmp_path):
             + '    return {}\n'
         )
 
+    def with_root():
+        return {**os.environ, roots.PROJECT_ROOT_ENV: str(tmp_path)}
+
     def run(body):
         write(body)
         done = subprocess.run([sys.executable, '-c', integrate.ROUTE_DRIVER_SOURCE,
                                str(route), 'probe_route', 'execute', str(out),
                                str(package), str(manifest), 'test-token'],
-                              text=True, capture_output=True)
+                              text=True, capture_output=True, env=with_root())
         return done, json.loads((out / 'read_coverage.json').read_text())
 
     return SimpleNamespace(package=package, route=route, manifest=manifest, out=out,
-                           request=request, run=run, write=write)
+                           request=request, run=run, write=write, env=with_root)
 
 
 def test_declared_package_manifest_and_source_reads(observed_route):
@@ -155,7 +166,7 @@ def test_caught_violation_still_refuses_integration(observed_route):
 except RuntimeError:
     pass''')
     with pytest.raises(integrate.SeamBlocker) as caught:
-        integrate.execute_baseline(observed_route.request, dict(os.environ))
+        integrate.execute_baseline(observed_route.request, observed_route.env())
     assert caught.value.condition == 'read-coverage-refused'
     receipt = json.loads((observed_route.out / 'read_coverage.json').read_text())
     assert receipt['violations']
@@ -188,7 +199,7 @@ def test_integration_rejects_invalid_receipt_even_on_zero_exit(observed_route, m
 
 def test_integration_tool_identity_includes_new_dependencies():
     identity = integrate.common.tool_source_digest(integrate.TOOL_SOURCE_FILES)
-    assert {'scripts/study/indicators.py', 'scripts/study/read_coverage.py'} <= {entry['path'] for entry in identity['files']}
+    assert {'sysml_codegen/study/indicators.py', 'sysml_codegen/study/read_coverage.py'} <= {entry['path'] for entry in identity['files']}
 
 
 def test_static_gate_rejects_unpinned_pipeline_reference(synthetic_copy, tmp_path):
@@ -212,7 +223,7 @@ def test_static_gate_rejects_unpinned_pipeline_reference(synthetic_copy, tmp_pat
 def test_route_failure_preserves_earlier_violation(observed_route):
     observed_route.write('try:\n    (package_dir / "unknown.txt").read_text()\nexcept RuntimeError:\n    pass\nraise ValueError("route failed too")')
     with pytest.raises(integrate.SeamBlocker) as caught:
-        integrate.execute_baseline(observed_route.request, dict(os.environ))
+        integrate.execute_baseline(observed_route.request, observed_route.env())
     receipt = json.loads((observed_route.out / 'read_coverage.json').read_text())
     assert receipt['violations']
     assert receipt['route_error'] == 'ValueError: route failed too'
@@ -251,7 +262,7 @@ def test_declared_dependency_metadata_change(observed_route, monkeypatch, tmp_pa
     metadata = teax / 'packages/teax-simkit/probe.egg-info/entry_points.txt'
     metadata.parent.mkdir(parents=True)
     metadata.write_text('original')
-    monkeypatch.setenv('STOP_PARSER_TEAX_ROOT', str(teax))
+    monkeypatch.setenv('TEAX_SIMKIT_PATH', str(teax / 'packages/teax-simkit'))
     done, receipt = observed_route.run(f'Path({str(metadata)!r}).read_text()\nPath({str(metadata)!r}).write_text("changed")')
     assert done.returncode != 0
     assert 'changed after read' in str(receipt['violations'])
@@ -261,7 +272,7 @@ def test_declared_dependency_metadata_change(observed_route, monkeypatch, tmp_pa
 def test_route_exception_without_coverage_violation_is_could_not_run(observed_route):
     observed_route.write('(package_dir / "value.json").read_text()\nraise ValueError("unsupported physics domain")')
     with pytest.raises(integrate.SeamBlocker) as caught:
-        integrate.execute_baseline(observed_route.request, dict(os.environ))
+        integrate.execute_baseline(observed_route.request, observed_route.env())
     assert caught.value.mode == integrate.COULD_NOT_RUN
     assert caught.value.condition != 'read-coverage-refused'
     receipt = json.loads((observed_route.out / 'read_coverage.json').read_text())
@@ -335,7 +346,7 @@ def test_sqlite_existing_store_refused_by_integration(observed_route):
         db.execute("INSERT INTO old_data VALUES ('old contents')")
     observed_route.write('import sqlite3\nwith sqlite3.connect(out / "old.db") as db:\n    db.execute("SELECT * FROM old_data").fetchall()')
     with pytest.raises(integrate.SeamBlocker) as caught:
-        integrate.execute_baseline(observed_route.request, dict(os.environ))
+        integrate.execute_baseline(observed_route.request, observed_route.env())
     assert caught.value.condition == 'read-coverage-refused'
     receipt = json.loads((observed_route.out / 'read_coverage.json').read_text())
     assert 'SQLite store must be new' in str(receipt['violations'])
