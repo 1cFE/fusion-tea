@@ -2,9 +2,10 @@
 """Batch-ingest Zotero sources into the knowledge base.
 
 Determines pending items by diffing the Zotero library against a git-side
-manifest (knowledge/MANIFEST.jsonl). Downloads PDFs, runs agentic-mbse
-extract, appends entries to SOURCE_INDEX.md, and records to the manifest.
-Zotero tagging is deferred to a separate --sync-tags step.
+manifest (knowledge/MANIFEST.jsonl). Downloads PDFs and registers each through
+the installed `agentic_mbse.research` package, which captures it and writes its
+index block and manifest row together. Zotero tagging is deferred to a separate
+--sync-tags step.
 
 Usage:
     uv run python scripts/zotero_ingest.py                    # process all pending
@@ -22,13 +23,18 @@ Requires .env with:
 import argparse
 import subprocess
 import sys
-from datetime import date
 from pathlib import Path
 
+from agentic_mbse.research import (
+    KeyedFileSource,
+    LocalPdfSource,
+    RegistrationError,
+    SourceMetadata,
+    register,
+)
 from zotero_lib import (
     GROUP_ID,
     RAW_DIR,
-    SOURCE_INDEX_PATH,
     SOURCES_DIR,
     add_tag,
     connect,
@@ -203,151 +209,6 @@ def _cleanup_legacy_files(output_dir: Path) -> None:
             print(f"  Removed legacy file: {name}")
 
 
-def resolve_slug(slug: str, item_key: str | None) -> str:
-    """Resolve slug collision against knowledge/sources/.
-    Zotero items: append _<item_key>. Local PDFs: append _2, _3, etc."""
-    if not (SOURCES_DIR / slug).exists():
-        return slug
-
-    if item_key is not None:
-        return f"{slug}_{item_key}"
-
-    # Numeric suffix for local PDFs
-    n = 2
-    while (SOURCES_DIR / f"{slug}_{n}").exists():
-        n += 1
-    return f"{slug}_{n}"
-
-
-SEAM_ANCHOR = "\n## How Sources Are Used"
-
-
-def append_source_index_entry(
-    title: str,
-    slug: str,
-    extract_sha256: str,
-    *,
-    profile: str = "zotero-batch",
-    item_key: str | None = None,
-    pdf_sha256: str | None = None,
-    source_kind: str | None = None,
-    source_url: str | None = None,
-    origin_path: str | None = None,
-    use_for: str | None = None,
-    validation: str | None = None,
-    caveat: str | None = None,
-    source_id: str | None = None,
-    raw_sha256: str | None = None,
-    raw_artifact_sha256: str | None = None,
-) -> None:
-    """Insert one SOURCE_INDEX.md block before the 'How Sources Are Used' section.
-
-    Two profiles, one writer (design D6). `zotero-batch` reproduces the block the
-    unattended Zotero ingest has always written, empty `Use for`/`Validation`
-    included, because a batch caller has no per-item prose to supply. `seam`
-    requires the prose fields and an origin, and refuses without them.
-
-    Raises RuntimeError if the anchor heading is absent — a missing anchor means
-    the index is not the file this writer was built for, and appending at the end
-    would put new sources after the explanatory section (design D5).
-    """
-    if profile == "seam":
-        lines = _seam_block_lines(
-            title=title, slug=slug, source_kind=source_kind, source_url=source_url,
-            origin_path=origin_path, use_for=use_for, validation=validation,
-            caveat=caveat, source_id=source_id, raw_sha256=raw_sha256,
-            raw_artifact_sha256=raw_artifact_sha256, extract_sha256=extract_sha256,
-        )
-    elif profile == "zotero-batch":
-        lines = _zotero_batch_block_lines(
-            title=title, slug=slug, item_key=item_key,
-            pdf_sha256=pdf_sha256, extract_sha256=extract_sha256,
-        )
-    else:
-        raise ValueError(f"unknown index-block profile: {profile!r}")
-
-    entry_block = "\n".join(lines)
-    content = SOURCE_INDEX_PATH.read_text()
-    if SEAM_ANCHOR not in content:
-        raise RuntimeError(
-            f"{SOURCE_INDEX_PATH}: anchor '## How Sources Are Used' not found; "
-            "refusing to write an index block into a file this writer does not recognise"
-        )
-    SOURCE_INDEX_PATH.write_text(
-        content.replace(SEAM_ANCHOR, f"\n{entry_block}\n{SEAM_ANCHOR}", 1)
-    )
-    print(f"  Appended SOURCE_INDEX.md entry: {title}")
-
-
-def _zotero_batch_block_lines(
-    *, title: str, slug: str, item_key: str | None,
-    pdf_sha256: str | None, extract_sha256: str,
-) -> list[str]:
-    """Today's block, unchanged. `Use for` and `Validation` stay empty by design."""
-    lines = [
-        f"### {title}",
-        "- **Type**: documentation",
-        f"- **Location**: knowledge/sources/{slug}/",
-        "- **Use for**:",
-        "- **Validation**:",
-        "",
-        "#### Extended Metadata",
-    ]
-    if item_key is not None:
-        lines.append(f"- **Zotero Key**: {GROUP_ID}:{item_key}")
-    lines.extend([
-        f"- **Raw SHA256**: {pdf_sha256}",
-        f"- **Extracted Path**: knowledge/sources/{slug}/",
-        f"- **Extract SHA256**: {extract_sha256}",
-        f"- **Date Added**: {date.today().isoformat()}",
-    ])
-    return lines
-
-
-def _seam_block_lines(
-    *, title: str, slug: str, source_kind: str | None, source_url: str | None,
-    origin_path: str | None, use_for: str | None, validation: str | None,
-    caveat: str | None, source_id: str | None, raw_sha256: str | None,
-    raw_artifact_sha256: str | None, extract_sha256: str,
-) -> list[str]:
-    """The seam block: every field required by spec R-B6, or a refusal."""
-    blank = [
-        name for name, value in
-        (("use_for", use_for), ("validation", validation), ("caveat", caveat))
-        if not (value or "").strip()
-    ]
-    if blank:
-        raise ValueError(
-            "seam-profile index block requires non-empty "
-            + ", ".join(blank)
-            + " (spec R-B6)"
-        )
-    if not (source_url or "").strip() and not (origin_path or "").strip():
-        raise ValueError("seam-profile index block requires source_url or origin_path")
-
-    origin_line = (
-        f"- **Source URL**: {source_url}" if (source_url or "").strip()
-        else f"- **Origin Path**: {origin_path}"
-    )
-    return [
-        f"### {title}",
-        f"- **Type**: {source_kind or 'documentation'}",
-        f"- **Location**: knowledge/sources/{slug}/",
-        f"- **Use for**: {use_for}",
-        f"- **Validation**: {validation}",
-        f"- **Caveat**: {caveat}",
-        "",
-        "#### Extended Metadata",
-        origin_line,
-        f"- **Source ID**: {source_id}",
-        f"- **Raw SHA256**: {raw_sha256}",
-        f"- **Raw Artifact SHA256**: {raw_artifact_sha256}",
-        f"- **Extracted Path**: knowledge/sources/{slug}/",
-        f"- **Extract SHA256**: {extract_sha256}",
-        f"- **Date Added**: {date.today().isoformat()}",
-    ]
-
-
 def fetch_all_processable_items(zot) -> list[dict]:
     """Fetch all Zotero items that could be processed.
 
@@ -482,14 +343,17 @@ def re_extract_sources(zot, args) -> None:
 def process_zotero_item(zot, item: dict, args) -> str:
     """Download one Zotero item's PDF and register it through the one write door.
 
+    The item registers as a keyed source: kind `zotero`, its key in the manifest
+    row's `zotero_key` field (which is also how a second pass finds it before
+    any fetch), and `- **Zotero Key**: <group>:<key>` in its index block. A
+    keyed source keeps the batch index-block profile, empty `Use for` and
+    `Validation` included: an unattended run over a large queue has no per-item
+    prose to supply, and inventing it would be a fallback (design D6).
+
     Returns 'extracted', 'skipped', or 'failed'. A duplicate counts as 'skipped':
     the item is already in the registry, which is what the batch queue means by
     nothing-to-do.
     """
-    # Imported here because `source_registry` imports this module's index writer;
-    # a module-level import either way would be circular.
-    from source_registry import RegistrationError, SourceMetadata, ZoteroSource, register
-
     item_key = item["key"]
 
     pdf_info = resolve_pdf_info(zot, item)
@@ -507,12 +371,11 @@ def process_zotero_item(zot, item: dict, args) -> str:
         print(f"  Download failed: {e}")
         return "failed"
 
+    source = KeyedFileSource(
+        download.path, "zotero", "zotero_key", item_key, "Zotero Key", f"{GROUP_ID}:{item_key}"
+    )
     try:
-        result = register(
-            ZoteroSource(path=download.path, item_key=item_key),
-            SourceMetadata(title=title),
-            budget=args.budget,
-        )
+        result = register(source, SourceMetadata(title=title), budget=args.budget)
     except (RegistrationError, subprocess.TimeoutExpired) as e:
         print(f"  Registration failed: {e}")
         return "failed"
@@ -571,8 +434,6 @@ def process_local_pdf(args) -> None:
     (design D6). That is a deliberate breaking change to this operator path: an
     entry that cannot say what it is for should not be written.
     """
-    from source_registry import LocalPdfSource, RegistrationError, SourceMetadata, register
-
     pdf_path = args.local_pdf
     if not pdf_path.exists():
         print(f"ERROR: File not found: {pdf_path}")

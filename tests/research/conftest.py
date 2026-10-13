@@ -1,21 +1,20 @@
-"""Fixtures for the research seam suite.
+"""Fixtures for fusion-tea's research tests: the Zotero callers and the hold-out wiring.
 
-`knowledge_tree` builds a throwaway registry tree and points both the legacy
-Zotero writer (which reads module-level path constants) and the new seam code
-(which takes an injected paths object) at it. No `chdir`.
+The registry itself is the installed `agentic_mbse.research` package and is
+tested there. Its `default_paths()` is relative to the current directory, so
+`knowledge_tree` builds a throwaway project and makes it the current directory
+(`monkeypatch.chdir`). Code that reaches the default paths, as the Zotero
+callers do, then lands in the temp tree. A session check fails the run if any
+test wrote to the repository's own registry anyway.
 """
 
-import json
-import threading
-import urllib.request
-from dataclasses import dataclass, fields
-from functools import partial
-from http.server import SimpleHTTPRequestHandler, ThreadingHTTPServer
+from dataclasses import dataclass
 from pathlib import Path
 
 import pytest
-import zotero_ingest
-import zotero_lib
+from agentic_mbse.research import RegistryPaths
+
+REPO_ROOT = Path(__file__).resolve().parents[2]
 
 MINIMAL_INDEX = """# Source Index
 
@@ -31,10 +30,9 @@ Source registry for the fusion TEA investigation.
 
 @dataclass(frozen=True)
 class KnowledgeTree:
-    """A temp registry tree plus the paths object the seam code takes."""
+    """A temp project's registry. Its project root is the current directory during the test."""
 
-    root: Path
-    paths: zotero_lib.RegistryPaths
+    paths: RegistryPaths
 
     @property
     def index(self) -> Path:
@@ -53,124 +51,16 @@ class KnowledgeTree:
         return self.paths.raw
 
 
-def _build_tree(root: Path, baseline: dict) -> KnowledgeTree:
-    paths = zotero_lib.RegistryPaths.under(root)
+@pytest.fixture
+def knowledge_tree(tmp_path, monkeypatch) -> KnowledgeTree:
+    """An empty registry in a temp project, which becomes the current directory."""
+    paths = RegistryPaths(knowledge_dir=tmp_path / "knowledge")
     paths.sources.mkdir(parents=True)
     paths.raw.mkdir(parents=True)
     paths.index.write_text(MINIMAL_INDEX)
     paths.manifest.write_text("")
-    paths.baseline.write_text(json.dumps(baseline))
-    return KnowledgeTree(root=root, paths=paths)
-
-
-# Every RegistryPaths field, and the module constant `default_paths()` builds it
-# from. All eight must be redirected or the suite is not hermetic: any code path
-# that reaches `default_paths()` — the Zotero callers do — would otherwise stage
-# into the real repository's `knowledge/.staging` and take the real registry lock.
-_PATH_CONSTANTS = {
-    "sources": "SOURCES_DIR",
-    "index": "SOURCE_INDEX_PATH",
-    "manifest": "MANIFEST_PATH",
-    "raw": "RAW_DIR",
-    "staging": "STAGING_DIR",
-    "lock": "LOCK_PATH",
-    "baseline": "BASELINE_PATH",
-    "retired": "RETIRED_PATH",
-}
-assert set(_PATH_CONSTANTS) == set(f.name for f in fields(zotero_lib.RegistryPaths))
-
-
-def _point_legacy_constants_at(tree: KnowledgeTree, monkeypatch) -> None:
-    """Redirect every registry path constant at the temp tree.
-
-    This patches constants rather than only injecting `RegistryPaths` for two
-    reasons: the pre-seam writer reads the constants directly, and
-    `default_paths()` builds from them — so redirecting them is what keeps an
-    un-injected call site inside the temp tree too. `zotero_ingest` imported the
-    constants by value, so both modules are patched.
-    """
-    for module in (zotero_lib, zotero_ingest):
-        for field, constant in _PATH_CONSTANTS.items():
-            monkeypatch.setattr(module, constant, getattr(tree.paths, field),
-                                raising=False)
-
-
-EMPTY_BASELINE = {
-    "generated": "2026-08-25",
-    "note": "test tree; no pre-seam drift",
-    "orphan_source_dirs": [],
-    "loose_files": [],
-}
-
-
-@pytest.fixture
-def knowledge_tree(tmp_path, monkeypatch):
-    tree = _build_tree(tmp_path / "knowledge", EMPTY_BASELINE)
-    _point_legacy_constants_at(tree, monkeypatch)
-    return tree
-
-
-@pytest.fixture
-def knowledge_tree_factory(tmp_path, monkeypatch):
-    """Build a tree with a caller-supplied legacy baseline."""
-
-    def _make(baseline: dict, name: str = "knowledge") -> KnowledgeTree:
-        tree = _build_tree(tmp_path / name, baseline)
-        _point_legacy_constants_at(tree, monkeypatch)
-        return tree
-
-    return _make
-
-
-# --- offline capture fixtures (design D11) -----------------------------------
-#
-# `file://` is rejected by `agentic-mbse extract`, so the fixture URL has to be
-# real HTTP. A thread-local server over `fixtures/web/` lets the seam run the
-# actual extract subprocess without touching the network.
-
-FIXTURE_WEB = Path(__file__).parent / "fixtures" / "web"
-
-# Declared charset per fixture. The header is what the fetcher decodes by, so a
-# page has to be served as iso-8859-1 to exercise the re-encoding asymmetry.
-FIXTURE_CHARSET = {"latin1.html": "iso-8859-1"}
-
-
-class _FixtureHandler(SimpleHTTPRequestHandler):
-    def guess_type(self, path):
-        charset = FIXTURE_CHARSET.get(Path(path).name)
-        if charset:
-            return f"text/html; charset={charset}"
-        return super().guess_type(path)
-
-    def log_message(self, *args):
-        pass
-
-
-@dataclass(frozen=True)
-class LocalSite:
-    port: int
-
-    def url(self, name: str) -> str:
-        return f"http://127.0.0.1:{self.port}/{name}"
-
-    def fetched_bytes(self, name: str) -> bytes:
-        with urllib.request.urlopen(self.url(name)) as response:
-            return response.read()
-
-
-@pytest.fixture(scope="session")
-def local_site():
-    server = ThreadingHTTPServer(
-        ("127.0.0.1", 0),
-        partial(_FixtureHandler, directory=str(FIXTURE_WEB)),
-    )
-    thread = threading.Thread(target=server.serve_forever, daemon=True)
-    thread.start()
-    try:
-        yield LocalSite(port=server.server_address[1])
-    finally:
-        server.shutdown()
-        server.server_close()
+    monkeypatch.chdir(tmp_path)
+    return KnowledgeTree(paths=paths)
 
 
 @pytest.fixture(scope="session")
@@ -195,3 +85,30 @@ def generated_pdf(tmp_path_factory) -> Path:
     figure.savefig(path)
     plt.close(figure)
     return path
+
+
+# --- the repository's own registry stays untouched ----------------------------------
+
+_REAL_KNOWLEDGE = REPO_ROOT / "knowledge"
+_REGISTRY_FILES = ("MANIFEST.jsonl", "SOURCE_INDEX.md", "RETIRED.jsonl", ".registry.lock")
+_REGISTRY_DIRS = ("sources", "raw", ".staging")
+
+
+def _registry_state() -> dict[str, object]:
+    """What a stray write to the repository's registry would change: mtimes and listings."""
+    state: dict[str, object] = {}
+    for name in _REGISTRY_FILES:
+        path = _REAL_KNOWLEDGE / name
+        state[name] = path.stat().st_mtime_ns if path.exists() else None
+    for name in _REGISTRY_DIRS:
+        path = _REAL_KNOWLEDGE / name
+        state[name] = sorted(entry.name for entry in path.iterdir()) if path.is_dir() else None
+    return state
+
+
+@pytest.fixture(scope="session", autouse=True)
+def repository_registry_untouched():
+    """Fail the session if any test wrote to, or took the lock of, the repository's `knowledge/`."""
+    before = _registry_state()
+    yield
+    assert _registry_state() == before, "a research test wrote to the repository's own knowledge/"

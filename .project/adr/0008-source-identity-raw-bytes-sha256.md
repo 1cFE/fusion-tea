@@ -29,6 +29,8 @@ Identity from the producer's hash of the fetched bytes makes duplicate detection
 - `scripts/source_registry.py` — dedupe order, provenance verification, `verify`.
 - `knowledge/SOURCE_INDEX.md` — extended-metadata fields `Source ID`, `Raw SHA256`, `Raw Artifact SHA256`.
 
+**Amended 2026-10-12:** the invariants listed above are now held by the installed `agentic_mbse.research` package: `scripts/source_registry.py` is deleted, and `scripts/zotero_lib.py` keeps only its Zotero views, built on the package's `load_manifest_rows`. agentic-mbse's `docs/research-seam.md` § Decisions carries a dated condensation of this record for installed targets.
+
 Manifest readers must tolerate rows without `zotero_key` (landed with a characterization test before the first non-Zotero row). Duplicates are detected before a second entry is written. A re-fetch whose bytes changed is refused as a duplicate rather than superseded — supersession stays out of scope (upstream `pm supersede-insight` stub). The identity hash is trusted from the producer's frontmatter; the stored artifact's digest is the only hash a reader recomputes.
 
 ## Rejected alternatives

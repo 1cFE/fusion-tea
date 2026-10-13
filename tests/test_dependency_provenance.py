@@ -12,7 +12,7 @@ from typing import Any, cast
 ROOT = Path(__file__).resolve().parents[1]
 # The 2026-10-11 native skill distribution (agentic-mbse #18) deliberately advances the project pin.
 # WHEEL_HASHES below still identify the retained historical integration wheels.
-A_FINAL = "ac5fb1adfab0bc10e0010211275269f9f82d8e99"
+A_FINAL = "d42c8b9b4b04fcd7c71b069ffb9cc1166e884617"
 C_PROD = "8a758e9240707b58fe32a509c3b509941ca4fa01"
 COSTINGFE = "02543850089be175ea7c28b92a8b2a4184e1637e"
 URLS = {
