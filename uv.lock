@@ -45,7 +45,7 @@ wheels = [
 [[package]]
 name = "agentic-mbse"
 version = "0.1.3"
-source = { git = "https://github.com/1cFE/agentic-mbse.git?rev=ac5fb1adfab0bc10e0010211275269f9f82d8e99#ac5fb1adfab0bc10e0010211275269f9f82d8e99" }
+source = { git = "https://github.com/1cFE/agentic-mbse.git?rev=d42c8b9b4b04fcd7c71b069ffb9cc1166e884617#d42c8b9b4b04fcd7c71b069ffb9cc1166e884617" }
 dependencies = [
     { name = "img2table" },
     { name = "pydantic" },
@@ -758,7 +758,7 @@ dev = [
 [package.metadata]
 requires-dist = [
     { name = "1costingfe", git = "https://github.com/1cFE/1costingfe.git?rev=02543850089be175ea7c28b92a8b2a4184e1637e" },
-    { name = "agentic-mbse", extras = ["extract-full", "web"], git = "https://github.com/1cFE/agentic-mbse.git?rev=ac5fb1adfab0bc10e0010211275269f9f82d8e99" },
+    { name = "agentic-mbse", extras = ["extract-full", "web"], git = "https://github.com/1cFE/agentic-mbse.git?rev=d42c8b9b4b04fcd7c71b069ffb9cc1166e884617" },
     { name = "fastapi", specifier = ">=0.128.0" },
     { name = "graphviz", specifier = ">=0.21" },
     { name = "httpx", specifier = ">=0.28.1" },
